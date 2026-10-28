@@ -43,6 +43,15 @@ async function arrancar() {
   if (new URLSearchParams(location.search).get('debug') === '1') {
     (await import('./ui/debug.js')).montarDebug();
   }
+
+  registrarServiceWorker();
+}
+
+/** App instalable y sin conexión (HU-6). */
+function registrarServiceWorker() {
+  if (!('serviceWorker' in navigator)) return;
+  // updateViaCache 'none': el propio sw.js tampoco se toma de la caché del navegador
+  navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).catch(() => {});
 }
 
 arrancar();
