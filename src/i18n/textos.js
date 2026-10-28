@@ -11,7 +11,8 @@ let base = {};
 const faltan = new Set();
 
 async function leer(id) {
-  const respuesta = await fetch(new URL(`./${id}.json`, import.meta.url));
+  // no-cache: GitHub Pages deja guardar 10 min y mezclaría textos viejos con código nuevo
+  const respuesta = await fetch(new URL(`./${id}.json`, import.meta.url), { cache: 'no-cache' });
   if (!respuesta.ok) throw new Error(`No se pudo cargar ${id}.json (${respuesta.status})`);
   return respuesta.json();
 }
