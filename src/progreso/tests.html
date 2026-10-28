@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pruebas: progreso</title>
+  <link rel="stylesheet" href="../../css/tokens.css">
+  <link rel="stylesheet" href="../../css/app.css">
+</head>
+<body>
+  <div id="app">
+    <h1 class="logo">tests/progreso</h1>
+  </div>
+  <script type="module">
+    import { prueba, igual, verdadero, ejecutar } from '../pruebas/mini.js';
+    import { crearAlmacen } from './almacen.js';
+
+    // Almacenamiento falso con la misma interfaz que localStorage
+    class Falso {
+      constructor({ fallaAlGuardar = false } = {}) { this.datos = new Map(); this.falla = fallaAlGuardar; }
+      get length() { return this.datos.size; }
+      key(i) { return [...this.datos.keys()][i] ?? null; }
+      getItem(k) { return this.datos.has(k) ? this.datos.get(k) : null; }
+      setItem(k, v) { if (this.falla) throw new Error('QuotaExceededError'); this.datos.set(k, String(v)); }
+      removeItem(k) { this.datos.delete(k); }
+    }
+
+    const nuevo = () => ({ v: 2, puntos: 0 });
+
+    // --- Almacén (T010) ---
+
+    prueba('Almacén: sin nada guardado devuelve los datos por defecto', () => {
+      const a = crearAlmacen(new Falso());
+      igual(a.leer('he-x', 2, nuevo), { v: 2, puntos: 0 });
+    });
+
+    prueba('Almacén: guarda y lee con su versión', () => {
+      const disco = new Falso();
+      const a = crearAlmacen(disco);
+      a.guardar('he-x', { v: 2, puntos: 30 });
+      igual(JSON.parse(disco.getItem('he-x')), { v: 2, puntos: 30 });
+      igual(crearAlmacen(disco).leer('he-x', 2, nuevo), { v: 2, puntos: 30 });
+    });
+
+    prueba('Almacén: migra paso a paso desde una versión antigua', () => {
+      const disco = new Falso();
+      disco.setItem('he-x', JSON.stringify({ v: 0, xp: 5 }));
+      const migraciones = {
+        0: ({ xp }) => ({ puntos: xp }),
+        1: (d) => ({ ...d, puntos: d.puntos * 10 }),
+      };
+      igual(crearAlmacen(disco).leer('he-x', 2, nuevo, migraciones), { puntos: 50, v: 2 });
+    });
+
+    prueba('Almacén: sin migración para una versión antigua usa los datos por defecto', () => {
+      const disco = new Falso();
+      disco.setItem('he-x', JSON.stringify({ v: 1, puntos: 7 }));
+      igual(crearAlmacen(disco).leer('he-x', 2, nuevo), { v: 2, puntos: 0 });
+    });
+
+    prueba('Almacén: datos de una versión futura no se interpretan ni se borran', () => {
+      const disco = new Falso();
+      disco.setItem('he-x', JSON.stringify({ v: 9, otra: 'cosa' }));
+      igual(crearAlmacen(disco).leer('he-x', 2, nuevo), { v: 2, puntos: 0 });
+      igual(JSON.parse(disco.getItem('he-x')), { v: 9, otra: 'cosa' });
+    });
+
+    prueba('Almacén: JSON roto o sin versión usa los datos por defecto', () => {
+      const disco = new Falso();
+      disco.setItem('he-a', '{roto');
+      disco.setItem('he-b', JSON.stringify({ puntos: 3 }));
+      const a = crearAlmacen(disco);
+      igual(a.leer('he-a', 2, nuevo), nuevo());
+      igual(a.leer('he-b', 2, nuevo), nuevo());
+    });
+
+    prueba('Almacén: sin disco funciona en memoria y no es persistente', () => {
+      const a = crearAlmacen(null);
+      verdadero(!a.persistente(), 'debería decir que no es persistente');
+      a.guardar('he-x', { v: 2, puntos: 4 });
+      igual(a.leer('he-x', 2, nuevo), { v: 2, puntos: 4 });
+    });
+
+    prueba('Almacén: si el disco falla al guardar, sigue en memoria', () => {
+      const a = crearAlmacen(new Falso({ fallaAlGuardar: true }));
+      verdadero(a.persistente(), 'al principio cree que sí');
+      a.guardar('he-x', { v: 2, puntos: 8 });
+      verdadero(!a.persistente(), 'tras el fallo ya no es persistente');
+      igual(a.leer('he-x', 2, nuevo), { v: 2, puntos: 8 });
+    });
+
+    prueba('Almacén: borrarTodo solo borra las claves he-*', () => {
+      const disco = new Falso();
+      const a = crearAlmacen(disco);
+      a.guardar('he-ajustes', { v: 1 });
+      a.guardar('he-progreso', { v: 1 });
+      disco.setItem('otra-app', 'x');
+      a.borrarTodo();
+      igual([...disco.datos.keys()], ['otra-app']);
+    });
+
+    ejecutar(document.getElementById('app'));
+  </script>
+</body>
+</html>

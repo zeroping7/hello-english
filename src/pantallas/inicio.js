@@ -3,6 +3,8 @@
 import { h } from '../ui/dom.js';
 import { t } from '../i18n/textos.js';
 import { navegar } from '../router.js';
+import { almacen } from '../progreso/almacen.js';
+import { avisoFijo } from '../ui/aviso.js';
 
 function logo() {
   // La marca no se traduce: es la misma en todos los idiomas
@@ -25,6 +27,7 @@ export function montar(raiz) {
       }, h('span', { 'aria-hidden': 'true' }, '⚙')),
     ),
     h('main', { class: 'contenido' },
+      !almacen.persistente() && avisoFijo(t('aviso.sinAlmacen'), { tipo: 'error' }),
       h('p', { class: 'lema' }, t('app.lema')),
     ),
   );

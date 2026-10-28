@@ -9,5 +9,6 @@
   "app.tituloPestana": "{pantalla} · Hello English",
   "inicio.abrirAjustes": "Abrir ajustes",
   "ajustes.titulo": "Ajustes",
-  "proximamente.texto": "Este minijuego todavía no está disponible."
+  "proximamente.texto": "Este minijuego todavía no está disponible.",
+  "aviso.sinAlmacen": "Este navegador no deja guardar tu progreso. Puedes usar la app, pero lo perderás al cerrarla."
 }
