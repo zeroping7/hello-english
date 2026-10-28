@@ -630,3 +630,47 @@ code {
 }
 
 .debug-json { max-height: 240px; overflow: auto; white-space: pre-wrap; }
+
+/* Mis datos */
+.botones-datos { display: flex; flex-wrap: wrap; gap: var(--espacio-2); }
+
+.boton-peligro-borde { color: var(--error); }
+.boton-peligro-borde:hover { border-color: var(--error); }
+
+.boton-peligro {
+  border-color: var(--error);
+  background: var(--error);
+  color: var(--panel);
+  font-weight: 700;
+}
+
+.boton-peligro:disabled,
+.boton-principal:disabled { background: var(--panel); color: var(--tenue); border-color: var(--borde); }
+
+/* Diálogo de confirmación (src/ui/confirmar.js) */
+.dialogo {
+  width: min(440px, calc(100% - 2 * var(--espacio-3)));
+  padding: var(--espacio-4);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--panel);
+  color: var(--texto);
+}
+
+.dialogo::backdrop { background: rgb(0 0 0 / 0.55); }
+.dialogo-titulo { margin: 0 0 var(--espacio-2); font-family: var(--fuente-mono); font-size: 1.125rem; }
+.dialogo-palabra { display: grid; gap: var(--espacio-1); margin-top: var(--espacio-3); font-size: 0.9375rem; }
+.dialogo-botones { display: flex; justify-content: flex-end; gap: var(--espacio-2); margin-top: var(--espacio-4); }
+
+.campo {
+  min-height: var(--toque);
+  padding: 0 var(--espacio-3);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--fondo);
+  color: var(--texto);
+  font: inherit;
+  font-family: var(--fuente-mono);
+}
+
+.campo:focus-visible { outline: 2px solid var(--keyword); outline-offset: 1px; }

@@ -55,6 +55,15 @@ export async function cambiarAjuste(clave, valor) {
   eventos.dispatchEvent(new CustomEvent('cambio', { detail: { clave, valor } }));
 }
 
+/** Sustituye todos los ajustes (importar, borrar). Avisa con clave '*'. */
+export async function reemplazarAjustes(datos) {
+  actuales = normalizarAjustes(datos);
+  almacen.guardar(CLAVE, actuales);
+  aplicarTema(actuales.tema);
+  await cargarIdioma(actuales.idioma);
+  eventos.dispatchEvent(new CustomEvent('cambio', { detail: { clave: '*', valor: null } }));
+}
+
 /** Escucha cambios: fn({ clave, valor }). Devuelve la función para dejar de escuchar. */
 export function alCambiarAjuste(fn) {
   const escucha = (e) => fn(e.detail);

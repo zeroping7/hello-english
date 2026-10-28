@@ -27,7 +27,7 @@ async function arrancar() {
 
   // Al cambiar de idioma la pantalla se vuelve a pintar sin recargar (HU-3)
   alCambiarAjuste(({ clave }) => {
-    if (clave === 'idioma') repintar();
+    if (clave === 'idioma' || clave === '*') repintar();
   });
 
   // Objetivo del día cumplido (HU-4)

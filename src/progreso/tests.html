@@ -181,6 +181,52 @@
       igual(p, L.progresoNuevo());
     });
 
+    // --- Exportar e importar (T023) ---
+
+    const conDatos = () => {
+      let p = L.sumarSegundos(L.progresoNuevo(), '2026-10-28', 600, 10).progreso;
+      return L.sumarPuntos(p, 120);
+    };
+
+    prueba('Exportar → importar devuelve lo mismo', () => {
+      const ajustes = { v: 1, idioma: 'en', tema: 'oscuro' };
+      const archivo = JSON.parse(JSON.stringify(L.crearExportacion(ajustes, conDatos(), new Date('2026-10-28T10:00:00Z'))));
+      igual([archivo.app, archivo.formato, archivo.exportado], ['hello-english', 1, '2026-10-28T10:00:00.000Z']);
+      const r = L.validarImportacion(archivo);
+      igual(r.ok, true);
+      igual(r.progreso, conDatos());
+      igual(r.ajustes, ajustes);
+    });
+
+    prueba('Importar: rechaza archivos de otra app o vacíos', () => {
+      igual(L.validarImportacion({ app: 'otra', formato: 1 }).ok, false);
+      igual(L.validarImportacion(null).ok, false);
+      igual(L.validarImportacion([]).ok, false);
+    });
+
+    prueba('Importar: rechaza un formato o un progreso de una versión futura', () => {
+      const base = L.crearExportacion({ v: 1 }, conDatos());
+      igual(L.validarImportacion({ ...base, formato: 2 }).motivo, 'formato');
+      igual(L.validarImportacion({ ...base, progreso: { ...conDatos(), v: 9 } }).motivo, 'progreso');
+    });
+
+    prueba('Importar: rechaza tipos y valores erróneos', () => {
+      const base = L.crearExportacion({ v: 1 }, conDatos());
+      const malos = [
+        { nivel: 'Z9' }, { puntos: -5 }, { puntos: '100' }, { racha: 1.5 },
+        { ultimoDiaCumplido: 'ayer' }, { dias: [] }, { dias: { 'no-fecha': 3 } }, { dias: { '2026-10-28': -1 } },
+        { nivelProbado: 'si' },
+      ];
+      for (const cambio of malos) {
+        igual(L.validarImportacion({ ...base, progreso: { ...conDatos(), ...cambio } }).ok, false, JSON.stringify(cambio));
+      }
+    });
+
+    prueba('Importar: descarta campos desconocidos del progreso', () => {
+      const base = L.crearExportacion({ v: 1 }, { ...conDatos(), trampa: true });
+      igual('trampa' in L.validarImportacion(base).progreso, false);
+    });
+
     // --- Ajustes (T011) ---
 
     const base = { v: 1, idioma: 'es', tema: 'sistema', acento: 'gb', velocidad: 'normal',

@@ -88,5 +88,17 @@
   "inicio.objetivo": "Objetivo de hoy",
   "inicio.objetivo.valor": "{hecho} de {total} min",
   "inicio.objetivo.cumplido": "Cumplido",
-  "aviso.objetivo": "¡Objetivo de hoy cumplido! Racha: {racha}"
+  "aviso.objetivo": "¡Objetivo de hoy cumplido! Racha: {racha}",
+  "datos.titulo": "Mis datos",
+  "datos.texto": "Tu progreso solo se guarda en este dispositivo. Expórtalo de vez en cuando para no perderlo o para llevarlo a otro. En iPhone, instala la app: Safari puede borrar los datos de las webs que no abres en una semana.",
+  "datos.exportar": "Exportar",
+  "datos.exportar.hecho": "Progreso exportado",
+  "datos.importar": "Importar",
+  "datos.importar.confirmar": "Se sustituirán todo tu progreso y tus ajustes por los del archivo.",
+  "datos.importar.hecho": "Progreso importado",
+  "datos.importar.error": "Ese archivo no es un progreso válido de Hello English. No se ha cambiado nada.",
+  "datos.borrar": "Borrar progreso",
+  "datos.borrar.confirmar": "Se borrarán todo tu progreso y tus ajustes de este dispositivo. No se puede deshacer.",
+  "datos.borrar.palabra": "BORRAR",
+  "dialogo.escribe": "Escribe {palabra} para confirmar"
 }

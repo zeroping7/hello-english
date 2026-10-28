@@ -58,7 +58,7 @@ Formato de cada tarea:
   - Archivos: `src/ui/debug.js`, `src/progreso/reloj.js`, `src/progreso/progreso.js`, i18n
   - Hecho cuando: el panel muestra lo del plan §9 y funcionan **+1 min**, **+1 día** y **Ver JSON**; al cumplir el objetivo aparece "¡Objetivo de hoy cumplido!" y la racha sube
   - Probar: con objetivo de 5 min, pulsar **+1 min** cinco veces (aviso y racha 1); **+1 día** y repetir (racha 2); **+1 día** dos veces sin cumplir (racha 0)
-- [ ] T023 — Exportar, importar y borrar
+- [x] T023 — Exportar, importar y borrar
   - Archivos: `src/progreso/logica.js` (crear, validar, migrar), `src/progreso/tests.html`, `src/ui/confirmar.js`, `src/pantallas/ajustes.js`, i18n
   - Hecho cuando: exportar descarga `hello-english-AAAA-MM-DD.json`; importar valida, pide confirmación y lo sustituye todo; un archivo inválido da error sin cambiar nada; borrar exige escribir `BORRAR` / `DELETE` y lleva a la bienvenida; las pruebas nuevas salen en verde
   - Probar: sumar minutos con `?debug=1`, exportar, borrar, comprobar que todo vuelve a 0 e importar el archivo. Importar también un `.json` cualquiera y ver el error

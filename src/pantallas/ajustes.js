@@ -1,16 +1,66 @@
-// Pantalla de ajustes (HU-3): general, aprendizaje y versión; voz, sonido y mis datos
-// llegan en T023-T025.
+// Pantalla de ajustes (HU-3): general, aprendizaje, mis datos y versión; voz y sonido
+// llegan en T024-T025.
 import { h } from '../ui/dom.js';
 import { t } from '../i18n/textos.js';
 import { barraConVolver } from '../ui/barra.js';
 import { grupoOpciones } from '../ui/opciones.js';
 import { leerAjustes, cambiarAjuste } from '../ajustes/ajustes.js';
 import { VERSION } from '../version.js';
+import { navegar } from '../router.js';
+import { avisar } from '../ui/aviso.js';
+import { confirmar } from '../ui/confirmar.js';
+import { exportarArchivo, leerArchivo, aplicarImportacion, borrarTodo } from '../progreso/datos.js';
 
 function seccion(titulo, ...hijos) {
   return h('section', { class: 'seccion' },
     h('h2', { class: 'seccion-titulo' }, titulo),
     ...hijos);
+}
+
+/** Mis datos (HU-5): exportar, importar y borrar. */
+function seccionDatos() {
+  const selector = h('input', { type: 'file', accept: '.json,application/json', hidden: true });
+
+  selector.addEventListener('change', async () => {
+    const archivo = selector.files?.[0];
+    selector.value = '';
+    if (!archivo) return;
+    const r = await leerArchivo(archivo);
+    if (!r.ok) {
+      avisar(t('datos.importar.error'), { tipo: 'error' });
+      return;
+    }
+    const si = await confirmar({ titulo: t('datos.importar'), texto: t('datos.importar.confirmar'), aceptar: t('datos.importar') });
+    if (!si) return;
+    await aplicarImportacion(r);
+    avisar(t('datos.importar.hecho'), { tipo: 'exito' });
+  });
+
+  async function borrar() {
+    const palabra = t('datos.borrar.palabra');
+    const si = await confirmar({
+      titulo: t('datos.borrar'),
+      texto: t('datos.borrar.confirmar'),
+      aceptar: t('datos.borrar'),
+      peligro: true,
+      palabra,
+    });
+    if (!si) return;
+    await borrarTodo();
+    navegar('/bienvenida', { reemplazar: true });
+  }
+
+  return seccion(t('datos.titulo'),
+    h('p', { class: 'tenue' }, t('datos.texto')),
+    h('div', { class: 'botones-datos' },
+      h('button', { class: 'boton', type: 'button', onclick: () => {
+        exportarArchivo();
+        avisar(t('datos.exportar.hecho'), { tipo: 'exito' });
+      } }, t('datos.exportar')),
+      h('button', { class: 'boton', type: 'button', onclick: () => selector.click() }, t('datos.importar')),
+      h('button', { class: 'boton boton-peligro-borde', type: 'button', onclick: borrar }, t('datos.borrar')),
+      selector),
+  );
 }
 
 export function montar(raiz) {
@@ -55,6 +105,7 @@ export function montar(raiz) {
         h('button', { class: 'boton', type: 'button', disabled: true },
           t('ajustes.repetirPrueba'), h('span', { class: 'etiqueta' }, t('comun.proximamente'))),
       ),
+      seccionDatos(),
       h('p', { class: 'version' }, t('comun.version', { v: VERSION })),
     ),
   );

@@ -3,8 +3,8 @@
 import { almacen } from './almacen.js';
 import { hoy } from './reloj.js';
 import {
-  VERSION_PROGRESO, progresoNuevo, puntosPorAcierto, sumarPuntos, sumarSegundos,
-  rachaVisible, segundosHoy,
+  VERSION_PROGRESO, MIGRACIONES_PROGRESO, progresoNuevo, puntosPorAcierto, sumarPuntos,
+  sumarSegundos, rachaVisible, segundosHoy,
 } from './logica.js';
 import { leerAjustes } from '../ajustes/ajustes.js';
 
@@ -13,7 +13,7 @@ const eventos = new EventTarget();
 let actual = null;
 
 export function leerProgreso() {
-  if (!actual) actual = almacen.leer(CLAVE, VERSION_PROGRESO, progresoNuevo);
+  if (!actual) actual = almacen.leer(CLAVE, VERSION_PROGRESO, progresoNuevo, MIGRACIONES_PROGRESO);
   return actual;
 }
 

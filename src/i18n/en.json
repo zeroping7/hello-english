@@ -88,5 +88,17 @@
   "inicio.objetivo": "Today's goal",
   "inicio.objetivo.valor": "{hecho} of {total} min",
   "inicio.objetivo.cumplido": "Done",
-  "aviso.objetivo": "Today's goal done! Streak: {racha}"
+  "aviso.objetivo": "Today's goal done! Streak: {racha}",
+  "datos.titulo": "My data",
+  "datos.texto": "Your progress is only saved on this device. Export it now and then so you don't lose it or to move it to another one. On iPhone, install the app: Safari may delete data from websites you haven't opened for a week.",
+  "datos.exportar": "Export",
+  "datos.exportar.hecho": "Progress exported",
+  "datos.importar": "Import",
+  "datos.importar.confirmar": "All your progress and settings will be replaced with the ones in the file.",
+  "datos.importar.hecho": "Progress imported",
+  "datos.importar.error": "That file isn't valid Hello English progress. Nothing has been changed.",
+  "datos.borrar": "Delete progress",
+  "datos.borrar.confirmar": "All your progress and settings will be deleted from this device. This can't be undone.",
+  "datos.borrar.palabra": "DELETE",
+  "dialogo.escribe": "Type {palabra} to confirm"
 }

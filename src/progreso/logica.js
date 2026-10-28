@@ -81,3 +81,60 @@ export function sumarSegundos(progreso, fecha, segundos, objetivoMin) {
   }
   return { progreso: nuevo, cumplidoAhora };
 }
+
+// --- Exportar e importar (HU-5) ---
+
+export const FORMATO_EXPORTACION = 1;
+const ES_FECHA = /^\d{4}-\d{2}-\d{2}$/;
+const esEnteroNoNegativo = (n) => Number.isInteger(n) && n >= 0;
+
+export function crearExportacion(ajustes, progreso, ahora = new Date()) {
+  return {
+    app: 'hello-english',
+    formato: FORMATO_EXPORTACION,
+    exportado: ahora.toISOString(),
+    ajustes,
+    progreso,
+  };
+}
+
+/** Lleva un progreso antiguo a la versión actual. Hoy solo existe la v1. */
+export const MIGRACIONES_PROGRESO = {};
+
+function progresoValido(p) {
+  return p && typeof p === 'object'
+    && NIVELES.includes(p.nivel)
+    && typeof p.nivelProbado === 'boolean'
+    && esEnteroNoNegativo(p.puntos)
+    && esEnteroNoNegativo(p.racha)
+    && (p.ultimoDiaCumplido === null || ES_FECHA.test(p.ultimoDiaCumplido))
+    && p.dias && typeof p.dias === 'object' && !Array.isArray(p.dias)
+    && Object.entries(p.dias).every(([f, s]) => ES_FECHA.test(f) && esEnteroNoNegativo(s));
+}
+
+/**
+ * Comprueba un archivo importado. No sustituye nada: devuelve lo que habría que guardar.
+ * @returns {{ ok: true, ajustes: object, progreso: object } | { ok: false, motivo: string }}
+ */
+export function validarImportacion(datos) {
+  if (!datos || typeof datos !== 'object' || datos.app !== 'hello-english') return { ok: false, motivo: 'otra-app' };
+  if (!Number.isInteger(datos.formato) || datos.formato > FORMATO_EXPORTACION) return { ok: false, motivo: 'formato' };
+  if (!datos.ajustes || typeof datos.ajustes !== 'object') return { ok: false, motivo: 'ajustes' };
+
+  let p = datos.progreso;
+  if (!p || typeof p !== 'object' || !Number.isInteger(p.v) || p.v > VERSION_PROGRESO) return { ok: false, motivo: 'progreso' };
+  while (p.v < VERSION_PROGRESO) {
+    const migrar = MIGRACIONES_PROGRESO[p.v];
+    if (!migrar) return { ok: false, motivo: 'progreso' };
+    p = { ...migrar(p), v: p.v + 1 };
+  }
+  if (!progresoValido(p)) return { ok: false, motivo: 'progreso' };
+
+  // Solo los campos conocidos: lo demás que traiga el archivo se descarta
+  const { nivel, nivelProbado, puntos, dias, ultimoDiaCumplido, racha } = p;
+  return {
+    ok: true,
+    ajustes: datos.ajustes,
+    progreso: { v: VERSION_PROGRESO, nivel, nivelProbado, puntos, dias: { ...dias }, ultimoDiaCumplido, racha },
+  };
+}
