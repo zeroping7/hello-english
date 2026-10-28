@@ -100,5 +100,18 @@
   "datos.borrar": "Borrar progreso",
   "datos.borrar.confirmar": "Se borrarán todo tu progreso y tus ajustes de este dispositivo. No se puede deshacer.",
   "datos.borrar.palabra": "BORRAR",
-  "dialogo.escribe": "Escribe {palabra} para confirmar"
+  "dialogo.escribe": "Escribe {palabra} para confirmar",
+  "ajustes.voz": "Voz",
+  "ajustes.acento": "Acento",
+  "ajustes.acento.gb": "Británico",
+  "ajustes.acento.us": "Americano",
+  "ajustes.velocidad": "Velocidad",
+  "ajustes.velocidad.normal": "Normal",
+  "ajustes.velocidad.lenta": "Lenta",
+  "ajustes.voz.probar": "Escuchar prueba",
+  "ajustes.voz.frase": "Hello! Let's practise some English for developers.",
+  "voz.noDisponible": "Este navegador no puede leer en voz alta. Los ejercicios de escucha no estarán disponibles.",
+  "voz.sinIngles": "Este dispositivo no tiene ninguna voz en inglés instalada.",
+  "voz.sinAcento.gb": "Este dispositivo no tiene voz británica: se usará otra voz en inglés.",
+  "voz.sinAcento.us": "Este dispositivo no tiene voz americana: se usará otra voz en inglés."
 }

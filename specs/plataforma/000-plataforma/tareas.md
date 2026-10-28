@@ -62,7 +62,7 @@ Formato de cada tarea:
   - Archivos: `src/progreso/logica.js` (crear, validar, migrar), `src/progreso/tests.html`, `src/ui/confirmar.js`, `src/pantallas/ajustes.js`, i18n
   - Hecho cuando: exportar descarga `hello-english-AAAA-MM-DD.json`; importar valida, pide confirmación y lo sustituye todo; un archivo inválido da error sin cambiar nada; borrar exige escribir `BORRAR` / `DELETE` y lleva a la bienvenida; las pruebas nuevas salen en verde
   - Probar: sumar minutos con `?debug=1`, exportar, borrar, comprobar que todo vuelve a 0 e importar el archivo. Importar también un `.json` cualquiera y ver el error
-- [ ] T024 — Voz
+- [x] T024 — Voz
   - Archivos: `src/voz/voz.js`, `src/pantallas/ajustes.js`, i18n
   - Hecho cuando: Ajustes permite elegir acento (británico por defecto) y velocidad, y "Escuchar prueba" lee la frase con esa voz; si no hay voz del acento elegido, usa otra inglesa y lo indica
   - Probar: en el móvil y en el PC, escuchar la prueba con los dos acentos y las dos velocidades

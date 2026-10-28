@@ -674,3 +674,6 @@ code {
 }
 
 .campo:focus-visible { outline: 2px solid var(--keyword); outline-offset: 1px; }
+
+.nota { margin: var(--espacio-2) 0 0; font-size: 0.875rem; }
+.nota:empty { display: none; }

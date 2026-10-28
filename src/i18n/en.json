@@ -100,5 +100,18 @@
   "datos.borrar": "Delete progress",
   "datos.borrar.confirmar": "All your progress and settings will be deleted from this device. This can't be undone.",
   "datos.borrar.palabra": "DELETE",
-  "dialogo.escribe": "Type {palabra} to confirm"
+  "dialogo.escribe": "Type {palabra} to confirm",
+  "ajustes.voz": "Voice",
+  "ajustes.acento": "Accent",
+  "ajustes.acento.gb": "British",
+  "ajustes.acento.us": "American",
+  "ajustes.velocidad": "Speed",
+  "ajustes.velocidad.normal": "Normal",
+  "ajustes.velocidad.lenta": "Slow",
+  "ajustes.voz.probar": "Play sample",
+  "ajustes.voz.frase": "Hello! Let's practise some English for developers.",
+  "voz.noDisponible": "This browser can't read aloud. Listening exercises won't be available.",
+  "voz.sinIngles": "This device has no English voice installed.",
+  "voz.sinAcento.gb": "This device has no British voice: another English voice will be used.",
+  "voz.sinAcento.us": "This device has no American voice: another English voice will be used."
 }
