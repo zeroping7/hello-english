@@ -5,5 +5,9 @@
   "comun.aceptar": "OK",
   "comun.cancelar": "Cancel",
   "comun.proximamente": "Coming soon",
-  "comun.version": "Version {v}"
+  "comun.version": "Version {v}",
+  "app.tituloPestana": "{pantalla} · Hello English",
+  "inicio.abrirAjustes": "Open settings",
+  "ajustes.titulo": "Settings",
+  "proximamente.texto": "This mini-game isn't available yet."
 }

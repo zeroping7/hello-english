@@ -1,42 +1,18 @@
-// Arranque de la app. Por ahora pinta la portada provisional con el logo en el idioma
-// del navegador; el router y los ajustes llegan en T003 y T011.
+// Arranque de la app: idioma del navegador y router. Los ajustes guardados llegan en T011.
 import { VERSION } from './version.js';
-import { cargarIdioma, idiomaDelNavegador, t } from './i18n/textos.js';
+import { cargarIdioma, idiomaDelNavegador } from './i18n/textos.js';
+import { iniciarRouter } from './router.js';
 
-function crearLogo() {
-  const logo = document.createElement('h1');
-  logo.className = 'logo';
-
-  const prompt = document.createElement('span');
-  prompt.className = 'logo-prompt';
-  prompt.textContent = '>_';
-
-  const cursor = document.createElement('span');
-  cursor.className = 'logo-cursor';
-  cursor.setAttribute('aria-hidden', 'true');
-
-  // La marca no se traduce: es la misma en todos los idiomas
-  logo.append(prompt, ' hello', cursor);
-  logo.setAttribute('aria-label', t('app.nombre'));
-  return logo;
-}
+const RUTAS = [
+  { patron: /^\/inicio$/, cargar: () => import('./pantallas/inicio.js') },
+  { patron: /^\/ajustes$/, cargar: () => import('./pantallas/ajustes.js') },
+  { patron: /^\/juego\/([a-z0-9-]+)$/, cargar: () => import('./pantallas/proximamente.js') },
+];
 
 async function arrancar() {
-  await cargarIdioma(idiomaDelNavegador());
-
-  const lema = document.createElement('p');
-  lema.className = 'portada-lema';
-  lema.textContent = t('app.lema');
-
-  const bloque = document.createElement('div');
-  bloque.append(crearLogo(), lema);
-
-  const portada = document.createElement('main');
-  portada.className = 'portada';
-  portada.append(bloque);
-
-  document.getElementById('app').replaceChildren(portada);
   document.documentElement.dataset.version = VERSION;
+  await cargarIdioma(idiomaDelNavegador());
+  await iniciarRouter(document.getElementById('app'), RUTAS, '/inicio');
 }
 
 arrancar();

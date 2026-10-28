@@ -21,7 +21,7 @@ Formato de cada tarea:
   - Archivos: `src/pruebas/mini.js`, `src/i18n/textos.js`, `src/i18n/es.json`, `src/i18n/en.json`, `src/i18n/tests.html`
   - Hecho cuando: `t()` devuelve textos con variables y, si falta una clave en inglés, usa la española; `src/i18n/tests.html` sale en verde
   - Probar: abrir `…/src/i18n/tests.html`
-- [ ] T003 — Router y pantallas vacías
+- [x] T003 — Router y pantallas vacías
   - Archivos: `src/router.js`, `src/ui/dom.js`, `src/pantallas/inicio.js`, `src/pantallas/ajustes.js`, `src/pantallas/proximamente.js`, `src/app.js`
   - Hecho cuando: `#/inicio`, `#/ajustes` y `#/juego/x` muestran su título; una ruta desconocida lleva al inicio; el foco va al título y el título de la pestaña cambia
   - Probar: ir a Ajustes desde el inicio y volver con el botón atrás del móvil o del navegador
