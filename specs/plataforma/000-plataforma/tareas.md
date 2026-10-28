@@ -46,7 +46,7 @@ Formato de cada tarea:
   - Probar: abrir la web en una ventana privada (o con los datos borrados) y completar los tres pasos; probar Atrás en el paso 2
 
 ## Fase 2 — Progreso y servicios
-- [ ] T020 — Lógica del progreso y sus pruebas
+- [x] T020 — Lógica del progreso y sus pruebas
   - Archivos: `src/progreso/logica.js`, `src/progreso/tests.html`
   - Hecho cuando: están las funciones del plan §3 (puntos, sumar segundos, racha visible, segundos de hoy, poda de 60 días) y sus pruebas salen en verde
   - Probar: abrir `…/src/progreso/tests.html`

@@ -15,6 +15,7 @@
     import { prueba, igual, verdadero, ejecutar } from '../pruebas/mini.js';
     import { crearAlmacen } from './almacen.js';
     import { normalizarAjustes } from '../ajustes/ajustes.js';
+    import * as L from './logica.js';
 
     // Almacenamiento falso con la misma interfaz que localStorage
     class Falso {
@@ -98,6 +99,86 @@
       disco.setItem('otra-app', 'x');
       a.borrarTodo();
       igual([...disco.datos.keys()], ['otra-app']);
+    });
+
+    // --- Lógica del progreso (T020) ---
+
+    prueba('Puntos: 10 por acierto en A1 y dificultad 1', () => {
+      igual(L.puntosPorAcierto('A1'), 10);
+    });
+
+    prueba('Puntos: multiplican el nivel y la dificultad (D-010)', () => {
+      igual(['A1', 'A2', 'B1', 'B2', 'C1'].map((n) => L.puntosPorAcierto(n)), [10, 12, 15, 18, 20]);
+      igual(L.puntosPorAcierto('B1', 1.5), 23);
+      igual(L.puntosPorAcierto('C1', 1.5), 30);
+    });
+
+    prueba('Puntos: sumarPuntos no acepta negativos', () => {
+      igual(L.sumarPuntos({ ...L.progresoNuevo(), puntos: 5 }, -20).puntos, 5);
+    });
+
+    prueba('Fechas: día anterior cruzando mes, año y bisiesto', () => {
+      igual(L.diaAnterior('2026-03-01'), '2026-02-28');
+      igual(L.diaAnterior('2028-03-01'), '2028-02-29');
+      igual(L.diaAnterior('2027-01-01'), '2026-12-31');
+      igual(L.sumarDias('2026-10-31', 1), '2026-11-01');
+    });
+
+    prueba('Objetivo: sumar segundos acumula en el día', () => {
+      let p = L.progresoNuevo();
+      p = L.sumarSegundos(p, '2026-10-28', 60, 10).progreso;
+      p = L.sumarSegundos(p, '2026-10-28', 90, 10).progreso;
+      igual(L.segundosHoy(p, '2026-10-28'), 150);
+      igual(L.segundosHoy(p, '2026-10-29'), 0);
+    });
+
+    prueba('Objetivo: se cumple una sola vez al día', () => {
+      let p = L.progresoNuevo();
+      let r = L.sumarSegundos(p, '2026-10-28', 299, 5);
+      igual(r.cumplidoAhora, false);
+      r = L.sumarSegundos(r.progreso, '2026-10-28', 1, 5);
+      igual([r.cumplidoAhora, r.progreso.racha], [true, 1]);
+      r = L.sumarSegundos(r.progreso, '2026-10-28', 600, 5);
+      igual([r.cumplidoAhora, r.progreso.racha], [false, 1]);
+    });
+
+    prueba('Racha: sube con días seguidos', () => {
+      let p = L.progresoNuevo();
+      for (const dia of ['2026-10-27', '2026-10-28', '2026-10-29']) p = L.sumarSegundos(p, dia, 300, 5).progreso;
+      igual([p.racha, p.ultimoDiaCumplido], [3, '2026-10-29']);
+    });
+
+    prueba('Racha: si se salta un día vuelve a 1 al cumplir', () => {
+      let p = L.progresoNuevo();
+      p = L.sumarSegundos(p, '2026-10-27', 300, 5).progreso;
+      p = L.sumarSegundos(p, '2026-10-28', 300, 5).progreso;
+      p = L.sumarSegundos(p, '2026-10-30', 300, 5).progreso;
+      igual(p.racha, 1);
+    });
+
+    prueba('Racha visible: se mantiene hoy y mañana, y es 0 después', () => {
+      let p = L.sumarSegundos(L.progresoNuevo(), '2026-10-28', 300, 5).progreso;
+      igual(L.rachaVisible(p, '2026-10-28'), 1);
+      igual(L.rachaVisible(p, '2026-10-29'), 1);
+      igual(L.rachaVisible(p, '2026-10-30'), 0);
+    });
+
+    prueba('Racha: si se baja el objetivo con el tiempo ya hecho, cuenta al sumar más', () => {
+      let r = L.sumarSegundos(L.progresoNuevo(), '2026-10-28', 400, 10);
+      igual(r.cumplidoAhora, false);
+      r = L.sumarSegundos(r.progreso, '2026-10-28', 1, 5);
+      igual([r.cumplidoAhora, r.progreso.racha], [true, 1]);
+    });
+
+    prueba('Días: solo se guardan los últimos 60', () => {
+      const dias = { '2026-08-29': 10, '2026-08-30': 20, '2026-10-28': 30 };
+      igual(Object.keys(L.podarDias(dias, '2026-10-28')), ['2026-08-30', '2026-10-28']);
+    });
+
+    prueba('Lógica: no modifica el progreso que recibe', () => {
+      const p = L.progresoNuevo();
+      L.sumarSegundos(p, '2026-10-28', 300, 5);
+      igual(p, L.progresoNuevo());
     });
 
     // --- Ajustes (T011) ---
