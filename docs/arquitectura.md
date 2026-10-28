@@ -22,10 +22,11 @@ src/
     progreso.js          #   une lógica y almacén; evento 'cambio'
     cronometro.js        #   segundos de juego con la pestaña visible
     reloj.js             #   hoy() en hora local; ?debug=1&dias=N para probar
+    datos.js             #   exportar, importar y borrar (Mis datos)
     tests.html
   voz/                   # leer en voz alta y reconocer voz (§7)
   sonido/                # efectos con Web Audio y vibración
-  ui/                    # piezas comunes: dom, aviso, confirmar, iconos, debug
+  ui/                    # piezas comunes: dom, barra, opciones, aviso, confirmar, iconos, debug
   pantallas/             # bienvenida, inicio, ajustes, próximamente
   pruebas/mini.js        # mini ejecutor de pruebas para los tests.html
 juegos/
@@ -49,6 +50,8 @@ specs/
 - Una sola página con **router por hash**: `#/inicio`, `#/ajustes`, `#/juego/<id>`, `#/practica`, `#/prueba-nivel`, `#/bienvenida`.
 - El botón "atrás" del navegador y del móvil funciona en todas las pantallas.
 - Los minijuegos se cargan con `import()` al entrar (constitución R2) y se desmontan al salir, liberando sus escuchas y temporizadores.
+- `iniciarRouter(raiz, rutas, porDefecto, redirigir)`: `redirigir(ruta)` puede mandar a otra (sin bienvenida hecha, todo va a `#/bienvenida`).
+- Esc vuelve atrás salvo en campos de texto, diálogos o pantallas con `data-esc-propio` (la bienvenida gestiona sus pasos).
 
 ## 3. Registro de minijuegos (`juegos/registro.js`)
 ```js

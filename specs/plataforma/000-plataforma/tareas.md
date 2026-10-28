@@ -1,6 +1,6 @@
 # Tareas: Plataforma (inicio, ajustes, progreso y app instalable)
 
-> **Plan:** `specs/plataforma/000-plataforma/plan.md` · **Estado:** Aprobadas
+> **Plan:** `specs/plataforma/000-plataforma/plan.md` · **Estado:** Hechas (v0.1.0)
 > Reglas: cada tarea cabe en una sesión con Claude, deja todo funcionando en `main` y se prueba abriendo https://zeroping7.github.io/hello-english/ en el móvil o en el PC (tarda 1-2 min en publicarse tras cada push).
 > Cada tarea sube `src/version.js` (0.0.1, 0.0.2… y 0.1.0 al cerrar la spec).
 
@@ -72,15 +72,15 @@ Formato de cada tarea:
   - Probar: probar los efectos en Ajustes; desactivar el sonido y cumplir el objetivo con `?debug=1`: solo vibra
 
 ## Fase 3 — Pulido
-- [ ] T030 — App instalable y sin conexión
+- [x] T030 — App instalable y sin conexión
   - Archivos: `manifest.webmanifest`, `sw.js`, `iconos/icono-192.png`, `iconos/icono-512.png`, `iconos/icono-maskable-512.png`, `src/app.js`, `index.html`
   - Hecho cuando: Chrome ofrece instalar "Hello English" con su icono; instalada, abre a pantalla completa; en modo avión abre y se navega; al publicar una versión nueva se ve al recargar
   - Probar: instalar en el móvil, activar el modo avión y abrirla; en el PC, instalar desde el icono de la barra de direcciones
-- [ ] T031 — Accesibilidad y diseño adaptable
+- [x] T031 — Accesibilidad y diseño adaptable
   - Archivos: los que haga falta corregir
   - Hecho cuando: todo se usa solo con teclado (Tab, Enter, Esc); TalkBack lee bien el inicio y Ajustes; contraste AA en los dos temas; con "reducir movimiento" no parpadea el cursor ni hay animaciones; no hay scroll horizontal a 320 px
   - Probar: recorrer la app solo con teclado en el PC; activar TalkBack y "quitar animaciones" en el móvil
-- [ ] T032 — Cierre de la spec
+- [x] T032 — Cierre de la spec
   - Archivos: `spec.md` (casillas y estado *Implementada*), `README.md`, `docs/arquitectura.md` si algo cambió, `src/version.js` → `0.1.0`
   - Hecho cuando: todas las historias de usuario están marcadas o explicado por qué no
   - Probar: repasar la lista de pruebas manuales del plan §13

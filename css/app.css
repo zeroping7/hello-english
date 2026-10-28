@@ -444,6 +444,13 @@ code {
   outline-offset: 2px;
 }
 
+/* Respaldo para navegadores sin :has(): la marca va en el texto de la opción */
+@supports not selector(:has(*)) {
+  .opcion input:checked + span { color: var(--keyword); font-weight: 700; }
+  .opcion input:checked + span::before { content: '● '; font-size: 0.625rem; }
+  .opcion input:focus-visible + span { outline: 2px solid var(--keyword); outline-offset: 4px; }
+}
+
 /* Avisos (src/ui/aviso.js) */
 .avisos {
   position: fixed;

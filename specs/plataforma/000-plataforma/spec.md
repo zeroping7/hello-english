@@ -1,6 +1,6 @@
 # Spec de funcionalidad: Plataforma (inicio, ajustes, progreso y app instalable)
 
-> **ID:** 000-plataforma · **Estado:** Aprobada · **Fecha:** 2026-10-28
+> **ID:** 000-plataforma · **Estado:** Implementada (v0.1.0; quedan 3 comprobaciones en el móvil, marcadas abajo) · **Fecha:** 2026-10-28
 
 ## 1. Problema
 Antes de tener minijuegos hace falta la base común: una pantalla de inicio desde la que llegar a todo, unos ajustes, el progreso guardado y que la web se pueda usar como una app en cualquier dispositivo.
@@ -11,54 +11,54 @@ Abrir la web en el móvil o en el PC, elegir idioma y objetivo la primera vez y 
 ## 3. Historias de usuario
 
 **HU-1 — Bienvenida.** Como usuario nuevo, quiero configurar lo básico en pocos pasos para empezar enseguida.
-- [ ] Dado que abro la web por primera vez, cuando carga, entonces elijo el idioma de la interfaz (español o inglés). Por defecto viene marcado el del navegador.
-- [ ] Después elijo el objetivo diario: 5, 10 o 20 minutos.
-- [ ] Después se me ofrece la prueba de nivel o empezar en A1. Mientras la prueba no exista (spec 002), se empieza en A1.
-- [ ] En cualquier paso puedo volver al anterior.
-- [ ] La bienvenida no vuelve a salir una vez terminada.
+- [x] Dado que abro la web por primera vez, cuando carga, entonces elijo el idioma de la interfaz (español o inglés). Por defecto viene marcado el del navegador.
+- [x] Después elijo el objetivo diario: 5, 10 o 20 minutos.
+- [x] Después se me ofrece la prueba de nivel o empezar en A1. Mientras la prueba no exista (spec 002), se empieza en A1.
+- [x] En cualquier paso puedo volver al anterior.
+- [x] La bienvenida no vuelve a salir una vez terminada.
 
 **HU-2 — Inicio.** Como usuario, quiero ver de un vistazo cómo voy y llegar a cualquier minijuego.
-- [ ] Arriba veo mi nivel (A1–C1), mis puntos, mi racha y lo que llevo del objetivo de hoy.
-- [ ] Veo un botón grande "Práctica de hoy". Mientras no exista (spec propia), aparece como "Próximamente".
-- [ ] Debajo veo las cuatro categorías: Lectura y gramática, Escucha y habla, Vocabulario e Inglés profesional. Cada una muestra sus minijuegos con icono y nombre.
-- [ ] Los minijuegos que aún no existen se ven como "Próximamente" y no se pueden abrir.
-- [ ] Al tocar un minijuego disponible entro en él; el botón "atrás" del navegador o del móvil me devuelve al inicio.
-- [ ] Hay un acceso a Ajustes siempre visible.
+- [x] Arriba veo mi nivel (A1–C1), mis puntos, mi racha y lo que llevo del objetivo de hoy.
+- [x] Veo un botón grande "Práctica de hoy". Mientras no exista (spec propia), aparece como "Próximamente".
+- [x] Debajo veo las cuatro categorías: Lectura y gramática, Escucha y habla, Vocabulario e Inglés profesional. Cada una muestra sus minijuegos con icono y nombre.
+- [x] Los minijuegos que aún no existen se ven como "Próximamente" y no se pueden abrir. *(abren su ficha con «Próximamente», como se decidió en T012)*
+- [x] Al tocar un minijuego disponible entro en él; el botón "atrás" del navegador o del móvil me devuelve al inicio.
+- [x] Hay un acceso a Ajustes siempre visible.
 
 **HU-3 — Ajustes.** Como usuario, quiero cambiar la app a mi gusto en cualquier momento.
-- [ ] Idioma de la interfaz: español o inglés. Al cambiarlo, la pantalla cambia al momento sin recargar.
-- [ ] Tema: sistema (por defecto), claro u oscuro.
-- [ ] Voz: británica (por defecto) o americana, y velocidad normal o lenta, con un botón para escuchar una frase de prueba.
-- [ ] Sonido de efectos y vibración, que se activan o desactivan por separado.
-- [ ] Objetivo diario: 5, 10 o 20 minutos.
-- [ ] Repetir la prueba de nivel (cuando exista).
-- [ ] Exportar, importar y borrar el progreso (HU-5).
-- [ ] Al final, la versión de la app.
+- [x] Idioma de la interfaz: español o inglés. Al cambiarlo, la pantalla cambia al momento sin recargar.
+- [x] Tema: sistema (por defecto), claro u oscuro.
+- [x] Voz: británica (por defecto) o americana, y velocidad normal o lenta, con un botón para escuchar una frase de prueba.
+- [x] Sonido de efectos y vibración, que se activan o desactivan por separado.
+- [x] Objetivo diario: 5, 10 o 20 minutos.
+- [x] Repetir la prueba de nivel (cuando exista). *(aparece como «Próximamente»)*
+- [x] Exportar, importar y borrar el progreso (HU-5).
+- [x] Al final, la versión de la app.
 
 **HU-4 — Puntos, objetivo diario y racha.** Como usuario, quiero ver que avanzo para tener ganas de volver.
-- [ ] Cada respuesta correcta en un minijuego suma puntos.
-- [ ] El tiempo que paso jugando cuenta para el objetivo de hoy. Si salgo de la app o cambio de pestaña, deja de contar.
-- [ ] Al cumplir el objetivo del día veo un aviso de felicitación, y la racha suma un día.
-- [ ] Si un día no cumplo el objetivo, la racha vuelve a 0 al día siguiente. El día cambia a medianoche en mi hora local.
-- [ ] El nivel no cambia en esta spec: lo fijan la prueba de nivel y la progresión (specs propias).
+- [x] Cada respuesta correcta en un minijuego suma puntos. *(listo en `registrarAcierto`; se verá con el primer minijuego)*
+- [x] El tiempo que paso jugando cuenta para el objetivo de hoy. Si salgo de la app o cambio de pestaña, deja de contar.
+- [x] Al cumplir el objetivo del día veo un aviso de felicitación, y la racha suma un día.
+- [x] Si un día no cumplo el objetivo, la racha vuelve a 0 al día siguiente. El día cambia a medianoche en mi hora local.
+- [x] El nivel no cambia en esta spec: lo fijan la prueba de nivel y la progresión (specs propias).
 
 **HU-5 — Mi progreso es mío.** Como usuario, quiero guardar mi progreso y poder llevármelo.
-- [ ] Todo se guarda en el dispositivo sin cuenta ni registro.
-- [ ] "Exportar" descarga un archivo con todo mi progreso y mis ajustes.
-- [ ] "Importar" carga ese archivo en otro dispositivo o navegador. Antes de sustituir nada, me pide confirmación; si el archivo no es válido, me lo dice y no cambia nada.
-- [ ] "Borrar progreso" pide confirmación escribiendo una palabra y vuelve a la bienvenida.
-- [ ] Si el navegador no deja guardar (modo privado), la app funciona igual y avisa de que el progreso no se guardará.
-- [ ] Al actualizar la app, nunca pierdo el progreso.
+- [x] Todo se guarda en el dispositivo sin cuenta ni registro.
+- [x] "Exportar" descarga un archivo con todo mi progreso y mis ajustes.
+- [x] "Importar" carga ese archivo en otro dispositivo o navegador. Antes de sustituir nada, me pide confirmación; si el archivo no es válido, me lo dice y no cambia nada.
+- [x] "Borrar progreso" pide confirmación escribiendo una palabra y vuelve a la bienvenida.
+- [x] Si el navegador no deja guardar (modo privado), la app funciona igual y avisa de que el progreso no se guardará.
+- [x] Al actualizar la app, nunca pierdo el progreso.
 
 **HU-6 — App instalable y sin conexión.** Como usuario, quiero usarla como una app aunque no tenga datos.
-- [ ] Se puede instalar desde el navegador ("Instalar" / "Añadir a pantalla de inicio") con el nombre "Hello English" y su icono.
-- [ ] Después de la primera visita, funciona sin conexión.
-- [ ] Al publicar una versión nueva, la veo al recargar.
+- [ ] Se puede instalar desde el navegador ("Instalar" / "Añadir a pantalla de inicio") con el nombre "Hello English" y su icono. *(pendiente de comprobar en el móvil y en el PC)*
+- [ ] Después de la primera visita, funciona sin conexión. *(el service worker guarda los 38 archivos en GitHub Pages; falta probarlo en modo avión)*
+- [x] Al publicar una versión nueva, la veo al recargar.
 
 **HU-7 — En cualquier pantalla y con cualquier control.**
-- [ ] Se usa bien en vertical y en horizontal, desde un móvil pequeño hasta un monitor grande.
-- [ ] Todo se puede hacer solo con teclado (Tab, Enter, Esc para volver) y solo con táctil.
-- [ ] Funciona con el lector de pantalla del móvil y respeta "reducir movimiento".
+- [x] Se usa bien en vertical y en horizontal, desde un móvil pequeño hasta un monitor grande.
+- [x] Todo se puede hacer solo con teclado (Tab, Enter, Esc para volver) y solo con táctil.
+- [ ] Funciona con el lector de pantalla del móvil y respeta "reducir movimiento". *(estructura accesible y "reducir movimiento" hechos; falta probarlo con TalkBack)*
 
 ## 4. Requisitos no funcionales
 - Inicio interactivo en < 3 s con 4G (constitución R1).

@@ -24,7 +24,7 @@ Reglas en [`docs/constitucion.md`](docs/constitucion.md), estructura en [`docs/a
 ## Hoja de ruta (versión 1)
 | Spec | Qué | Estado |
 |---|---|---|
-| 000 | Plataforma: inicio, ajustes, idioma, tema, progreso y app instalable | Tareas aprobadas |
+| 000 | Plataforma: inicio, ajustes, idioma, tema, progreso y app instalable | Implementada (v0.1.0) |
 | 001 | Contenido: formato de los ejercicios y primer banco (2-3 temas) | — |
 | 002 | Prueba de nivel | — |
 | 003 | Minijuego: Falsos amigos | — |
