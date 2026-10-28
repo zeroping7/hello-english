@@ -1,5 +1,5 @@
-// Pantalla de ajustes (HU-3). En T011: idioma, tema y versión; voz, sonido, objetivo
-// y mis datos llegan en T023-T025.
+// Pantalla de ajustes (HU-3): general, aprendizaje y versión; voz, sonido y mis datos
+// llegan en T023-T025.
 import { h } from '../ui/dom.js';
 import { t } from '../i18n/textos.js';
 import { barraConVolver } from '../ui/barra.js';
@@ -42,6 +42,18 @@ export function montar(raiz) {
           ],
           alCambiar: (v) => cambiarAjuste('tema', v),
         }),
+      ),
+      seccion(t('ajustes.aprendizaje'),
+        grupoOpciones({
+          nombre: 'objetivoMin',
+          leyenda: t('ajustes.objetivo'),
+          valor: ajustes.objetivoMin,
+          opciones: [5, 10, 20].map((min) => ({ valor: min, texto: t(`objetivo.${min}`) })),
+          alCambiar: (v) => cambiarAjuste('objetivoMin', v),
+        }),
+        // La prueba de nivel llega con su spec (002)
+        h('button', { class: 'boton', type: 'button', disabled: true },
+          t('ajustes.repetirPrueba'), h('span', { class: 'etiqueta' }, t('comun.proximamente'))),
       ),
       h('p', { class: 'version' }, t('comun.version', { v: VERSION })),
     ),

@@ -40,7 +40,7 @@ Formato de cada tarea:
   - Archivos: `juegos/registro.js`, `src/ui/iconos.js`, `src/pantallas/inicio.js`, `src/pantallas/proximamente.js`, `css/app.css`, i18n (19 títulos y descripciones)
   - Hecho cuando: el inicio muestra "Práctica de hoy" (*Próximamente*) y las 4 categorías con sus minijuegos en rejilla (2 columnas en móvil, 3-4 en PC); al tocar uno se abre su pantalla "Próximamente" con su nombre e icono
   - Probar: recorrer el inicio en vertical, en horizontal y en el PC; entrar en un minijuego y volver
-- [ ] T013 — Bienvenida
+- [x] T013 — Bienvenida
   - Archivos: `src/pantallas/bienvenida.js`, `src/app.js`, i18n
   - Hecho cuando: la primera visita lleva a la bienvenida (idioma → objetivo → empezar en A1, con la prueba de nivel como *Próximamente*), con Atrás e indicador "1/3"; al terminar va al inicio y no vuelve a salir
   - Probar: abrir la web en una ventana privada (o con los datos borrados) y completar los tres pasos; probar Atrás en el paso 2

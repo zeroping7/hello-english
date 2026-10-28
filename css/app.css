@@ -291,6 +291,69 @@ code {
 
 .tarjeta .etiqueta { align-self: flex-start; margin-top: var(--espacio-1); }
 
+/* Botón principal */
+.boton-principal {
+  border-color: var(--keyword);
+  background: var(--keyword);
+  color: var(--panel);
+  font-weight: 700;
+}
+
+.boton-principal:hover { filter: brightness(1.08); }
+
+/* Bienvenida */
+.bienvenida {
+  max-width: 560px;
+  padding-top: var(--espacio-4);
+}
+
+.bienvenida-logo { font-size: 1.75rem; margin-bottom: var(--espacio-5); }
+
+.bienvenida-paso {
+  margin: 0 0 var(--espacio-2);
+  color: var(--tenue);
+  font-family: var(--fuente-mono);
+  font-size: 0.875rem;
+}
+
+.bienvenida-titulo {
+  margin: 0 0 var(--espacio-3);
+  font-family: var(--fuente-mono);
+  font-size: clamp(1.375rem, 5vw, 1.75rem);
+  line-height: 1.25;
+}
+
+.bienvenida-botones {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--espacio-3);
+  margin-top: var(--espacio-5);
+}
+
+.bienvenida-botones .boton-principal:only-child { margin-left: auto; }
+
+.bienvenida-elecciones { display: grid; gap: var(--espacio-3); margin-top: var(--espacio-4); }
+
+.eleccion {
+  display: grid;
+  justify-items: start;
+  gap: var(--espacio-1);
+  padding: var(--espacio-3);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--panel);
+  color: var(--texto);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.eleccion:hover:not(:disabled) { border-color: var(--keyword); }
+.eleccion:disabled { cursor: not-allowed; border-style: dashed; }
+.eleccion:focus-visible { outline: 2px solid var(--keyword); outline-offset: 2px; }
+.eleccion-titulo { font-family: var(--fuente-mono); font-weight: 700; }
+.eleccion:disabled .eleccion-titulo { color: var(--tenue); }
+
 /* Pantalla Próximamente */
 .proximamente { display: grid; justify-items: start; gap: var(--espacio-2); }
 .proximamente-icono .icono { width: 3rem; height: 3rem; }
@@ -467,3 +530,6 @@ code {
   }
   .logo-cursor { animation: none; }
 }
+
+.boton:disabled { cursor: not-allowed; color: var(--tenue); border-style: dashed; }
+.boton:disabled:hover { border-color: var(--borde); }

@@ -7,6 +7,7 @@ import { t } from './i18n/textos.js';
 let raiz = null;
 let rutas = [];
 let porDefecto = '/inicio';
+let guardia = () => null;
 let actual = null;      // { desmontar }
 let turno = 0;          // descarta cargas que llegan después de otra navegación
 const pila = [];        // rutas visitadas en esta sesión, para saber si "volver" puede ir atrás
@@ -15,11 +16,13 @@ const pila = [];        // rutas visitadas en esta sesión, para saber si "volve
  * @param {HTMLElement} elemento donde se montan las pantallas
  * @param {{ patron: RegExp, cargar: () => Promise<any> }[]} lista
  * @param {string} rutaPorDefecto a la que van las rutas desconocidas
+ * @param {(ruta: string) => string|null} redirigir otra ruta a la que ir en lugar de esta, o null
  */
-export function iniciarRouter(elemento, lista, rutaPorDefecto = '/inicio') {
+export function iniciarRouter(elemento, lista, rutaPorDefecto = '/inicio', redirigir = () => null) {
   raiz = elemento;
   rutas = lista;
   porDefecto = rutaPorDefecto;
+  guardia = redirigir;
   window.addEventListener('hashchange', mostrar);
   document.addEventListener('keydown', alPulsarTecla);
   return mostrar();
@@ -68,6 +71,11 @@ async function mostrar({ conservarFoco = false } = {}) {
     navegar(porDefecto, { reemplazar: true });
     return;
   }
+  const otra = guardia(ruta);
+  if (otra && otra !== ruta) {
+    navegar(otra, { reemplazar: true });
+    return;
+  }
 
   apuntar(ruta);
   const miTurno = ++turno;
@@ -109,5 +117,6 @@ function alPulsarTecla(e) {
   if (e.key !== 'Escape' || e.defaultPrevented) return;
   // En campos de texto Esc es para el campo; en radios y casillas sí vuelve
   if (e.target.closest?.('input:not([type=radio]):not([type=checkbox]), textarea, select, dialog')) return;
+  if (raiz.querySelector('[data-esc-propio]')) return;
   if (rutaActual() !== porDefecto) volver();
 }
