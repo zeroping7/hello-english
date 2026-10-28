@@ -12,7 +12,7 @@ const RUTAS = [
   { patron: /^\/bienvenida$/, cargar: () => import('./pantallas/bienvenida.js') },
   { patron: /^\/ajustes$/, cargar: () => import('./pantallas/ajustes.js') },
   { patron: /^\/prueba-nivel$/, cargar: () => import('./pantallas/prueba-nivel.js') },
-  { patron: /^\/juego\/([a-z0-9-]+)$/, cargar: () => import('./pantallas/proximamente.js') },
+  { patron: /^\/juego\/([a-z0-9-]+)$/, cargar: () => import('./pantallas/juego.js') },
 ];
 
 /** Sin bienvenida hecha todo lleva a ella (salvo la prueba de nivel, que es su paso 3); hecha, ya no vuelve a salir. */

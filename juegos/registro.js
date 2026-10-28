@@ -10,7 +10,7 @@ export const CATEGORIAS = [
   { id: 'profesional', icono: 'profesional' },
 ];
 
-function juego(id, categoria, habilidades, { necesita = [], dificultad = 1 } = {}) {
+function juego(id, categoria, habilidades, { necesita = [], dificultad = 1, disponible = false } = {}) {
   return {
     id,
     titulo: `juego.${id}.titulo`,
@@ -20,7 +20,7 @@ function juego(id, categoria, habilidades, { necesita = [], dificultad = 1 } = {
     icono: null,
     necesita,
     dificultad,
-    disponible: false,
+    disponible,
   };
 }
 
@@ -41,7 +41,7 @@ export const JUEGOS = [
   juego('dictado-audio', 'escucha', ['escucha', 'escritura'], { necesita: ['voz'], dificultad: 1.5 }),
 
   // Vocabulario
-  juego('falsos-amigos', 'vocabulario', ['vocabulario']),
+  juego('falsos-amigos', 'vocabulario', ['vocabulario'], { disponible: true }),
   juego('acronimos', 'vocabulario', ['vocabulario', 'pronunciacion'], { necesita: ['voz'] }),
   juego('jerga-dev', 'vocabulario', ['vocabulario']),
   juego('sopa-crucigrama', 'vocabulario', ['vocabulario', 'escritura']),

@@ -146,5 +146,19 @@
   "ejercicio.aciertos": "{n} de {total} aciertos",
   "ejercicio.puntos": "+{n} puntos",
   "ejercicio.errorCarga": "No se han podido cargar los ejercicios. Comprueba la conexión y vuelve a intentarlo.",
-  "ajustes.nivelActual": "Tu nivel ahora: {nivel}."
+  "ajustes.nivelActual": "Tu nivel ahora: {nivel}.",
+  "juego.jugar": "Jugar",
+  "juego.tema": "Tema",
+  "juego.otraVez": "Jugar otra vez",
+  "juego.alInicio": "Volver al inicio",
+  "juego.salir": "Salir de la partida",
+  "juego.salir.texto": "Los puntos que ya has ganado se quedan.",
+  "juego.resumen": "Partida terminada",
+  "juego.verResumen": "Ver resumen",
+  "fa.instruccion": "¿La palabra inglesa significa esto? Desliza la tarjeta o elige.",
+  "fa.pregunta": "¿«{en}» significa «{es}»?",
+  "fa.verdad": "Verdad",
+  "fa.falso": "Falso amigo",
+  "fa.escuchar": "Escuchar la palabra",
+  "fa.escucharEjemplo": "Escuchar el ejemplo"
 }

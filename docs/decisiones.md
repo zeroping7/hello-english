@@ -117,3 +117,11 @@ Una entrada por decisión. Nunca se borran; si cambian, se añade una nueva que 
 - Decisión: empieza en A2; acierto sube un nivel y fallo baja uno. El resultado es el nivel más alto con al menos 2 aciertos y no más fallos que aciertos; si no lo hay, el más alto con algún acierto y ningún fallo; si tampoco, A1. Se enseña si se acierta, pero no da puntos.
 - Alternativas descartadas: 2 preguntas por nivel en orden (no se adapta); puntuación total con cortes fijos (con 10 preguntas da saltos poco fiables).
 - Consecuencias: con 5 preguntas por nivel, alguien muy bueno agota las de C1 y sigue con B2; el resultado sigue siendo C1 si ya tenía 2 aciertos allí.
+
+## D-014 — Pantalla común de minijuego
+- Fecha: 2026-10-28
+- Estado: Aceptada
+- Contexto: los 19 minijuegos comparten lo mismo antes, durante y después de jugar: elegir tema, cargar ejercicios, contar tiempo y puntos, confirmar al salir y enseñar un resumen.
+- Decisión: `src/pantallas/juego.js` hace todo eso y monta el minijuego dentro. Cada minijuego solo pinta sus ejercicios y avisa con `alResponder(item, acierto)` y `alTerminar()`. Los puntos ganados se quedan aunque se salga a medias.
+- Alternativas descartadas: que cada minijuego lo haga a su manera (19 copias de lo mismo y comportamientos distintos).
+- Consecuencias: la Práctica de hoy podrá encadenar minijuegos llamando a la misma interfaz.

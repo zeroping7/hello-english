@@ -146,5 +146,19 @@
   "ejercicio.aciertos": "{n} of {total} correct",
   "ejercicio.puntos": "+{n} points",
   "ejercicio.errorCarga": "The exercises couldn't be loaded. Check your connection and try again.",
-  "ajustes.nivelActual": "Your level now: {nivel}."
+  "ajustes.nivelActual": "Your level now: {nivel}.",
+  "juego.jugar": "Play",
+  "juego.tema": "Topic",
+  "juego.otraVez": "Play again",
+  "juego.alInicio": "Back to home",
+  "juego.salir": "Leave the game",
+  "juego.salir.texto": "You keep the points you've already earned.",
+  "juego.resumen": "Game over",
+  "juego.verResumen": "See summary",
+  "fa.instruccion": "Does the English word mean this? Swipe the card or choose.",
+  "fa.pregunta": "Does '{en}' mean '{es}'?",
+  "fa.verdad": "True",
+  "fa.falso": "False friend",
+  "fa.escuchar": "Listen to the word",
+  "fa.escucharEjemplo": "Listen to the example"
 }

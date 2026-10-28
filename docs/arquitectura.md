@@ -27,7 +27,7 @@ src/
   voz/                   # leer en voz alta y reconocer voz (§7)
   sonido/                # efectos con Web Audio y vibración
   ui/                    # piezas comunes: dom, barra, opciones, aviso, confirmar, iconos, debug y ejercicio
-  pantallas/             # bienvenida, inicio, ajustes, prueba de nivel, próximamente
+  pantallas/             # bienvenida, inicio, ajustes, prueba de nivel, juego (común a los minijuegos), próximamente
   contenido/             # carga, validación (esquema), azar con semilla y elección de ejercicios (D-011, D-012)
   prueba/                # lógica de la prueba de nivel (spec 002)
   pruebas/mini.js        # mini ejecutor de pruebas para los tests.html
@@ -85,6 +85,8 @@ export function montar(raiz, {
 }
 ```
 Así el inicio, la Práctica de hoy y la prueba de nivel usan cualquier minijuego igual.
+
+**Versión implementada (spec 003, D-014):** el módulo exporta también `BANCO` y `EJERCICIOS`, y `montar(raiz, { ejercicios, idioma, ponerContador, alResponder(item, acierto), alTerminar })`. La pantalla común `src/pantallas/juego.js` elige tema, carga el banco, elige los ejercicios, cuenta tiempo y puntos, pone sonido y vibración, y enseña el resumen. Los estilos propios van en `juegos/<id>/juego.css`.
 
 ## 5. Idiomas de la interfaz
 - `t('clave', { variables })` devuelve el texto en el idioma elegido. Si falta una clave en inglés, se usa la española y `?debug=1` lo avisa.

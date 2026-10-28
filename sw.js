@@ -1,7 +1,7 @@
 // Service worker (constitución P5, plan de 000 §8): primero red y, sin conexión, lo guardado.
 // Es un script que el navegador ejecuta aparte de la página y que intercepta sus peticiones.
 // Al cambiar FILES, sube CACHE para que se guarde la lista nueva.
-const CACHE = 'he-v0.2.0';
+const CACHE = 'he-v0.3.0';
 
 const FILES = [
   './',
@@ -53,6 +53,10 @@ const FILES = [
   './src/prueba/logica.js',
   './src/pantallas/prueba-nivel.js',
   './src/ui/ejercicio.js',
+  './src/pantallas/juego.js',
+  './juegos/falsos-amigos/juego.js',
+  './juegos/falsos-amigos/logica.js',
+  './juegos/falsos-amigos/juego.css',
 ];
 
 self.addEventListener('install', (e) => {

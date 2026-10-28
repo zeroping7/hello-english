@@ -27,7 +27,7 @@ Reglas en [`docs/constitucion.md`](docs/constitucion.md), estructura en [`docs/a
 | 000 | Plataforma: inicio, ajustes, idioma, tema, progreso y app instalable | Implementada (v0.1.0) |
 | 001 | Contenido: formato de los ejercicios y primer banco (2-3 temas) | Implementada (v0.1.1) |
 | 002 | Prueba de nivel | Implementada (v0.2.0) |
-| 003 | Minijuego: Falsos amigos | — |
+| 003 | Minijuego: Falsos amigos (y pantalla común de minijuego) | Implementada (v0.3.0) |
 | 004 | Minijuego: Merge Conflict | — |
 | … | Resto de minijuegos, uno por spec | — |
 | … | Repaso espaciado, logros y Práctica de hoy | — |

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pruebas: Falsos amigos</title>
+  <link rel="stylesheet" href="../../css/tokens.css">
+  <link rel="stylesheet" href="../../css/app.css">
+</head>
+<body>
+  <div id="app">
+    <h1 class="logo">tests/falsos-amigos</h1>
+  </div>
+  <script type="module">
+    import { prueba, igual, ejecutar } from '../../src/pruebas/mini.js';
+    import { comprobar, umbralDeslizar, leerDeslizamiento } from './logica.js';
+
+    prueba('Comprobar: tarjeta verdadera', () => {
+      igual([comprobar({ verdadero: true }, true), comprobar({ verdadero: true }, false)], [true, false]);
+    });
+
+    prueba('Comprobar: falso amigo', () => {
+      igual([comprobar({ verdadero: false }, false), comprobar({ verdadero: false }, true)], [true, false]);
+    });
+
+    prueba('Umbral: 25 % del ancho, mínimo 80 px', () => {
+      igual([umbralDeslizar(200), umbralDeslizar(320), umbralDeslizar(600)], [80, 80, 150]);
+    });
+
+    prueba('Deslizar: derecha, izquierda o nada', () => {
+      igual([leerDeslizamiento(120, 320), leerDeslizamiento(-90, 320), leerDeslizamiento(40, 320)], [true, false, null]);
+    });
+
+    ejecutar(document.getElementById('app'));
+  </script>
+</body>
+</html>
