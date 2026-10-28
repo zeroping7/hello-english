@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pruebas: prueba de nivel</title>
+  <link rel="stylesheet" href="../../css/tokens.css">
+  <link rel="stylesheet" href="../../css/app.css">
+</head>
+<body>
+  <div id="app">
+    <h1 class="logo">tests/prueba</h1>
+  </div>
+  <script type="module">
+    import { prueba, igual, verdadero, ejecutar } from '../pruebas/mini.js';
+    import { crearPrueba, siguiente, responder, resultado, terminada, TOTAL } from './logica.js';
+    import { crearAzar } from '../contenido/azar.js';
+
+    const NV = ['A1', 'A2', 'B1', 'B2', 'C1'];
+    const preguntas = NV.flatMap((n) => Array.from({ length: 5 }, (_, k) => ({ id: `${n}-${k}`, nivel: n })));
+
+    /** Juega una prueba entera; decide(pregunta, i) dice si se acierta. */
+    function jugar(decide, semilla = 1) {
+      let e = crearPrueba(preguntas, crearAzar(semilla));
+      const niveles = [];
+      for (let i = 0; !terminada(e); i++) {
+        e = siguiente(e);
+        niveles.push(e.actual.nivel);
+        e = responder(e, decide(e.actual, i));
+      }
+      return { e, niveles };
+    }
+
+    prueba('Empieza en A2', () => {
+      const e = siguiente(crearPrueba(preguntas, crearAzar(1)));
+      igual(e.actual.nivel, 'A2');
+    });
+
+    prueba('Acertar sube un nivel y fallar baja uno', () => {
+      const { niveles } = jugar((_, i) => i < 2);   // acierta 2 y falla el resto
+      igual(niveles.slice(0, 4), ['A2', 'B1', 'B2', 'B1']);
+    });
+
+    prueba('No baja de A1 ni sube de C1', () => {
+      igual(jugar(() => false).niveles.slice(0, 3), ['A2', 'A1', 'A1']);
+      igual(jugar(() => true).niveles.slice(0, 5), ['A2', 'B1', 'B2', 'C1', 'C1']);
+    });
+
+    prueba(`Son ${TOTAL} preguntas y no se repiten`, () => {
+      const { e } = jugar(() => true);
+      igual(e.respondidas.length, TOTAL);
+      igual(new Set(e.respondidas.map((r) => r.id)).size, TOTAL);
+    });
+
+    prueba('Si se acaban las de C1, sigue con B2', () => {
+      const { niveles } = jugar(() => true);
+      verdadero(niveles.filter((n) => n === 'C1').length === 5 && niveles.includes('B2'), niveles.join(' '));
+    });
+
+    prueba('Resultado: todo bien → C1', () => {
+      igual(resultado(jugar(() => true).e), { nivel: 'C1', aciertos: 10 });
+    });
+
+    prueba('Resultado: todo mal → A1', () => {
+      igual(resultado(jugar(() => false).e), { nivel: 'A1', aciertos: 0 });
+    });
+
+    prueba('Resultado: acierta hasta B1 y falla de B2 en adelante → B1', () => {
+      const orden = { A1: 0, A2: 1, B1: 2, B2: 3, C1: 4 };
+      const r = resultado(jugar((p) => orden[p.nivel] <= 2).e);
+      igual(r.nivel, 'B1');
+    });
+
+    prueba('Resultado: acierta hasta A2 → A2', () => {
+      const orden = { A1: 0, A2: 1, B1: 2, B2: 3, C1: 4 };
+      igual(resultado(jugar((p) => orden[p.nivel] <= 1).e).nivel, 'A2');
+    });
+
+    ejecutar(document.getElementById('app'));
+  </script>
+</body>
+</html>

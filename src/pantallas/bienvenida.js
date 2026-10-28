@@ -51,11 +51,9 @@ function pasoNivel() {
     h('h1', { class: 'bienvenida-titulo' }, t('bienvenida.nivel.titulo')),
     h('p', { class: 'tenue' }, t('bienvenida.nivel.texto')),
     h('div', { class: 'bienvenida-elecciones' },
-      // La prueba de nivel llega con su spec (002)
-      h('button', { class: 'eleccion', type: 'button', disabled: true },
+      h('button', { class: 'eleccion', type: 'button', onclick: () => navegar('/prueba-nivel') },
         h('span', { class: 'eleccion-titulo' }, t('bienvenida.nivel.prueba')),
-        h('span', { class: 'tenue' }, t('bienvenida.nivel.prueba.desc')),
-        h('span', { class: 'etiqueta' }, t('comun.proximamente'))),
+        h('span', { class: 'tenue' }, t('bienvenida.nivel.prueba.desc'))),
       h('button', { class: 'eleccion', type: 'button', onclick: terminar },
         h('span', { class: 'eleccion-titulo' }, t('bienvenida.nivel.a1')),
         h('span', { class: 'tenue' }, t('bienvenida.nivel.a1.desc')))),

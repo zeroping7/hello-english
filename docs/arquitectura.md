@@ -26,8 +26,10 @@ src/
     tests.html
   voz/                   # leer en voz alta y reconocer voz (§7)
   sonido/                # efectos con Web Audio y vibración
-  ui/                    # piezas comunes: dom, barra, opciones, aviso, confirmar, iconos, debug
-  pantallas/             # bienvenida, inicio, ajustes, próximamente
+  ui/                    # piezas comunes: dom, barra, opciones, aviso, confirmar, iconos, debug y ejercicio
+  pantallas/             # bienvenida, inicio, ajustes, prueba de nivel, próximamente
+  contenido/             # carga, validación (esquema), azar con semilla y elección de ejercicios (D-011, D-012)
+  prueba/                # lógica de la prueba de nivel (spec 002)
   pruebas/mini.js        # mini ejecutor de pruebas para los tests.html
 juegos/
   registro.js            # lista de minijuegos (§3)

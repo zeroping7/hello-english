@@ -53,6 +53,11 @@ export function registrarAcierto(nivel, dificultad = 1) {
   return puntos;
 }
 
+/** Nivel que da la prueba de nivel (spec 002). */
+export function fijarNivel(nivel) {
+  guardar({ ...leerProgreso(), nivel, nivelProbado: true });
+}
+
 /** Sustituye todo el progreso (importar) o lo vuelve a crear (borrar). */
 export function reemplazarProgreso(nuevo = progresoNuevo()) {
   guardar(nuevo);

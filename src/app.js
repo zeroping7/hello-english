@@ -11,13 +11,14 @@ const RUTAS = [
   { patron: /^\/inicio$/, cargar: () => import('./pantallas/inicio.js') },
   { patron: /^\/bienvenida$/, cargar: () => import('./pantallas/bienvenida.js') },
   { patron: /^\/ajustes$/, cargar: () => import('./pantallas/ajustes.js') },
+  { patron: /^\/prueba-nivel$/, cargar: () => import('./pantallas/prueba-nivel.js') },
   { patron: /^\/juego\/([a-z0-9-]+)$/, cargar: () => import('./pantallas/proximamente.js') },
 ];
 
-/** Sin bienvenida hecha todo lleva a ella; hecha, ya no vuelve a salir (HU-1). */
+/** Sin bienvenida hecha todo lleva a ella (salvo la prueba de nivel, que es su paso 3); hecha, ya no vuelve a salir. */
 function redirigir(ruta) {
   const hecha = leerAjustes().bienvenidaHecha;
-  if (!hecha && ruta !== '/bienvenida') return '/bienvenida';
+  if (!hecha && ruta !== '/bienvenida' && ruta !== '/prueba-nivel') return '/bienvenida';
   if (hecha && ruta === '/bienvenida') return '/inicio';
   return null;
 }

@@ -109,3 +109,11 @@ Una entrada por decisión. Nunca se borran; si cambian, se añade una nueva que 
 - Decisión: `elegirEjercicios` toma un 60 % del nivel del usuario, un 30 % del anterior y un 10 % del siguiente, completa con los niveles más cercanos si faltan y baraja con mulberry32 (`src/contenido/azar.js`).
 - Alternativas descartadas: solo el nivel del usuario (aburre y no repasa); al azar entre todos (frustra en A1 y aburre en C1).
 - Consecuencias: el repaso espaciado (spec futura) podrá añadir sus elegidos antes de este reparto.
+
+## D-013 — Prueba de nivel en escalera
+- Fecha: 2026-10-28
+- Estado: Aceptada
+- Contexto: la spec 002 pide 10 preguntas que se adapten y den un nivel fiable.
+- Decisión: empieza en A2; acierto sube un nivel y fallo baja uno. El resultado es el nivel más alto con al menos 2 aciertos y no más fallos que aciertos; si no lo hay, el más alto con algún acierto y ningún fallo; si tampoco, A1. Se enseña si se acierta, pero no da puntos.
+- Alternativas descartadas: 2 preguntas por nivel en orden (no se adapta); puntuación total con cortes fijos (con 10 preguntas da saltos poco fiables).
+- Consecuencias: con 5 preguntas por nivel, alguien muy bueno agota las de C1 y sigue con B2; el resultado sigue siendo C1 si ya tenía 2 aciertos allí.

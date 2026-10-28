@@ -12,6 +12,7 @@ import { navegar } from '../router.js';
 import { avisar } from '../ui/aviso.js';
 import { confirmar } from '../ui/confirmar.js';
 import { exportarArchivo, leerArchivo, aplicarImportacion, borrarTodo } from '../progreso/datos.js';
+import { leerProgreso } from '../progreso/progreso.js';
 
 function seccion(titulo, ...hijos) {
   return h('section', { class: 'seccion' },
@@ -182,9 +183,9 @@ export function montar(raiz) {
           opciones: [5, 10, 20].map((min) => ({ valor: min, texto: t(`objetivo.${min}`) })),
           alCambiar: (v) => cambiarAjuste('objetivoMin', v),
         }),
-        // La prueba de nivel llega con su spec (002)
-        h('button', { class: 'boton', type: 'button', disabled: true },
-          t('ajustes.repetirPrueba'), h('span', { class: 'etiqueta' }, t('comun.proximamente'))),
+        h('button', { class: 'boton', type: 'button', onclick: () => navegar('/prueba-nivel') },
+          t('ajustes.repetirPrueba')),
+        h('p', { class: 'tenue nota' }, t('ajustes.nivelActual', { nivel: leerProgreso().nivel })),
       ),
       seccionDatos(),
       h('p', { class: 'version' }, t('comun.version', { v: VERSION })),
