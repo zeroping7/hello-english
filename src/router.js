@@ -46,7 +46,22 @@ export function volver() {
   else navegar(porDefecto, { reemplazar: true });
 }
 
-async function mostrar() {
+/** Vuelve a pintar la pantalla actual (p. ej. al cambiar de idioma) sin perder el foco. */
+export async function repintar() {
+  const selector = selectorDe(document.activeElement);
+  await mostrar({ conservarFoco: true });
+  const el = selector && raiz.querySelector(selector);
+  if (el) el.focus({ preventScroll: true });
+}
+
+function selectorDe(el) {
+  if (!el || !raiz?.contains(el)) return null;
+  if (el.id) return `#${CSS.escape(el.id)}`;
+  if (el.name) return `[name="${CSS.escape(el.name)}"][value="${CSS.escape(el.value)}"]`;
+  return null;
+}
+
+async function mostrar({ conservarFoco = false } = {}) {
   const ruta = rutaActual();
   const encontrada = buscar(ruta);
   if (!encontrada) {
@@ -62,8 +77,8 @@ async function mostrar() {
   actual?.desmontar?.();
   raiz.replaceChildren();
   actual = modulo.montar(raiz, encontrada.params) ?? null;
-  window.scrollTo(0, 0);
-  enfocarTitulo();
+  if (!conservarFoco) window.scrollTo(0, 0);
+  enfocarTitulo({ mover: !conservarFoco });
 }
 
 function buscar(ruta) {
@@ -79,7 +94,7 @@ function apuntar(ruta) {
   else if (pila[pila.length - 1] !== ruta) pila.push(ruta);
 }
 
-function enfocarTitulo() {
+function enfocarTitulo({ mover = true } = {}) {
   const titulo = raiz.querySelector('h1');
   if (!titulo) return;
   const nombre = titulo.getAttribute('aria-label') || titulo.textContent.trim();
@@ -87,11 +102,12 @@ function enfocarTitulo() {
     ? t('app.nombre')
     : t('app.tituloPestana', { pantalla: nombre });
   titulo.setAttribute('tabindex', '-1');
-  titulo.focus({ preventScroll: true });
+  if (mover) titulo.focus({ preventScroll: true });
 }
 
 function alPulsarTecla(e) {
   if (e.key !== 'Escape' || e.defaultPrevented) return;
-  if (e.target.closest?.('input, textarea, select, dialog')) return;
+  // En campos de texto Esc es para el campo; en radios y casillas sí vuelve
+  if (e.target.closest?.('input:not([type=radio]):not([type=checkbox]), textarea, select, dialog')) return;
   if (rutaActual() !== porDefecto) volver();
 }

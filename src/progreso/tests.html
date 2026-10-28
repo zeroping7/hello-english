@@ -14,6 +14,7 @@
   <script type="module">
     import { prueba, igual, verdadero, ejecutar } from '../pruebas/mini.js';
     import { crearAlmacen } from './almacen.js';
+    import { normalizarAjustes } from '../ajustes/ajustes.js';
 
     // Almacenamiento falso con la misma interfaz que localStorage
     class Falso {
@@ -97,6 +98,25 @@
       disco.setItem('otra-app', 'x');
       a.borrarTodo();
       igual([...disco.datos.keys()], ['otra-app']);
+    });
+
+    // --- Ajustes (T011) ---
+
+    const base = { v: 1, idioma: 'es', tema: 'sistema', acento: 'gb', velocidad: 'normal',
+      sonido: true, vibracion: true, objetivoMin: 10, bienvenidaHecha: false };
+
+    prueba('Ajustes: sin datos se usan los valores por defecto', () => {
+      igual(normalizarAjustes(null, base), base);
+    });
+
+    prueba('Ajustes: se conservan los valores válidos', () => {
+      const r = normalizarAjustes({ v: 1, idioma: 'en', tema: 'oscuro', objetivoMin: 20, sonido: false }, base);
+      igual([r.idioma, r.tema, r.objetivoMin, r.sonido, r.acento], ['en', 'oscuro', 20, false, 'gb']);
+    });
+
+    prueba('Ajustes: valores no válidos y claves desconocidas se descartan', () => {
+      const r = normalizarAjustes({ v: 1, idioma: 'fr', tema: 'rosa', objetivoMin: '5', extra: 1 }, base);
+      igual(r, base);
     });
 
     ejecutar(document.getElementById('app'));

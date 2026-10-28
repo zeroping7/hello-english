@@ -10,5 +10,11 @@
   "inicio.abrirAjustes": "Abrir ajustes",
   "ajustes.titulo": "Ajustes",
   "proximamente.texto": "Este minijuego todavía no está disponible.",
-  "aviso.sinAlmacen": "Este navegador no deja guardar tu progreso. Puedes usar la app, pero lo perderás al cerrarla."
+  "aviso.sinAlmacen": "Este navegador no deja guardar tu progreso. Puedes usar la app, pero lo perderás al cerrarla.",
+  "ajustes.general": "General",
+  "ajustes.idioma": "Idioma",
+  "ajustes.tema": "Tema",
+  "ajustes.tema.sistema": "Sistema",
+  "ajustes.tema.claro": "Claro",
+  "ajustes.tema.oscuro": "Oscuro"
 }

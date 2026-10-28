@@ -10,5 +10,11 @@
   "inicio.abrirAjustes": "Open settings",
   "ajustes.titulo": "Settings",
   "proximamente.texto": "This mini-game isn't available yet.",
-  "aviso.sinAlmacen": "This browser won't let us save your progress. You can still use the app, but it will be lost when you close it."
+  "aviso.sinAlmacen": "This browser won't let us save your progress. You can still use the app, but it will be lost when you close it.",
+  "ajustes.general": "General",
+  "ajustes.idioma": "Language",
+  "ajustes.tema": "Theme",
+  "ajustes.tema.sistema": "System",
+  "ajustes.tema.claro": "Light",
+  "ajustes.tema.oscuro": "Dark"
 }

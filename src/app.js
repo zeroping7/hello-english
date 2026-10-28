@@ -1,7 +1,7 @@
-// Arranque de la app: idioma del navegador y router. Los ajustes guardados llegan en T011.
+// Arranque de la app: ajustes guardados (tema e idioma) y router.
 import { VERSION } from './version.js';
-import { cargarIdioma, idiomaDelNavegador } from './i18n/textos.js';
-import { iniciarRouter } from './router.js';
+import { aplicarAjustesGuardados, alCambiarAjuste } from './ajustes/ajustes.js';
+import { iniciarRouter, repintar } from './router.js';
 
 const RUTAS = [
   { patron: /^\/inicio$/, cargar: () => import('./pantallas/inicio.js') },
@@ -11,7 +11,11 @@ const RUTAS = [
 
 async function arrancar() {
   document.documentElement.dataset.version = VERSION;
-  await cargarIdioma(idiomaDelNavegador());
+  await aplicarAjustesGuardados();
+  // Al cambiar de idioma la pantalla se vuelve a pintar sin recargar (HU-3)
+  alCambiarAjuste(({ clave }) => {
+    if (clave === 'idioma') repintar();
+  });
   await iniciarRouter(document.getElementById('app'), RUTAS, '/inicio');
 }
 

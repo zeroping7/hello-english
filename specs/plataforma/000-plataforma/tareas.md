@@ -32,7 +32,7 @@ Formato de cada tarea:
   - Hecho cuando: guarda y lee con campo `v` y migraciones; si `localStorage` falla, sigue en memoria y el inicio muestra el aviso "Este navegador no deja guardar tu progreso"
   - Probar: abrir `…/?debug=1&sinAlmacen=1` y ver el aviso; sin esos parámetros no aparece. `…/src/progreso/tests.html` en verde
   - Nota: las ventanas privadas actuales de Safari, Chrome y Firefox sí dejan guardar mientras están abiertas, así que no sirven para ver el aviso; por eso existe `sinAlmacen=1`
-- [ ] T011 — Ajustes generales: idioma y tema
+- [x] T011 — Ajustes generales: idioma y tema
   - Archivos: `src/ajustes/ajustes.js`, `src/pantallas/ajustes.js`, `index.html` (script de tema antes de pintar), i18n
   - Hecho cuando: cambiar el idioma repinta la pantalla al momento; el tema sistema, claro u oscuro se aplica y se guarda; al recargar no hay destello de otro color; la versión sale al final de Ajustes
   - Probar: cambiar idioma y tema, recargar y comprobar que se mantienen
