@@ -36,7 +36,7 @@ Formato de cada tarea:
   - Archivos: `src/ajustes/ajustes.js`, `src/pantallas/ajustes.js`, `index.html` (script de tema antes de pintar), i18n
   - Hecho cuando: cambiar el idioma repinta la pantalla al momento; el tema sistema, claro u oscuro se aplica y se guarda; al recargar no hay destello de otro color; la versión sale al final de Ajustes
   - Probar: cambiar idioma y tema, recargar y comprobar que se mantienen
-- [ ] T012 — Registro de minijuegos e inicio
+- [x] T012 — Registro de minijuegos e inicio
   - Archivos: `juegos/registro.js`, `src/ui/iconos.js`, `src/pantallas/inicio.js`, `src/pantallas/proximamente.js`, `css/app.css`, i18n (19 títulos y descripciones)
   - Hecho cuando: el inicio muestra "Práctica de hoy" (*Próximamente*) y las 4 categorías con sus minijuegos en rejilla (2 columnas en móvil, 3-4 en PC); al tocar uno se abre su pantalla "Próximamente" con su nombre e icono
   - Probar: recorrer el inicio en vertical, en horizontal y en el PC; entrar en un minijuego y volver
