@@ -1,0 +1,703 @@
+{
+  "banco": "falsos-amigos",
+  "v": 1,
+  "items": [
+    {
+      "id": "fa-001",
+      "nivel": "A1",
+      "tema": "programacion",
+      "en": "library",
+      "es": "librería",
+      "verdadero": false,
+      "significa": {
+        "es": "biblioteca (también de código)",
+        "en": "a collection of reusable code, or a place with books to borrow"
+      },
+      "ejemplo": "We use a library to read CSV files.",
+      "explicacion": {
+        "es": "«Library» es biblioteca, también en programación. Una librería (tienda) es «bookshop».",
+        "en": "'Library' means 'biblioteca', also in programming. A shop that sells books is a 'bookshop'."
+      }
+    },
+    {
+      "id": "fa-002",
+      "nivel": "A1",
+      "tema": "programacion",
+      "en": "file",
+      "es": "archivo",
+      "verdadero": true,
+      "significa": {
+        "es": "archivo",
+        "en": "a document or piece of data stored on a computer"
+      },
+      "ejemplo": "Save the file before you close the editor.",
+      "explicacion": {
+        "es": "Sí: en informática «file» es archivo.",
+        "en": "Yes: in computing, 'file' means 'archivo'."
+      }
+    },
+    {
+      "id": "fa-003",
+      "nivel": "A1",
+      "tema": "programacion",
+      "en": "computer",
+      "es": "ordenador",
+      "verdadero": true,
+      "significa": {
+        "es": "ordenador, computadora",
+        "en": "an electronic machine that stores and processes data"
+      },
+      "ejemplo": "My computer restarts every night to install updates.",
+      "explicacion": {
+        "es": "Sí: «computer» es ordenador (o computadora en América).",
+        "en": "Yes: 'computer' means 'ordenador' (or 'computadora' in Latin America)."
+      }
+    },
+    {
+      "id": "fa-004",
+      "nivel": "A1",
+      "tema": "programacion",
+      "en": "exit",
+      "es": "éxito",
+      "verdadero": false,
+      "significa": {
+        "es": "salida, salir",
+        "en": "a way out, or the command to close a program"
+      },
+      "ejemplo": "Type exit to close the terminal.",
+      "explicacion": {
+        "es": "«Exit» es salida o salir. Éxito se dice «success».",
+        "en": "'Exit' means a way out or to leave. 'Éxito' is 'success'."
+      }
+    },
+    {
+      "id": "fa-005",
+      "nivel": "A1",
+      "tema": "programacion",
+      "en": "red",
+      "es": "red (de ordenadores)",
+      "verdadero": false,
+      "significa": {
+        "es": "rojo",
+        "en": "the colour red"
+      },
+      "ejemplo": "The test turns red when it fails.",
+      "explicacion": {
+        "es": "«Red» es el color rojo. Una red de ordenadores es «network».",
+        "en": "'Red' is the colour. A computer network is a 'network'."
+      }
+    },
+    {
+      "id": "fa-006",
+      "nivel": "A1",
+      "tema": "web",
+      "en": "page",
+      "es": "página",
+      "verdadero": true,
+      "significa": {
+        "es": "página",
+        "en": "one screen or document of a website"
+      },
+      "ejemplo": "This page shows your account details.",
+      "explicacion": {
+        "es": "Sí: «page» es página, también en una web.",
+        "en": "Yes: 'page' means 'página', also on a website."
+      }
+    },
+    {
+      "id": "fa-007",
+      "nivel": "A1",
+      "tema": "programacion",
+      "en": "carpet",
+      "es": "carpeta",
+      "verdadero": false,
+      "significa": {
+        "es": "alfombra",
+        "en": "a thick cloth that covers a floor"
+      },
+      "ejemplo": "There is a new carpet in the office.",
+      "explicacion": {
+        "es": "«Carpet» es alfombra. Una carpeta es «folder».",
+        "en": "'Carpet' means 'alfombra'. 'Carpeta' is 'folder'."
+      }
+    },
+    {
+      "id": "fa-008",
+      "nivel": "A1",
+      "tema": "equipo",
+      "en": "email",
+      "es": "correo electrónico",
+      "verdadero": true,
+      "significa": {
+        "es": "correo electrónico",
+        "en": "a message sent over the internet"
+      },
+      "ejemplo": "I sent you an email with the details.",
+      "explicacion": {
+        "es": "Sí: «email» es correo electrónico.",
+        "en": "Yes: 'email' means 'correo electrónico'."
+      }
+    },
+    {
+      "id": "fa-009",
+      "nivel": "A2",
+      "tema": "equipo",
+      "en": "actually",
+      "es": "actualmente",
+      "verdadero": false,
+      "significa": {
+        "es": "en realidad",
+        "en": "in fact; used to correct or add something"
+      },
+      "ejemplo": "Actually, the bug was in the backend, not the app.",
+      "explicacion": {
+        "es": "«Actually» es en realidad. Actualmente se dice «currently» o «at the moment».",
+        "en": "'Actually' means 'en realidad'. 'Actualmente' is 'currently'."
+      }
+    },
+    {
+      "id": "fa-010",
+      "nivel": "A2",
+      "tema": "programacion",
+      "en": "argument",
+      "es": "argumento (de una función)",
+      "verdadero": true,
+      "significa": {
+        "es": "argumento: valor que se pasa a una función",
+        "en": "a value you pass to a function"
+      },
+      "ejemplo": "This function takes two arguments.",
+      "explicacion": {
+        "es": "Sí: en programación es el valor que se pasa a una función. Ojo: fuera del código también significa discusión.",
+        "en": "Yes: in programming it's a value passed to a function. Outside code it can also mean a quarrel."
+      }
+    },
+    {
+      "id": "fa-011",
+      "nivel": "A2",
+      "tema": "programacion",
+      "en": "remove",
+      "es": "remover",
+      "verdadero": false,
+      "significa": {
+        "es": "quitar, eliminar",
+        "en": "to take something away or delete it"
+      },
+      "ejemplo": "Remove the unused imports before you commit.",
+      "explicacion": {
+        "es": "«Remove» es quitar o eliminar. Remover (un líquido) se dice «stir».",
+        "en": "'Remove' means to take away or delete. 'Remover' (a liquid) is 'stir'."
+      }
+    },
+    {
+      "id": "fa-012",
+      "nivel": "A2",
+      "tema": "web",
+      "en": "server",
+      "es": "servidor",
+      "verdadero": true,
+      "significa": {
+        "es": "servidor",
+        "en": "a computer that provides data or services to others"
+      },
+      "ejemplo": "The server sends the page to your browser.",
+      "explicacion": {
+        "es": "Sí: «server» es servidor.",
+        "en": "Yes: 'server' means 'servidor'."
+      }
+    },
+    {
+      "id": "fa-013",
+      "nivel": "A2",
+      "tema": "equipo",
+      "en": "record",
+      "es": "recordar",
+      "verdadero": false,
+      "significa": {
+        "es": "grabar; registro",
+        "en": "to store sound, video or data; a stored entry"
+      },
+      "ejemplo": "We record every meeting for the people who miss it.",
+      "explicacion": {
+        "es": "«Record» es grabar o un registro. Recordar se dice «remember».",
+        "en": "'Record' means to store something or a stored entry. 'Recordar' is 'remember'."
+      }
+    },
+    {
+      "id": "fa-014",
+      "nivel": "A2",
+      "tema": "web",
+      "en": "support",
+      "es": "soportar (aguantar)",
+      "verdadero": false,
+      "significa": {
+        "es": "admitir, ser compatible; dar soporte",
+        "en": "to work with something, or to help users"
+      },
+      "ejemplo": "Does this browser support dark mode?",
+      "explicacion": {
+        "es": "«Support» es admitir, ser compatible o dar soporte. Soportar (aguantar) se dice «put up with» o «stand».",
+        "en": "'Support' means to work with something or to help. 'Soportar' (to tolerate) is 'put up with' or 'stand'."
+      }
+    },
+    {
+      "id": "fa-015",
+      "nivel": "A2",
+      "tema": "programacion",
+      "en": "version",
+      "es": "versión",
+      "verdadero": true,
+      "significa": {
+        "es": "versión",
+        "en": "one release of a program"
+      },
+      "ejemplo": "Please update to the latest version.",
+      "explicacion": {
+        "es": "Sí: «version» es versión.",
+        "en": "Yes: 'version' means 'versión'."
+      }
+    },
+    {
+      "id": "fa-016",
+      "nivel": "A2",
+      "tema": "equipo",
+      "en": "constipated",
+      "es": "constipado",
+      "verdadero": false,
+      "significa": {
+        "es": "estreñido",
+        "en": "unable to empty your bowels easily"
+      },
+      "ejemplo": "He felt constipated after the long flight.",
+      "explicacion": {
+        "es": "«Constipated» es estreñido. Estar constipado se dice «have a cold».",
+        "en": "'Constipated' means 'estreñido'. 'Estar constipado' is 'to have a cold'."
+      }
+    },
+    {
+      "id": "fa-017",
+      "nivel": "B1",
+      "tema": "programacion",
+      "en": "eventually",
+      "es": "eventualmente",
+      "verdadero": false,
+      "significa": {
+        "es": "al final, finalmente",
+        "en": "in the end, after a long time"
+      },
+      "ejemplo": "The deploy eventually worked after three attempts.",
+      "explicacion": {
+        "es": "«Eventually» es al final. Eventualmente se dice «possibly» o «occasionally».",
+        "en": "'Eventually' means 'al final'. 'Eventualmente' is 'possibly' or 'occasionally'."
+      }
+    },
+    {
+      "id": "fa-018",
+      "nivel": "B1",
+      "tema": "equipo",
+      "en": "assist",
+      "es": "asistir (ir a)",
+      "verdadero": false,
+      "significa": {
+        "es": "ayudar",
+        "en": "to help someone"
+      },
+      "ejemplo": "Can you assist me with the setup?",
+      "explicacion": {
+        "es": "«Assist» es ayudar. Asistir a una reunión se dice «attend».",
+        "en": "'Assist' means to help. 'Asistir' (to be present) is 'attend'."
+      }
+    },
+    {
+      "id": "fa-019",
+      "nivel": "B1",
+      "tema": "equipo",
+      "en": "attend",
+      "es": "asistir (a una reunión)",
+      "verdadero": true,
+      "significa": {
+        "es": "asistir, ir a",
+        "en": "to be present at a meeting or event"
+      },
+      "ejemplo": "I will attend the meeting at ten.",
+      "explicacion": {
+        "es": "Sí: «attend» es asistir a algo.",
+        "en": "Yes: 'attend' means to be present at something."
+      }
+    },
+    {
+      "id": "fa-020",
+      "nivel": "B1",
+      "tema": "equipo",
+      "en": "realise",
+      "es": "realizar",
+      "verdadero": false,
+      "significa": {
+        "es": "darse cuenta",
+        "en": "to understand something you did not notice before"
+      },
+      "ejemplo": "I realised the test was wrong.",
+      "explicacion": {
+        "es": "«Realise» es darse cuenta. Realizar se dice «carry out» o «do».",
+        "en": "'Realise' means 'darse cuenta'. 'Realizar' is 'carry out' or 'do'."
+      }
+    },
+    {
+      "id": "fa-021",
+      "nivel": "B1",
+      "tema": "programacion",
+      "en": "deploy",
+      "es": "desplegar (una aplicación)",
+      "verdadero": true,
+      "significa": {
+        "es": "desplegar, publicar",
+        "en": "to put new code or an app into use"
+      },
+      "ejemplo": "We deploy to production every Friday.",
+      "explicacion": {
+        "es": "Sí: «deploy» es desplegar una aplicación.",
+        "en": "Yes: 'deploy' means to put an app into use."
+      }
+    },
+    {
+      "id": "fa-022",
+      "nivel": "B1",
+      "tema": "equipo",
+      "en": "sensible",
+      "es": "sensible",
+      "verdadero": false,
+      "significa": {
+        "es": "sensato",
+        "en": "reasonable and practical"
+      },
+      "ejemplo": "Splitting the task in two is a sensible idea.",
+      "explicacion": {
+        "es": "«Sensible» es sensato. Sensible se dice «sensitive».",
+        "en": "'Sensible' means 'sensato'. 'Sensible' in Spanish is 'sensitive'."
+      }
+    },
+    {
+      "id": "fa-023",
+      "nivel": "B1",
+      "tema": "web",
+      "en": "domain",
+      "es": "dominio (web)",
+      "verdadero": true,
+      "significa": {
+        "es": "dominio",
+        "en": "the name of a website, such as example.com"
+      },
+      "ejemplo": "We bought a new domain for the project.",
+      "explicacion": {
+        "es": "Sí: «domain» es dominio, el nombre de una web.",
+        "en": "Yes: 'domain' is the name of a website."
+      }
+    },
+    {
+      "id": "fa-024",
+      "nivel": "B1",
+      "tema": "equipo",
+      "en": "lecture",
+      "es": "lectura",
+      "verdadero": false,
+      "significa": {
+        "es": "conferencia, clase magistral",
+        "en": "a talk given to an audience to teach something"
+      },
+      "ejemplo": "There is a lecture on security tomorrow.",
+      "explicacion": {
+        "es": "«Lecture» es conferencia o clase. Lectura se dice «reading».",
+        "en": "'Lecture' means a talk. 'Lectura' is 'reading'."
+      }
+    },
+    {
+      "id": "fa-025",
+      "nivel": "B2",
+      "tema": "equipo",
+      "en": "compromise",
+      "es": "compromiso (obligación)",
+      "verdadero": false,
+      "significa": {
+        "es": "acuerdo en el que ambos ceden; también poner en peligro",
+        "en": "an agreement where both sides give something up; to put at risk"
+      },
+      "ejemplo": "We reached a compromise on the deadline.",
+      "explicacion": {
+        "es": "«Compromise» es un acuerdo en el que se cede (o poner en peligro: «compromise security»). Compromiso (obligación) se dice «commitment».",
+        "en": "'Compromise' is an agreement where both sides give way (or to put at risk). 'Compromiso' (obligation) is 'commitment'."
+      }
+    },
+    {
+      "id": "fa-026",
+      "nivel": "B2",
+      "tema": "programacion",
+      "en": "commit",
+      "es": "cometer (un error)",
+      "verdadero": false,
+      "significa": {
+        "es": "confirmar cambios (git); comprometerse",
+        "en": "to save changes to a repository; to promise to do something"
+      },
+      "ejemplo": "Commit your changes before you pull.",
+      "explicacion": {
+        "es": "«Commit» es confirmar cambios o comprometerse. Cometer un error se dice «make a mistake».",
+        "en": "'Commit' means to save changes or to promise. 'Cometer un error' is 'make a mistake'."
+      }
+    },
+    {
+      "id": "fa-027",
+      "nivel": "B2",
+      "tema": "programacion",
+      "en": "deprecated",
+      "es": "obsoleto (desaconsejado)",
+      "verdadero": true,
+      "significa": {
+        "es": "desaconsejado: aún funciona, pero se eliminará",
+        "en": "still available but not recommended, because it will be removed"
+      },
+      "ejemplo": "This method is deprecated; use the new one instead.",
+      "explicacion": {
+        "es": "Sí: se dice de algo que aún funciona pero no conviene usar porque se quitará.",
+        "en": "Yes: it describes something that still works but will be removed."
+      }
+    },
+    {
+      "id": "fa-028",
+      "nivel": "B2",
+      "tema": "equipo",
+      "en": "embarrassed",
+      "es": "embarazada",
+      "verdadero": false,
+      "significa": {
+        "es": "avergonzado",
+        "en": "feeling ashamed or awkward"
+      },
+      "ejemplo": "I was embarrassed when my demo crashed.",
+      "explicacion": {
+        "es": "«Embarrassed» es avergonzado. Embarazada se dice «pregnant».",
+        "en": "'Embarrassed' means 'avergonzado'. 'Embarazada' is 'pregnant'."
+      }
+    },
+    {
+      "id": "fa-029",
+      "nivel": "B2",
+      "tema": "web",
+      "en": "resume",
+      "es": "resumir",
+      "verdadero": false,
+      "significa": {
+        "es": "reanudar",
+        "en": "to start again after a pause"
+      },
+      "ejemplo": "The download will resume automatically.",
+      "explicacion": {
+        "es": "«Resume» es reanudar. Resumir se dice «summarise».",
+        "en": "'Resume' means to start again. 'Resumir' is 'summarise'."
+      }
+    },
+    {
+      "id": "fa-030",
+      "nivel": "B2",
+      "tema": "programacion",
+      "en": "parse",
+      "es": "analizar (sintácticamente)",
+      "verdadero": true,
+      "significa": {
+        "es": "analizar, interpretar un texto o dato",
+        "en": "to read text and turn it into a structure a program can use"
+      },
+      "ejemplo": "The app parses the JSON response.",
+      "explicacion": {
+        "es": "Sí: «parse» es analizar un texto para convertirlo en datos.",
+        "en": "Yes: 'parse' means to read text and turn it into data."
+      }
+    },
+    {
+      "id": "fa-031",
+      "nivel": "B2",
+      "tema": "web",
+      "en": "advertise",
+      "es": "advertir",
+      "verdadero": false,
+      "significa": {
+        "es": "anunciar, hacer publicidad",
+        "en": "to tell people about a product to make them buy it"
+      },
+      "ejemplo": "We advertise the app on social media.",
+      "explicacion": {
+        "es": "«Advertise» es anunciar. Advertir se dice «warn».",
+        "en": "'Advertise' means to promote something. 'Advertir' is 'warn'."
+      }
+    },
+    {
+      "id": "fa-032",
+      "nivel": "B2",
+      "tema": "web",
+      "en": "bandwidth",
+      "es": "ancho de banda",
+      "verdadero": true,
+      "significa": {
+        "es": "ancho de banda; también capacidad para más trabajo",
+        "en": "how much data a connection can carry; informally, time to take on work"
+      },
+      "ejemplo": "Video calls use a lot of bandwidth.",
+      "explicacion": {
+        "es": "Sí, y en el trabajo también se usa para «capacidad»: «I don't have the bandwidth this week».",
+        "en": "Yes, and at work it also means capacity: 'I don't have the bandwidth this week'."
+      }
+    },
+    {
+      "id": "fa-033",
+      "nivel": "C1",
+      "tema": "equipo",
+      "en": "terrific",
+      "es": "terrorífico",
+      "verdadero": false,
+      "significa": {
+        "es": "estupendo, genial",
+        "en": "very good"
+      },
+      "ejemplo": "You did a terrific job on the release.",
+      "explicacion": {
+        "es": "«Terrific» es estupendo. Terrorífico se dice «terrifying».",
+        "en": "'Terrific' means very good. 'Terrorífico' is 'terrifying'."
+      }
+    },
+    {
+      "id": "fa-034",
+      "nivel": "C1",
+      "tema": "programacion",
+      "en": "casualty",
+      "es": "casualidad",
+      "verdadero": false,
+      "significa": {
+        "es": "víctima, baja",
+        "en": "someone or something hurt or lost because of an event"
+      },
+      "ejemplo": "The old API was the first casualty of the redesign.",
+      "explicacion": {
+        "es": "«Casualty» es víctima o baja. Casualidad se dice «coincidence» o «chance».",
+        "en": "'Casualty' means a victim or loss. 'Casualidad' is 'coincidence'."
+      }
+    },
+    {
+      "id": "fa-035",
+      "nivel": "C1",
+      "tema": "web",
+      "en": "idempotent",
+      "es": "idempotente",
+      "verdadero": true,
+      "significa": {
+        "es": "idempotente: repetirlo da el mismo resultado",
+        "en": "giving the same result however many times you repeat it"
+      },
+      "ejemplo": "A PUT request should be idempotent.",
+      "explicacion": {
+        "es": "Sí: una operación idempotente da el mismo resultado aunque se repita.",
+        "en": "Yes: an idempotent operation gives the same result if repeated."
+      }
+    },
+    {
+      "id": "fa-036",
+      "nivel": "C1",
+      "tema": "programacion",
+      "en": "notorious",
+      "es": "notorio (conocido)",
+      "verdadero": false,
+      "significa": {
+        "es": "de mala fama",
+        "en": "famous for something bad"
+      },
+      "ejemplo": "This module is notorious for its bugs.",
+      "explicacion": {
+        "es": "«Notorious» es de mala fama. Notorio (evidente, conocido) se dice «well-known» u «obvious».",
+        "en": "'Notorious' means famous for something bad. 'Notorio' is 'well-known' or 'obvious'."
+      }
+    },
+    {
+      "id": "fa-037",
+      "nivel": "C1",
+      "tema": "equipo",
+      "en": "deception",
+      "es": "decepción",
+      "verdadero": false,
+      "significa": {
+        "es": "engaño",
+        "en": "the act of making someone believe something false"
+      },
+      "ejemplo": "Hiding the bug from the client would be a deception.",
+      "explicacion": {
+        "es": "«Deception» es engaño. Decepción se dice «disappointment».",
+        "en": "'Deception' means tricking someone. 'Decepción' is 'disappointment'."
+      }
+    },
+    {
+      "id": "fa-038",
+      "nivel": "C1",
+      "tema": "web",
+      "en": "scalable",
+      "es": "escalable",
+      "verdadero": true,
+      "significa": {
+        "es": "escalable",
+        "en": "able to handle more users or data without problems"
+      },
+      "ejemplo": "We need a scalable solution for the new market.",
+      "explicacion": {
+        "es": "Sí: «scalable» es escalable.",
+        "en": "Yes: 'scalable' means 'escalable'."
+      }
+    },
+    {
+      "id": "fa-039",
+      "nivel": "C1",
+      "tema": "equipo",
+      "en": "assume",
+      "es": "asumir (una responsabilidad)",
+      "verdadero": false,
+      "significa": {
+        "es": "suponer, dar por hecho",
+        "en": "to think something is true without checking"
+      },
+      "ejemplo": "I assume the tests passed, but let me check.",
+      "explicacion": {
+        "es": "«Assume» es suponer. Asumir una responsabilidad se dice «take on».",
+        "en": "'Assume' means to suppose. 'Asumir una responsabilidad' is 'take on'."
+      }
+    },
+    {
+      "id": "fa-040",
+      "nivel": "C1",
+      "tema": "equipo",
+      "en": "sympathetic",
+      "es": "simpático",
+      "verdadero": false,
+      "significa": {
+        "es": "comprensivo",
+        "en": "showing that you understand someone's problems"
+      },
+      "ejemplo": "My manager was very sympathetic when I was ill.",
+      "explicacion": {
+        "es": "«Sympathetic» es comprensivo. Simpático se dice «nice» o «friendly».",
+        "en": "'Sympathetic' means understanding. 'Simpático' is 'nice' or 'friendly'."
+      }
+    },
+    {
+      "id": "fa-041",
+      "nivel": "C1",
+      "tema": "programacion",
+      "en": "obsolete",
+      "es": "obsoleto",
+      "verdadero": true,
+      "significa": {
+        "es": "obsoleto",
+        "en": "no longer used because something newer exists"
+      },
+      "ejemplo": "This framework is obsolete; nobody maintains it.",
+      "explicacion": {
+        "es": "Sí: «obsolete» es obsoleto.",
+        "en": "Yes: 'obsolete' means 'obsoleto'."
+      }
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pruebas: contenido</title>
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/app.css">
+</head>
+<body>
+  <div id="app">
+    <h1 class="logo">tests/contenido</h1>
+  </div>
+  <script type="module">
+    import { prueba, igual, verdadero, ejecutar } from '../src/pruebas/mini.js';
+    import { validarBanco, TEMAS } from '../src/contenido/esquema.js';
+    import { elegirEjercicios, NIVELES } from '../src/contenido/elegir.js';
+    import { crearAzar, barajar } from '../src/contenido/azar.js';
+
+    const BANCOS = { 'prueba-nivel': 5, 'falsos-amigos': 6, 'merge-conflict': 6 };   // mínimo por nivel (spec 001 §4)
+    const leer = async (n) => (await fetch(`./${n}.json`, { cache: 'no-cache' })).json();
+
+    // --- Bancos reales ---
+
+    for (const [nombre, minimo] of Object.entries(BANCOS)) {
+      prueba(`${nombre}: pasa la validación`, async () => {
+        const errores = validarBanco(nombre, await leer(nombre));
+        verdadero(errores.length === 0, errores.slice(0, 5).join(' · '));
+      });
+      prueba(`${nombre}: al menos ${minimo} ejercicios por nivel`, async () => {
+        const { items } = await leer(nombre);
+        const faltan = NIVELES.filter((nv) => items.filter((i) => i.nivel === nv).length < minimo);
+        igual(faltan, []);
+      });
+      prueba(`${nombre}: tiene ejercicios de los tres temas`, async () => {
+        const { items } = await leer(nombre);
+        igual(TEMAS.filter((t) => !items.some((i) => i.tema === t)), []);
+      });
+    }
+
+    prueba('Los ids no se repiten entre bancos', async () => {
+      const ids = (await Promise.all(Object.keys(BANCOS).map(leer))).flatMap((b) => b.items.map((i) => i.id));
+      igual(ids.length, new Set(ids).size);
+    });
+
+    prueba('temas.json coincide con los temas del esquema', async () => {
+      const temas = await (await fetch('./temas.json', { cache: 'no-cache' })).json();
+      igual(temas.map((t) => t.id), TEMAS);
+    });
+
+    prueba('falsos-amigos: hay verdaderas y falsas en todos los niveles', async () => {
+      const { items } = await leer('falsos-amigos');
+      const sinMezcla = NIVELES.filter((nv) => {
+        const del = items.filter((i) => i.nivel === nv);
+        return !del.some((i) => i.verdadero) || !del.some((i) => !i.verdadero);
+      });
+      igual(sinMezcla, []);
+    });
+
+    // --- Validación ---
+
+    prueba('Validación: detecta campos que faltan, niveles y ids repetidos', () => {
+      const malo = { banco: 'merge-conflict', v: 1, items: [
+        { id: 'mc-1', nivel: 'A1', tema: 'web', correcta: 'a', incorrecta: 'b', traduccion: 'x', explicacion: { es: 'e', en: 'e' } },
+        { id: 'mc-1', nivel: 'Z9', tema: 'web', correcta: 'a', incorrecta: 'a', explicacion: { es: 'e' } },
+      ] };
+      const errores = validarBanco('merge-conflict', malo).join(' | ');
+      for (const t of ['id repetido', 'nivel no válido', 'son iguales', 'falta traduccion', 'explicacion necesita']) {
+        verdadero(errores.includes(t), `debería decir "${t}": ${errores}`);
+      }
+    });
+
+    // --- Azar y elección ---
+
+    const muestra = NIVELES.flatMap((nv) => Array.from({ length: 10 }, (_, k) => ({ id: `${nv}-${k}`, nivel: nv, tema: k % 2 ? 'web' : 'equipo' })));
+
+    prueba('Azar: la misma semilla da la misma secuencia', () => {
+      const a = crearAzar(42), b = crearAzar(42);
+      igual([a(), a(), a()], [b(), b(), b()]);
+    });
+
+    prueba('Barajar: mismos elementos y sin modificar el original', () => {
+      const lista = [1, 2, 3, 4, 5];
+      const r = barajar(lista, crearAzar(1));
+      igual([...r].sort(), [1, 2, 3, 4, 5]);
+      igual(lista, [1, 2, 3, 4, 5]);
+    });
+
+    prueba('Elegir: reparto 60/30/10 en B1 con n = 10', () => {
+      const r = elegirEjercicios(muestra, { nivel: 'B1', n: 10, azar: crearAzar(7) });
+      const cuenta = (nv) => r.filter((i) => i.nivel === nv).length;
+      igual([cuenta('A2'), cuenta('B1'), cuenta('B2')], [3, 6, 1]);
+    });
+
+    prueba('Elegir: en A1 la parte del nivel anterior va a A1', () => {
+      const r = elegirEjercicios(muestra, { nivel: 'A1', n: 10, azar: crearAzar(7) });
+      igual([r.filter((i) => i.nivel === 'A1').length, r.filter((i) => i.nivel === 'A2').length], [9, 1]);
+    });
+
+    prueba('Elegir: no repite y completa con niveles cercanos si faltan', () => {
+      const pocos = muestra.filter((i) => i.nivel !== 'C1' || i.id === 'C1-0');
+      const r = elegirEjercicios(pocos, { nivel: 'C1', n: 10, azar: crearAzar(3) });
+      igual(r.length, 10);
+      igual(new Set(r.map((i) => i.id)).size, 10);
+      verdadero(r.every((i) => ['C1', 'B2', 'B1'].includes(i.nivel)), 'solo niveles cercanos');
+    });
+
+    prueba('Elegir: filtra por tema', () => {
+      const r = elegirEjercicios(muestra, { nivel: 'A2', n: 8, azar: crearAzar(5), tema: 'web' });
+      verdadero(r.length === 8 && r.every((i) => i.tema === 'web'), 'todos del tema web');
+    });
+
+    prueba('Elegir: misma semilla, misma partida', () => {
+      const a = elegirEjercicios(muestra, { nivel: 'B2', n: 10, azar: crearAzar(99) });
+      const b = elegirEjercicios(muestra, { nivel: 'B2', n: 10, azar: crearAzar(99) });
+      igual(a.map((i) => i.id), b.map((i) => i.id));
+    });
+
+    ejecutar(document.getElementById('app'));
+  </script>
+</body>
+</html>

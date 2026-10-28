@@ -1,0 +1,486 @@
+{
+  "banco": "merge-conflict",
+  "v": 1,
+  "items": [
+    {
+      "id": "mc-001",
+      "nivel": "A1",
+      "tema": "programacion",
+      "correcta": "The function returns a number.",
+      "incorrecta": "The function return a number.",
+      "traduccion": "La función devuelve un número.",
+      "explicacion": {
+        "es": "Con he, she o it (aquí «the function») el verbo en presente lleva -s: «returns».",
+        "en": "With he, she or it ('the function') the present verb takes -s: 'returns'."
+      }
+    },
+    {
+      "id": "mc-002",
+      "nivel": "A1",
+      "tema": "web",
+      "correcta": "There are two buttons on the page.",
+      "incorrecta": "There is two buttons on the page.",
+      "traduccion": "Hay dos botones en la página.",
+      "explicacion": {
+        "es": "Con un plural («two buttons») se dice «there are».",
+        "en": "With a plural ('two buttons') we say 'there are'."
+      }
+    },
+    {
+      "id": "mc-003",
+      "nivel": "A1",
+      "tema": "equipo",
+      "correcta": "I can't talk now. I'm in a meeting.",
+      "incorrecta": "I can't talk now. I'm in meeting.",
+      "traduccion": "Ahora no puedo hablar. Estoy en una reunión.",
+      "explicacion": {
+        "es": "«Meeting» es contable: hace falta el artículo «a».",
+        "en": "'Meeting' is countable, so it needs the article 'a'."
+      }
+    },
+    {
+      "id": "mc-004",
+      "nivel": "A1",
+      "tema": "programacion",
+      "correcta": "This is an error.",
+      "incorrecta": "This is a error.",
+      "traduccion": "Esto es un error.",
+      "explicacion": {
+        "es": "Antes de un sonido vocálico se usa «an»: «an error».",
+        "en": "Before a vowel sound we use 'an': 'an error'."
+      }
+    },
+    {
+      "id": "mc-005",
+      "nivel": "A1",
+      "tema": "web",
+      "correcta": "Open the app on your phone.",
+      "incorrecta": "Open the app in your phone.",
+      "traduccion": "Abre la app en tu móvil.",
+      "explicacion": {
+        "es": "Con aparatos y pantallas se dice «on»: «on your phone».",
+        "en": "With devices and screens we say 'on': 'on your phone'."
+      }
+    },
+    {
+      "id": "mc-006",
+      "nivel": "A1",
+      "tema": "equipo",
+      "correcta": "Where do you work?",
+      "incorrecta": "Where you work?",
+      "traduccion": "¿Dónde trabajas?",
+      "explicacion": {
+        "es": "Las preguntas en presente necesitan «do» o «does»: «Where do you work?».",
+        "en": "Present simple questions need 'do' or 'does': 'Where do you work?'."
+      }
+    },
+    {
+      "id": "mc-007",
+      "nivel": "A1",
+      "tema": "programacion",
+      "correcta": "My laptop doesn't have enough memory.",
+      "incorrecta": "My laptop don't have enough memory.",
+      "traduccion": "Mi portátil no tiene suficiente memoria.",
+      "explicacion": {
+        "es": "Con he, she o it la negación es «doesn't».",
+        "en": "With he, she or it the negative is 'doesn't'."
+      }
+    },
+    {
+      "id": "mc-008",
+      "nivel": "A1",
+      "tema": "web",
+      "correcta": "The images are very big.",
+      "incorrecta": "The images are very bigs.",
+      "traduccion": "Las imágenes son muy grandes.",
+      "explicacion": {
+        "es": "En inglés los adjetivos no tienen plural: «big», no «bigs».",
+        "en": "In English adjectives have no plural form: 'big', not 'bigs'."
+      }
+    },
+    {
+      "id": "mc-009",
+      "nivel": "A2",
+      "tema": "programacion",
+      "correcta": "I fixed the bug yesterday.",
+      "incorrecta": "I have fixed the bug yesterday.",
+      "traduccion": "Arreglé el bug ayer.",
+      "explicacion": {
+        "es": "Con un momento terminado («yesterday») se usa el pasado simple, no «have fixed».",
+        "en": "With a finished time ('yesterday') we use the past simple, not 'have fixed'."
+      }
+    },
+    {
+      "id": "mc-010",
+      "nivel": "A2",
+      "tema": "web",
+      "correcta": "The new version is faster than the old one.",
+      "incorrecta": "The new version is more faster than the old one.",
+      "traduccion": "La nueva versión es más rápida que la antigua.",
+      "explicacion": {
+        "es": "«Faster» ya es comparativo: no se añade «more».",
+        "en": "'Faster' is already comparative, so we don't add 'more'."
+      }
+    },
+    {
+      "id": "mc-011",
+      "nivel": "A2",
+      "tema": "equipo",
+      "correcta": "We are going to release on Friday.",
+      "incorrecta": "We are going release on Friday.",
+      "traduccion": "Vamos a sacar la versión el viernes.",
+      "explicacion": {
+        "es": "La estructura es «going to» + verbo: «going to release».",
+        "en": "The structure is 'going to' + verb: 'going to release'."
+      }
+    },
+    {
+      "id": "mc-012",
+      "nivel": "A2",
+      "tema": "programacion",
+      "correcta": "You should write more tests.",
+      "incorrecta": "You should to write more tests.",
+      "traduccion": "Deberías escribir más pruebas.",
+      "explicacion": {
+        "es": "Después de «should» va el verbo sin «to».",
+        "en": "After 'should' we use the verb without 'to'."
+      }
+    },
+    {
+      "id": "mc-013",
+      "nivel": "A2",
+      "tema": "web",
+      "correcta": "How much data does the app use?",
+      "incorrecta": "How many data does the app use?",
+      "traduccion": "¿Cuántos datos usa la app?",
+      "explicacion": {
+        "es": "En el uso habitual, «data» es incontable, así que va con «how much».",
+        "en": "In everyday use 'data' is uncountable, so we say 'how much'."
+      }
+    },
+    {
+      "id": "mc-014",
+      "nivel": "A2",
+      "tema": "equipo",
+      "correcta": "I didn't go to the meeting.",
+      "incorrecta": "I didn't went to the meeting.",
+      "traduccion": "No fui a la reunión.",
+      "explicacion": {
+        "es": "Después de «didn't» el verbo va sin cambiar: «go», no «went».",
+        "en": "After 'didn't' the verb stays in its base form: 'go', not 'went'."
+      }
+    },
+    {
+      "id": "mc-015",
+      "nivel": "A2",
+      "tema": "programacion",
+      "correcta": "Is the server running?",
+      "incorrecta": "Is running the server?",
+      "traduccion": "¿Está funcionando el servidor?",
+      "explicacion": {
+        "es": "En las preguntas, el sujeto va entre «is» y el verbo: «Is the server running?».",
+        "en": "In questions the subject goes between 'is' and the verb: 'Is the server running?'."
+      }
+    },
+    {
+      "id": "mc-016",
+      "nivel": "A2",
+      "tema": "equipo",
+      "correcta": "Let me know if you need any help.",
+      "incorrecta": "Let me know if you need any helps.",
+      "traduccion": "Avísame si necesitas ayuda.",
+      "explicacion": {
+        "es": "«Help» es incontable: no tiene plural.",
+        "en": "'Help' is uncountable, so it has no plural."
+      }
+    },
+    {
+      "id": "mc-017",
+      "nivel": "B1",
+      "tema": "programacion",
+      "correcta": "I've been using Python since 2019.",
+      "incorrecta": "I've been using Python for 2019.",
+      "traduccion": "Uso Python desde 2019.",
+      "explicacion": {
+        "es": "Con el momento de inicio («2019») se usa «since»; «for» es para duraciones.",
+        "en": "With a starting point ('2019') we use 'since'; 'for' is for lengths of time."
+      }
+    },
+    {
+      "id": "mc-018",
+      "nivel": "B1",
+      "tema": "web",
+      "correcta": "If you clear the cache, the page will load the new version.",
+      "incorrecta": "If you will clear the cache, the page will load the new version.",
+      "traduccion": "Si borras la caché, la página cargará la nueva versión.",
+      "explicacion": {
+        "es": "Después de «if» no se usa «will»: «if you clear».",
+        "en": "We don't use 'will' after 'if': 'if you clear'."
+      }
+    },
+    {
+      "id": "mc-019",
+      "nivel": "B1",
+      "tema": "equipo",
+      "correcta": "Could you tell me where the meeting room is?",
+      "incorrecta": "Could you tell me where is the meeting room?",
+      "traduccion": "¿Podrías decirme dónde está la sala de reuniones?",
+      "explicacion": {
+        "es": "En una pregunta indirecta el orden es el de una afirmación: «where the meeting room is».",
+        "en": "In an indirect question we use statement word order: 'where the meeting room is'."
+      }
+    },
+    {
+      "id": "mc-020",
+      "nivel": "B1",
+      "tema": "programacion",
+      "correcta": "The app was written in Kotlin.",
+      "incorrecta": "The app was wrote in Kotlin.",
+      "traduccion": "La app se escribió en Kotlin.",
+      "explicacion": {
+        "es": "La pasiva usa el participio: «written», no el pasado «wrote».",
+        "en": "The passive uses the past participle: 'written', not the past 'wrote'."
+      }
+    },
+    {
+      "id": "mc-021",
+      "nivel": "B1",
+      "tema": "equipo",
+      "correcta": "I'm looking forward to working with you.",
+      "incorrecta": "I'm looking forward to work with you.",
+      "traduccion": "Tengo muchas ganas de trabajar contigo.",
+      "explicacion": {
+        "es": "En «look forward to», «to» es preposición: va seguida de -ing.",
+        "en": "In 'look forward to', 'to' is a preposition, so it's followed by -ing."
+      }
+    },
+    {
+      "id": "mc-022",
+      "nivel": "B1",
+      "tema": "web",
+      "correcta": "The site has been down for an hour.",
+      "incorrecta": "The site is down since an hour.",
+      "traduccion": "La web lleva una hora caída.",
+      "explicacion": {
+        "es": "Para algo que empezó en el pasado y sigue: «has been» + «for» + duración.",
+        "en": "For something that started in the past and continues: 'has been' + 'for' + length of time."
+      }
+    },
+    {
+      "id": "mc-023",
+      "nivel": "B1",
+      "tema": "programacion",
+      "correcta": "This is the developer who wrote the parser.",
+      "incorrecta": "This is the developer which wrote the parser.",
+      "traduccion": "Esta es la desarrolladora que escribió el parser.",
+      "explicacion": {
+        "es": "Para personas se usa «who»; «which» es para cosas.",
+        "en": "We use 'who' for people; 'which' is for things."
+      }
+    },
+    {
+      "id": "mc-024",
+      "nivel": "B1",
+      "tema": "equipo",
+      "correcta": "We need to discuss the deadline.",
+      "incorrecta": "We need to discuss about the deadline.",
+      "traduccion": "Tenemos que hablar del plazo.",
+      "explicacion": {
+        "es": "«Discuss» va sin preposición: «discuss the deadline».",
+        "en": "'Discuss' takes no preposition: 'discuss the deadline'."
+      }
+    },
+    {
+      "id": "mc-025",
+      "nivel": "B2",
+      "tema": "programacion",
+      "correcta": "If we had more time, we would refactor the module.",
+      "incorrecta": "If we would have more time, we would refactor the module.",
+      "traduccion": "Si tuviéramos más tiempo, refactorizaríamos el módulo.",
+      "explicacion": {
+        "es": "En la parte del «if» se usa el pasado («had»), no «would».",
+        "en": "In the 'if' part we use the past ('had'), not 'would'."
+      }
+    },
+    {
+      "id": "mc-026",
+      "nivel": "B2",
+      "tema": "equipo",
+      "correcta": "I suggest that we postpone the release.",
+      "incorrecta": "I suggest us to postpone the release.",
+      "traduccion": "Propongo que aplacemos la versión.",
+      "explicacion": {
+        "es": "«Suggest» no va con persona + «to»: se dice «suggest that we…» o «suggest postponing».",
+        "en": "'Suggest' doesn't take person + 'to': say 'suggest that we…' or 'suggest postponing'."
+      }
+    },
+    {
+      "id": "mc-027",
+      "nivel": "B2",
+      "tema": "web",
+      "correcta": "The more images you add, the slower the page gets.",
+      "incorrecta": "The more images you add, the more slow the page gets.",
+      "traduccion": "Cuantas más imágenes añades, más lenta va la página.",
+      "explicacion": {
+        "es": "«Slow» es corto: su comparativo es «slower», también en «the more…, the…».",
+        "en": "'Slow' is short, so its comparative is 'slower', also in 'the more…, the…'."
+      }
+    },
+    {
+      "id": "mc-028",
+      "nivel": "B2",
+      "tema": "programacion",
+      "correcta": "I'm used to working with legacy code.",
+      "incorrecta": "I'm used to work with legacy code.",
+      "traduccion": "Estoy acostumbrado a trabajar con código heredado.",
+      "explicacion": {
+        "es": "En «be used to», «to» es preposición: va seguida de -ing.",
+        "en": "In 'be used to', 'to' is a preposition, so it's followed by -ing."
+      }
+    },
+    {
+      "id": "mc-029",
+      "nivel": "B2",
+      "tema": "equipo",
+      "correcta": "Despite the delay, the client was happy.",
+      "incorrecta": "Despite of the delay, the client was happy.",
+      "traduccion": "A pesar del retraso, el cliente quedó contento.",
+      "explicacion": {
+        "es": "«Despite» va sin «of» («in spite of» sí lo lleva).",
+        "en": "'Despite' has no 'of' ('in spite of' does)."
+      }
+    },
+    {
+      "id": "mc-030",
+      "nivel": "B2",
+      "tema": "programacion",
+      "correcta": "The bug must have been introduced last week.",
+      "incorrecta": "The bug must have be introduced last week.",
+      "traduccion": "El bug tuvo que introducirse la semana pasada.",
+      "explicacion": {
+        "es": "Después de «have» va el participio: «have been».",
+        "en": "After 'have' we need the participle: 'have been'."
+      }
+    },
+    {
+      "id": "mc-031",
+      "nivel": "B2",
+      "tema": "web",
+      "correcta": "It's worth testing on older phones.",
+      "incorrecta": "It's worth to test on older phones.",
+      "traduccion": "Merece la pena probar en móviles más antiguos.",
+      "explicacion": {
+        "es": "«It's worth» va seguido de -ing: «worth testing».",
+        "en": "'It's worth' is followed by -ing: 'worth testing'."
+      }
+    },
+    {
+      "id": "mc-032",
+      "nivel": "B2",
+      "tema": "equipo",
+      "correcta": "She asked me whether I had finished the report.",
+      "incorrecta": "She asked me whether had I finished the report.",
+      "traduccion": "Me preguntó si había terminado el informe.",
+      "explicacion": {
+        "es": "En una pregunta indirecta no se invierte el orden: «whether I had finished».",
+        "en": "In a reported question we don't invert: 'whether I had finished'."
+      }
+    },
+    {
+      "id": "mc-033",
+      "nivel": "C1",
+      "tema": "programacion",
+      "correcta": "Hardly had we deployed the fix when another bug appeared.",
+      "incorrecta": "Hardly we had deployed the fix when another bug appeared.",
+      "traduccion": "Apenas habíamos desplegado el arreglo cuando apareció otro bug.",
+      "explicacion": {
+        "es": "Con «hardly» al principio se invierte el orden: «hardly had we».",
+        "en": "With 'hardly' at the start the word order is inverted: 'hardly had we'."
+      }
+    },
+    {
+      "id": "mc-034",
+      "nivel": "C1",
+      "tema": "web",
+      "correcta": "Should you need more access, contact the admin.",
+      "incorrecta": "Should you will need more access, contact the admin.",
+      "traduccion": "Si necesitas más permisos, contacta con el administrador.",
+      "explicacion": {
+        "es": "«Should you…» equivale a «if you…» y va con el verbo sin cambios: «should you need».",
+        "en": "'Should you…' means 'if you…' and takes the base verb: 'should you need'."
+      }
+    },
+    {
+      "id": "mc-035",
+      "nivel": "C1",
+      "tema": "equipo",
+      "correcta": "It's high time we automated the release process.",
+      "incorrecta": "It's high time we automate the release process.",
+      "traduccion": "Ya va siendo hora de que automaticemos el proceso de publicación.",
+      "explicacion": {
+        "es": "«It's high time» + sujeto va con el verbo en pasado: «we automated».",
+        "en": "'It's high time' + subject takes the past tense: 'we automated'."
+      }
+    },
+    {
+      "id": "mc-036",
+      "nivel": "C1",
+      "tema": "programacion",
+      "correcta": "The library, whose documentation is excellent, is easy to adopt.",
+      "incorrecta": "The library, which documentation is excellent, is easy to adopt.",
+      "traduccion": "La biblioteca, cuya documentación es excelente, es fácil de adoptar.",
+      "explicacion": {
+        "es": "Para indicar posesión se usa «whose» (cuyo), también con cosas.",
+        "en": "To show possession we use 'whose', also for things."
+      }
+    },
+    {
+      "id": "mc-037",
+      "nivel": "C1",
+      "tema": "equipo",
+      "correcta": "I'd rather you didn't push directly to main.",
+      "incorrecta": "I'd rather you don't push directly to main.",
+      "traduccion": "Preferiría que no subieras los cambios directamente a main.",
+      "explicacion": {
+        "es": "«I'd rather» + otra persona va con el verbo en pasado: «you didn't push».",
+        "en": "'I'd rather' + another person takes the past tense: 'you didn't push'."
+      }
+    },
+    {
+      "id": "mc-038",
+      "nivel": "C1",
+      "tema": "programacion",
+      "correcta": "No sooner had the tests passed than the build failed.",
+      "incorrecta": "No sooner the tests had passed than the build failed.",
+      "traduccion": "Nada más pasar las pruebas, falló la compilación.",
+      "explicacion": {
+        "es": "Con «no sooner» al principio se invierte el orden: «no sooner had the tests passed».",
+        "en": "With 'no sooner' at the start the word order is inverted: 'no sooner had the tests passed'."
+      }
+    },
+    {
+      "id": "mc-039",
+      "nivel": "C1",
+      "tema": "web",
+      "correcta": "The feature, if implemented properly, could cut load times by half.",
+      "incorrecta": "The feature, if implementing properly, could cut load times by half.",
+      "traduccion": "La funcionalidad, si se implementa bien, podría reducir a la mitad los tiempos de carga.",
+      "explicacion": {
+        "es": "Tiene sentido pasivo (la funcionalidad es implementada), así que va el participio: «if implemented».",
+        "en": "The meaning is passive (the feature is implemented), so we use the participle: 'if implemented'."
+      }
+    },
+    {
+      "id": "mc-040",
+      "nivel": "C1",
+      "tema": "equipo",
+      "correcta": "Little did we know that the client would change the requirements.",
+      "incorrecta": "Little we knew that the client would change the requirements.",
+      "traduccion": "Poco sabíamos que el cliente iba a cambiar los requisitos.",
+      "explicacion": {
+        "es": "Con «little» al principio, en este sentido, se invierte el orden con «did»: «little did we know».",
+        "en": "With 'little' at the start, in this sense, we invert with 'did': 'little did we know'."
+      }
+    }
+  ]
+}

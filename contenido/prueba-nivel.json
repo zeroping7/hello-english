@@ -1,0 +1,456 @@
+{
+  "banco": "prueba-nivel",
+  "v": 1,
+  "items": [
+    {
+      "id": "pn-001",
+      "nivel": "A1",
+      "tema": "programacion",
+      "enunciado": "My computer ___ very slow today.",
+      "opciones": [
+        "is",
+        "are",
+        "be",
+        "am"
+      ],
+      "correcta": 0,
+      "traduccion": "Mi ordenador va muy lento hoy.",
+      "explicacion": {
+        "es": "Con «my computer» (tercera persona del singular) se usa «is».",
+        "en": "With 'my computer' (third person singular) we use 'is'."
+      }
+    },
+    {
+      "id": "pn-002",
+      "nivel": "A1",
+      "tema": "web",
+      "enunciado": "Click the ___ to open the page.",
+      "opciones": [
+        "link",
+        "linking",
+        "links to",
+        "linked"
+      ],
+      "correcta": 0,
+      "traduccion": "Haz clic en el enlace para abrir la página.",
+      "explicacion": {
+        "es": "Después de «the» hace falta un sustantivo: «link» (enlace).",
+        "en": "After 'the' we need a noun: 'link'."
+      }
+    },
+    {
+      "id": "pn-003",
+      "nivel": "A1",
+      "tema": "equipo",
+      "enunciado": "Hi, I ___ Ana. I'm the new developer.",
+      "opciones": [
+        "am",
+        "is",
+        "are",
+        "be"
+      ],
+      "correcta": 0,
+      "traduccion": "Hola, soy Ana. Soy la nueva desarrolladora.",
+      "explicacion": {
+        "es": "Con «I» se usa «am».",
+        "en": "With 'I' we use 'am'."
+      }
+    },
+    {
+      "id": "pn-004",
+      "nivel": "A1",
+      "tema": "programacion",
+      "enunciado": "Please ___ your password.",
+      "opciones": [
+        "enter",
+        "enters",
+        "entering",
+        "to entering"
+      ],
+      "correcta": 0,
+      "traduccion": "Por favor, introduce tu contraseña.",
+      "explicacion": {
+        "es": "Para dar una instrucción se usa el verbo sin cambios: «enter».",
+        "en": "To give an instruction we use the base form of the verb: 'enter'."
+      }
+    },
+    {
+      "id": "pn-005",
+      "nivel": "A1",
+      "tema": "equipo",
+      "enunciado": "The meeting is ___ Monday.",
+      "opciones": [
+        "on",
+        "in",
+        "at",
+        "to"
+      ],
+      "correcta": 0,
+      "traduccion": "La reunión es el lunes.",
+      "explicacion": {
+        "es": "Con los días de la semana se usa «on».",
+        "en": "We use 'on' with days of the week."
+      }
+    },
+    {
+      "id": "pn-006",
+      "nivel": "A2",
+      "tema": "programacion",
+      "enunciado": "Yesterday I ___ a bug in the login page.",
+      "opciones": [
+        "found",
+        "find",
+        "finded",
+        "have find"
+      ],
+      "correcta": 0,
+      "traduccion": "Ayer encontré un bug en la página de inicio de sesión.",
+      "explicacion": {
+        "es": "«Yesterday» pide pasado simple, y «find» es irregular: «found».",
+        "en": "'Yesterday' needs the past simple, and 'find' is irregular: 'found'."
+      }
+    },
+    {
+      "id": "pn-007",
+      "nivel": "A2",
+      "tema": "web",
+      "enunciado": "This website is ___ than the old one.",
+      "opciones": [
+        "faster",
+        "more fast",
+        "fastest",
+        "most fast"
+      ],
+      "correcta": 0,
+      "traduccion": "Esta web es más rápida que la antigua.",
+      "explicacion": {
+        "es": "Los adjetivos cortos forman el comparativo con -er: «faster».",
+        "en": "Short adjectives make the comparative with -er: 'faster'."
+      }
+    },
+    {
+      "id": "pn-008",
+      "nivel": "A2",
+      "tema": "equipo",
+      "enunciado": "Can you ___ me the file, please?",
+      "opciones": [
+        "send",
+        "sending",
+        "to send",
+        "sends"
+      ],
+      "correcta": 0,
+      "traduccion": "¿Me puedes enviar el archivo, por favor?",
+      "explicacion": {
+        "es": "Después de «can» va el verbo sin «to»: «send».",
+        "en": "After 'can' we use the verb without 'to': 'send'."
+      }
+    },
+    {
+      "id": "pn-009",
+      "nivel": "A2",
+      "tema": "programacion",
+      "enunciado": "There ___ three errors in this code.",
+      "opciones": [
+        "are",
+        "is",
+        "be",
+        "has"
+      ],
+      "correcta": 0,
+      "traduccion": "Hay tres errores en este código.",
+      "explicacion": {
+        "es": "Con un plural («three errors») se dice «there are».",
+        "en": "With a plural ('three errors') we say 'there are'."
+      }
+    },
+    {
+      "id": "pn-010",
+      "nivel": "A2",
+      "tema": "equipo",
+      "enunciado": "I'm ___ on the new feature this week.",
+      "opciones": [
+        "working",
+        "work",
+        "works",
+        "worked"
+      ],
+      "correcta": 0,
+      "traduccion": "Esta semana estoy trabajando en la nueva funcionalidad.",
+      "explicacion": {
+        "es": "Para algo que está pasando estos días: «am» + verbo en -ing.",
+        "en": "For something happening around now: 'am' + verb with -ing."
+      }
+    },
+    {
+      "id": "pn-011",
+      "nivel": "B1",
+      "tema": "programacion",
+      "enunciado": "I have been working on this bug ___ two hours.",
+      "opciones": [
+        "for",
+        "since",
+        "during",
+        "from"
+      ],
+      "correcta": 0,
+      "traduccion": "Llevo dos horas trabajando en este bug.",
+      "explicacion": {
+        "es": "«For» va con una duración (two hours); «since», con el momento en que empezó.",
+        "en": "'For' goes with a length of time (two hours); 'since' goes with the moment it started."
+      }
+    },
+    {
+      "id": "pn-012",
+      "nivel": "B1",
+      "tema": "web",
+      "enunciado": "If the server ___ down, the website stops working.",
+      "opciones": [
+        "goes",
+        "will go",
+        "went",
+        "going"
+      ],
+      "correcta": 0,
+      "traduccion": "Si el servidor se cae, la web deja de funcionar.",
+      "explicacion": {
+        "es": "Para algo que siempre pasa, después de «if» va el presente: «goes».",
+        "en": "For something that always happens, we use the present after 'if': 'goes'."
+      }
+    },
+    {
+      "id": "pn-013",
+      "nivel": "B1",
+      "tema": "equipo",
+      "enunciado": "Could you let me ___ when the deploy is finished?",
+      "opciones": [
+        "know",
+        "to know",
+        "knowing",
+        "known"
+      ],
+      "correcta": 0,
+      "traduccion": "¿Me avisas cuando termine el despliegue?",
+      "explicacion": {
+        "es": "Después de «let me» va el verbo sin «to»: «let me know».",
+        "en": "After 'let me' we use the verb without 'to': 'let me know'."
+      }
+    },
+    {
+      "id": "pn-014",
+      "nivel": "B1",
+      "tema": "programacion",
+      "enunciado": "The tests ___ automatically before every release.",
+      "opciones": [
+        "are run",
+        "is run",
+        "run by",
+        "are runned"
+      ],
+      "correcta": 0,
+      "traduccion": "Las pruebas se ejecutan automáticamente antes de cada versión.",
+      "explicacion": {
+        "es": "Es pasiva en presente con un plural: «are» + participio «run».",
+        "en": "It's a present passive with a plural subject: 'are' + the participle 'run'."
+      }
+    },
+    {
+      "id": "pn-015",
+      "nivel": "B1",
+      "tema": "equipo",
+      "enunciado": "We need to ___ the meeting until next week.",
+      "opciones": [
+        "put off",
+        "put on",
+        "put up",
+        "put in"
+      ],
+      "correcta": 0,
+      "traduccion": "Tenemos que aplazar la reunión hasta la semana que viene.",
+      "explicacion": {
+        "es": "«Put off» significa aplazar.",
+        "en": "'Put off' means to postpone."
+      }
+    },
+    {
+      "id": "pn-016",
+      "nivel": "B2",
+      "tema": "programacion",
+      "enunciado": "By the time we noticed the bug, it ___ thousands of users.",
+      "opciones": [
+        "had already affected",
+        "has already affected",
+        "already affects",
+        "was already affect"
+      ],
+      "correcta": 0,
+      "traduccion": "Cuando nos dimos cuenta del bug, ya había afectado a miles de usuarios.",
+      "explicacion": {
+        "es": "Para algo anterior a otro momento del pasado se usa el pluscuamperfecto: «had affected».",
+        "en": "For something that happened before another past moment we use the past perfect: 'had affected'."
+      }
+    },
+    {
+      "id": "pn-017",
+      "nivel": "B2",
+      "tema": "web",
+      "enunciado": "The page loaded slowly ___ we had optimised the images.",
+      "opciones": [
+        "even though",
+        "because",
+        "so",
+        "unless"
+      ],
+      "correcta": 0,
+      "traduccion": "La página cargaba despacio aunque habíamos optimizado las imágenes.",
+      "explicacion": {
+        "es": "«Even though» introduce algo que contrasta con lo esperado.",
+        "en": "'Even though' introduces something that contrasts with what you'd expect."
+      }
+    },
+    {
+      "id": "pn-018",
+      "nivel": "B2",
+      "tema": "equipo",
+      "enunciado": "I'd rather we ___ the code before merging it.",
+      "opciones": [
+        "reviewed",
+        "review",
+        "will review",
+        "reviewing"
+      ],
+      "correcta": 0,
+      "traduccion": "Preferiría que revisáramos el código antes de fusionarlo.",
+      "explicacion": {
+        "es": "«I'd rather» + otra persona va con el verbo en pasado: «we reviewed».",
+        "en": "'I'd rather' + another person takes the past tense: 'we reviewed'."
+      }
+    },
+    {
+      "id": "pn-019",
+      "nivel": "B2",
+      "tema": "programacion",
+      "enunciado": "This function is hard to read. It needs ___.",
+      "opciones": [
+        "refactoring",
+        "to refactoring",
+        "refactor",
+        "be refactored by"
+      ],
+      "correcta": 0,
+      "traduccion": "Esta función es difícil de leer. Hay que refactorizarla.",
+      "explicacion": {
+        "es": "«Need» + verbo en -ing tiene sentido pasivo: necesita ser refactorizada.",
+        "en": "'Need' + verb with -ing has a passive meaning: it needs to be refactored."
+      }
+    },
+    {
+      "id": "pn-020",
+      "nivel": "B2",
+      "tema": "equipo",
+      "enunciado": "If I ___ about the outage earlier, I would have told you.",
+      "opciones": [
+        "had known",
+        "knew",
+        "have known",
+        "would know"
+      ],
+      "correcta": 0,
+      "traduccion": "Si me hubiera enterado antes de la caída, te lo habría dicho.",
+      "explicacion": {
+        "es": "Para un pasado que no ocurrió: «if» + «had» + participio, y «would have» + participio.",
+        "en": "For an unreal past: 'if' + 'had' + participle, then 'would have' + participle."
+      }
+    },
+    {
+      "id": "pn-021",
+      "nivel": "C1",
+      "tema": "programacion",
+      "enunciado": "Not only ___ the patch fix the bug, but it also improved performance.",
+      "opciones": [
+        "did",
+        "does",
+        "had",
+        "was"
+      ],
+      "correcta": 0,
+      "traduccion": "El parche no solo arregló el bug, sino que además mejoró el rendimiento.",
+      "explicacion": {
+        "es": "Tras «not only» al principio se invierte el orden, y en pasado se usa «did».",
+        "en": "After 'not only' at the start the word order is inverted, and in the past we use 'did'."
+      }
+    },
+    {
+      "id": "pn-022",
+      "nivel": "C1",
+      "tema": "web",
+      "enunciado": "Had we cached the responses, the API ___ under the load.",
+      "opciones": [
+        "wouldn't have crashed",
+        "won't crash",
+        "didn't crash",
+        "wouldn't crash"
+      ],
+      "correcta": 0,
+      "traduccion": "Si hubiéramos cacheado las respuestas, la API no se habría caído con la carga.",
+      "explicacion": {
+        "es": "«Had we…» equivale a «if we had…»: la otra parte va con «would have» + participio.",
+        "en": "'Had we…' means 'if we had…', so the other part takes 'would have' + participle."
+      }
+    },
+    {
+      "id": "pn-023",
+      "nivel": "C1",
+      "tema": "equipo",
+      "enunciado": "The proposal was rejected on the ___ that it was too expensive.",
+      "opciones": [
+        "grounds",
+        "reasons",
+        "causes",
+        "motives"
+      ],
+      "correcta": 0,
+      "traduccion": "La propuesta se rechazó con el argumento de que era demasiado cara.",
+      "explicacion": {
+        "es": "La expresión fija es «on the grounds that»: con el argumento de que.",
+        "en": "The fixed expression is 'on the grounds that'."
+      }
+    },
+    {
+      "id": "pn-024",
+      "nivel": "C1",
+      "tema": "programacion",
+      "enunciado": "It's high time we ___ our dependencies.",
+      "opciones": [
+        "updated",
+        "update",
+        "will update",
+        "have updated"
+      ],
+      "correcta": 0,
+      "traduccion": "Ya va siendo hora de que actualicemos nuestras dependencias.",
+      "explicacion": {
+        "es": "«It's high time» + sujeto va con el verbo en pasado: «we updated».",
+        "en": "'It's high time' + subject takes the past tense: 'we updated'."
+      }
+    },
+    {
+      "id": "pn-025",
+      "nivel": "C1",
+      "tema": "equipo",
+      "enunciado": "Let's not reinvent the ___; there's already a library for that.",
+      "opciones": [
+        "wheel",
+        "circle",
+        "engine",
+        "road"
+      ],
+      "correcta": 0,
+      "traduccion": "No reinventemos la rueda; ya hay una biblioteca para eso.",
+      "explicacion": {
+        "es": "«Reinvent the wheel» es volver a hacer algo que ya existe.",
+        "en": "'Reinvent the wheel' means making something that already exists."
+      }
+    }
+  ]
+}

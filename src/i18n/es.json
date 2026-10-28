@@ -123,5 +123,9 @@
   "efecto.fallo": "Fallo",
   "efecto.meta": "Objetivo",
   "comun.activado": "Activado",
-  "comun.desactivado": "Desactivado"
+  "comun.desactivado": "Desactivado",
+  "tema.programacion": "Programación",
+  "tema.web": "Web",
+  "tema.equipo": "Trabajo en equipo",
+  "tema.todos": "Todos los temas"
 }

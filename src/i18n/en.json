@@ -123,5 +123,9 @@
   "efecto.fallo": "Wrong",
   "efecto.meta": "Goal",
   "comun.activado": "On",
-  "comun.desactivado": "Off"
+  "comun.desactivado": "Off",
+  "tema.programacion": "Programming",
+  "tema.web": "Web",
+  "tema.equipo": "Teamwork",
+  "tema.todos": "All topics"
 }

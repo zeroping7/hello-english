@@ -93,3 +93,19 @@ Una entrada por decisión. Nunca se borran; si cambian, se añade una nueva que 
 - Decisión: acierto = `round(10 × nivel × dificultad)`, con nivel A1 1 · A2 1,2 · B1 1,5 · B2 1,8 · C1 2 y dificultad 1 o 1,5 según el minijuego (campo `dificultad` del registro). La racha suma un día al cumplir el objetivo un día seguido del anterior; si se salta un día, vuelve a 1 al cumplir y se ve 0 mientras tanto.
 - Alternativas descartadas: puntos fijos por acierto (no premia subir de nivel); racha por abrir la app (no mide práctica real).
 - Consecuencias: los minijuegos solo informan de aciertos y nivel; los puntos los calcula `src/progreso/logica.js`.
+
+## D-011 — Un banco de contenido por tipo de ejercicio
+- Fecha: 2026-10-28
+- Estado: Aceptada
+- Contexto: cada minijuego necesita datos distintos (una pregunta con opciones, una tarjeta verdadera o falsa, un par de frases), pero todos deben cumplir la ficha común (constitución CO2).
+- Decisión: `contenido/<banco>.json` con `{ banco, v, items }`; cada item lleva la ficha común (id con prefijo del banco, nivel, tema, explicación en español e inglés) más sus campos propios. `src/contenido/esquema.js` valida cada banco y los minijuegos solo reciben items válidos. En la prueba de nivel la opción correcta se guarda la primera y se baraja al mostrarla.
+- Alternativas descartadas: un único banco con todos los tipos (más difícil de validar y de revisar); contenido dentro del código de cada minijuego (incumple A2).
+- Consecuencias: un minijuego nuevo añade su banco, su prefijo y sus campos a `esquema.js`, y sus mínimos a `contenido/tests.html`.
+
+## D-012 — Elección de ejercicios por nivel con semilla
+- Fecha: 2026-10-28
+- Estado: Aceptada
+- Contexto: las partidas deben ser variadas, a la altura del usuario y repetibles en las pruebas (A6).
+- Decisión: `elegirEjercicios` toma un 60 % del nivel del usuario, un 30 % del anterior y un 10 % del siguiente, completa con los niveles más cercanos si faltan y baraja con mulberry32 (`src/contenido/azar.js`).
+- Alternativas descartadas: solo el nivel del usuario (aburre y no repasa); al azar entre todos (frustra en A1 y aburre en C1).
+- Consecuencias: el repaso espaciado (spec futura) podrá añadir sus elegidos antes de este reparto.
