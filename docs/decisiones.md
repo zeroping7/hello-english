@@ -125,3 +125,11 @@ Una entrada por decisión. Nunca se borran; si cambian, se añade una nueva que 
 - Decisión: `src/pantallas/juego.js` hace todo eso y monta el minijuego dentro. Cada minijuego solo pinta sus ejercicios y avisa con `alResponder(item, acierto)` y `alTerminar()`. Los puntos ganados se quedan aunque se salga a medias.
 - Alternativas descartadas: que cada minijuego lo haga a su manera (19 copias de lo mismo y comportamientos distintos).
 - Consecuencias: la Práctica de hoy podrá encadenar minijuegos llamando a la misma interfaz.
+
+## D-015 — `.nojekyll`: GitHub Pages sirve los archivos tal cual
+- Fecha: 2026-10-28
+- Estado: Aceptada
+- Contexto: GitHub Pages pasa el sitio por Jekyll, que interpretó como plantilla un texto de un plan y dejó de publicar desde la v0.2.0.
+- Decisión: archivo `.nojekyll` vacío en la raíz, así Pages publica los archivos sin procesarlos (constitución P1: lo que está en el repo es lo que se sirve).
+- Alternativas descartadas: excluir `docs/` y `specs/` en un `_config.yml` (sigue dependiendo de Jekyll).
+- Consecuencias: los `.md` se sirven como texto, no como páginas; no hace falta otra cosa.
