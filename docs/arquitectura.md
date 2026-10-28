@@ -11,15 +11,23 @@ css/
   app.css                # estilos comunes
 fuentes/                 # fuentes alojadas en el repo (constitución P3, PR1)
 src/
-  app.js                 # arranque y router por hash (§2)
+  app.js                 # arranque: ajustes, idioma, service worker y router
+  router.js              # router por hash: monta y desmonta pantallas (§2)
   version.js             # export const VERSION = 'x.y.z'
-  i18n/                  # textos de interfaz: es.json, en.json, textos.js (§5)
+  i18n/                  # textos de interfaz: es.json, en.json, textos.js, tests.html (§5)
   ajustes/               # idioma, tema, voz, sonido, objetivo diario
-  progreso/              # único dueño del almacenamiento: puntos, racha, nivel, exportar/importar (§6)
+  progreso/              # único dueño del almacenamiento (§6)
+    almacen.js           #   localStorage con versión, migraciones y respaldo en memoria
+    logica.js            #   reglas puras: puntos, objetivo, racha, exportar/importar
+    progreso.js          #   une lógica y almacén; evento 'cambio'
+    cronometro.js        #   segundos de juego con la pestaña visible
+    reloj.js             #   hoy() en hora local; ?debug=1&dias=N para probar
+    tests.html
   voz/                   # leer en voz alta y reconocer voz (§7)
   sonido/                # efectos con Web Audio y vibración
-  ui/                    # piezas comunes: barra superior, tarjeta, aviso de acierto/fallo, resumen
-  pantallas/             # inicio, ajustes, bienvenida...
+  ui/                    # piezas comunes: dom, aviso, confirmar, iconos, debug
+  pantallas/             # bienvenida, inicio, ajustes, próximamente
+  pruebas/mini.js        # mini ejecutor de pruebas para los tests.html
 juegos/
   registro.js            # lista de minijuegos (§3)
   <id>/
@@ -52,6 +60,7 @@ specs/
   habilidades: ['vocabulario'],      // lo que suma al progreso
   icono: 'juegos/falsos-amigos/icono.svg',
   necesita: [],                      // p. ej. ['voz'] o ['microfono']
+  dificultad: 1,                     // 1 o 1.5: multiplica los puntos (D-010)
   disponible: true,                  // false = "Próximamente"
 }
 ```
@@ -77,7 +86,7 @@ Así el inicio, la Práctica de hoy y la prueba de nivel usan cualquier minijueg
 - Al cambiar de idioma en Ajustes, la pantalla se vuelve a pintar sin recargar.
 
 ## 6. Progreso y almacenamiento
-- Todo en `localStorage`, con una clave por bloque (`he-ajustes`, `he-progreso`, `he-repaso`) y un campo `v` con la versión del formato.
+- Todo en `localStorage`, con una clave por bloque (`he-ajustes`, `he-progreso`, `he-repaso`) y un campo `v` con la versión del formato. Formato exacto en el plan de 000, §3.
 - Exportar descarga un archivo `.json`; importar lo valida antes de sustituir nada.
 - Si el almacenamiento falla (modo privado), la app funciona igual y avisa de que no se guardará el progreso.
 

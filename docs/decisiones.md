@@ -69,3 +69,27 @@ Una entrada por decisión. Nunca se borran; si cambian, se añade una nueva que 
 - Decisión: las fuentes (con licencia OFL) se guardan en `fuentes/` en formato `woff2`.
 - Alternativas descartadas: Google Fonts (privacidad, PR1; sin conexión, P5); solo fuentes del sistema (el estilo de editor de código pierde personalidad).
 - Consecuencias: unos 100-200 KB que se descargan una vez y quedan en caché.
+
+## D-008 — Tipografía: JetBrains Mono y la fuente del sistema
+- Fecha: 2026-10-28
+- Estado: Aceptada
+- Contexto: el estilo de editor de código pide letra monoespaciada (constitución E1), pero los textos largos se leen peor con ella.
+- Decisión: JetBrains Mono 400 y 700 (SIL OFL, alojada en `fuentes/`, D-007) para títulos, botones, números y código; `system-ui` para los textos largos.
+- Alternativas descartadas: todo monoespaciado (cansa en explicaciones largas); una segunda fuente propia como Inter (más peso sin gran mejora).
+- Consecuencias: unos 90 KB de fuentes, descargados una vez.
+
+## D-009 — Textos de interfaz en JSON cargados con `fetch`
+- Fecha: 2026-10-28
+- Estado: Aceptada
+- Contexto: los textos van en `src/i18n/es.json` y `en.json` (constitución A3).
+- Decisión: se cargan con `fetch` al arrancar y al cambiar de idioma.
+- Alternativas descartadas: `import ... with { type: 'json' }` (no funciona en todos los Safari que queremos cubrir); textos en módulos `.js` (más difícil de revisar y de comparar entre idiomas).
+- Consecuencias: el service worker debe guardar los dos JSON para el uso sin conexión.
+
+## D-010 — Puntos y racha
+- Fecha: 2026-10-28
+- Estado: Aceptada
+- Contexto: la spec 000 deja los valores de puntos para el plan y define la racha por objetivo diario.
+- Decisión: acierto = `round(10 × nivel × dificultad)`, con nivel A1 1 · A2 1,2 · B1 1,5 · B2 1,8 · C1 2 y dificultad 1 o 1,5 según el minijuego (campo `dificultad` del registro). La racha suma un día al cumplir el objetivo un día seguido del anterior; si se salta un día, vuelve a 1 al cumplir y se ve 0 mientras tanto.
+- Alternativas descartadas: puntos fijos por acierto (no premia subir de nivel); racha por abrir la app (no mide práctica real).
+- Consecuencias: los minijuegos solo informan de aciertos y nivel; los puntos los calcula `src/progreso/logica.js`.
