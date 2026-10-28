@@ -113,5 +113,15 @@
   "voz.noDisponible": "Este navegador no puede leer en voz alta. Los ejercicios de escucha no estarán disponibles.",
   "voz.sinIngles": "Este dispositivo no tiene ninguna voz en inglés instalada.",
   "voz.sinAcento.gb": "Este dispositivo no tiene voz británica: se usará otra voz en inglés.",
-  "voz.sinAcento.us": "Este dispositivo no tiene voz americana: se usará otra voz en inglés."
+  "voz.sinAcento.us": "Este dispositivo no tiene voz americana: se usará otra voz en inglés.",
+  "ajustes.sonido": "Sonido",
+  "ajustes.efectos": "Efectos de sonido",
+  "ajustes.vibracion": "Vibración",
+  "ajustes.vibracion.no": "Este dispositivo o navegador no puede vibrar.",
+  "ajustes.probarEfectos": "Probar efectos",
+  "efecto.acierto": "Acierto",
+  "efecto.fallo": "Fallo",
+  "efecto.meta": "Objetivo",
+  "comun.activado": "Activado",
+  "comun.desactivado": "Desactivado"
 }

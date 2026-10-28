@@ -5,6 +5,7 @@ import { alCumplirObjetivo } from './progreso/progreso.js';
 import { iniciarRouter, repintar } from './router.js';
 import { t } from './i18n/textos.js';
 import { avisar } from './ui/aviso.js';
+import { efecto } from './sonido/sonido.js';
 
 const RUTAS = [
   { patron: /^\/inicio$/, cargar: () => import('./pantallas/inicio.js') },
@@ -34,6 +35,7 @@ async function arrancar() {
   alCumplirObjetivo(({ racha }) => {
     const textoRacha = racha === 1 ? t('inicio.racha.uno') : t('inicio.racha.varios', { n: racha });
     avisar(t('aviso.objetivo', { racha: textoRacha }), { tipo: 'exito', duracion: 6000 });
+    efecto('meta');
   });
 
   await iniciarRouter(document.getElementById('app'), RUTAS, '/inicio', redirigir);

@@ -113,5 +113,15 @@
   "voz.noDisponible": "This browser can't read aloud. Listening exercises won't be available.",
   "voz.sinIngles": "This device has no English voice installed.",
   "voz.sinAcento.gb": "This device has no British voice: another English voice will be used.",
-  "voz.sinAcento.us": "This device has no American voice: another English voice will be used."
+  "voz.sinAcento.us": "This device has no American voice: another English voice will be used.",
+  "ajustes.sonido": "Sound",
+  "ajustes.efectos": "Sound effects",
+  "ajustes.vibracion": "Vibration",
+  "ajustes.vibracion.no": "This device or browser can't vibrate.",
+  "ajustes.probarEfectos": "Try the effects",
+  "efecto.acierto": "Correct",
+  "efecto.fallo": "Wrong",
+  "efecto.meta": "Goal",
+  "comun.activado": "On",
+  "comun.desactivado": "Off"
 }

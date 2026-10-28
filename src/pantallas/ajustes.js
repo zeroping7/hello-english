@@ -1,5 +1,4 @@
-// Pantalla de ajustes (HU-3): general, voz, aprendizaje, mis datos y versión; el sonido
-// llega en T025.
+// Pantalla de ajustes (HU-3): general, voz, sonido, aprendizaje, mis datos y versión.
 import { h } from '../ui/dom.js';
 import { t } from '../i18n/textos.js';
 import { barraConVolver } from '../ui/barra.js';
@@ -8,6 +7,7 @@ import { leerAjustes, cambiarAjuste } from '../ajustes/ajustes.js';
 import { VERSION } from '../version.js';
 import { icono } from '../ui/iconos.js';
 import { hayVoz, elegirVoz, hablar } from '../voz/voz.js';
+import { efecto, puedeVibrar } from '../sonido/sonido.js';
 import { navegar } from '../router.js';
 import { avisar } from '../ui/aviso.js';
 import { confirmar } from '../ui/confirmar.js';
@@ -63,6 +63,30 @@ function seccionVoz(ajustes) {
       onclick: () => hablar(t('ajustes.voz.frase'), leerAjustes()),
     }, icono('escucha'), t('ajustes.voz.probar')),
     nota,
+  );
+}
+
+/** Sonido y vibración (HU-3), con botones para probar los efectos. */
+function seccionSonido(ajustes) {
+  const siNo = (nombre, leyenda, valor) => grupoOpciones({
+    nombre,
+    leyenda,
+    valor,
+    opciones: [
+      { valor: true, texto: t('comun.activado') },
+      { valor: false, texto: t('comun.desactivado') },
+    ],
+    alCambiar: (v) => cambiarAjuste(nombre, v),
+  });
+
+  return seccion(t('ajustes.sonido'),
+    siNo('sonido', t('ajustes.efectos'), ajustes.sonido),
+    siNo('vibracion', t('ajustes.vibracion'), ajustes.vibracion),
+    !puedeVibrar() && h('p', { class: 'tenue nota' }, t('ajustes.vibracion.no')),
+    h('p', { class: 'opciones-leyenda' }, t('ajustes.probarEfectos')),
+    h('div', { class: 'botones-datos' },
+      ['acierto', 'fallo', 'meta'].map((nombre) =>
+        h('button', { class: 'boton', type: 'button', onclick: () => efecto(nombre) }, t(`efecto.${nombre}`)))),
   );
 }
 
@@ -149,6 +173,7 @@ export function montar(raiz) {
         }),
       ),
       seccionVoz(ajustes),
+      seccionSonido(ajustes),
       seccion(t('ajustes.aprendizaje'),
         grupoOpciones({
           nombre: 'objetivoMin',

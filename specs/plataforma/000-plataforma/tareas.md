@@ -66,7 +66,7 @@ Formato de cada tarea:
   - Archivos: `src/voz/voz.js`, `src/pantallas/ajustes.js`, i18n
   - Hecho cuando: Ajustes permite elegir acento (británico por defecto) y velocidad, y "Escuchar prueba" lee la frase con esa voz; si no hay voz del acento elegido, usa otra inglesa y lo indica
   - Probar: en el móvil y en el PC, escuchar la prueba con los dos acentos y las dos velocidades
-- [ ] T025 — Sonido y vibración
+- [x] T025 — Sonido y vibración
   - Archivos: `src/sonido/sonido.js`, `src/pantallas/ajustes.js`, `src/progreso/progreso.js`, i18n
   - Hecho cuando: los efectos `acierto`, `fallo` y `meta` suenan con Web Audio y vibra en el móvil; Ajustes los activa y desactiva por separado y tiene botones para probarlos; el aviso de objetivo cumplido suena y vibra
   - Probar: probar los efectos en Ajustes; desactivar el sonido y cumplir el objetivo con `?debug=1`: solo vibra
