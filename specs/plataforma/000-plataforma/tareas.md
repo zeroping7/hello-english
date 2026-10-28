@@ -50,7 +50,7 @@ Formato de cada tarea:
   - Archivos: `src/progreso/logica.js`, `src/progreso/tests.html`
   - Hecho cuando: están las funciones del plan §3 (puntos, sumar segundos, racha visible, segundos de hoy, poda de 60 días) y sus pruebas salen en verde
   - Probar: abrir `…/src/progreso/tests.html`
-- [ ] T021 — Progreso en el inicio y cronómetro
+- [x] T021 — Progreso en el inicio y cronómetro
   - Archivos: `src/progreso/progreso.js`, `src/progreso/reloj.js`, `src/progreso/cronometro.js`, `src/pantallas/inicio.js`, i18n
   - Hecho cuando: el inicio muestra nivel, puntos, racha y la barra del objetivo de hoy, y se repinta con el evento `cambio`; el cronómetro solo cuenta con la pestaña visible y guarda cada 15 s y al ocultarse
   - Probar: ver el resumen en el inicio con valores a 0. El cronómetro se prueba de verdad en T022 y con el primer minijuego

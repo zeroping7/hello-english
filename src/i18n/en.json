@@ -78,5 +78,14 @@
   "bienvenida.nivel.a1": "Start from the beginning (A1)",
   "bienvenida.nivel.a1.desc": "Ideal if you're just starting with English.",
   "ajustes.aprendizaje": "Learning",
-  "ajustes.repetirPrueba": "Retake the level test"
+  "ajustes.repetirPrueba": "Retake the level test",
+  "inicio.tuProgreso": "Your progress",
+  "inicio.nivel": "Level",
+  "inicio.puntos": "Points",
+  "inicio.racha": "Streak",
+  "inicio.racha.uno": "1 day",
+  "inicio.racha.varios": "{n} days",
+  "inicio.objetivo": "Today's goal",
+  "inicio.objetivo.valor": "{hecho} of {total} min",
+  "inicio.objetivo.cumplido": "Done"
 }

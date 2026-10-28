@@ -1,6 +1,6 @@
-// Pantalla de inicio (HU-2): Práctica de hoy y las cuatro categorías con sus minijuegos.
-// El resumen de nivel, puntos, racha y objetivo llega en T021.
+// Pantalla de inicio (HU-2): resumen del progreso, Práctica de hoy y las cuatro categorías.
 import { h } from '../ui/dom.js';
+import { resumen, alCambiarProgreso } from '../progreso/progreso.js';
 import { t } from '../i18n/textos.js';
 import { navegar } from '../router.js';
 import { almacen } from '../progreso/almacen.js';
@@ -14,6 +14,44 @@ function logo() {
     h('span', { class: 'logo-prompt' }, '>_'),
     ' hello',
     h('span', { class: 'logo-cursor', 'aria-hidden': 'true' }),
+  );
+}
+
+function dato(nombreIcono, clase, etiqueta, valor) {
+  return h('div', { class: `dato ${clase}` },
+    icono(nombreIcono),
+    h('span', { class: 'dato-texto' },
+      h('span', { class: 'dato-etiqueta' }, etiqueta),
+      h('span', { class: 'dato-valor' }, valor)));
+}
+
+function textoRacha(n) {
+  return n === 1 ? t('inicio.racha.uno') : t('inicio.racha.varios', { n });
+}
+
+/** Nivel, puntos, racha y objetivo de hoy (HU-2, HU-4). */
+function pintarResumen(contenedor) {
+  const r = resumen();
+  const hechos = Math.min(Math.floor(r.segundosHoy / 60), r.objetivoSegundos / 60);
+  const total = r.objetivoSegundos / 60;
+  const cumplido = r.segundosHoy >= r.objetivoSegundos;
+
+  contenedor.replaceChildren(
+    h('div', { class: 'datos' },
+      dato('nivel', 'dato-nivel', t('inicio.nivel'), r.nivel),
+      dato('puntos', 'dato-puntos', t('inicio.puntos'), r.puntos.toLocaleString(document.documentElement.lang)),
+      dato('racha', 'dato-racha', t('inicio.racha'), textoRacha(r.racha))),
+    h('div', { class: 'objetivo' },
+      h('div', { class: 'objetivo-cabecera' },
+        h('span', { id: 'objetivo-etiqueta' }, t('inicio.objetivo')),
+        h('span', { class: cumplido ? 'objetivo-valor ok' : 'objetivo-valor' },
+          cumplido ? `✓ ${t('inicio.objetivo.cumplido')}` : t('inicio.objetivo.valor', { hecho: hechos, total }))),
+      h('progress', {
+        class: 'objetivo-barra',
+        max: r.objetivoSegundos,
+        value: Math.min(r.segundosHoy, r.objetivoSegundos),
+        'aria-labelledby': 'objetivo-etiqueta',
+      })),
   );
 }
 
@@ -55,6 +93,10 @@ function categoria({ id, icono: nombreIcono }) {
 }
 
 export function montar(raiz) {
+  const zonaResumen = h('section', { class: 'resumen-progreso', 'aria-label': t('inicio.tuProgreso') });
+  pintarResumen(zonaResumen);
+  const dejarDeEscuchar = alCambiarProgreso(() => pintarResumen(zonaResumen));
+
   raiz.append(
     h('header', { class: 'barra barra-inicio' },
       logo(),
@@ -67,9 +109,10 @@ export function montar(raiz) {
     ),
     h('main', { class: 'contenido' },
       !almacen.persistente() && avisoFijo(t('aviso.sinAlmacen'), { tipo: 'error' }),
+      zonaResumen,
       practicaDeHoy(),
       CATEGORIAS.map(categoria),
     ),
   );
-  return { desmontar() {} };
+  return { desmontar: dejarDeEscuchar };
 }
