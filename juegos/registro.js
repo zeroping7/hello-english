@@ -1,6 +1,7 @@
 // Registro de minijuegos (docs/arquitectura.md §3, docs/vision.md).
 // titulo y descripcion son claves de i18n: 'juego.<id>.titulo' y 'juego.<id>.desc'.
-// icono null = se usa el de su categoría hasta que el minijuego tenga el suyo.
+// Cada minijuego tiene su icono en src/ui/iconos.js con su mismo id; su banco de contenido
+// también se llama como su id (contenido/<id>.json).
 
 /** Orden de las categorías en el inicio; cada una con su icono de src/ui/iconos.js. */
 export const CATEGORIAS = [
@@ -10,14 +11,15 @@ export const CATEGORIAS = [
   { id: 'profesional', icono: 'profesional' },
 ];
 
-function juego(id, categoria, habilidades, { necesita = [], dificultad = 1, disponible = false } = {}) {
+// necesita: ['voz'] = sin voz en inglés no se puede jugar (la pantalla común lo avisa).
+function juego(id, categoria, habilidades, { necesita = [], dificultad = 1, disponible = true } = {}) {
   return {
     id,
     titulo: `juego.${id}.titulo`,
     descripcion: `juego.${id}.desc`,
     categoria,
     habilidades,
-    icono: null,
+    icono: id,
     necesita,
     dificultad,
     disponible,
@@ -26,7 +28,7 @@ function juego(id, categoria, habilidades, { necesita = [], dificultad = 1, disp
 
 export const JUEGOS = [
   // Lectura y gramática
-  juego('merge-conflict', 'lectura', ['gramatica', 'lectura'], { disponible: true }),
+  juego('merge-conflict', 'lectura', ['gramatica', 'lectura']),
   juego('caza-el-bug', 'lectura', ['gramatica', 'lectura']),
   juego('prompt', 'lectura', ['escritura', 'vocabulario']),
   juego('incidente', 'lectura', ['lectura'], { dificultad: 1.5 }),
@@ -35,14 +37,14 @@ export const JUEGOS = [
 
   // Escucha y habla
   juego('dictado-codigo', 'escucha', ['escucha', 'escritura'], { necesita: ['voz'], dificultad: 1.5 }),
-  juego('dilo-bien', 'escucha', ['pronunciacion'], { necesita: ['voz', 'microfono'], dificultad: 1.5 }),
+  juego('dilo-bien', 'escucha', ['pronunciacion'], { dificultad: 1.5 }),
   juego('daily-standup', 'escucha', ['escucha', 'pronunciacion'], { necesita: ['voz'] }),
   juego('entrevista', 'escucha', ['escucha', 'pronunciacion'], { necesita: ['voz'] }),
   juego('dictado-audio', 'escucha', ['escucha', 'escritura'], { necesita: ['voz'], dificultad: 1.5 }),
 
   // Vocabulario
-  juego('falsos-amigos', 'vocabulario', ['vocabulario'], { disponible: true }),
-  juego('acronimos', 'vocabulario', ['vocabulario', 'pronunciacion'], { necesita: ['voz'] }),
+  juego('falsos-amigos', 'vocabulario', ['vocabulario']),
+  juego('acronimos', 'vocabulario', ['vocabulario', 'pronunciacion']),
   juego('jerga-dev', 'vocabulario', ['vocabulario']),
   juego('sopa-crucigrama', 'vocabulario', ['vocabulario', 'escritura']),
   juego('emparejar', 'vocabulario', ['vocabulario']),

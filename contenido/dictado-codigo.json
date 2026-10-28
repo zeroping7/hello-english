@@ -1,0 +1,170 @@
+{
+  "banco": "dictado-codigo",
+  "v": 1,
+  "items": [
+    {
+      "id": "dc-001",
+      "nivel": "A1",
+      "tema": "programacion",
+      "codigo": "x = 5",
+      "dictado": "x equals five"
+    },
+    {
+      "id": "dc-002",
+      "nivel": "A1",
+      "tema": "programacion",
+      "codigo": "print(\"hello\")",
+      "dictado": "print, open bracket, double quote, hello, double quote, close bracket"
+    },
+    {
+      "id": "dc-003",
+      "nivel": "A1",
+      "tema": "web",
+      "codigo": "<p>",
+      "dictado": "less than, p, greater than",
+      "explicacion": {
+        "es": "En HTML, < y > se dicen «less than» y «greater than» (también «angle brackets»).",
+        "en": "In HTML, < and > are \"less than\" and \"greater than\" (also \"angle brackets\")."
+      }
+    },
+    {
+      "id": "dc-004",
+      "nivel": "A1",
+      "tema": "web",
+      "codigo": "www.example.com",
+      "dictado": "w w w, dot, example, dot, com"
+    },
+    {
+      "id": "dc-005",
+      "nivel": "A2",
+      "tema": "programacion",
+      "codigo": "name = \"Ana\";",
+      "dictado": "name equals, double quote, Ana, double quote, semicolon"
+    },
+    {
+      "id": "dc-006",
+      "nivel": "A2",
+      "tema": "programacion",
+      "codigo": "a + b * 2",
+      "dictado": "a plus b times two",
+      "explicacion": {
+        "es": "El asterisco se lee «times» cuando multiplica.",
+        "en": "The asterisk is read as \"times\" when it multiplies."
+      }
+    },
+    {
+      "id": "dc-007",
+      "nivel": "A2",
+      "tema": "web",
+      "codigo": "user@mail.com",
+      "dictado": "user, at, mail, dot, com"
+    },
+    {
+      "id": "dc-008",
+      "nivel": "A2",
+      "tema": "equipo",
+      "codigo": "#general",
+      "dictado": "hash, general",
+      "explicacion": {
+        "es": "En Slack, los canales empiezan por «#», que en Reino Unido se llama «hash».",
+        "en": "In Slack, channels start with \"#\", called \"hash\" in the UK."
+      }
+    },
+    {
+      "id": "dc-009",
+      "nivel": "B1",
+      "tema": "programacion",
+      "codigo": "if (x > 10) {",
+      "dictado": "if, open bracket, x greater than ten, close bracket, open curly brace"
+    },
+    {
+      "id": "dc-010",
+      "nivel": "B1",
+      "tema": "programacion",
+      "codigo": "my_list[0]",
+      "dictado": "my underscore list, open square bracket, zero, close square bracket"
+    },
+    {
+      "id": "dc-011",
+      "nivel": "B1",
+      "tema": "web",
+      "codigo": "https://api.example.com/users",
+      "dictado": "h t t p s, colon, slash, slash, api, dot, example, dot, com, slash, users"
+    },
+    {
+      "id": "dc-012",
+      "nivel": "B1",
+      "tema": "equipo",
+      "codigo": "git commit -m \"fix typo\"",
+      "dictado": "git commit, dash m, double quote, fix typo, double quote"
+    },
+    {
+      "id": "dc-013",
+      "nivel": "B2",
+      "tema": "programacion",
+      "codigo": "const total = price * 1.21;",
+      "dictado": "const total equals price times one point two one, semicolon",
+      "explicacion": {
+        "es": "El punto decimal se lee «point»: 1.21 = «one point two one».",
+        "en": "A decimal point is read \"point\": 1.21 = \"one point two one\"."
+      }
+    },
+    {
+      "id": "dc-014",
+      "nivel": "B2",
+      "tema": "programacion",
+      "codigo": "return a != b;",
+      "dictado": "return a, not equals, b, semicolon",
+      "explicacion": {
+        "es": "«!=» se lee «not equals» (o «bang equals»).",
+        "en": "\"!=\" is read \"not equals\" (or \"bang equals\")."
+      }
+    },
+    {
+      "id": "dc-015",
+      "nivel": "B2",
+      "tema": "web",
+      "codigo": ".nav > li:hover",
+      "dictado": "dot nav, greater than, l i, colon, hover"
+    },
+    {
+      "id": "dc-016",
+      "nivel": "B2",
+      "tema": "equipo",
+      "codigo": "npm install --save-dev jest",
+      "dictado": "npm install, dash dash save dash dev, jest"
+    },
+    {
+      "id": "dc-017",
+      "nivel": "C1",
+      "tema": "programacion",
+      "codigo": "items.map(i => i * 2)",
+      "dictado": "items dot map, open bracket, i, arrow, i times two, close bracket",
+      "explicacion": {
+        "es": "«=>» se lee «arrow» (o «fat arrow»).",
+        "en": "\"=>\" is read \"arrow\" (or \"fat arrow\")."
+      }
+    },
+    {
+      "id": "dc-018",
+      "nivel": "C1",
+      "tema": "programacion",
+      "codigo": "$HOME/.config",
+      "dictado": "dollar, HOME in capitals, slash, dot config"
+    },
+    {
+      "id": "dc-019",
+      "nivel": "C1",
+      "tema": "web",
+      "codigo": "a[href^=\"https\"]",
+      "dictado": "a, open square bracket, href, caret equals, double quote, https, double quote, close square bracket"
+    },
+    {
+      "id": "dc-020",
+      "nivel": "C1",
+      "tema": "equipo",
+      "codigo": "git push origin main --force",
+      "dictado": "git push origin main, dash dash force"
+    }
+  ]
+}

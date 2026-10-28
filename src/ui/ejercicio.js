@@ -14,10 +14,11 @@ export function contador(n, total) {
  * Botones de opción numerados. marcar() enseña la elegida y la correcta y los desactiva.
  * @param {string[]} textos
  * @param {(indice: number) => void} alElegir
+ * @param {{ lang?: string }} [extra] idioma de los textos (inglés salvo que se diga)
  */
-export function opciones(textos, alElegir) {
+export function opciones(textos, alElegir, { lang = 'en' } = {}) {
   const botones = textos.map((texto, i) =>
-    h('button', { class: 'opcion-respuesta', type: 'button', lang: 'en', onclick: () => alElegir(i) },
+    h('button', { class: 'opcion-respuesta', type: 'button', lang, onclick: () => alElegir(i) },
       h('span', { class: 'opcion-tecla', 'aria-hidden': 'true' }, String(i + 1)),
       h('span', { class: 'opcion-texto' }, texto),
       h('span', { class: 'opcion-marca', 'aria-hidden': 'true' })));

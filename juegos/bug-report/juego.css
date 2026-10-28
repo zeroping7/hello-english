@@ -1,0 +1,30 @@
+/* Bug report: el informe con sus campos y los textos que quedan */
+.br-informe { display: grid; gap: var(--espacio-2); margin-bottom: var(--espacio-3); padding: var(--espacio-3); border: 1px solid var(--borde); border-radius: var(--radio); background: var(--panel); }
+.br-campo { display: grid; gap: var(--espacio-1); padding-left: var(--espacio-2); border-left: 3px solid var(--borde); }
+.br-campo.bien { border-left-color: var(--string); }
+.br-campo.mal { border-left-color: var(--error); }
+.br-nombre { color: var(--function); font-family: var(--fuente-mono); font-size: 0.875rem; font-weight: 700; }
+.br-ayuda { color: var(--tenue); font-weight: 400; }
+.br-hueco { min-height: 44px; display: flex; align-items: center; color: var(--tenue); font-style: italic; border: 1px dashed var(--borde); border-radius: 6px; padding: 0 var(--espacio-2); }
+
+.br-texto {
+  min-height: 44px;
+  padding: var(--espacio-1) var(--espacio-2);
+  border: 1px solid var(--keyword);
+  border-radius: 6px;
+  background: var(--fondo);
+  color: var(--texto);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.br-texto:disabled { cursor: default; border-color: var(--borde); }
+.br-trozos { display: grid; gap: var(--espacio-2); margin-bottom: var(--espacio-3); }
+.br-trozo { text-align: left; font-family: var(--fuente-texto); }
+.of-tecla { margin-right: 6px; color: var(--tenue); font-size: 0.75rem; font-family: var(--fuente-mono); }
+.of-acciones { display: flex; justify-content: flex-end; }
+.br-solucion { margin: 0; }
+.br-solucion dt { color: var(--function); font-family: var(--fuente-mono); font-size: 0.875rem; }
+.br-solucion dd { margin: 0 0 var(--espacio-2); }
+@media (pointer: coarse) { .of-tecla { display: none; } }

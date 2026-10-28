@@ -1,0 +1,19 @@
+/* Prompt: hueco dentro de la línea de la terminal */
+.pr-comentario { color: var(--tenue); font-style: italic; }
+
+.pr-campo {
+  max-width: 100%;
+  margin: 0 2px;
+  padding: 0 4px;
+  border: 0;
+  border-bottom: 2px solid var(--keyword);
+  background: transparent;
+  color: var(--keyword);
+  font: inherit;
+  font-weight: 700;
+}
+
+.pr-campo:focus-visible { outline: 2px solid var(--keyword); outline-offset: 2px; }
+.pr-campo.bien { color: var(--string); border-bottom-color: var(--string); }
+.pr-campo.mal { color: var(--error); border-bottom-color: var(--error); text-decoration: line-through; }
+.pr-botones { display: flex; justify-content: flex-end; gap: var(--espacio-2); margin-top: var(--espacio-3); }

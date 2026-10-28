@@ -1,0 +1,473 @@
+{
+  "banco": "dilo-bien",
+  "v": 1,
+  "items": [
+    {
+      "id": "db-001",
+      "nivel": "A1",
+      "tema": "equipo",
+      "termino": "meeting",
+      "suena": "MÍ-tin",
+      "ipa": "/ˈmiːtɪŋ/",
+      "otras": [
+        "MÉ-tin",
+        "mi-TÍN"
+      ],
+      "explicacion": {
+        "es": "La «ee» suena como una i larga: «mí». El acento va al principio.",
+        "en": "The 'ee' is a long 'i' sound, and the stress is on the first syllable."
+      }
+    },
+    {
+      "id": "db-002",
+      "nivel": "A1",
+      "tema": "web",
+      "termino": "Wi-Fi",
+      "suena": "UÁI-fai",
+      "ipa": "/ˈwaɪfaɪ/",
+      "otras": [
+        "UÍ-fi",
+        "güi-FÍ"
+      ],
+      "aceptadas": [
+        "wifi",
+        "wi fi"
+      ],
+      "explicacion": {
+        "es": "Las dos «i» suenan «ai», como en «hay».",
+        "en": "Both i's sound like the 'i' in 'fine'."
+      }
+    },
+    {
+      "id": "db-003",
+      "nivel": "A1",
+      "tema": "web",
+      "termino": "image",
+      "suena": "Í-mich",
+      "ipa": "/ˈɪmɪdʒ/",
+      "otras": [
+        "i-MÉICH",
+        "i-MÁ-ye"
+      ],
+      "explicacion": {
+        "es": "El acento va en la primera sílaba y la «a» casi desaparece: «ímich».",
+        "en": "Stress the first syllable; the \"a\" is a weak \"i\" sound."
+      }
+    },
+    {
+      "id": "db-004",
+      "nivel": "A1",
+      "tema": "programacion",
+      "termino": "key",
+      "suena": "ki",
+      "ipa": "/kiː/",
+      "otras": [
+        "kei",
+        "kai"
+      ],
+      "explicacion": {
+        "es": "«Key» suena «ki»: rima con «see».",
+        "en": "'Key' rhymes with 'see'."
+      }
+    },
+    {
+      "id": "db-005",
+      "nivel": "A1",
+      "tema": "programacion",
+      "termino": "null",
+      "suena": "nal",
+      "ipa": "/nʌl/",
+      "otras": [
+        "nul",
+        "NÚ-le"
+      ],
+      "explicacion": {
+        "es": "La «u» suena como una «a» corta: «nal».",
+        "en": "The 'u' is like the 'u' in 'cut'."
+      }
+    },
+    {
+      "id": "db-006",
+      "nivel": "A2",
+      "tema": "programacion",
+      "termino": "method",
+      "suena": "MÉ-zod",
+      "ipa": "/ˈmeθəd/",
+      "otras": [
+        "MÉ-tod",
+        "me-TÓD"
+      ],
+      "explicacion": {
+        "es": "La «th» es como la «z» de España: «mézod». El acento va al principio.",
+        "en": "'th' is the sound in 'think', and the stress is on the first syllable."
+      }
+    },
+    {
+      "id": "db-007",
+      "nivel": "A2",
+      "tema": "web",
+      "termino": "browser",
+      "suena": "BRÁU-ser",
+      "ipa": "/ˈbraʊzə/",
+      "otras": [
+        "BRÓU-ser",
+        "bro-SÉR"
+      ],
+      "explicacion": {
+        "es": "«ow» suena «au», como en «how».",
+        "en": "'ow' sounds like the 'ow' in 'how'."
+      }
+    },
+    {
+      "id": "db-008",
+      "nivel": "A2",
+      "tema": "equipo",
+      "termino": "Wednesday",
+      "suena": "UÉNS-dei",
+      "ipa": "/ˈwenzdeɪ/",
+      "otras": [
+        "UÉD-nes-dei",
+        "uen-ÉS-dei"
+      ],
+      "explicacion": {
+        "es": "La primera «d» no se pronuncia: «uénsdei».",
+        "en": "The first \"d\" is silent."
+      }
+    },
+    {
+      "id": "db-009",
+      "nivel": "A2",
+      "tema": "programacion",
+      "termino": "cache",
+      "suena": "kash",
+      "ipa": "/kæʃ/",
+      "otras": [
+        "ka-CHÉ",
+        "KA-che"
+      ],
+      "aceptadas": [
+        "cash"
+      ],
+      "explicacion": {
+        "es": "«Cache» se dice igual que «cash» (dinero): una sola sílaba.",
+        "en": "'Cache' sounds exactly like 'cash'."
+      }
+    },
+    {
+      "id": "db-010",
+      "nivel": "A2",
+      "tema": "programacion",
+      "termino": "array",
+      "suena": "a-RÉI",
+      "ipa": "/əˈreɪ/",
+      "otras": [
+        "Á-rrai",
+        "a-RRÁI"
+      ],
+      "explicacion": {
+        "es": "Acento en la segunda sílaba y «ay» suena «ei».",
+        "en": "Stress the second syllable; 'ay' sounds like 'day'."
+      }
+    },
+    {
+      "id": "db-011",
+      "nivel": "A2",
+      "tema": "web",
+      "termino": "deploy",
+      "suena": "di-PLÓI",
+      "ipa": "/dɪˈplɔɪ/",
+      "otras": [
+        "DÉ-ploi",
+        "de-PLÓ-i"
+      ],
+      "explicacion": {
+        "es": "El acento va en «ploy» y la «e» suena casi «i».",
+        "en": "Stress 'ploy'; the 'e' is a short 'i'."
+      }
+    },
+    {
+      "id": "db-012",
+      "nivel": "B1",
+      "tema": "web",
+      "termino": "width",
+      "suena": "uidz",
+      "ipa": "/wɪdθ/",
+      "otras": [
+        "uit",
+        "uaid"
+      ],
+      "explicacion": {
+        "es": "Termina en «dz» (d + z de España) y la «i» es corta.",
+        "en": "It ends in \"d\" + \"th\", with a short \"i\"."
+      }
+    },
+    {
+      "id": "db-013",
+      "nivel": "B1",
+      "tema": "web",
+      "termino": "height",
+      "suena": "jait",
+      "ipa": "/haɪt/",
+      "otras": [
+        "jeit",
+        "jeig"
+      ],
+      "explicacion": {
+        "es": "Aunque se escribe «ei», suena «ai»: «jáit». La «gh» no suena.",
+        "en": "It rhymes with 'light': the 'gh' is silent."
+      }
+    },
+    {
+      "id": "db-014",
+      "nivel": "B1",
+      "tema": "programacion",
+      "termino": "query",
+      "suena": "KUÍ-ri",
+      "ipa": "/ˈkwɪəri/",
+      "otras": [
+        "KÉ-ri",
+        "kue-RÍ"
+      ],
+      "explicacion": {
+        "es": "«Qu» suena «ku» y el acento va al principio: «kuíri».",
+        "en": "'Qu' sounds like 'kw', with the stress on the first syllable."
+      }
+    },
+    {
+      "id": "db-015",
+      "nivel": "B1",
+      "tema": "equipo",
+      "termino": "comfortable",
+      "suena": "KÁMF-ta-bol",
+      "ipa": "/ˈkʌmftəbl/",
+      "otras": [
+        "com-for-TÉI-bol",
+        "CÓM-for-ta-bol"
+      ],
+      "explicacion": {
+        "es": "Se come la «or»: «kámftabol», con acento al principio.",
+        "en": "The 'or' almost disappears: KUMF-tuh-bul."
+      }
+    },
+    {
+      "id": "db-016",
+      "nivel": "B1",
+      "tema": "programacion",
+      "termino": "Unix",
+      "suena": "IÚ-nix",
+      "ipa": "/ˈjuːnɪks/",
+      "otras": [
+        "Ú-nix",
+        "u-NÍX"
+      ],
+      "explicacion": {
+        "es": "La «u» inicial suena «iu», como en «you».",
+        "en": "The 'u' sounds like 'you'."
+      }
+    },
+    {
+      "id": "db-017",
+      "nivel": "B1",
+      "tema": "equipo",
+      "termino": "development",
+      "suena": "di-VÉ-lop-ment",
+      "ipa": "/dɪˈveləpmənt/",
+      "otras": [
+        "de-ve-LÓP-ment",
+        "DÉ-ve-lop-ment"
+      ],
+      "explicacion": {
+        "es": "El acento va en la segunda sílaba: «vé».",
+        "en": "Stress the second syllable: de-VEL-op-ment."
+      }
+    },
+    {
+      "id": "db-018",
+      "nivel": "B1",
+      "tema": "programacion",
+      "termino": "debug",
+      "suena": "di-BÁG",
+      "ipa": "/diːˈbʌɡ/",
+      "otras": [
+        "DÉ-bug",
+        "de-BÚG"
+      ],
+      "explicacion": {
+        "es": "«De» suena «di» y la «u» suena casi «a»: «dibág».",
+        "en": "'de' sounds like 'dee' and the 'u' like the one in 'cut'."
+      }
+    },
+    {
+      "id": "db-019",
+      "nivel": "B2",
+      "tema": "programacion",
+      "termino": "Linux",
+      "suena": "LÍ-nucs",
+      "ipa": "/ˈlɪnəks/",
+      "otras": [
+        "LÁI-nucs",
+        "li-NÚCS"
+      ],
+      "explicacion": {
+        "es": "La «i» es corta, como en «lip», y el acento va al principio.",
+        "en": "Short \"i\" as in \"lip\", with the stress on the first syllable."
+      }
+    },
+    {
+      "id": "db-020",
+      "nivel": "B2",
+      "tema": "programacion",
+      "termino": "queue",
+      "suena": "kiú",
+      "ipa": "/kjuː/",
+      "otras": [
+        "KÉ-ue",
+        "ku-É-ue"
+      ],
+      "aceptadas": [
+        "cue",
+        "q"
+      ],
+      "explicacion": {
+        "es": "Las cuatro últimas letras no suenan: «queue» se dice igual que la letra Q.",
+        "en": "It sounds exactly like the letter Q."
+      }
+    },
+    {
+      "id": "db-021",
+      "nivel": "B2",
+      "tema": "equipo",
+      "termino": "colleague",
+      "suena": "KÓ-lig",
+      "ipa": "/ˈkɒliːɡ/",
+      "otras": [
+        "co-LÍ-gue",
+        "co-LÉG"
+      ],
+      "explicacion": {
+        "es": "Acento en la primera sílaba, y la «ue» final no suena.",
+        "en": "Stress the first syllable; the final \"ue\" is silent."
+      }
+    },
+    {
+      "id": "db-022",
+      "nivel": "B2",
+      "tema": "programacion",
+      "termino": "suite",
+      "suena": "suít",
+      "ipa": "/swiːt/",
+      "otras": [
+        "súit",
+        "su-Í-te"
+      ],
+      "aceptadas": [
+        "sweet"
+      ],
+      "explicacion": {
+        "es": "Suena como «sweet» (dulce), no como «suit» (traje).",
+        "en": "It sounds like 'sweet', not like 'suit'."
+      }
+    },
+    {
+      "id": "db-023",
+      "nivel": "B2",
+      "tema": "programacion",
+      "termino": "variable",
+      "suena": "VÉ-ri-a-bol",
+      "ipa": "/ˈveəriəbl/",
+      "otras": [
+        "va-ri-Á-ble",
+        "va-RÁI-a-bol"
+      ],
+      "explicacion": {
+        "es": "Acento al principio y la «a» suena «e»: «vériabol».",
+        "en": "Stress the first syllable: VAIR-ee-uh-bul."
+      }
+    },
+    {
+      "id": "db-024",
+      "nivel": "C1",
+      "tema": "web",
+      "termino": "nginx",
+      "suena": "énchin-ÉX",
+      "ipa": "/ˌendʒɪnˈeks/",
+      "otras": [
+        "en-GÍNX",
+        "EN-guinx"
+      ],
+      "aceptadas": [
+        "engine x",
+        "engine-x",
+        "engine ex"
+      ],
+      "explicacion": {
+        "es": "Se dice como «engine X»: «énchin éx».",
+        "en": "It's said like \"engine X\"."
+      }
+    },
+    {
+      "id": "db-025",
+      "nivel": "C1",
+      "tema": "programacion",
+      "termino": "integer",
+      "suena": "ÍN-ti-yer",
+      "ipa": "/ˈɪntɪdʒə/",
+      "otras": [
+        "in-te-GUÉR",
+        "in-TÉI-guer"
+      ],
+      "explicacion": {
+        "es": "La «g» suena suave, como «y» o «dj», y el acento va al principio.",
+        "en": "The 'g' is soft, like 'j', and the stress is on the first syllable."
+      }
+    },
+    {
+      "id": "db-026",
+      "nivel": "C1",
+      "tema": "programacion",
+      "termino": "algorithm",
+      "suena": "ÁL-go-ri-dzem",
+      "ipa": "/ˈælɡərɪðəm/",
+      "otras": [
+        "al-go-RÍTM",
+        "al-go-RÁIZ-em"
+      ],
+      "explicacion": {
+        "es": "Acento en la primera sílaba y la «th» como la «d» suave de «nada».",
+        "en": "Stress the first syllable; 'th' as in 'this'."
+      }
+    },
+    {
+      "id": "db-027",
+      "nivel": "C1",
+      "tema": "equipo",
+      "termino": "hierarchy",
+      "suena": "JÁI-e-rar-ki",
+      "ipa": "/ˈhaɪərɑːki/",
+      "otras": [
+        "ie-RÁR-ki-a",
+        "jie-RÁR-ki"
+      ],
+      "explicacion": {
+        "es": "Empieza como «high» («jái») y la «ch» suena «k».",
+        "en": "It starts like 'high', and the 'ch' sounds like 'k'."
+      }
+    },
+    {
+      "id": "db-028",
+      "nivel": "C1",
+      "tema": "programacion",
+      "termino": "analysis",
+      "suena": "a-NÁ-li-sis",
+      "ipa": "/əˈnæləsɪs/",
+      "otras": [
+        "a-na-LÁI-sis",
+        "a-na-li-SÍS"
+      ],
+      "explicacion": {
+        "es": "Acento en la segunda sílaba, y la «y» suena como una «i» corta.",
+        "en": "Stress the second syllable; the \"y\" is a short \"i\"."
+      }
+    }
+  ]
+}

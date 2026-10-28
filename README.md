@@ -6,9 +6,10 @@ Aprende inglés de informática y programación con minijuegos, desde el navegad
 
 ## Qué tiene
 - **Prueba de nivel** de 10 preguntas al empezar.
-- **Práctica de hoy**: una sesión que mezcla minijuegos y repasos según tu nivel.
+- **Práctica de hoy**: tres minijuegos elegidos cada día, empezando por el que tiene más cosas para repasar.
 - **19 minijuegos** en cuatro categorías: Lectura y gramática, Escucha y habla, Vocabulario e Inglés profesional. La lista completa está en [`docs/vision.md`](docs/vision.md).
-- Puntos, niveles, racha diaria, logros y repaso espaciado.
+- Puntos, racha diaria, 18 logros, repaso espaciado de lo que fallas y un nivel que sube solo al acertar.
+- Más de 500 ejercicios de A1 a C1 sobre programación, web y trabajo en equipo.
 - Interfaz en español o en inglés, tema claro u oscuro y voz británica o americana.
 - Sin cuentas, sin cookies y sin estadísticas: el progreso se queda en tu dispositivo.
 
@@ -21,7 +22,7 @@ Con Spec Driven Development y Claude, desde el móvil o el PC:
 
 Reglas en [`docs/constitucion.md`](docs/constitucion.md), estructura en [`docs/arquitectura.md`](docs/arquitectura.md) y decisiones en [`docs/decisiones.md`](docs/decisiones.md). Instrucciones para Claude en [`CLAUDE.md`](CLAUDE.md).
 
-## Hoja de ruta (versión 1)
+## Hoja de ruta
 | Spec | Qué | Estado |
 |---|---|---|
 | 000 | Plataforma: inicio, ajustes, idioma, tema, progreso y app instalable | Implementada (v0.1.0) |
@@ -29,5 +30,12 @@ Reglas en [`docs/constitucion.md`](docs/constitucion.md), estructura en [`docs/a
 | 002 | Prueba de nivel | Implementada (v0.2.0) |
 | 003 | Minijuego: Falsos amigos (y pantalla común de minijuego) | Implementada (v0.3.0) |
 | 004 | Minijuego: Merge Conflict | Implementada (v0.4.0) |
-| … | Resto de minijuegos, uno por spec | — |
-| … | Repaso espaciado, logros y Práctica de hoy | — |
+| 005-021 | Los otros 17 minijuegos: Caza el bug, Prompt, Incidente en producción, Ordenar frases, Ahorcado, Dictado de código, Dilo bien, Daily standup, Entrevista, Dictado, Acrónimos, Jerga dev, Sopa y crucigrama, Emparejar, Contrarreloj, ¿Educado o borde? y Bug report | Implementadas (v1.0.0) |
+| 022 | Repaso espaciado | Implementada (v1.0.0) |
+| 023 | Logros | Implementada (v1.0.0) |
+| 024 | Práctica de hoy | Implementada (v1.0.0) |
+| 025 | Subida de nivel con el uso | Implementada (v1.0.0) |
+| 026 | Contenido de los 17 minijuegos | Implementada (v1.0.0) |
+| — | Más temas: hardware, redes, cloud, seguridad, IA… («contenido de <tema> <nivel>») | Pendiente |
+
+**Pruebas:** abre en el navegador `contenido/tests.html`, `juegos/tests.html`, `src/progreso/tests.html`, `src/i18n/tests.html`, `src/prueba/tests.html` y los `tests.html` de Falsos amigos y Merge Conflict.

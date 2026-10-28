@@ -1,0 +1,326 @@
+{
+  "banco": "entrevista",
+  "v": 1,
+  "items": [
+    {
+      "id": "et-001",
+      "nivel": "A1",
+      "tema": "equipo",
+      "audio": "Hello! What's your name?",
+      "opciones": [
+        "My name is Laura. Nice to meet you.",
+        "I'm fine, thank you.",
+        "Yes, I am."
+      ],
+      "traduccion": "¡Hola! ¿Cómo te llamas?",
+      "explicacion": {
+        "es": "Te preguntan el nombre: «My name is...».",
+        "en": "They're asking your name: 'My name is...'."
+      }
+    },
+    {
+      "id": "et-002",
+      "nivel": "A1",
+      "tema": "programacion",
+      "audio": "What programming languages do you know?",
+      "opciones": [
+        "I know Java and a little Python.",
+        "I'm thirty years old.",
+        "Yes, I know."
+      ],
+      "traduccion": "¿Qué lenguajes de programación conoces?",
+      "explicacion": {
+        "es": "Te preguntan qué lenguajes conoces: hay que nombrarlos.",
+        "en": "They ask which languages you know, so name them."
+      }
+    },
+    {
+      "id": "et-003",
+      "nivel": "A1",
+      "tema": "web",
+      "audio": "Do you like web design?",
+      "opciones": [
+        "Yes, I do. I love making websites.",
+        "Yes, I like.",
+        "No, I am not."
+      ],
+      "traduccion": "¿Te gusta el diseño web?",
+      "explicacion": {
+        "es": "A «Do you like...?» se responde «Yes, I do»; «Yes, I like» no es correcto.",
+        "en": "To 'Do you like...?' answer 'Yes, I do'; 'Yes, I like' is wrong."
+      }
+    },
+    {
+      "id": "et-004",
+      "nivel": "A1",
+      "tema": "equipo",
+      "audio": "Where do you live?",
+      "opciones": [
+        "I live in Madrid.",
+        "I'm living a developer.",
+        "At nine o'clock."
+      ],
+      "traduccion": "¿Dónde vives?",
+      "explicacion": {
+        "es": "«Where» pregunta por un lugar: «I live in...».",
+        "en": "'Where' asks about a place: 'I live in...'."
+      }
+    },
+    {
+      "id": "et-005",
+      "nivel": "A2",
+      "tema": "equipo",
+      "audio": "Can you tell me about your last job?",
+      "opciones": [
+        "I worked as a junior developer at a small company for two years.",
+        "I am work in a company since two years.",
+        "My last job was yesterday."
+      ],
+      "traduccion": "¿Me puedes hablar de tu último trabajo?",
+      "explicacion": {
+        "es": "Para un trabajo pasado: pasado simple («I worked») y «for two years».",
+        "en": "For a past job: past simple ('I worked') and 'for two years'."
+      }
+    },
+    {
+      "id": "et-006",
+      "nivel": "A2",
+      "tema": "programacion",
+      "audio": "Why do you want to work here?",
+      "opciones": [
+        "I like your products, and I want to learn from a good team.",
+        "Because I need money, that's all.",
+        "I don't know why."
+      ],
+      "traduccion": "¿Por qué quieres trabajar aquí?",
+      "explicacion": {
+        "es": "Muestra interés por la empresa y por aprender.",
+        "en": "It shows interest in the company and in learning."
+      }
+    },
+    {
+      "id": "et-007",
+      "nivel": "A2",
+      "tema": "web",
+      "audio": "Have you ever worked with React?",
+      "opciones": [
+        "Yes, I have. I used it in my last project.",
+        "Yes, I did worked.",
+        "Never I have."
+      ],
+      "traduccion": "¿Has trabajado alguna vez con React?",
+      "explicacion": {
+        "es": "A «Have you ever...?» se responde «Yes, I have» o «No, I haven't».",
+        "en": "Answer 'Have you ever...?' with 'Yes, I have' or 'No, I haven't'."
+      }
+    },
+    {
+      "id": "et-008",
+      "nivel": "A2",
+      "tema": "equipo",
+      "audio": "Do you prefer working alone or in a team?",
+      "opciones": [
+        "I like both, but I really enjoy working in a team.",
+        "I prefer working alone, because people are annoying.",
+        "Yes, I prefer."
+      ],
+      "traduccion": "¿Prefieres trabajar solo o en equipo?",
+      "explicacion": {
+        "es": "Respuesta positiva y que responde a lo que te preguntan.",
+        "en": "A positive answer that responds to the question."
+      }
+    },
+    {
+      "id": "et-009",
+      "nivel": "B1",
+      "tema": "equipo",
+      "audio": "What are your strengths?",
+      "opciones": [
+        "I'm a fast learner, and I communicate well with my team.",
+        "I'm very strong. I go to the gym.",
+        "I don't have any weaknesses."
+      ],
+      "traduccion": "¿Cuáles son tus puntos fuertes?",
+      "explicacion": {
+        "es": "«Strengths» son tus puntos fuertes como profesional, no la fuerza física.",
+        "en": "'Strengths' are your professional strong points, not physical strength."
+      }
+    },
+    {
+      "id": "et-010",
+      "nivel": "B1",
+      "tema": "programacion",
+      "audio": "Tell me about a difficult bug you fixed.",
+      "opciones": [
+        "Once, our app crashed randomly. I added logs, found a memory problem and fixed it.",
+        "Bugs are never my fault.",
+        "I never have bugs."
+      ],
+      "traduccion": "Háblame de un bug difícil que arreglaste.",
+      "explicacion": {
+        "es": "Cuenta un caso concreto: el problema, qué hiciste y el resultado.",
+        "en": "Give a real example: the problem, what you did and the result."
+      }
+    },
+    {
+      "id": "et-011",
+      "nivel": "B1",
+      "tema": "equipo",
+      "audio": "Where do you see yourself in five years?",
+      "opciones": [
+        "I'd like to become a senior developer and help newer team members.",
+        "In my house, probably.",
+        "I see myself in the mirror."
+      ],
+      "traduccion": "¿Dónde te ves dentro de cinco años?",
+      "explicacion": {
+        "es": "Pregunta por tus objetivos profesionales, no literalmente por un lugar.",
+        "en": "It's about your career goals, not literally a place."
+      }
+    },
+    {
+      "id": "et-012",
+      "nivel": "B1",
+      "tema": "web",
+      "audio": "How do you keep your skills up to date?",
+      "opciones": [
+        "I read blogs, take online courses and build small side projects.",
+        "My skills are up to date since always.",
+        "I don't need to learn anything else."
+      ],
+      "traduccion": "¿Cómo mantienes tus conocimientos al día?",
+      "explicacion": {
+        "es": "Muestra que sigues aprendiendo, con ejemplos.",
+        "en": "It shows you keep learning, with examples."
+      }
+    },
+    {
+      "id": "et-013",
+      "nivel": "B2",
+      "tema": "equipo",
+      "audio": "What's your biggest weakness?",
+      "opciones": [
+        "I sometimes take on too much, so I've learnt to prioritise and say no when I need to.",
+        "I'm a perfectionist. I just work too hard.",
+        "I don't have any."
+      ],
+      "traduccion": "¿Cuál es tu mayor debilidad?",
+      "explicacion": {
+        "es": "La buena reconoce un punto débil real y cuenta cómo lo mejoras; lo del perfeccionista es un tópico.",
+        "en": "A good answer admits a real weakness and how you're improving; 'perfectionist' is a cliché."
+      }
+    },
+    {
+      "id": "et-014",
+      "nivel": "B2",
+      "tema": "equipo",
+      "audio": "How do you handle disagreements with colleagues?",
+      "opciones": [
+        "I try to understand their point of view, and we look for a solution based on data.",
+        "I just do what I want.",
+        "I complain to my manager straight away."
+      ],
+      "traduccion": "¿Cómo gestionas los desacuerdos con compañeros?",
+      "explicacion": {
+        "es": "Escuchar y buscar una solución con datos muestra madurez.",
+        "en": "Listening and looking for a data-based solution shows maturity."
+      }
+    },
+    {
+      "id": "et-015",
+      "nivel": "B2",
+      "tema": "programacion",
+      "audio": "Why are you leaving your current job?",
+      "opciones": [
+        "I'm looking for new challenges and the chance to work on larger systems.",
+        "My boss is terrible, and I hate everyone there.",
+        "They're going to fire me anyway."
+      ],
+      "traduccion": "¿Por qué dejas tu trabajo actual?",
+      "explicacion": {
+        "es": "Nunca critiques a tu empresa actual: habla de lo que buscas.",
+        "en": "Never criticise your current employer: talk about what you're looking for."
+      }
+    },
+    {
+      "id": "et-016",
+      "nivel": "B2",
+      "tema": "web",
+      "audio": "Walk me through how you'd make a slow website faster.",
+      "opciones": [
+        "First, I'd measure where the time goes, then fix the biggest bottleneck, such as images or slow queries.",
+        "I'd buy a faster server.",
+        "I'd tell users to be patient."
+      ],
+      "traduccion": "Explícame paso a paso cómo harías más rápida una web lenta.",
+      "explicacion": {
+        "es": "«Walk me through» pide los pasos: medir primero y luego atacar el mayor cuello de botella.",
+        "en": "'Walk me through' asks for the steps: measure first, then tackle the biggest bottleneck."
+      }
+    },
+    {
+      "id": "et-017",
+      "nivel": "C1",
+      "tema": "equipo",
+      "audio": "Tell me about a time you had to deliver bad news to a stakeholder.",
+      "opciones": [
+        "I flagged early that we'd miss the deadline, explained the trade-offs and proposed a smaller scope we could ship on time.",
+        "I waited until the last day so they wouldn't worry.",
+        "I let my manager handle it. It wasn't my problem."
+      ],
+      "traduccion": "Háblame de una vez que tuviste que dar una mala noticia a una parte interesada.",
+      "explicacion": {
+        "es": "Avisar pronto («flag early») y proponer alternativas es lo que buscan.",
+        "en": "Flagging early and proposing alternatives is what they want to hear."
+      }
+    },
+    {
+      "id": "et-018",
+      "nivel": "C1",
+      "tema": "programacion",
+      "audio": "How would you approach designing a system that needs to scale to millions of users?",
+      "opciones": [
+        "I'd start by clarifying the requirements, then design stateless services behind a load balancer and add caching where it matters.",
+        "I'd use the newest framework, whatever it is.",
+        "Millions of users is impossible to handle."
+      ],
+      "traduccion": "¿Cómo enfocarías el diseño de un sistema que tiene que escalar a millones de usuarios?",
+      "explicacion": {
+        "es": "Empieza por los requisitos y explica decisiones concretas de arquitectura.",
+        "en": "Start with the requirements and explain concrete architectural choices."
+      }
+    },
+    {
+      "id": "et-019",
+      "nivel": "C1",
+      "tema": "equipo",
+      "audio": "What salary are you expecting?",
+      "opciones": [
+        "Based on my research and experience, I'm looking for something in the range of 45 to 50 thousand, but I'm open to discussing the whole package.",
+        "As much as possible.",
+        "I'll accept anything you give me."
+      ],
+      "traduccion": "¿Qué salario esperas?",
+      "explicacion": {
+        "es": "Da un rango justificado y muéstrate abierto a negociar el paquete completo.",
+        "en": "Give a reasoned range and be open to discussing the whole package."
+      }
+    },
+    {
+      "id": "et-020",
+      "nivel": "C1",
+      "tema": "web",
+      "audio": "Is there anything you'd like to ask us?",
+      "opciones": [
+        "Yes. What would success look like in this role in the first six months?",
+        "No, nothing. When do I start?",
+        "How many days off do I get? That's all I care about."
+      ],
+      "traduccion": "¿Hay algo que te gustaría preguntarnos?",
+      "explicacion": {
+        "es": "Hacer una pregunta pensada sobre el puesto muestra interés real.",
+        "en": "Asking a thoughtful question about the role shows genuine interest."
+      }
+    }
+  ]
+}

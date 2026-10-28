@@ -1,0 +1,35 @@
+/* Contrarreloj: reloj, palabra y dos botones grandes */
+.cr-cabecera { display: flex; justify-content: space-between; align-items: baseline; }
+.cr-reloj { margin: 0; font-family: var(--fuente-mono); font-size: 2rem; font-weight: 700; color: var(--number); }
+.cr-reloj.poco { color: var(--error); }
+.cr-marcador { margin: 0; color: var(--string); font-family: var(--fuente-mono); }
+
+.cr-barra {
+  width: 100%;
+  height: 6px;
+  margin-bottom: var(--espacio-4);
+  border: 0;
+  border-radius: 999px;
+  background: var(--borde);
+  appearance: none;
+  overflow: hidden;
+}
+
+.cr-barra::-webkit-progress-bar { background: var(--borde); }
+.cr-barra::-webkit-progress-value { background: var(--number); }
+.cr-barra::-moz-progress-bar { background: var(--number); }
+
+.cr-palabra {
+  margin: var(--espacio-3) 0 var(--espacio-4);
+  font-family: var(--fuente-mono);
+  font-size: clamp(1.75rem, 8vw, 2.5rem);
+  font-weight: 700;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.cr-opciones { display: grid; grid-template-columns: 1fr 1fr; gap: var(--espacio-2); }
+.cr-opcion { justify-content: flex-start; gap: var(--espacio-2); min-height: 64px; font-size: 1.0625rem; text-align: left; }
+.cr-opcion.bien { border-color: var(--string); color: var(--string); box-shadow: inset 0 0 0 1px var(--string); }
+.cr-opcion.mal { border-color: var(--error); color: var(--error); box-shadow: inset 0 0 0 1px var(--error); }
+.cr-falladas { margin: 0; padding-left: 1.25rem; }

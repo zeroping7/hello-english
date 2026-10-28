@@ -1,0 +1,366 @@
+{
+  "banco": "educado-o-borde",
+  "v": 1,
+  "items": [
+    {
+      "id": "eb-001",
+      "nivel": "A1",
+      "tema": "equipo",
+      "situacion": {
+        "es": "Quieres pedirle ayuda a un compañero.",
+        "en": "You want to ask a colleague for help."
+      },
+      "opciones": [
+        "Could you help me, please?",
+        "Help me now.",
+        "You must help me."
+      ],
+      "explicacion": {
+        "es": "«Could you..., please?» es la forma educada de pedir algo.",
+        "en": "'Could you..., please?' is the polite way to ask for something."
+      }
+    },
+    {
+      "id": "eb-002",
+      "nivel": "A1",
+      "tema": "equipo",
+      "situacion": {
+        "es": "Llegas tarde a una reunión.",
+        "en": "You arrive late to a meeting."
+      },
+      "opciones": [
+        "Sorry I'm late.",
+        "I'm late. Start again.",
+        "Why did you start without me?"
+      ],
+      "explicacion": {
+        "es": "Basta con disculparse: «Sorry I'm late».",
+        "en": "A simple apology is enough: 'Sorry I'm late'."
+      }
+    },
+    {
+      "id": "eb-003",
+      "nivel": "A1",
+      "tema": "programacion",
+      "situacion": {
+        "es": "Un compañero te ha ayudado con un bug.",
+        "en": "A colleague has helped you with a bug."
+      },
+      "opciones": [
+        "Thanks a lot for your help!",
+        "OK.",
+        "Finally."
+      ],
+      "explicacion": {
+        "es": "Dar las gracias siempre suma; «Finally» suena a reproche.",
+        "en": "Saying thank you always helps; 'Finally' sounds like a complaint."
+      }
+    },
+    {
+      "id": "eb-004",
+      "nivel": "A1",
+      "tema": "web",
+      "situacion": {
+        "es": "No entiendes lo que ha dicho alguien en una llamada.",
+        "en": "You don't understand what someone said on a call."
+      },
+      "opciones": [
+        "Sorry, could you repeat that, please?",
+        "What?",
+        "Speak better."
+      ],
+      "explicacion": {
+        "es": "«What?» a secas suena brusco; mejor pedir que lo repitan.",
+        "en": "A bare 'What?' sounds rude; ask them to repeat it instead."
+      }
+    },
+    {
+      "id": "eb-005",
+      "nivel": "A2",
+      "tema": "programacion",
+      "situacion": {
+        "es": "Quieres que alguien revise tu código.",
+        "en": "You want someone to review your code."
+      },
+      "opciones": [
+        "When you have a moment, could you review my pull request?",
+        "Review my pull request.",
+        "Review this now, it's urgent for me."
+      ],
+      "explicacion": {
+        "es": "«When you have a moment» respeta el tiempo del otro.",
+        "en": "'When you have a moment' respects the other person's time."
+      }
+    },
+    {
+      "id": "eb-006",
+      "nivel": "A2",
+      "tema": "equipo",
+      "situacion": {
+        "es": "No puedes ir a la reunión de mañana.",
+        "en": "You can't go to tomorrow's meeting."
+      },
+      "opciones": [
+        "Sorry, I can't make it tomorrow. Could you send me the notes?",
+        "I'm not coming.",
+        "Your meetings are boring, so no."
+      ],
+      "explicacion": {
+        "es": "«I can't make it» es la forma natural y educada de decir que no puedes ir.",
+        "en": "'I can't make it' is the natural, polite way to say you can't come."
+      }
+    },
+    {
+      "id": "eb-007",
+      "nivel": "A2",
+      "tema": "web",
+      "situacion": {
+        "es": "Encuentras un error en la web de un compañero.",
+        "en": "You find a mistake on a colleague's web page."
+      },
+      "opciones": [
+        "I think there's a small typo on the home page.",
+        "Your page is full of mistakes.",
+        "Who wrote this rubbish?"
+      ],
+      "explicacion": {
+        "es": "«I think...» y «small» suavizan el comentario.",
+        "en": "'I think...' and 'small' soften the comment."
+      }
+    },
+    {
+      "id": "eb-008",
+      "nivel": "A2",
+      "tema": "equipo",
+      "situacion": {
+        "es": "Necesitas más tiempo para terminar una tarea.",
+        "en": "You need more time to finish a task."
+      },
+      "opciones": [
+        "I'm sorry, but I need one more day to finish this.",
+        "It's not finished. Deal with it.",
+        "Stop asking me about it."
+      ],
+      "explicacion": {
+        "es": "Te disculpas y das un plazo concreto.",
+        "en": "You apologise and give a clear timeframe."
+      }
+    },
+    {
+      "id": "eb-009",
+      "nivel": "B1",
+      "tema": "programacion",
+      "situacion": {
+        "es": "El código de un compañero tiene un problema de rendimiento.",
+        "en": "A colleague's code has a performance problem."
+      },
+      "opciones": [
+        "This works, but it might be slow with big lists. What do you think about using a map here?",
+        "This is slow. Rewrite it.",
+        "Did you even test this?"
+      ],
+      "explicacion": {
+        "es": "En una code review: reconoce lo bueno, explica el problema y propón con una pregunta.",
+        "en": "In a code review: acknowledge what works, explain the issue and suggest with a question."
+      }
+    },
+    {
+      "id": "eb-010",
+      "nivel": "B1",
+      "tema": "equipo",
+      "situacion": {
+        "es": "Tu jefa te pide algo que hoy no puedes hacer.",
+        "en": "Your manager asks for something you can't do today."
+      },
+      "opciones": [
+        "I'd love to help, but I'm working on the release today. Could it wait until tomorrow?",
+        "No, I'm busy.",
+        "That's not my job."
+      ],
+      "explicacion": {
+        "es": "Dices que no, explicas por qué y ofreces una alternativa.",
+        "en": "You say no, explain why and offer an alternative."
+      }
+    },
+    {
+      "id": "eb-011",
+      "nivel": "B1",
+      "tema": "web",
+      "situacion": {
+        "es": "Un cliente se queja de que la web va lenta.",
+        "en": "A client complains that the website is slow."
+      },
+      "opciones": [
+        "Thanks for letting us know. We're looking into it and will update you soon.",
+        "It's fast for us, so the problem is you.",
+        "The website is fine."
+      ],
+      "explicacion": {
+        "es": "Agradeces el aviso y dices qué vais a hacer.",
+        "en": "You thank them and say what you will do."
+      }
+    },
+    {
+      "id": "eb-012",
+      "nivel": "B1",
+      "tema": "equipo",
+      "situacion": {
+        "es": "Quieres interrumpir a alguien en una reunión.",
+        "en": "You want to interrupt someone in a meeting."
+      },
+      "opciones": [
+        "Sorry to interrupt, but could I add something?",
+        "Stop talking, I want to speak.",
+        "Wait, wait, you're wrong."
+      ],
+      "explicacion": {
+        "es": "«Sorry to interrupt» es la fórmula para pedir la palabra.",
+        "en": "'Sorry to interrupt' is the set phrase for asking to speak."
+      }
+    },
+    {
+      "id": "eb-013",
+      "nivel": "B2",
+      "tema": "programacion",
+      "situacion": {
+        "es": "No estás de acuerdo con la propuesta técnica de un compañero.",
+        "en": "You disagree with a colleague's technical proposal."
+      },
+      "opciones": [
+        "I see your point, but I'm a bit worried about how this would scale. Could we look at alternatives?",
+        "That's a terrible idea.",
+        "No. We're doing it my way."
+      ],
+      "explicacion": {
+        "es": "«I see your point, but...» reconoce su idea antes de discrepar.",
+        "en": "'I see your point, but...' acknowledges their idea before disagreeing."
+      }
+    },
+    {
+      "id": "eb-014",
+      "nivel": "B2",
+      "tema": "equipo",
+      "situacion": {
+        "es": "Un compañero lleva una semana sin responder a tu email.",
+        "en": "A colleague hasn't replied to your email for a week."
+      },
+      "opciones": [
+        "Just following up on my email from last week. Any thoughts?",
+        "Why are you ignoring me?",
+        "I've told you a hundred times."
+      ],
+      "explicacion": {
+        "es": "«Just following up» recuerda algo sin presionar.",
+        "en": "'Just following up' is a gentle reminder."
+      }
+    },
+    {
+      "id": "eb-015",
+      "nivel": "B2",
+      "tema": "web",
+      "situacion": {
+        "es": "Tienes que decirle a un cliente que una función se retrasa.",
+        "en": "You have to tell a client that a feature is delayed."
+      },
+      "opciones": [
+        "Unfortunately, the new feature will be delayed by a week. We apologise for any inconvenience.",
+        "The feature is late. Sorry not sorry.",
+        "Your feature is late because of your changes."
+      ],
+      "explicacion": {
+        "es": "«Unfortunately» y la disculpa formal son lo esperado con clientes.",
+        "en": "'Unfortunately' and a formal apology are what clients expect."
+      }
+    },
+    {
+      "id": "eb-016",
+      "nivel": "B2",
+      "tema": "equipo",
+      "situacion": {
+        "es": "Alguien ha cometido un error en producción.",
+        "en": "Someone has made a mistake in production."
+      },
+      "opciones": [
+        "Let's focus on fixing it first, and then we can look at how to prevent it.",
+        "Great job breaking production.",
+        "Who's responsible for this?"
+      ],
+      "explicacion": {
+        "es": "Primero arreglarlo y luego prevenirlo, sin buscar culpables.",
+        "en": "Fix it first, then prevent it, without looking for someone to blame."
+      }
+    },
+    {
+      "id": "eb-017",
+      "nivel": "C1",
+      "tema": "equipo",
+      "situacion": {
+        "es": "Rechazas una petición de un cliente importante.",
+        "en": "You're turning down a request from an important client."
+      },
+      "opciones": [
+        "I'm afraid that falls outside the scope of this project, but we'd be happy to discuss it as a separate piece of work.",
+        "We won't do that.",
+        "That's a ridiculous request."
+      ],
+      "explicacion": {
+        "es": "«I'm afraid...» suaviza el no, y ofreces una salida.",
+        "en": "'I'm afraid...' softens the no, and you offer a way forward."
+      }
+    },
+    {
+      "id": "eb-018",
+      "nivel": "C1",
+      "tema": "programacion",
+      "situacion": {
+        "es": "Das feedback a una persona junior que ha cometido varios errores.",
+        "en": "You're giving feedback to a junior developer who has made several mistakes."
+      },
+      "opciones": [
+        "You've made real progress. There are a couple of things to work on, so let's go through them together.",
+        "You made a lot of mistakes again.",
+        "Maybe this job isn't for you."
+      ],
+      "explicacion": {
+        "es": "Empiezas por lo positivo y planteas la mejora como algo compartido.",
+        "en": "You start with the positive and frame improvement as a shared task."
+      }
+    },
+    {
+      "id": "eb-019",
+      "nivel": "C1",
+      "tema": "web",
+      "situacion": {
+        "es": "Tu manager propone un plazo poco realista.",
+        "en": "Your manager suggests an unrealistic deadline."
+      },
+      "opciones": [
+        "I'd like to flag a risk: with the current scope, that date looks tight. Could we discuss priorities?",
+        "That's impossible, forget it.",
+        "Fine, but don't blame me when it fails."
+      ],
+      "explicacion": {
+        "es": "«Flag a risk» y «looks tight» señalan el problema sin enfrentarte.",
+        "en": "'Flag a risk' and 'looks tight' raise the issue without confrontation."
+      }
+    },
+    {
+      "id": "eb-020",
+      "nivel": "C1",
+      "tema": "equipo",
+      "situacion": {
+        "es": "Quieres pedir un aumento de sueldo.",
+        "en": "You want to ask for a pay rise."
+      },
+      "opciones": [
+        "I'd like to discuss my compensation, given the responsibilities I've taken on this year.",
+        "Pay me more or I'll leave.",
+        "Everyone earns more than me. It's unfair."
+      ],
+      "explicacion": {
+        "es": "Lo planteas como una conversación y lo justificas con hechos.",
+        "en": "You frame it as a conversation and back it up with facts."
+      }
+    }
+  ]
+}

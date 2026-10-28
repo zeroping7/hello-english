@@ -1,0 +1,222 @@
+{
+  "banco": "emparejar",
+  "v": 1,
+  "items": [
+    {
+      "id": "em-001",
+      "nivel": "A1",
+      "tema": "programacion",
+      "palabra": "keyboard",
+      "definicion": "You type on it.",
+      "emoji": "⌨️"
+    },
+    {
+      "id": "em-002",
+      "nivel": "A1",
+      "tema": "programacion",
+      "palabra": "mouse",
+      "definicion": "You click with it.",
+      "emoji": "🖱️"
+    },
+    {
+      "id": "em-003",
+      "nivel": "A1",
+      "tema": "equipo",
+      "palabra": "printer",
+      "definicion": "It puts documents on paper.",
+      "emoji": "🖨️"
+    },
+    {
+      "id": "em-004",
+      "nivel": "A1",
+      "tema": "equipo",
+      "palabra": "phone",
+      "definicion": "You call people with it.",
+      "emoji": "📱"
+    },
+    {
+      "id": "em-005",
+      "nivel": "A1",
+      "tema": "web",
+      "palabra": "email",
+      "definicion": "A message you send online.",
+      "emoji": "📧"
+    },
+    {
+      "id": "em-006",
+      "nivel": "A1",
+      "tema": "equipo",
+      "palabra": "calendar",
+      "definicion": "It shows the days and your meetings.",
+      "emoji": "📅"
+    },
+    {
+      "id": "em-007",
+      "nivel": "A2",
+      "tema": "programacion",
+      "palabra": "folder",
+      "definicion": "A place where you keep files."
+    },
+    {
+      "id": "em-008",
+      "nivel": "A2",
+      "tema": "web",
+      "palabra": "download",
+      "definicion": "To copy a file from the internet to your device."
+    },
+    {
+      "id": "em-009",
+      "nivel": "A2",
+      "tema": "web",
+      "palabra": "upload",
+      "definicion": "To send a file from your device to the internet."
+    },
+    {
+      "id": "em-010",
+      "nivel": "A2",
+      "tema": "web",
+      "palabra": "log in",
+      "definicion": "To enter your account."
+    },
+    {
+      "id": "em-011",
+      "nivel": "A2",
+      "tema": "web",
+      "palabra": "log out",
+      "definicion": "To leave your account."
+    },
+    {
+      "id": "em-012",
+      "nivel": "A2",
+      "tema": "equipo",
+      "palabra": "deadline",
+      "definicion": "The date when work must be finished."
+    },
+    {
+      "id": "em-013",
+      "nivel": "B1",
+      "tema": "programacion",
+      "palabra": "repository",
+      "definicion": "A place where a project's code is stored."
+    },
+    {
+      "id": "em-014",
+      "nivel": "B1",
+      "tema": "programacion",
+      "palabra": "branch",
+      "definicion": "A separate copy of the code to work on."
+    },
+    {
+      "id": "em-015",
+      "nivel": "B1",
+      "tema": "programacion",
+      "palabra": "commit",
+      "definicion": "A saved set of changes in Git."
+    },
+    {
+      "id": "em-016",
+      "nivel": "B1",
+      "tema": "programacion",
+      "palabra": "bug",
+      "definicion": "An error in a program."
+    },
+    {
+      "id": "em-017",
+      "nivel": "B1",
+      "tema": "web",
+      "palabra": "feature",
+      "definicion": "Something that a product can do."
+    },
+    {
+      "id": "em-018",
+      "nivel": "B1",
+      "tema": "equipo",
+      "palabra": "stand-up",
+      "definicion": "A short daily team meeting."
+    },
+    {
+      "id": "em-019",
+      "nivel": "B2",
+      "tema": "web",
+      "palabra": "latency",
+      "definicion": "The delay before data arrives."
+    },
+    {
+      "id": "em-020",
+      "nivel": "B2",
+      "tema": "web",
+      "palabra": "throughput",
+      "definicion": "How much work a system does in a period of time."
+    },
+    {
+      "id": "em-021",
+      "nivel": "B2",
+      "tema": "web",
+      "palabra": "scalability",
+      "definicion": "The ability to handle more load."
+    },
+    {
+      "id": "em-022",
+      "nivel": "B2",
+      "tema": "equipo",
+      "palabra": "stakeholder",
+      "definicion": "Someone with an interest in a project."
+    },
+    {
+      "id": "em-023",
+      "nivel": "B2",
+      "tema": "equipo",
+      "palabra": "milestone",
+      "definicion": "An important point in a project."
+    },
+    {
+      "id": "em-024",
+      "nivel": "B2",
+      "tema": "equipo",
+      "palabra": "trade-off",
+      "definicion": "Accepting a loss in one area to gain in another."
+    },
+    {
+      "id": "em-025",
+      "nivel": "C1",
+      "tema": "programacion",
+      "palabra": "idempotent",
+      "definicion": "Gives the same result however many times it is repeated."
+    },
+    {
+      "id": "em-026",
+      "nivel": "C1",
+      "tema": "programacion",
+      "palabra": "race condition",
+      "definicion": "A bug caused by the timing of events."
+    },
+    {
+      "id": "em-027",
+      "nivel": "C1",
+      "tema": "programacion",
+      "palabra": "technical debt",
+      "definicion": "The future cost of choosing a quick solution now."
+    },
+    {
+      "id": "em-028",
+      "nivel": "C1",
+      "tema": "web",
+      "palabra": "observability",
+      "definicion": "How well you can understand a system from its outputs."
+    },
+    {
+      "id": "em-029",
+      "nivel": "C1",
+      "tema": "web",
+      "palabra": "single point of failure",
+      "definicion": "A part whose failure stops the whole system."
+    },
+    {
+      "id": "em-030",
+      "nivel": "C1",
+      "tema": "equipo",
+      "palabra": "bus factor",
+      "definicion": "How many people can leave before a project stalls."
+    }
+  ]
+}

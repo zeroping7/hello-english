@@ -1,0 +1,116 @@
+{
+  "banco": "bug-report",
+  "v": 1,
+  "items": [
+    {
+      "id": "br-001",
+      "nivel": "A1",
+      "tema": "web",
+      "partes": {
+        "titulo": "Login button doesn't work",
+        "pasos": "Open the login page and click the \"Log in\" button.",
+        "esperado": "The user's home page opens.",
+        "actual": "Nothing happens."
+      }
+    },
+    {
+      "id": "br-002",
+      "nivel": "A1",
+      "tema": "programacion",
+      "partes": {
+        "titulo": "App closes when I open photos",
+        "pasos": "Open the app and tap \"Photos\".",
+        "esperado": "The photo gallery opens.",
+        "actual": "The app closes."
+      }
+    },
+    {
+      "id": "br-003",
+      "nivel": "A2",
+      "tema": "web",
+      "partes": {
+        "titulo": "Images don't load on the blog",
+        "pasos": "Go to the blog and open any post.",
+        "esperado": "The post shows its images.",
+        "actual": "The images are empty grey boxes."
+      }
+    },
+    {
+      "id": "br-004",
+      "nivel": "A2",
+      "tema": "equipo",
+      "partes": {
+        "titulo": "Calendar shows the wrong time for meetings",
+        "pasos": "Create a meeting at 10:00 and open the calendar.",
+        "esperado": "The meeting appears at 10:00.",
+        "actual": "The meeting appears at 11:00."
+      }
+    },
+    {
+      "id": "br-005",
+      "nivel": "B1",
+      "tema": "web",
+      "partes": {
+        "titulo": "Search returns no results for words with accents",
+        "pasos": "Type \"café\" in the search box and press Enter.",
+        "esperado": "The search shows products that contain \"café\".",
+        "actual": "The page says \"No results found\"."
+      }
+    },
+    {
+      "id": "br-006",
+      "nivel": "B1",
+      "tema": "programacion",
+      "partes": {
+        "titulo": "Export to CSV fails with more than 1,000 rows",
+        "pasos": "Filter the report so that it has over 1,000 rows, then click \"Export to CSV\".",
+        "esperado": "A CSV file with all the rows is downloaded.",
+        "actual": "An error message appears: \"Export failed\"."
+      }
+    },
+    {
+      "id": "br-007",
+      "nivel": "B2",
+      "tema": "web",
+      "partes": {
+        "titulo": "Cart is emptied after logging in",
+        "pasos": "Add two items to the cart as a guest, then log in to an existing account.",
+        "esperado": "The items remain in the cart after logging in.",
+        "actual": "The cart is empty once the user has logged in."
+      }
+    },
+    {
+      "id": "br-008",
+      "nivel": "B2",
+      "tema": "equipo",
+      "partes": {
+        "titulo": "Some users get every notification twice",
+        "pasos": "Assign a task to a user who belongs to two teams.",
+        "esperado": "The user receives one notification per assignment.",
+        "actual": "The user receives a duplicate notification, one from each team."
+      }
+    },
+    {
+      "id": "br-009",
+      "nivel": "C1",
+      "tema": "programacion",
+      "partes": {
+        "titulo": "Intermittent 500 errors on concurrent saves to the same document",
+        "pasos": "Have two users save changes to the same document within a second of each other.",
+        "esperado": "Both changes are saved, or the second user is told about the conflict.",
+        "actual": "Roughly one in ten requests fails with a 500 error, and the second change is silently lost."
+      }
+    },
+    {
+      "id": "br-010",
+      "nivel": "C1",
+      "tema": "web",
+      "partes": {
+        "titulo": "Layout shift on product pages causes mis-taps on slow networks",
+        "pasos": "Throttle the network to \"Slow 3G\" and open any product page.",
+        "esperado": "The page stays stable while images and fonts load.",
+        "actual": "The \"Add to cart\" button moves down by about 200 px when the main image loads, so users tap the wrong thing."
+      }
+    }
+  ]
+}

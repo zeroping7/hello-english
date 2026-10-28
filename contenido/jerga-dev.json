@@ -1,0 +1,426 @@
+{
+  "banco": "jerga-dev",
+  "v": 1,
+  "items": [
+    {
+      "id": "jd-001",
+      "nivel": "A1",
+      "tema": "programacion",
+      "expresion": "bug",
+      "ejemplo": "There's a bug: the button doesn't work.",
+      "opciones": [
+        {
+          "es": "Un error en un programa",
+          "en": "An error in a program"
+        },
+        {
+          "es": "Un insecto que vive en el ordenador",
+          "en": "An insect that lives in the computer"
+        },
+        {
+          "es": "Una función nueva",
+          "en": "A new feature"
+        }
+      ]
+    },
+    {
+      "id": "jd-002",
+      "nivel": "A1",
+      "tema": "web",
+      "expresion": "to google",
+      "ejemplo": "I don't know the answer. Let me google it.",
+      "opciones": [
+        {
+          "es": "Buscar algo en internet",
+          "en": "To search for something online"
+        },
+        {
+          "es": "Hablar con alguien de Google",
+          "en": "To talk to someone from Google"
+        },
+        {
+          "es": "Borrar un archivo",
+          "en": "To delete a file"
+        }
+      ]
+    },
+    {
+      "id": "jd-003",
+      "nivel": "A1",
+      "tema": "programacion",
+      "expresion": "to crash",
+      "ejemplo": "My computer crashed and I lost my work.",
+      "opciones": [
+        {
+          "es": "Dejar de funcionar de golpe",
+          "en": "To suddenly stop working"
+        },
+        {
+          "es": "Chocar con un coche",
+          "en": "To hit a car"
+        },
+        {
+          "es": "Ir más rápido",
+          "en": "To go faster"
+        }
+      ]
+    },
+    {
+      "id": "jd-004",
+      "nivel": "A1",
+      "tema": "equipo",
+      "expresion": "noob",
+      "ejemplo": "Sorry, I'm a total noob with Git.",
+      "opciones": [
+        {
+          "es": "Alguien que está empezando",
+          "en": "A beginner"
+        },
+        {
+          "es": "Un experto",
+          "en": "An expert"
+        },
+        {
+          "es": "Un tipo de archivo",
+          "en": "A type of file"
+        }
+      ]
+    },
+    {
+      "id": "jd-005",
+      "nivel": "A2",
+      "tema": "equipo",
+      "expresion": "to ping someone",
+      "ejemplo": "I'll ping you when the build is ready.",
+      "opciones": [
+        {
+          "es": "Mandarle a alguien un mensaje rápido",
+          "en": "To send someone a quick message"
+        },
+        {
+          "es": "Llamar a alguien durante horas",
+          "en": "To call someone for hours"
+        },
+        {
+          "es": "Jugar al ping-pong",
+          "en": "To play table tennis"
+        }
+      ]
+    },
+    {
+      "id": "jd-006",
+      "nivel": "A2",
+      "tema": "programacion",
+      "expresion": "LGTM",
+      "ejemplo": "LGTM, you can merge it.",
+      "opciones": [
+        {
+          "es": "«Me parece bien»: está aprobado",
+          "en": "\"Looks good to me\": it is approved"
+        },
+        {
+          "es": "Hay que rehacerlo",
+          "en": "It needs to be redone"
+        },
+        {
+          "es": "Llegaré tarde",
+          "en": "I'll be late"
+        }
+      ]
+    },
+    {
+      "id": "jd-007",
+      "nivel": "A2",
+      "tema": "web",
+      "expresion": "the cloud",
+      "ejemplo": "All our files are in the cloud now.",
+      "opciones": [
+        {
+          "es": "Servidores en internet que guardan datos",
+          "en": "Servers on the internet that store data"
+        },
+        {
+          "es": "El cielo",
+          "en": "The sky"
+        },
+        {
+          "es": "Una carpeta del escritorio",
+          "en": "A folder on the desktop"
+        }
+      ]
+    },
+    {
+      "id": "jd-008",
+      "nivel": "A2",
+      "tema": "programacion",
+      "expresion": "workaround",
+      "ejemplo": "It isn't a real fix, just a workaround.",
+      "opciones": [
+        {
+          "es": "Una solución provisional para esquivar un problema",
+          "en": "A temporary way around a problem"
+        },
+        {
+          "es": "Un paseo alrededor de la oficina",
+          "en": "A walk around the office"
+        },
+        {
+          "es": "Una reunión larga",
+          "en": "A long meeting"
+        }
+      ]
+    },
+    {
+      "id": "jd-009",
+      "nivel": "B1",
+      "tema": "programacion",
+      "expresion": "rubber duck debugging",
+      "ejemplo": "When I'm stuck, I try rubber duck debugging and explain the code line by line.",
+      "opciones": [
+        {
+          "es": "Explicar el problema en voz alta, aunque sea a un pato de goma, para encontrar el fallo",
+          "en": "Explaining a problem out loud, even to a rubber duck, to find the bug"
+        },
+        {
+          "es": "Probar el código en la bañera",
+          "en": "Testing code in the bath"
+        },
+        {
+          "es": "Un tipo de test automático",
+          "en": "A kind of automated test"
+        }
+      ]
+    },
+    {
+      "id": "jd-010",
+      "nivel": "B1",
+      "tema": "programacion",
+      "expresion": "spaghetti code",
+      "ejemplo": "Nobody wants to touch that module. It's spaghetti code.",
+      "opciones": [
+        {
+          "es": "Código desordenado y difícil de seguir",
+          "en": "Messy code that is hard to follow"
+        },
+        {
+          "es": "Código escrito en Italia",
+          "en": "Code written in Italy"
+        },
+        {
+          "es": "Código muy rápido",
+          "en": "Very fast code"
+        }
+      ]
+    },
+    {
+      "id": "jd-011",
+      "nivel": "B1",
+      "tema": "equipo",
+      "expresion": "it works on my machine",
+      "ejemplo": "\"It works on my machine!\" \"Well, we're not shipping your machine.\"",
+      "opciones": [
+        {
+          "es": "Excusa: en mi ordenador funciona (aunque en otros no)",
+          "en": "An excuse: it works on my computer (even if not elsewhere)"
+        },
+        {
+          "es": "El programa funciona en todas partes",
+          "en": "The program works everywhere"
+        },
+        {
+          "es": "Mi ordenador está roto",
+          "en": "My computer is broken"
+        }
+      ]
+    },
+    {
+      "id": "jd-012",
+      "nivel": "B1",
+      "tema": "web",
+      "expresion": "to ship",
+      "ejemplo": "We ship a new version every two weeks.",
+      "opciones": [
+        {
+          "es": "Publicar o entregar software",
+          "en": "To release or deliver software"
+        },
+        {
+          "es": "Mandar un paquete en barco",
+          "en": "To send a parcel by boat"
+        },
+        {
+          "es": "Borrar una versión",
+          "en": "To delete a version"
+        }
+      ]
+    },
+    {
+      "id": "jd-013",
+      "nivel": "B2",
+      "tema": "programacion",
+      "expresion": "yak shaving",
+      "ejemplo": "I wanted to fix a typo, but I ended up yak shaving: updating the compiler, then the build tools…",
+      "opciones": [
+        {
+          "es": "Encadenar tareas pequeñas antes de poder hacer la que querías",
+          "en": "Doing a chain of small tasks before you can do the one you wanted"
+        },
+        {
+          "es": "Cortarse el pelo en el trabajo",
+          "en": "Getting a haircut at work"
+        },
+        {
+          "es": "Borrar código viejo",
+          "en": "Deleting old code"
+        }
+      ]
+    },
+    {
+      "id": "jd-014",
+      "nivel": "B2",
+      "tema": "programacion",
+      "expresion": "technical debt",
+      "ejemplo": "We took shortcuts to meet the deadline, and now we're paying off the technical debt.",
+      "opciones": [
+        {
+          "es": "El coste futuro de las soluciones rápidas y chapuceras",
+          "en": "The future cost of quick, messy solutions"
+        },
+        {
+          "es": "Dinero que la empresa debe al banco",
+          "en": "Money the company owes the bank"
+        },
+        {
+          "es": "Un fallo de seguridad",
+          "en": "A security flaw"
+        }
+      ]
+    },
+    {
+      "id": "jd-015",
+      "nivel": "B2",
+      "tema": "equipo",
+      "expresion": "bikeshedding",
+      "ejemplo": "We spent an hour bikeshedding about the colour of a button.",
+      "opciones": [
+        {
+          "es": "Discutir demasiado sobre detalles sin importancia",
+          "en": "Spending too long arguing about trivial details"
+        },
+        {
+          "es": "Ir al trabajo en bici",
+          "en": "Cycling to work"
+        },
+        {
+          "es": "Diseñar una base de datos",
+          "en": "Designing a database"
+        }
+      ]
+    },
+    {
+      "id": "jd-016",
+      "nivel": "B2",
+      "tema": "web",
+      "expresion": "dogfooding",
+      "ejemplo": "We're dogfooding the new chat app internally before the launch.",
+      "opciones": [
+        {
+          "es": "Usar tu propio producto antes de lanzarlo",
+          "en": "Using your own product before releasing it"
+        },
+        {
+          "es": "Dar de comer al perro de la oficina",
+          "en": "Feeding the office dog"
+        },
+        {
+          "es": "Probar el producto con animales",
+          "en": "Testing the product on animals"
+        }
+      ]
+    },
+    {
+      "id": "jd-017",
+      "nivel": "C1",
+      "tema": "equipo",
+      "expresion": "bus factor",
+      "ejemplo": "Our bus factor is one: only Sam understands the billing system.",
+      "opciones": [
+        {
+          "es": "Cuántas personas tendrían que faltar para que el proyecto se pare",
+          "en": "How many people would have to disappear for a project to stall"
+        },
+        {
+          "es": "Cuántos autobuses llegan a la oficina",
+          "en": "How many buses reach the office"
+        },
+        {
+          "es": "La velocidad de una conexión",
+          "en": "The speed of a connection"
+        }
+      ]
+    },
+    {
+      "id": "jd-018",
+      "nivel": "C1",
+      "tema": "programacion",
+      "expresion": "heisenbug",
+      "ejemplo": "It's a heisenbug: as soon as I add logging, it stops happening.",
+      "opciones": [
+        {
+          "es": "Un bug que cambia o desaparece cuando intentas estudiarlo",
+          "en": "A bug that changes or disappears when you try to study it"
+        },
+        {
+          "es": "Un bug en código de física",
+          "en": "A bug in physics code"
+        },
+        {
+          "es": "Un bug que solo pasa los lunes",
+          "en": "A bug that only happens on Mondays"
+        }
+      ]
+    },
+    {
+      "id": "jd-019",
+      "nivel": "C1",
+      "tema": "web",
+      "expresion": "bleeding edge",
+      "ejemplo": "That library is bleeding edge, so expect breaking changes.",
+      "opciones": [
+        {
+          "es": "Lo más nuevo, todavía arriesgado e inestable",
+          "en": "The very newest, still risky and unstable"
+        },
+        {
+          "es": "Algo peligroso que corta",
+          "en": "Something sharp and dangerous"
+        },
+        {
+          "es": "Una versión antigua y estable",
+          "en": "An old, stable version"
+        }
+      ]
+    },
+    {
+      "id": "jd-020",
+      "nivel": "C1",
+      "tema": "equipo",
+      "expresion": "to boil the ocean",
+      "ejemplo": "Let's not try to boil the ocean. Just fix the login flow first.",
+      "opciones": [
+        {
+          "es": "Intentar abarcar demasiado a la vez",
+          "en": "To try to do far too much at once"
+        },
+        {
+          "es": "Gastar mucha electricidad",
+          "en": "To use a lot of electricity"
+        },
+        {
+          "es": "Calentar el servidor",
+          "en": "To overheat the server"
+        }
+      ]
+    }
+  ]
+}

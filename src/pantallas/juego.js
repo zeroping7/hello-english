@@ -1,6 +1,7 @@
 // Pantalla común de minijuego (spec 003, plan §3): antes de jugar (tema), partida y resumen.
-// Carga el banco, elige los ejercicios, cuenta el tiempo y los puntos y pide confirmación al
-// salir a medias. Si el minijuego no está disponible, enseña "Próximamente".
+// Carga el banco, elige los ejercicios (con los repasos de hoy), cuenta el tiempo y los puntos
+// y pide confirmación al salir a medias. Si el minijuego no está disponible, enseña
+// "Próximamente". Con '#/juego/<id>/practica' es un paso de la Práctica de hoy (spec 024).
 import { h } from '../ui/dom.js';
 import { t, idiomaActual } from '../i18n/textos.js';
 import { navegar, volver } from '../router.js';
@@ -12,10 +13,12 @@ import { avisoFijo } from '../ui/aviso.js';
 import { icono } from '../ui/iconos.js';
 import { buscarJuego, iconoDe } from '../../juegos/registro.js';
 import { cargarBanco } from '../contenido/cargar.js';
-import { elegirEjercicios } from '../contenido/elegir.js';
-import { TEMAS } from '../contenido/esquema.js';
+import { elegirConRepaso } from '../contenido/elegir.js';
+import { TEMAS, PREFIJO } from '../contenido/esquema.js';
 import { crearAzar } from '../contenido/azar.js';
-import { leerProgreso, registrarAcierto } from '../progreso/progreso.js';
+import { leerProgreso, registrarResultado, registrarPartida, pendientes } from '../progreso/progreso.js';
+import { hayVoz, callar } from '../voz/voz.js';
+import { parar as pararReconocimiento } from '../voz/reconocer.js';
 import { iniciarCronometro } from '../progreso/cronometro.js';
 import { efecto } from '../sonido/sonido.js';
 import * as proximamente from './proximamente.js';
@@ -31,6 +34,8 @@ function cargarEstilos(id) {
 export function montar(raiz, params) {
   const juego = buscarJuego(params[0]);
   if (!juego?.disponible) return proximamente.montar(raiz, params);
+  const enPractica = params[1] === 'practica';
+  const sinVoz = juego.necesita.includes('voz') && !hayVoz();
 
   const zonaContador = h('div', {});
   const cuerpo = h('main', { class: 'contenido ejercicio', 'data-esc-propio': true });
@@ -40,9 +45,12 @@ export function montar(raiz, params) {
   let cronometro = null;
   let enCurso = false;
   let aciertos = 0;
+  let respuestas = 0;
   let puntos = 0;
 
   function terminarPartida() {
+    callar();
+    pararReconocimiento();
     partida?.desmontar?.();
     partida = null;
     cronometro?.parar();
@@ -61,10 +69,14 @@ export function montar(raiz, params) {
 
   function pintarInicio() {
     zonaContador.replaceChildren();
+    const repasos = pendientes(PREFIJO[juego.id]).length;
     cuerpo.replaceChildren(
       h('section', { class: 'juego-inicio' },
         h('span', { class: `juego-inicio-icono cat-${juego.categoria}` }, icono(iconoDe(juego))),
         h('p', { class: 'juego-inicio-desc' }, t(juego.descripcion)),
+        sinVoz && avisoFijo(t('juego.necesitaVoz'), { tipo: 'error' }),
+        repasos > 0 && h('p', { class: 'juego-repasos' }, icono('repaso'),
+          repasos === 1 ? t('juego.repasos.uno') : t('juego.repasos.varios', { n: repasos })),
         grupoOpciones({
           nombre: 'tema',
           leyenda: t('juego.tema'),
@@ -72,7 +84,7 @@ export function montar(raiz, params) {
           opciones: [{ valor: null, texto: t('tema.todos') }, ...TEMAS.map((id) => ({ valor: id, texto: t(`tema.${id}`) }))],
           alCambiar: (v) => { temaElegido = v; },
         }),
-        h('button', { class: 'boton boton-principal boton-grande', type: 'button', onclick: empezar },
+        h('button', { class: 'boton boton-principal boton-grande', type: 'button', onclick: empezar, disabled: sinVoz },
           icono('practica'), t('juego.jugar'))));
   }
 
@@ -82,8 +94,12 @@ export function montar(raiz, params) {
       modulo ??= await import(`../../juegos/${juego.id}/juego.js`);
       const items = await cargarBanco(modulo.BANCO);
       const azar = crearAzar();
-      const ejercicios = elegirEjercicios(items, {
-        nivel: leerProgreso().nivel, n: modulo.EJERCICIOS, azar, tema: temaElegido,
+      const ejercicios = elegirConRepaso(items, {
+        nivel: leerProgreso().nivel,
+        n: modulo.EJERCICIOS,
+        azar,
+        tema: enPractica ? null : temaElegido,
+        pendientes: pendientes(PREFIJO[juego.id]),
       });
       jugar(ejercicios, azar);
     } catch {
@@ -93,6 +109,7 @@ export function montar(raiz, params) {
 
   function jugar(ejercicios, azar) {
     aciertos = 0;
+    respuestas = 0;
     puntos = 0;
     enCurso = true;
     cronometro = iniciarCronometro();
@@ -103,31 +120,30 @@ export function montar(raiz, params) {
       ejercicios,
       azar,
       idioma: idiomaActual(),
-      ponerContador: (n) => zonaContador.replaceChildren(contador(n, ejercicios.length)),
-      alResponder(item, acierto) {
-        efecto(acierto ? 'acierto' : 'fallo');
-        if (!acierto) return;
-        aciertos++;
-        puntos += registrarAcierto(item.nivel, juego.dificultad);
+      ponerContador: (n, total = ejercicios.length) => zonaContador.replaceChildren(contador(n, total)),
+      alResponder(item, acierto, { sonido = true } = {}) {
+        if (sonido) efecto(acierto ? 'acierto' : 'fallo');
+        respuestas++;
+        if (acierto) aciertos++;
+        puntos += registrarResultado(item, acierto, juego.dificultad);
       },
-      alTerminar: () => pintarResumen(ejercicios.length),
+      alTerminar: () => pintarResumen(),
     });
   }
 
-  function pintarResumen(total) {
+  function pintarResumen() {
     terminarPartida();
     zonaContador.replaceChildren();
     efecto('meta');
-    cuerpo.replaceChildren(resumen({
-      titulo: t('juego.resumen'),
-      aciertos,
-      total,
-      puntos,
-      botones: [
-        h('button', { class: 'boton boton-principal', type: 'button', onclick: empezar }, t('juego.otraVez')),
-        h('button', { class: 'boton', type: 'button', onclick: () => navegar('/inicio') }, t('juego.alInicio')),
-      ],
-    }));
+    const { practicaCompleta } = registrarPartida(juego.id, aciertos, respuestas, { practica: enPractica });
+    const botones = enPractica
+      ? [h('button', { class: 'boton boton-principal', type: 'button', onclick: () => navegar('/practica', { reemplazar: true }) },
+          t(practicaCompleta ? 'practica.verHecha' : 'practica.continuar'))]
+      : [
+          h('button', { class: 'boton boton-principal', type: 'button', onclick: empezar }, t('juego.otraVez')),
+          h('button', { class: 'boton', type: 'button', onclick: () => navegar('/inicio') }, t('juego.alInicio')),
+        ];
+    cuerpo.replaceChildren(resumen({ titulo: t('juego.resumen'), aciertos, total: respuestas, puntos, botones }));
     cuerpo.querySelector('.boton-principal').focus({ preventScroll: true });
   }
 
@@ -137,7 +153,8 @@ export function montar(raiz, params) {
   document.addEventListener('keydown', alPulsarEsc);
 
   raiz.append(barraConVolver(t(juego.titulo), { alVolver: salir, extra: zonaContador }), cuerpo);
-  pintarInicio();
+  if (enPractica && !sinVoz) empezar();
+  else pintarInicio();
 
   return {
     desmontar() {

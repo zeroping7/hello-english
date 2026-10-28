@@ -47,11 +47,11 @@ Una app web para aprender inglés de informática y programación jugando. Para 
 ## Estilo
 Moderno y limpio, como un editor de código: fondo oscuro (o claro), letra monoespaciada y colores de resaltado de sintaxis con significado fijo (constitución §8).
 
-## Orden de la versión 1
+## Orden de la versión 1 (hecho en la v1.0.0)
 1. Plataforma: inicio, ajustes, idioma, tema, progreso y app instalable.
 2. Formato del contenido y primer banco con 2-3 temas.
 3. Prueba de nivel.
 4. Dos minijuegos: Falsos amigos y Merge Conflict.
 5. El resto de minijuegos, uno por spec.
 6. Repaso espaciado, logros y Práctica de hoy.
-7. Más contenido.
+7. Más contenido (siguiente paso: más temas técnicos y profesionales).

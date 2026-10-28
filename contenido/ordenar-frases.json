@@ -1,0 +1,216 @@
+{
+  "banco": "ordenar-frases",
+  "v": 1,
+  "items": [
+    {
+      "id": "of-001",
+      "nivel": "A1",
+      "tema": "programacion",
+      "frase": "This is my first program.",
+      "traduccion": "Este es mi primer programa."
+    },
+    {
+      "id": "of-002",
+      "nivel": "A1",
+      "tema": "programacion",
+      "frase": "The code is on GitHub.",
+      "traduccion": "El código está en GitHub."
+    },
+    {
+      "id": "of-003",
+      "nivel": "A1",
+      "tema": "web",
+      "frase": "I like this website.",
+      "traduccion": "Me gusta esta web."
+    },
+    {
+      "id": "of-004",
+      "nivel": "A1",
+      "tema": "web",
+      "frase": "Click on the red button.",
+      "traduccion": "Haz clic en el botón rojo."
+    },
+    {
+      "id": "of-005",
+      "nivel": "A1",
+      "tema": "equipo",
+      "frase": "We have a meeting at ten.",
+      "traduccion": "Tenemos una reunión a las diez."
+    },
+    {
+      "id": "of-006",
+      "nivel": "A1",
+      "tema": "equipo",
+      "frase": "My name is Ana and I am a developer.",
+      "traduccion": "Me llamo Ana y soy desarrolladora."
+    },
+    {
+      "id": "of-007",
+      "nivel": "A2",
+      "tema": "programacion",
+      "frase": "I am fixing a bug in the app.",
+      "traduccion": "Estoy arreglando un bug en la app."
+    },
+    {
+      "id": "of-008",
+      "nivel": "A2",
+      "tema": "programacion",
+      "frase": "Did you push your changes yesterday?",
+      "traduccion": "¿Subiste tus cambios ayer?"
+    },
+    {
+      "id": "of-009",
+      "nivel": "A2",
+      "tema": "web",
+      "frase": "The page loads very slowly on my phone.",
+      "traduccion": "La página carga muy despacio en mi móvil."
+    },
+    {
+      "id": "of-010",
+      "nivel": "A2",
+      "tema": "web",
+      "frase": "We need a new logo for the website.",
+      "traduccion": "Necesitamos un logo nuevo para la web."
+    },
+    {
+      "id": "of-011",
+      "nivel": "A2",
+      "tema": "equipo",
+      "frase": "Can you share your screen, please?",
+      "traduccion": "¿Puedes compartir tu pantalla, por favor?"
+    },
+    {
+      "id": "of-012",
+      "nivel": "A2",
+      "tema": "equipo",
+      "frase": "I will send you the report tomorrow.",
+      "traduccion": "Te enviaré el informe mañana."
+    },
+    {
+      "id": "of-013",
+      "nivel": "B1",
+      "tema": "programacion",
+      "frase": "I have been working on this feature since Monday.",
+      "traduccion": "Llevo trabajando en esta funcionalidad desde el lunes."
+    },
+    {
+      "id": "of-014",
+      "nivel": "B1",
+      "tema": "programacion",
+      "frase": "If the tests pass, we can merge the branch.",
+      "traduccion": "Si los tests pasan, podemos fusionar la rama."
+    },
+    {
+      "id": "of-015",
+      "nivel": "B1",
+      "tema": "web",
+      "frase": "The form doesn't work on older browsers.",
+      "traduccion": "El formulario no funciona en navegadores antiguos."
+    },
+    {
+      "id": "of-016",
+      "nivel": "B1",
+      "tema": "web",
+      "frase": "Users should be able to reset their password.",
+      "traduccion": "Los usuarios deberían poder restablecer su contraseña."
+    },
+    {
+      "id": "of-017",
+      "nivel": "B1",
+      "tema": "equipo",
+      "frase": "Could you tell me when the deadline is?",
+      "traduccion": "¿Me podrías decir cuándo es la fecha límite?"
+    },
+    {
+      "id": "of-018",
+      "nivel": "B1",
+      "tema": "equipo",
+      "frase": "I'm afraid I won't be able to join the call.",
+      "traduccion": "Me temo que no podré unirme a la llamada."
+    },
+    {
+      "id": "of-019",
+      "nivel": "B2",
+      "tema": "programacion",
+      "frase": "The function should have been tested more carefully.",
+      "traduccion": "La función debería haberse probado con más cuidado."
+    },
+    {
+      "id": "of-020",
+      "nivel": "B2",
+      "tema": "programacion",
+      "frase": "We decided to rewrite the module in TypeScript.",
+      "traduccion": "Decidimos reescribir el módulo en TypeScript."
+    },
+    {
+      "id": "of-021",
+      "nivel": "B2",
+      "tema": "web",
+      "frase": "The images are loaded only when they are needed.",
+      "traduccion": "Las imágenes se cargan solo cuando hacen falta."
+    },
+    {
+      "id": "of-022",
+      "nivel": "B2",
+      "tema": "web",
+      "frase": "The site would load faster if we compressed the images.",
+      "traduccion": "La web cargaría más rápido si comprimiéramos las imágenes."
+    },
+    {
+      "id": "of-023",
+      "nivel": "B2",
+      "tema": "equipo",
+      "frase": "Would you mind reviewing my pull request today?",
+      "traduccion": "¿Te importaría revisar mi pull request hoy?"
+    },
+    {
+      "id": "of-024",
+      "nivel": "B2",
+      "tema": "equipo",
+      "frase": "I'd rather we discussed this in private.",
+      "traduccion": "Preferiría que lo habláramos en privado."
+    },
+    {
+      "id": "of-025",
+      "nivel": "C1",
+      "tema": "programacion",
+      "frase": "Had we written more tests, the bug would have been caught.",
+      "traduccion": "Si hubiéramos escrito más tests, se habría detectado el bug."
+    },
+    {
+      "id": "of-026",
+      "nivel": "C1",
+      "tema": "programacion",
+      "frase": "Rarely do we see such a clean pull request.",
+      "traduccion": "Pocas veces vemos una pull request tan limpia."
+    },
+    {
+      "id": "of-027",
+      "nivel": "C1",
+      "tema": "web",
+      "frase": "Not only is it faster, but it is also cheaper.",
+      "traduccion": "No solo es más rápido, sino que también es más barato."
+    },
+    {
+      "id": "of-028",
+      "nivel": "C1",
+      "tema": "web",
+      "frase": "The redesign, which took six months, was finally released.",
+      "traduccion": "El rediseño, que llevó seis meses, por fin se publicó."
+    },
+    {
+      "id": "of-029",
+      "nivel": "C1",
+      "tema": "equipo",
+      "frase": "It is high time we automated the deployment process.",
+      "traduccion": "Ya va siendo hora de que automaticemos el proceso de despliegue."
+    },
+    {
+      "id": "of-030",
+      "nivel": "C1",
+      "tema": "equipo",
+      "frase": "Should you need any help, don't hesitate to ask.",
+      "traduccion": "Si necesitas ayuda, no dudes en preguntar."
+    }
+  ]
+}

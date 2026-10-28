@@ -1,0 +1,21 @@
+/* Dilo bien: el término en grande y el botón del micrófono */
+.db-termino {
+  margin: var(--espacio-3) 0 var(--espacio-4);
+  font-family: var(--fuente-mono);
+  font-size: clamp(2rem, 9vw, 3rem);
+  font-weight: 700;
+  text-align: center;
+  color: var(--keyword);
+  overflow-wrap: anywhere;
+}
+
+.db-modo { display: grid; justify-items: center; gap: var(--espacio-2); }
+.db-modo .opciones-respuesta, .db-modo .ejercicio-pregunta { justify-self: stretch; }
+.db-micro .icono { fill: none; }
+.db-micro.escuchando { animation: db-latido 1s ease-in-out infinite; }
+.db-estado { min-height: 1.5em; margin: 0; text-align: center; }
+.db-ipa { color: var(--tenue); font-family: var(--fuente-mono); }
+.db-mal { color: var(--error); }
+
+@keyframes db-latido { 50% { filter: brightness(1.3); } }
+@media (prefers-reduced-motion: reduce) { .db-micro.escuchando { animation: none; outline: 3px solid var(--string); } }

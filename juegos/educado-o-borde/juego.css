@@ -1,0 +1,13 @@
+/* ¿Educado o borde?: la situación y los mensajes como de chat */
+.eb-situacion {
+  margin: 0 0 var(--espacio-3);
+  padding: var(--espacio-3);
+  border: 1px solid var(--borde);
+  border-left: 4px solid var(--number);
+  border-radius: var(--radio);
+  background: var(--panel);
+  font-size: 1.0625rem;
+}
+
+.eb-etiqueta { display: block; margin-bottom: var(--espacio-1); color: var(--number); font-family: var(--fuente-mono); font-size: 0.8125rem; }
+.eb-situacion + .ejercicio-pregunta + .opciones-respuesta .opcion-texto { font-family: var(--fuente-texto); }

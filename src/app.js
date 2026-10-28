@@ -1,7 +1,7 @@
 // Arranque de la app: ajustes guardados (tema e idioma), avisos comunes y router.
 import { VERSION } from './version.js';
 import { aplicarAjustesGuardados, alCambiarAjuste, leerAjustes } from './ajustes/ajustes.js';
-import { alCumplirObjetivo } from './progreso/progreso.js';
+import { alCumplirObjetivo, alConseguirLogro, alSubirNivel } from './progreso/progreso.js';
 import { iniciarRouter, repintar } from './router.js';
 import { t } from './i18n/textos.js';
 import { avisar } from './ui/aviso.js';
@@ -12,7 +12,9 @@ const RUTAS = [
   { patron: /^\/bienvenida$/, cargar: () => import('./pantallas/bienvenida.js') },
   { patron: /^\/ajustes$/, cargar: () => import('./pantallas/ajustes.js') },
   { patron: /^\/prueba-nivel$/, cargar: () => import('./pantallas/prueba-nivel.js') },
-  { patron: /^\/juego\/([a-z0-9-]+)$/, cargar: () => import('./pantallas/juego.js') },
+  { patron: /^\/juego\/([a-z0-9-]+)(?:\/(practica))?$/, cargar: () => import('./pantallas/juego.js') },
+  { patron: /^\/practica$/, cargar: () => import('./pantallas/practica.js') },
+  { patron: /^\/logros$/, cargar: () => import('./pantallas/logros.js') },
 ];
 
 /** Sin bienvenida hecha todo lleva a ella (salvo la prueba de nivel, que es su paso 3); hecha, ya no vuelve a salir. */
@@ -36,6 +38,15 @@ async function arrancar() {
   alCumplirObjetivo(({ racha }) => {
     const textoRacha = racha === 1 ? t('inicio.racha.uno') : t('inicio.racha.varios', { n: racha });
     avisar(t('aviso.objetivo', { racha: textoRacha }), { tipo: 'exito', duracion: 6000 });
+    efecto('meta');
+  });
+
+  // Logros nuevos (spec 023) y subida de nivel con el uso (spec 025)
+  alConseguirLogro(({ ids }) => {
+    for (const id of ids) avisar(t('aviso.logro', { logro: t(`logro.${id}.titulo`) }), { tipo: 'exito', duracion: 5000 });
+  });
+  alSubirNivel(({ nivel }) => {
+    avisar(t('aviso.nivel', { nivel, nombre: t(`nivel.${nivel}`) }), { tipo: 'exito', duracion: 6000 });
     efecto('meta');
   });
 

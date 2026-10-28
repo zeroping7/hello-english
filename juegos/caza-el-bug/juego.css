@@ -1,0 +1,31 @@
+/* Caza el bug: el texto con sus palabras como botones */
+.cb-texto {
+  margin-bottom: var(--espacio-3);
+  padding: var(--espacio-3);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--panel);
+}
+
+.cb-cabecera { margin: 0 0 var(--espacio-2); color: var(--tenue); font-family: var(--fuente-mono); font-size: 0.8125rem; }
+.cb-palabras { display: flex; flex-wrap: wrap; gap: 4px 2px; margin: 0; font-size: clamp(1.0625rem, 4.2vw, 1.25rem); line-height: 1.5; }
+
+.cb-palabra {
+  min-height: 40px;
+  padding: 0 6px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: none;
+  color: var(--texto);
+  font: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cb-palabra:hover:not(:disabled) { border-color: var(--keyword); }
+.cb-palabra:focus-visible { outline: 2px solid var(--keyword); outline-offset: 1px; }
+.cb-palabra:disabled { cursor: default; }
+.cb-palabra.bien { border-color: var(--string); }
+.cb-palabra.mal { border-color: var(--error); text-decoration: line-through; }
+.cb-palabra del { color: var(--error); }
+.cb-palabra ins { color: var(--string); font-weight: 700; text-decoration: none; }

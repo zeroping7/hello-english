@@ -1,0 +1,41 @@
+/* Ahorcado: palabra con huecos, vidas y teclado */
+.ah-palabra {
+  margin: var(--espacio-3) 0 var(--espacio-2);
+  font-family: var(--fuente-mono);
+  font-size: clamp(1.5rem, 7vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.ah-palabra.bien { color: var(--string); }
+.ah-palabra.mal { color: var(--error); }
+.ah-vidas { margin: 0 0 var(--espacio-3); color: var(--tenue); font-family: var(--fuente-mono); text-align: center; }
+.ah-barra { color: var(--number); }
+
+.ah-teclado { display: grid; gap: 6px; }
+.ah-fila { display: flex; justify-content: center; gap: 4px; }
+
+.ah-tecla {
+  flex: 1 1 0;
+  max-width: 44px;
+  min-width: 0;
+  height: 48px;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  background: var(--panel);
+  color: var(--texto);
+  font: inherit;
+  font-family: var(--fuente-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ah-tecla:hover:not(:disabled) { border-color: var(--keyword); }
+.ah-tecla:focus-visible { outline: 2px solid var(--keyword); outline-offset: 1px; }
+.ah-tecla:disabled { cursor: default; opacity: 0.55; }
+.ah-tecla.bien { border-color: var(--string); color: var(--string); opacity: 1; }
+.ah-tecla.mal { border-style: dashed; text-decoration: line-through; }

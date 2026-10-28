@@ -1,0 +1,373 @@
+{
+  "banco": "acronimos",
+  "v": 1,
+  "items": [
+    {
+      "id": "ac-001",
+      "nivel": "A1",
+      "tema": "programacion",
+      "sigla": "PC",
+      "significa": "Personal Computer",
+      "otras": [
+        "Public Computer",
+        "Program Code",
+        "Power Cable"
+      ],
+      "letras": true,
+      "traduccion": "Ordenador personal"
+    },
+    {
+      "id": "ac-002",
+      "nivel": "A1",
+      "tema": "programacion",
+      "sigla": "USB",
+      "significa": "Universal Serial Bus",
+      "otras": [
+        "United System Box",
+        "Universal Software Base",
+        "User Serial Board"
+      ],
+      "letras": true,
+      "traduccion": "Bus serie universal (el conector)"
+    },
+    {
+      "id": "ac-003",
+      "nivel": "A1",
+      "tema": "web",
+      "sigla": "WWW",
+      "significa": "World Wide Web",
+      "otras": [
+        "World Web Window",
+        "Wide World Web",
+        "Web World Wide"
+      ],
+      "letras": true,
+      "traduccion": "La web (red mundial)"
+    },
+    {
+      "id": "ac-004",
+      "nivel": "A1",
+      "tema": "web",
+      "sigla": "FAQ",
+      "significa": "Frequently Asked Questions",
+      "otras": [
+        "Fast Answer Queue",
+        "Final Answers and Questions",
+        "Frequent Application Query"
+      ],
+      "letras": true,
+      "traduccion": "Preguntas frecuentes",
+      "explicacion": {
+        "es": "Se suele deletrear (F-A-Q), aunque hay quien dice «fak».",
+        "en": "It is usually spelled out (F-A-Q), though some people say \"fak\"."
+      }
+    },
+    {
+      "id": "ac-005",
+      "nivel": "A1",
+      "tema": "equipo",
+      "sigla": "CEO",
+      "significa": "Chief Executive Officer",
+      "otras": [
+        "Central Engineering Office",
+        "Company Executive Owner",
+        "Chief Engineering Officer"
+      ],
+      "letras": true,
+      "traduccion": "Director ejecutivo"
+    },
+    {
+      "id": "ac-006",
+      "nivel": "A2",
+      "tema": "web",
+      "sigla": "HTML",
+      "significa": "HyperText Markup Language",
+      "otras": [
+        "High Tech Modern Language",
+        "HyperText Machine Language",
+        "Home Tool Markup Language"
+      ],
+      "letras": true,
+      "traduccion": "Lenguaje de marcado de hipertexto"
+    },
+    {
+      "id": "ac-007",
+      "nivel": "A2",
+      "tema": "web",
+      "sigla": "CSS",
+      "significa": "Cascading Style Sheets",
+      "otras": [
+        "Computer Style System",
+        "Creative Style Sheets",
+        "Colour and Style Syntax"
+      ],
+      "letras": true,
+      "traduccion": "Hojas de estilo en cascada"
+    },
+    {
+      "id": "ac-008",
+      "nivel": "A2",
+      "tema": "web",
+      "sigla": "URL",
+      "significa": "Uniform Resource Locator",
+      "otras": [
+        "Universal Reference Link",
+        "User Resource List",
+        "Unique Route Location"
+      ],
+      "letras": true,
+      "traduccion": "Dirección de una página web"
+    },
+    {
+      "id": "ac-009",
+      "nivel": "A2",
+      "tema": "programacion",
+      "sigla": "PDF",
+      "significa": "Portable Document Format",
+      "otras": [
+        "Printed Document File",
+        "Public Data Format",
+        "Personal Document Folder"
+      ],
+      "letras": true,
+      "traduccion": "Formato de documento portátil"
+    },
+    {
+      "id": "ac-010",
+      "nivel": "A2",
+      "tema": "equipo",
+      "sigla": "ASAP",
+      "significa": "As Soon As Possible",
+      "otras": [
+        "Always Send A Plan",
+        "As Simple As Possible",
+        "After Sending All Payments"
+      ],
+      "letras": true,
+      "traduccion": "Lo antes posible",
+      "explicacion": {
+        "es": "Se deletrea (A-S-A-P) o se lee «éisap».",
+        "en": "It is spelled out (A-S-A-P) or said \"AY-sap\"."
+      }
+    },
+    {
+      "id": "ac-011",
+      "nivel": "B1",
+      "tema": "programacion",
+      "sigla": "API",
+      "significa": "Application Programming Interface",
+      "otras": [
+        "Advanced Program Integration",
+        "Automatic Process Interface",
+        "Application Protocol Index"
+      ],
+      "letras": true,
+      "traduccion": "Interfaz de programación de aplicaciones"
+    },
+    {
+      "id": "ac-012",
+      "nivel": "B1",
+      "tema": "web",
+      "sigla": "JSON",
+      "significa": "JavaScript Object Notation",
+      "otras": [
+        "Java Standard Object Network",
+        "JavaScript Online Node",
+        "Joint Syntax Object Notation"
+      ],
+      "letras": false,
+      "suena": "YÉI-son (como el nombre «Jason»)",
+      "traduccion": "Notación de objetos de JavaScript"
+    },
+    {
+      "id": "ac-013",
+      "nivel": "B1",
+      "tema": "programacion",
+      "sigla": "SQL",
+      "significa": "Structured Query Language",
+      "otras": [
+        "Simple Question Language",
+        "System Quality Level",
+        "Standard Queue Logic"
+      ],
+      "letras": true,
+      "traduccion": "Lenguaje de consulta estructurado",
+      "explicacion": {
+        "es": "También se dice «sequel» («SÍ-cuel»).",
+        "en": "It is also said \"sequel\"."
+      }
+    },
+    {
+      "id": "ac-014",
+      "nivel": "B1",
+      "tema": "equipo",
+      "sigla": "ETA",
+      "significa": "Estimated Time of Arrival",
+      "otras": [
+        "End of Task Assignment",
+        "Extra Time Allowed",
+        "Expected Team Answer"
+      ],
+      "letras": true,
+      "traduccion": "Hora estimada de llegada; en el trabajo, cuándo estará algo listo"
+    },
+    {
+      "id": "ac-015",
+      "nivel": "B1",
+      "tema": "programacion",
+      "sigla": "RAM",
+      "significa": "Random Access Memory",
+      "otras": [
+        "Rapid Application Module",
+        "Read And Modify",
+        "Remote Access Machine"
+      ],
+      "letras": false,
+      "suena": "ram (como una palabra)",
+      "traduccion": "Memoria de acceso aleatorio"
+    },
+    {
+      "id": "ac-016",
+      "nivel": "B2",
+      "tema": "web",
+      "sigla": "SaaS",
+      "significa": "Software as a Service",
+      "otras": [
+        "System and Application Security",
+        "Server as a Service",
+        "Storage and Application Sync"
+      ],
+      "letras": false,
+      "suena": "sas",
+      "traduccion": "Software como servicio"
+    },
+    {
+      "id": "ac-017",
+      "nivel": "B2",
+      "tema": "programacion",
+      "sigla": "CI",
+      "significa": "Continuous Integration",
+      "otras": [
+        "Code Inspection",
+        "Central Infrastructure",
+        "Client Interface"
+      ],
+      "letras": true,
+      "traduccion": "Integración continua"
+    },
+    {
+      "id": "ac-018",
+      "nivel": "B2",
+      "tema": "web",
+      "sigla": "GDPR",
+      "significa": "General Data Protection Regulation",
+      "otras": [
+        "Global Digital Privacy Rules",
+        "General Data Processing Register",
+        "Government Data Privacy Review"
+      ],
+      "letras": true,
+      "traduccion": "Reglamento General de Protección de Datos (RGPD)"
+    },
+    {
+      "id": "ac-019",
+      "nivel": "B2",
+      "tema": "equipo",
+      "sigla": "OOO",
+      "significa": "Out Of Office",
+      "otras": [
+        "Object Oriented Operation",
+        "Only One Option",
+        "Open Online Order"
+      ],
+      "letras": true,
+      "traduccion": "Fuera de la oficina"
+    },
+    {
+      "id": "ac-020",
+      "nivel": "B2",
+      "tema": "programacion",
+      "sigla": "SSH",
+      "significa": "Secure Shell",
+      "otras": [
+        "System Security Host",
+        "Server Side HTTP",
+        "Simple Secure Hosting"
+      ],
+      "letras": true,
+      "traduccion": "Protocolo para conectarse a un servidor de forma segura"
+    },
+    {
+      "id": "ac-021",
+      "nivel": "C1",
+      "tema": "web",
+      "sigla": "CORS",
+      "significa": "Cross-Origin Resource Sharing",
+      "otras": [
+        "Central Object Routing System",
+        "Cross-Origin Request Security",
+        "Client Origin Resource Service"
+      ],
+      "letras": false,
+      "suena": "cors (rima con «doors»)",
+      "traduccion": "Compartición de recursos entre orígenes"
+    },
+    {
+      "id": "ac-022",
+      "nivel": "C1",
+      "tema": "programacion",
+      "sigla": "YAGNI",
+      "significa": "You Aren't Gonna Need It",
+      "otras": [
+        "Your App Gets New Inputs",
+        "You Always Get New Ideas",
+        "Yet Another Generic Node Interface"
+      ],
+      "letras": false,
+      "suena": "IÁG-ni",
+      "traduccion": "No lo vas a necesitar (principio de diseño)"
+    },
+    {
+      "id": "ac-023",
+      "nivel": "C1",
+      "tema": "web",
+      "sigla": "SLA",
+      "significa": "Service Level Agreement",
+      "otras": [
+        "System Load Average",
+        "Software License Agreement",
+        "Server Latency Alert"
+      ],
+      "letras": true,
+      "traduccion": "Acuerdo de nivel de servicio"
+    },
+    {
+      "id": "ac-024",
+      "nivel": "C1",
+      "tema": "equipo",
+      "sigla": "TL;DR",
+      "significa": "Too Long; Didn't Read",
+      "otras": [
+        "To Learn; Do Research",
+        "Team Lead; Daily Report",
+        "Time Limit; Deadline Reached"
+      ],
+      "letras": true,
+      "traduccion": "Resumen (para quien no quiera leerlo todo)"
+    },
+    {
+      "id": "ac-025",
+      "nivel": "C1",
+      "tema": "equipo",
+      "sigla": "KPI",
+      "significa": "Key Performance Indicator",
+      "otras": [
+        "Known Process Issue",
+        "Key Product Integration",
+        "Kernel Performance Index"
+      ],
+      "letras": true,
+      "traduccion": "Indicador clave de rendimiento"
+    }
+  ]
+}

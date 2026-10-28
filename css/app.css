@@ -799,4 +799,146 @@ code {
 .juego-inicio-desc { margin: 0; font-size: 1.125rem; }
 .boton-grande { min-height: 56px; padding: 0 var(--espacio-5); font-size: 1.0625rem; }
 .boton-grande .icono { fill: currentColor; width: 1.25rem; height: 1.25rem; }
+.boton-enlace {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 var(--espacio-1);
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: var(--function);
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.boton-enlace:hover { color: var(--keyword); }
+.boton-enlace:focus-visible { outline: 2px solid var(--keyword); outline-offset: 1px; }
 .boton-enlace .icono, .fa-escuchar .icono { width: 1.25rem; height: 1.25rem; vertical-align: -0.25em; }
+
+/* Práctica de hoy: enlace del inicio y pantalla (spec 024) */
+a.practica { margin-bottom: var(--espacio-3); text-decoration: none; }
+a.practica:hover { filter: brightness(1.06); }
+a.practica:focus-visible { outline: 2px solid var(--keyword); outline-offset: 2px; }
+.practica.hecha { border-color: var(--string); }
+.practica.hecha .practica-icono { background: var(--string); }
+.practica.hecha .practica-icono .icono { fill: none; }
+.practica-avance { margin-top: var(--espacio-1); color: var(--keyword); font-family: var(--fuente-mono); font-size: 0.875rem; }
+.practica.hecha .practica-avance { color: var(--string); }
+
+.pasos { display: grid; gap: var(--espacio-2); margin: var(--espacio-4) 0; padding: 0; list-style: none; }
+
+.paso {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-3);
+  padding: var(--espacio-3);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--panel);
+}
+
+.paso.actual { border-color: var(--keyword); }
+.paso.hecho { border-style: dashed; }
+.paso-numero { display: grid; place-items: center; flex: none; width: 1.75rem; height: 1.75rem; border-radius: 50%; border: 1px solid var(--borde); font-family: var(--fuente-mono); font-size: 0.875rem; }
+.paso.hecho .paso-numero { border-color: var(--string); color: var(--string); }
+.paso-texto { display: grid; min-width: 0; }
+.paso-titulo { font-family: var(--fuente-mono); font-weight: 700; }
+.paso-estado { color: var(--tenue); font-size: 0.875rem; }
+.practica-pantalla .boton-principal, .practica-pantalla .panel-resultado { margin-bottom: var(--espacio-3); }
+
+.juego-repasos { display: flex; align-items: center; gap: var(--espacio-2); margin: 0; color: var(--number); font-size: 0.9375rem; }
+.juego-repasos .icono { width: 1.125rem; height: 1.125rem; }
+
+/* Logros (spec 023) */
+.enlace-logros {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-2);
+  min-height: var(--toque);
+  margin-bottom: var(--espacio-5);
+  padding: 0 var(--espacio-3);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--panel);
+  color: var(--texto);
+  font-family: var(--fuente-mono);
+  text-decoration: none;
+}
+
+.enlace-logros:hover { border-color: var(--number); }
+.enlace-logros:focus-visible { outline: 2px solid var(--keyword); outline-offset: 2px; }
+.enlace-logros .icono { color: var(--number); width: 1.25rem; height: 1.25rem; }
+.enlace-logros-cuenta { margin-left: auto; color: var(--tenue); }
+
+.logros { display: grid; gap: var(--espacio-2); margin: var(--espacio-3) 0 0; padding: 0; list-style: none; }
+@media (min-width: 640px) { .logros { grid-template-columns: 1fr 1fr; } }
+
+.logro {
+  display: flex;
+  gap: var(--espacio-3);
+  padding: var(--espacio-3);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--panel);
+}
+
+.logro.bloqueado { border-style: dashed; }
+.logro-icono { display: grid; place-items: center; flex: none; width: 2.5rem; height: 2.5rem; border-radius: 50%; border: 1px solid var(--borde); color: var(--tenue); }
+.logro.conseguido .logro-icono { border-color: var(--number); color: var(--number); }
+.logro-texto { display: grid; gap: 2px; min-width: 0; }
+.logro-titulo { font-family: var(--fuente-mono); font-weight: 700; }
+.logro.bloqueado .logro-titulo { color: var(--tenue); }
+.logro-desc { font-size: 0.875rem; }
+.logro-estado { color: var(--tenue); font-size: 0.8125rem; font-family: var(--fuente-mono); }
+.logro.conseguido .logro-estado { color: var(--string); }
+
+/* Piezas compartidas por varios minijuegos */
+.ficha {
+  min-height: 44px;
+  padding: var(--espacio-1) var(--espacio-3);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--texto);
+  font: inherit;
+  font-family: var(--fuente-mono);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ficha:hover:not(:disabled) { border-color: var(--keyword); }
+.ficha:focus-visible { outline: 2px solid var(--keyword); outline-offset: 2px; }
+.ficha:disabled { cursor: default; }
+.ficha.elegida { border-color: var(--keyword); background: color-mix(in srgb, var(--keyword) 16%, var(--panel)); }
+.ficha.bien { border-color: var(--string); color: var(--string); }
+.ficha.mal { border-color: var(--error); color: var(--error); }
+.fichas { display: flex; flex-wrap: wrap; gap: var(--espacio-2); }
+
+.formulario-respuesta { display: flex; flex-wrap: wrap; gap: var(--espacio-2); margin-bottom: var(--espacio-3); }
+.formulario-respuesta .campo { flex: 1 1 12rem; min-width: 0; font-size: 1.0625rem; }
+.campo.bien { border-color: var(--string); color: var(--string); }
+.campo.mal { border-color: var(--error); }
+
+.botones-voz { display: flex; flex-wrap: wrap; gap: var(--espacio-2); margin-bottom: var(--espacio-3); }
+.boton .icono { width: 1.25rem; height: 1.25rem; }
+
+.terminal {
+  margin: 0 0 var(--espacio-3);
+  padding: var(--espacio-3);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--panel);
+  font-family: var(--fuente-mono);
+  font-size: clamp(0.875rem, 3.6vw, 1rem);
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.terminal-linea { margin: 0; }
+.terminal-prompt { color: var(--string); }
+.comparacion .bien { color: var(--string); }
+.comparacion .mal { color: var(--error); text-decoration: underline wavy; }
+.nota-privacidad { color: var(--tenue); font-size: 0.8125rem; }

@@ -1,0 +1,7 @@
+/* Dictado de código: el código bueno y la tabla de símbolos */
+.dc-codigo { margin: 0 0 var(--espacio-2); white-space: pre-wrap; color: var(--string); }
+.dc-tuyo { color: var(--error); overflow-wrap: anywhere; }
+.dc-simbolos { width: 100%; margin-top: var(--espacio-2); border-collapse: collapse; font-size: 0.9375rem; }
+.dc-simbolos caption { margin-bottom: var(--espacio-1); color: var(--tenue); font-size: 0.875rem; text-align: left; }
+.dc-simbolos th, .dc-simbolos td { padding: 4px var(--espacio-2); border-top: 1px solid var(--borde); text-align: left; vertical-align: top; }
+.dc-simbolos th { width: 3rem; color: var(--keyword); font-family: var(--fuente-mono); }

@@ -1,0 +1,286 @@
+{
+  "banco": "sopa-crucigrama",
+  "v": 1,
+  "items": [
+    {
+      "id": "sc-001",
+      "nivel": "A1",
+      "tema": "programacion",
+      "palabra": "code",
+      "pista": "Instructions that a computer can run."
+    },
+    {
+      "id": "sc-002",
+      "nivel": "A1",
+      "tema": "programacion",
+      "palabra": "file",
+      "pista": "A document stored on a computer."
+    },
+    {
+      "id": "sc-003",
+      "nivel": "A1",
+      "tema": "programacion",
+      "palabra": "mouse",
+      "pista": "You click with it."
+    },
+    {
+      "id": "sc-004",
+      "nivel": "A1",
+      "tema": "web",
+      "palabra": "screen",
+      "pista": "Where you see images and text."
+    },
+    {
+      "id": "sc-005",
+      "nivel": "A1",
+      "tema": "equipo",
+      "palabra": "email",
+      "pista": "A message you send online."
+    },
+    {
+      "id": "sc-006",
+      "nivel": "A1",
+      "tema": "equipo",
+      "palabra": "team",
+      "pista": "A group of people who work together."
+    },
+    {
+      "id": "sc-007",
+      "nivel": "A1",
+      "tema": "web",
+      "palabra": "page",
+      "pista": "One document on a website."
+    },
+    {
+      "id": "sc-008",
+      "nivel": "A1",
+      "tema": "web",
+      "palabra": "link",
+      "pista": "Text you click to go to another page."
+    },
+    {
+      "id": "sc-009",
+      "nivel": "A2",
+      "tema": "programacion",
+      "palabra": "bug",
+      "pista": "An error in a program."
+    },
+    {
+      "id": "sc-010",
+      "nivel": "A2",
+      "tema": "web",
+      "palabra": "browser",
+      "pista": "Chrome or Firefox, for example."
+    },
+    {
+      "id": "sc-011",
+      "nivel": "A2",
+      "tema": "programacion",
+      "palabra": "laptop",
+      "pista": "A small computer you can carry."
+    },
+    {
+      "id": "sc-012",
+      "nivel": "A2",
+      "tema": "equipo",
+      "palabra": "meeting",
+      "pista": "When people get together to talk."
+    },
+    {
+      "id": "sc-013",
+      "nivel": "A2",
+      "tema": "web",
+      "palabra": "password",
+      "pista": "A secret word you use to log in."
+    },
+    {
+      "id": "sc-014",
+      "nivel": "A2",
+      "tema": "programacion",
+      "palabra": "update",
+      "pista": "A newer version of some software."
+    },
+    {
+      "id": "sc-015",
+      "nivel": "A2",
+      "tema": "web",
+      "palabra": "server",
+      "pista": "A computer that sends web pages to users."
+    },
+    {
+      "id": "sc-016",
+      "nivel": "A2",
+      "tema": "programacion",
+      "palabra": "desktop",
+      "pista": "The main screen of your computer, with icons on it."
+    },
+    {
+      "id": "sc-017",
+      "nivel": "B1",
+      "tema": "programacion",
+      "palabra": "database",
+      "pista": "Where an application stores its data."
+    },
+    {
+      "id": "sc-018",
+      "nivel": "B1",
+      "tema": "equipo",
+      "palabra": "deadline",
+      "pista": "The last day to finish something."
+    },
+    {
+      "id": "sc-019",
+      "nivel": "B1",
+      "tema": "programacion",
+      "palabra": "branch",
+      "pista": "A separate line of work in Git."
+    },
+    {
+      "id": "sc-020",
+      "nivel": "B1",
+      "tema": "programacion",
+      "palabra": "merge",
+      "pista": "To join two branches together."
+    },
+    {
+      "id": "sc-021",
+      "nivel": "B1",
+      "tema": "programacion",
+      "palabra": "backup",
+      "pista": "A copy of your data, in case it gets lost."
+    },
+    {
+      "id": "sc-022",
+      "nivel": "B1",
+      "tema": "web",
+      "palabra": "cookie",
+      "pista": "A small piece of data a website saves in your browser."
+    },
+    {
+      "id": "sc-023",
+      "nivel": "B1",
+      "tema": "equipo",
+      "palabra": "feedback",
+      "pista": "Comments about how well you did something."
+    },
+    {
+      "id": "sc-024",
+      "nivel": "B1",
+      "tema": "programacion",
+      "palabra": "testing",
+      "pista": "Checking that the code works."
+    },
+    {
+      "id": "sc-025",
+      "nivel": "B2",
+      "tema": "web",
+      "palabra": "deploy",
+      "pista": "To put software on a server so people can use it."
+    },
+    {
+      "id": "sc-026",
+      "nivel": "B2",
+      "tema": "equipo",
+      "palabra": "sprint",
+      "pista": "A short, fixed period of work in Scrum."
+    },
+    {
+      "id": "sc-027",
+      "nivel": "B2",
+      "tema": "programacion",
+      "palabra": "refactor",
+      "pista": "To restructure code without changing what it does."
+    },
+    {
+      "id": "sc-028",
+      "nivel": "B2",
+      "tema": "web",
+      "palabra": "cache",
+      "pista": "Fast storage for data you use often."
+    },
+    {
+      "id": "sc-029",
+      "nivel": "B2",
+      "tema": "web",
+      "palabra": "firewall",
+      "pista": "It blocks unwanted network traffic."
+    },
+    {
+      "id": "sc-030",
+      "nivel": "B2",
+      "tema": "web",
+      "palabra": "latency",
+      "pista": "The delay before data arrives over a network."
+    },
+    {
+      "id": "sc-031",
+      "nivel": "B2",
+      "tema": "programacion",
+      "palabra": "release",
+      "pista": "A version that is made available to users."
+    },
+    {
+      "id": "sc-032",
+      "nivel": "B2",
+      "tema": "equipo",
+      "palabra": "backlog",
+      "pista": "A list of work that still has to be done."
+    },
+    {
+      "id": "sc-033",
+      "nivel": "C1",
+      "tema": "web",
+      "palabra": "scalable",
+      "pista": "Able to grow to handle many more users."
+    },
+    {
+      "id": "sc-034",
+      "nivel": "C1",
+      "tema": "programacion",
+      "palabra": "runtime",
+      "pista": "The environment in which code is executed."
+    },
+    {
+      "id": "sc-035",
+      "nivel": "C1",
+      "tema": "programacion",
+      "palabra": "rollback",
+      "pista": "Going back to a previous version after a bad release."
+    },
+    {
+      "id": "sc-036",
+      "nivel": "C1",
+      "tema": "web",
+      "palabra": "throttle",
+      "pista": "To limit how often something can happen."
+    },
+    {
+      "id": "sc-037",
+      "nivel": "C1",
+      "tema": "web",
+      "palabra": "payload",
+      "pista": "The data that is sent in a request."
+    },
+    {
+      "id": "sc-038",
+      "nivel": "C1",
+      "tema": "web",
+      "palabra": "endpoint",
+      "pista": "A URL where an API can be reached."
+    },
+    {
+      "id": "sc-039",
+      "nivel": "C1",
+      "tema": "equipo",
+      "palabra": "tradeoff",
+      "pista": "Giving up one thing to gain another."
+    },
+    {
+      "id": "sc-040",
+      "nivel": "C1",
+      "tema": "equipo",
+      "palabra": "blocker",
+      "pista": "Something that stops you from making progress."
+    }
+  ]
+}

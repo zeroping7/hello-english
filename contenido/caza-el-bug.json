@@ -1,0 +1,366 @@
+{
+  "banco": "caza-el-bug",
+  "v": 1,
+  "items": [
+    {
+      "id": "cb-001",
+      "nivel": "A1",
+      "tema": "programacion",
+      "formato": "commit",
+      "texto": "Fix the bug in the login {functon|function}.",
+      "traduccion": "Arregla el bug de la función de login.",
+      "explicacion": {
+        "es": "Se escribe «function», con i. Es una de las palabras que más verás en el código.",
+        "en": "It's spelt 'function', with an i."
+      }
+    },
+    {
+      "id": "cb-002",
+      "nivel": "A1",
+      "tema": "programacion",
+      "formato": "slack",
+      "texto": "Good news: the tests {is|are} green now.",
+      "traduccion": "Buenas noticias: los tests ya están en verde.",
+      "explicacion": {
+        "es": "«Tests» es plural, así que va con «are».",
+        "en": "'Tests' is plural, so it takes 'are'."
+      }
+    },
+    {
+      "id": "cb-003",
+      "nivel": "A1",
+      "tema": "web",
+      "formato": "docs",
+      "texto": "Click the button to {saves|save} the form.",
+      "traduccion": "Haz clic en el botón para guardar el formulario.",
+      "explicacion": {
+        "es": "Después de «to» el verbo va sin -s: «to save».",
+        "en": "After 'to', the verb has no -s: 'to save'."
+      }
+    },
+    {
+      "id": "cb-004",
+      "nivel": "A1",
+      "tema": "web",
+      "formato": "ticket",
+      "texto": "The page {don't|doesn't} load on my phone.",
+      "traduccion": "La página no carga en mi móvil.",
+      "explicacion": {
+        "es": "«The page» es «it»: en negativo se dice «doesn't».",
+        "en": "'The page' is 'it', so the negative is 'doesn't'."
+      }
+    },
+    {
+      "id": "cb-005",
+      "nivel": "A1",
+      "tema": "equipo",
+      "formato": "email",
+      "texto": "Hi Ana, I {has|have} a question about the meeting.",
+      "traduccion": "Hola, Ana: tengo una pregunta sobre la reunión.",
+      "explicacion": {
+        "es": "Con «I» se dice «I have»; «has» es para he, she e it.",
+        "en": "With 'I' we say 'I have'; 'has' is for he, she and it."
+      }
+    },
+    {
+      "id": "cb-006",
+      "nivel": "A1",
+      "tema": "equipo",
+      "formato": "slack",
+      "texto": "Good morning! I'm {on|in} the office today.",
+      "traduccion": "¡Buenos días! Hoy estoy en la oficina.",
+      "explicacion": {
+        "es": "Se está «in the office» (dentro del edificio).",
+        "en": "You are 'in the office' (inside the building)."
+      }
+    },
+    {
+      "id": "cb-007",
+      "nivel": "A2",
+      "tema": "programacion",
+      "formato": "slack",
+      "texto": "Yesterday I didn't {found|find} the error.",
+      "traduccion": "Ayer no encontré el error.",
+      "explicacion": {
+        "es": "Después de «didn't» el verbo va en su forma base: «find», no «found».",
+        "en": "After 'didn't', use the base form: 'find', not 'found'."
+      }
+    },
+    {
+      "id": "cb-008",
+      "nivel": "A2",
+      "tema": "programacion",
+      "formato": "commit",
+      "texto": "Remove {unuse|unused} variables from the parser.",
+      "traduccion": "Quita las variables sin usar del parser.",
+      "explicacion": {
+        "es": "«Sin usar» es «unused», con -ed.",
+        "en": "'Not used' is 'unused', with -ed."
+      }
+    },
+    {
+      "id": "cb-009",
+      "nivel": "A2",
+      "tema": "web",
+      "formato": "docs",
+      "texto": "This framework is {easyer|easier} to learn than Angular.",
+      "traduccion": "Este framework es más fácil de aprender que Angular.",
+      "explicacion": {
+        "es": "El comparativo de «easy» es «easier»: la y cambia a i.",
+        "en": "The comparative of 'easy' is 'easier': the y changes to i."
+      }
+    },
+    {
+      "id": "cb-010",
+      "nivel": "A2",
+      "tema": "web",
+      "formato": "ticket",
+      "texto": "The images {loads|load} very slowly.",
+      "traduccion": "Las imágenes cargan muy despacio.",
+      "explicacion": {
+        "es": "«The images» es plural: el verbo va sin -s.",
+        "en": "'The images' is plural, so the verb has no -s."
+      }
+    },
+    {
+      "id": "cb-011",
+      "nivel": "A2",
+      "tema": "equipo",
+      "formato": "email",
+      "texto": "Could you send me the report {until|by} Friday?",
+      "traduccion": "¿Me puedes enviar el informe antes del viernes?",
+      "explicacion": {
+        "es": "Para un plazo se dice «by Friday» (como muy tarde el viernes); «until» es «hasta» para algo que dura.",
+        "en": "For a deadline use 'by Friday'; 'until' is for something that continues up to a time."
+      }
+    },
+    {
+      "id": "cb-012",
+      "nivel": "A2",
+      "tema": "equipo",
+      "formato": "slack",
+      "texto": "The demo was really {interested|interesting}!",
+      "traduccion": "¡La demo fue muy interesante!",
+      "explicacion": {
+        "es": "Lo que despierta interés es «interesting»; «interested» es cómo te sientes tú.",
+        "en": "Something that causes interest is 'interesting'; 'interested' is how you feel."
+      }
+    },
+    {
+      "id": "cb-013",
+      "nivel": "B1",
+      "tema": "programacion",
+      "formato": "commit",
+      "texto": "Add more {informations|information} about the API limits.",
+      "traduccion": "Añade más información sobre los límites de la API.",
+      "explicacion": {
+        "es": "«Information» es incontable: nunca lleva -s.",
+        "en": "'Information' is uncountable: it never takes -s."
+      }
+    },
+    {
+      "id": "cb-014",
+      "nivel": "B1",
+      "tema": "programacion",
+      "formato": "docs",
+      "texto": "If the request fails, the client {retry|retries} three times.",
+      "traduccion": "Si la petición falla, el cliente lo reintenta tres veces.",
+      "explicacion": {
+        "es": "«The client» es tercera persona: «retries» (la y pasa a ies).",
+        "en": "'The client' is third person: 'retries' (y becomes ies)."
+      }
+    },
+    {
+      "id": "cb-015",
+      "nivel": "B1",
+      "tema": "web",
+      "formato": "ticket",
+      "texto": "The menu {dissapears|disappears} when I scroll down.",
+      "traduccion": "El menú desaparece cuando bajo con el scroll.",
+      "explicacion": {
+        "es": "Se escribe «disappear»: una s y dos p.",
+        "en": "It's spelt 'disappear': one s and two p's."
+      }
+    },
+    {
+      "id": "cb-016",
+      "nivel": "B1",
+      "tema": "web",
+      "formato": "slack",
+      "texto": "I've been working on the CSS {since|for} two hours.",
+      "traduccion": "Llevo dos horas trabajando en el CSS.",
+      "explicacion": {
+        "es": "Con una duración se usa «for» (for two hours); «since» va con un momento (since 9 am).",
+        "en": "Use 'for' with a length of time; 'since' goes with a point in time (since 9 am)."
+      }
+    },
+    {
+      "id": "cb-017",
+      "nivel": "B1",
+      "tema": "equipo",
+      "formato": "email",
+      "texto": "I look forward to {hear|hearing} from you.",
+      "traduccion": "Quedo a la espera de tu respuesta.",
+      "explicacion": {
+        "es": "Después de «look forward to» el verbo va con -ing.",
+        "en": "After 'look forward to', the verb takes -ing."
+      }
+    },
+    {
+      "id": "cb-018",
+      "nivel": "B1",
+      "tema": "equipo",
+      "formato": "slack",
+      "texto": "Let's {discus|discuss} it in the next meeting.",
+      "traduccion": "Hablémoslo en la próxima reunión.",
+      "explicacion": {
+        "es": "Se escribe «discuss», con dos s al final.",
+        "en": "It's spelt 'discuss', with double s at the end."
+      }
+    },
+    {
+      "id": "cb-019",
+      "nivel": "B2",
+      "tema": "programacion",
+      "formato": "docs",
+      "texto": "The function returns null {unless|if} the user is not found.",
+      "traduccion": "La función devuelve null si no se encuentra el usuario.",
+      "explicacion": {
+        "es": "«Unless» significa «a menos que»: aquí la lógica pide «if».",
+        "en": "'Unless' means 'except if': the logic here needs 'if'."
+      }
+    },
+    {
+      "id": "cb-020",
+      "nivel": "B2",
+      "tema": "programacion",
+      "formato": "commit",
+      "texto": "Fix a race condition {who|that} caused random crashes.",
+      "traduccion": "Arregla una condición de carrera que causaba cierres aleatorios.",
+      "explicacion": {
+        "es": "Para cosas se usa «that» o «which»; «who» es para personas.",
+        "en": "Use 'that' or 'which' for things; 'who' is for people."
+      }
+    },
+    {
+      "id": "cb-021",
+      "nivel": "B2",
+      "tema": "web",
+      "formato": "docs",
+      "texto": "The API {rises|raises} an error when the token expires.",
+      "traduccion": "La API lanza un error cuando caduca el token.",
+      "explicacion": {
+        "es": "«Raise» lleva complemento (raise an error); «rise» no (prices rise).",
+        "en": "'Raise' takes an object (raise an error); 'rise' doesn't (prices rise)."
+      }
+    },
+    {
+      "id": "cb-022",
+      "nivel": "B2",
+      "tema": "web",
+      "formato": "ticket",
+      "texto": "The checkout page has been {broke|broken} since the last deploy.",
+      "traduccion": "La página de pago está rota desde el último despliegue.",
+      "explicacion": {
+        "es": "Con «has been» va el participio: «broken».",
+        "en": "After 'has been', use the past participle: 'broken'."
+      }
+    },
+    {
+      "id": "cb-023",
+      "nivel": "B2",
+      "tema": "equipo",
+      "formato": "email",
+      "texto": "I would appreciate it if you {can|could} review it today.",
+      "traduccion": "Te agradecería que lo revisaras hoy.",
+      "explicacion": {
+        "es": "En la fórmula educada «I would appreciate it if...» va «could».",
+        "en": "In the polite pattern 'I would appreciate it if...', use 'could'."
+      }
+    },
+    {
+      "id": "cb-024",
+      "nivel": "B2",
+      "tema": "equipo",
+      "formato": "slack",
+      "texto": "{Despite|Although} the deadline is tight, we'll ship on time.",
+      "traduccion": "Aunque el plazo es justo, lo publicaremos a tiempo.",
+      "explicacion": {
+        "es": "«Despite» va con un nombre (despite the tight deadline); delante de una frase con verbo se usa «although».",
+        "en": "'Despite' goes with a noun; before a clause with a verb, use 'although'."
+      }
+    },
+    {
+      "id": "cb-025",
+      "nivel": "C1",
+      "tema": "programacion",
+      "formato": "docs",
+      "texto": "{Would|Should} you encounter any issues, please open a ticket.",
+      "traduccion": "Si tuvieras algún problema, abre un ticket.",
+      "explicacion": {
+        "es": "La condicional formal con inversión es «Should you...» (si llegaras a...).",
+        "en": "The formal inverted conditional is 'Should you...'."
+      }
+    },
+    {
+      "id": "cb-026",
+      "nivel": "C1",
+      "tema": "programacion",
+      "formato": "commit",
+      "texto": "This change results in {less|fewer} database queries.",
+      "traduccion": "Este cambio hace que haya menos consultas a la base de datos.",
+      "explicacion": {
+        "es": "«Queries» es contable: se usa «fewer»; «less» es para incontables.",
+        "en": "'Queries' is countable, so use 'fewer'; 'less' is for uncountables."
+      }
+    },
+    {
+      "id": "cb-027",
+      "nivel": "C1",
+      "tema": "web",
+      "formato": "ticket",
+      "texto": "The bug only {effects|affects} Safari users.",
+      "traduccion": "El bug solo afecta a los usuarios de Safari.",
+      "explicacion": {
+        "es": "El verbo es «affect» (afectar); «effect» suele ser el sustantivo (efecto).",
+        "en": "The verb is 'affect'; 'effect' is usually the noun."
+      }
+    },
+    {
+      "id": "cb-028",
+      "nivel": "C1",
+      "tema": "web",
+      "formato": "docs",
+      "texto": "The results are {inconsistents|inconsistent} across browsers.",
+      "traduccion": "Los resultados no son coherentes entre navegadores.",
+      "explicacion": {
+        "es": "En inglés los adjetivos no tienen plural.",
+        "en": "In English, adjectives have no plural form."
+      }
+    },
+    {
+      "id": "cb-029",
+      "nivel": "C1",
+      "tema": "equipo",
+      "formato": "email",
+      "texto": "Please find {attach|attached} the minutes of the meeting.",
+      "traduccion": "Adjunto el acta de la reunión.",
+      "explicacion": {
+        "es": "La fórmula es «Please find attached...».",
+        "en": "The set phrase is 'Please find attached...'."
+      }
+    },
+    {
+      "id": "cb-030",
+      "nivel": "C1",
+      "tema": "equipo",
+      "formato": "slack",
+      "texto": "It's high time we {update|updated} our dependencies.",
+      "traduccion": "Ya va siendo hora de que actualicemos las dependencias.",
+      "explicacion": {
+        "es": "Tras «It's high time we...» va el pasado: «updated».",
+        "en": "After 'It's high time we...', use the past: 'updated'."
+      }
+    }
+  ]
+}

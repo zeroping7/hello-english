@@ -17,7 +17,14 @@
     import { elegirEjercicios, NIVELES } from '../src/contenido/elegir.js';
     import { crearAzar, barajar } from '../src/contenido/azar.js';
 
-    const BANCOS = { 'prueba-nivel': 5, 'falsos-amigos': 6, 'merge-conflict': 6 };   // mínimo por nivel (spec 001 §4)
+    // Mínimo de ejercicios por nivel (spec 001 §4 y la spec de cada minijuego)
+    const BANCOS = {
+      'prueba-nivel': 5, 'falsos-amigos': 6, 'merge-conflict': 6,
+      'caza-el-bug': 6, prompt: 6, incidente: 1, 'ordenar-frases': 6, ahorcado: 4,
+      'dictado-codigo': 4, 'dilo-bien': 5, 'daily-standup': 4, entrevista: 4, 'dictado-audio': 4,
+      acronimos: 5, 'jerga-dev': 4, 'sopa-crucigrama': 8, emparejar: 6, contrarreloj: 10,
+      'educado-o-borde': 4, 'bug-report': 2,
+    };
     const leer = async (n) => (await fetch(`./${n}.json`, { cache: 'no-cache' })).json();
 
     // --- Bancos reales ---
@@ -41,6 +48,27 @@
     prueba('Los ids no se repiten entre bancos', async () => {
       const ids = (await Promise.all(Object.keys(BANCOS).map(leer))).flatMap((b) => b.items.map((i) => i.id));
       igual(ids.length, new Set(ids).size);
+    });
+
+    prueba('Cada minijuego del registro tiene su banco en la lista', async () => {
+      const { JUEGOS } = await import('../juegos/registro.js');
+      igual(JUEGOS.map((j) => j.id).filter((id) => !(id in BANCOS)), []);
+    });
+
+    prueba('Validación de los bancos nuevos: detecta errores típicos', () => {
+      const base = { id: 'x-1', nivel: 'A1', tema: 'web', explicacion: { es: 'e', en: 'e' } };
+      const casos = [
+        ['caza-el-bug', 'cb', { texto: 'Sin marca de error', traduccion: 't' }, 'un solo {mal|bien}'],
+        ['prompt', 'pr', { enunciado: 'Dos ___ huecos ___', respuesta: 'a', traduccion: 't' }, 'un hueco'],
+        ['ahorcado', 'ah', { palabra: 'two words', pista: 'p', traduccion: 't' }, 'solo letras'],
+        ['dilo-bien', 'db', { termino: 't', suena: 's', ipa: 'i', otras: ['s', 'x'] }, 'otras'],
+        ['contrarreloj', 'cr', { en: 'a', es: 'b', incorrecta: 'b' }, 'distinta'],
+        ['bug-report', 'br', { partes: { titulo: 'a' } }, 'partes'],
+      ];
+      for (const [banco, prefijo, campos, texto] of casos) {
+        const errores = validarBanco(banco, { banco, v: 1, items: [{ ...base, id: `${prefijo}-1`, ...campos }] }).join(' | ');
+        verdadero(errores.includes(texto), `${banco} debería decir "${texto}": ${errores}`);
+      }
     });
 
     prueba('temas.json coincide con los temas del esquema', async () => {

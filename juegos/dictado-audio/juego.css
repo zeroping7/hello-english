@@ -1,0 +1,2 @@
+/* Dictado: el campo ocupa todo el ancho */
+.formulario-respuesta .campo { flex-basis: 100%; }

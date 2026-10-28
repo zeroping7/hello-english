@@ -1,6 +1,8 @@
-// Pantalla de inicio (HU-2): resumen del progreso, Práctica de hoy y las cuatro categorías.
+// Pantalla de inicio (HU-2): resumen del progreso, Práctica de hoy, logros y las cuatro categorías.
 import { h } from '../ui/dom.js';
-import { resumen, alCambiarProgreso } from '../progreso/progreso.js';
+import { resumen, alCambiarProgreso, leerProgreso, pendientes } from '../progreso/progreso.js';
+import { practicaActual } from './practica.js';
+import { LOGROS } from '../progreso/logros.js';
 import { t } from '../i18n/textos.js';
 import { navegar } from '../router.js';
 import { almacen } from '../progreso/almacen.js';
@@ -60,15 +62,28 @@ function etiquetaProximamente() {
 }
 
 function practicaDeHoy() {
-  // Hasta que exista su spec se ve pero no se puede usar
-  return h('button', { class: 'practica', type: 'button', disabled: true },
-    h('span', { class: 'practica-icono' }, icono('practica')),
+  const practica = practicaActual();
+  const hechos = practica.hechos.length;
+  const total = practica.juegos.length;
+  const repasos = pendientes().length;
+  return h('a', { class: `practica ${hechos === total ? 'hecha' : ''}`, href: '#/practica' },
+    h('span', { class: 'practica-icono' }, icono(hechos === total ? 'logros' : 'practica')),
     h('span', { class: 'practica-texto' },
       h('span', { class: 'practica-titulo' }, t('inicio.practica')),
       h('span', { class: 'practica-desc' }, t('inicio.practica.desc')),
-      etiquetaProximamente(),
+      h('span', { class: 'practica-avance' },
+        hechos === total ? `✓ ${t('practica.completada')}` : t('practica.avance', { n: hechos, total }),
+        repasos > 0 && ` · ${repasos === 1 ? t('practica.repasos.uno') : t('practica.repasos.varios', { n: repasos })}`),
     ),
   );
+}
+
+function enlaceLogros() {
+  const conseguidos = LOGROS.filter((l) => leerProgreso().logros[l.id]).length;
+  return h('a', { class: 'enlace-logros', href: '#/logros' },
+    icono('logros'),
+    h('span', {}, t('logros.titulo')),
+    h('span', { class: 'enlace-logros-cuenta' }, `${conseguidos}/${LOGROS.length}`));
 }
 
 function tarjeta(juego) {
@@ -111,6 +126,7 @@ export function montar(raiz) {
       !almacen.persistente() && avisoFijo(t('aviso.sinAlmacen'), { tipo: 'error' }),
       zonaResumen,
       practicaDeHoy(),
+      enlaceLogros(),
       CATEGORIAS.map(categoria),
     ),
   );

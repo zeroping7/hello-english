@@ -1,0 +1,26 @@
+/* Incidente en producción: logs con colores y final de la historia */
+.in-titulo { margin: 0 0 var(--espacio-2); font-family: var(--fuente-mono); font-weight: 700; }
+.in-alerta { color: var(--error); }
+.in-log { max-height: 50vh; overflow-y: auto; font-size: clamp(0.8125rem, 3.3vw, 0.9375rem); }
+.in-error { color: var(--error); }
+.in-aviso { color: var(--number); }
+.in-info { color: var(--tenue); }
+.in-mensaje { color: var(--function); }
+.in-mensaje + .in-mensaje, .in-info + .in-mensaje { margin-top: 2px; }
+.in-pregunta { color: var(--texto); font-weight: 700; }
+
+.in-final {
+  padding: var(--espacio-4);
+  border: 1px solid var(--borde);
+  border-left: 4px solid var(--number);
+  border-radius: var(--radio);
+  background: var(--panel);
+}
+
+.in-final.bien { border-left-color: var(--string); }
+.in-final.mal { border-left-color: var(--error); }
+.in-final-titulo { margin: 0 0 var(--espacio-2); font-family: var(--fuente-mono); font-size: 1.25rem; }
+.in-final.bien .in-final-titulo { color: var(--string); }
+.in-final.mal .in-final-titulo { color: var(--error); }
+.in-final.regular .in-final-titulo { color: var(--number); }
+.in-causa { font-family: var(--fuente-mono); font-size: 0.9375rem; }

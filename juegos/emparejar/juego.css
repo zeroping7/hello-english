@@ -1,0 +1,8 @@
+/* Emparejar: dos columnas de fichas */
+.em-columnas { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: var(--espacio-2); }
+.em-columna { display: grid; align-content: start; gap: var(--espacio-2); }
+.em-columna .ficha { min-height: 56px; text-align: left; overflow-wrap: anywhere; }
+.em-definicion { font-family: var(--fuente-texto); font-size: 0.9375rem; }
+.em-palabra { font-weight: 700; }
+.em-dibujo { font-size: 1.75rem; }
+.em-repaso { margin: 0; padding-left: 1.25rem; }

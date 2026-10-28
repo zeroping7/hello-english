@@ -16,6 +16,8 @@
     import { crearAlmacen } from './almacen.js';
     import { normalizarAjustes } from '../ajustes/ajustes.js';
     import * as L from './logica.js';
+    import { comprobarLogros, LOGROS } from './logros.js';
+    import { elegirPractica, practicaDeHoy, marcarHecho, siguientePaso } from './practica.js';
 
     // Almacenamiento falso con la misma interfaz que localStorage
     class Falso {
@@ -225,6 +227,113 @@
     prueba('Importar: descarta campos desconocidos del progreso', () => {
       const base = L.crearExportacion({ v: 1 }, { ...conDatos(), trampa: true });
       igual('trampa' in L.validarImportacion(base).progreso, false);
+    });
+
+    // --- Formato v2 (specs 022-025) ---
+
+    prueba('Migración v1 → v2: añade repaso, estadísticas y logros sin perder nada', () => {
+      const v1 = { v: 1, nivel: 'B1', nivelProbado: true, puntos: 300, dias: { '2026-10-27': 600 }, ultimoDiaCumplido: '2026-10-27', racha: 4 };
+      const v2 = { ...L.MIGRACIONES_PROGRESO[1](v1), v: 2 };
+      igual([v2.nivel, v2.puntos, v2.racha, v2.stats.rachaMax, v2.stats.partidas], ['B1', 300, 4, 4, 0]);
+      igual([v2.repaso, v2.logros, v2.ventana, v2.practica], [{}, {}, [], null]);
+    });
+
+    prueba('Importar: un archivo v1 se migra; uno v2 conserva repaso y logros válidos', () => {
+      const v1 = { v: 1, nivel: 'A2', nivelProbado: false, puntos: 10, dias: {}, ultimoDiaCumplido: null, racha: 0 };
+      igual(L.validarImportacion({ app: 'hello-english', formato: 1, ajustes: {}, progreso: v1 }).progreso.v, 2);
+      const p = { ...L.progresoNuevo(), repaso: { 'fa-001': { c: 1, p: '2026-10-29' }, 'mal': { c: 9, p: 'x' } }, logros: { 'perfecta': '2026-10-28', 'x': 3 } };
+      const r = L.validarImportacion(L.crearExportacion({}, p));
+      igual([Object.keys(r.progreso.repaso), Object.keys(r.progreso.logros)], [['fa-001'], ['perfecta']]);
+    });
+
+    prueba('Repaso: un fallo se repasa mañana; aciertos lo suben de caja hasta aprenderlo', () => {
+      let p = L.anotarRepaso(L.progresoNuevo(), 'fa-001', false, '2026-10-28');
+      igual(p.repaso['fa-001'], { c: 0, p: '2026-10-29' });
+      igual(L.repasosPendientes(p, '2026-10-28'), []);
+      igual(L.repasosPendientes(p, '2026-10-29', 'fa'), ['fa-001']);
+      igual(L.repasosPendientes(p, '2026-10-29', 'mc'), []);
+      p = L.anotarRepaso(p, 'fa-001', true, '2026-10-29');
+      igual(p.repaso['fa-001'], { c: 1, p: '2026-11-01' });
+      p = L.anotarRepaso(p, 'fa-001', true, '2026-11-01');
+      igual(p.repaso['fa-001'], { c: 2, p: '2026-11-08' });
+      p = L.anotarRepaso(p, 'fa-001', true, '2026-11-08');
+      igual(['fa-001' in p.repaso, p.stats.aprendidos], [false, 1]);
+    });
+
+    prueba('Repaso: acertar uno que no se ha fallado o que aún no toca no cambia nada', () => {
+      const p0 = L.progresoNuevo();
+      igual(L.anotarRepaso(p0, 'mc-001', true, '2026-10-28'), p0);
+      const p1 = L.anotarRepaso(p0, 'mc-001', false, '2026-10-28');
+      igual(L.anotarRepaso(p1, 'mc-001', true, '2026-10-28'), p1);
+    });
+
+    prueba('Nivel: con 16 de los últimos 20 bien en tu nivel, sube uno', () => {
+      let p = { ...L.progresoNuevo(), nivel: 'A2' };
+      let r;
+      for (let i = 0; i < 20; i++) {
+        r = L.anotarNivel(p, 'A2', i % 5 !== 0);   // 16 aciertos y 4 fallos
+        p = r.progreso;
+      }
+      igual([r.sube, p.nivel, p.ventana.length], [true, 'B1', 0]);
+    });
+
+    prueba('Nivel: menos de 16 de 20, otro nivel o C1 no suben', () => {
+      let p = { ...L.progresoNuevo(), nivel: 'A2' };
+      for (let i = 0; i < 20; i++) p = L.anotarNivel(p, 'A2', i % 4 !== 0).progreso;   // 15 de 20
+      igual(p.nivel, 'A2');
+      igual(L.anotarNivel(p, 'B1', true).progreso.ventana.length, 20);
+      let c = { ...L.progresoNuevo(), nivel: 'C1' };
+      for (let i = 0; i < 25; i++) c = L.anotarNivel(c, 'C1', true).progreso;
+      igual(c.nivel, 'C1');
+    });
+
+    prueba('Partidas: cuenta partidas, perfectas y por minijuego', () => {
+      let p = L.anotarPartida(L.progresoNuevo(), 'prompt', 8, 8);
+      p = L.anotarPartida(p, 'prompt', 5, 8);
+      igual([p.stats.partidas, p.stats.perfectas, p.stats.juegos.prompt], [2, 1, 2]);
+    });
+
+    prueba('Logros: se apuntan una sola vez, con la fecha', () => {
+      const juegos = [{ id: 'a', categoria: 'lectura' }];
+      const p = L.anotarPartida(L.progresoNuevo(), 'a', 3, 3);
+      const r1 = comprobarLogros(p, '2026-10-28', { juegos });
+      verdadero(r1.nuevos.includes('primera-partida') && r1.nuevos.includes('perfecta') && r1.nuevos.includes('todos-los-juegos'), r1.nuevos.join());
+      igual(r1.progreso.logros['primera-partida'], '2026-10-28');
+      igual(comprobarLogros(r1.progreso, '2026-10-29', { juegos }).nuevos, []);
+      igual(new Set(LOGROS.map((l) => l.id)).size, LOGROS.length);
+    });
+
+    // --- Práctica de hoy (spec 024) ---
+
+    const juegosPrueba = [
+      { id: 'a', categoria: 'lectura', prefijo: 'aa' }, { id: 'b', categoria: 'lectura', prefijo: 'bb' },
+      { id: 'c', categoria: 'escucha', prefijo: 'cc' }, { id: 'd', categoria: 'vocabulario', prefijo: 'dd' },
+      { id: 'e', categoria: 'profesional', prefijo: 'ee' },
+    ];
+
+    prueba('Práctica: 3 minijuegos distintos, de categorías distintas, iguales todo el día', () => {
+      const a = elegirPractica('2026-10-28', juegosPrueba, {}, {});
+      igual(a, elegirPractica('2026-10-28', juegosPrueba, {}, {}));
+      igual(new Set(a).size, 3);
+      igual(new Set(a.map((id) => juegosPrueba.find((j) => j.id === id).categoria)).size, 3);
+    });
+
+    prueba('Práctica: empieza por el que tiene más repasos y prefiere los menos jugados', () => {
+      igual(elegirPractica('2026-10-28', juegosPrueba, { cc: 5, dd: 2 }, {})[0], 'c');
+      const r = elegirPractica('2026-10-28', juegosPrueba, {}, { a: 9, b: 9, c: 9 });
+      verdadero(r.includes('d') && r.includes('e'), r.join());
+    });
+
+    prueba('Práctica: se marca cada paso y avisa al completar la última', () => {
+      let pr = practicaDeHoy(null, '2026-10-28', () => ['a', 'c', 'd']);
+      igual(practicaDeHoy(pr, '2026-10-28', () => ['x']), pr);
+      igual(practicaDeHoy(pr, '2026-10-29', () => ['x']).juegos, ['x']);
+      let r = marcarHecho(pr, 'c');
+      igual([r.completaAhora, siguientePaso(r.practica)], [false, 'a']);
+      r = marcarHecho(r.practica, 'a');
+      r = marcarHecho(r.practica, 'd');
+      igual([r.completaAhora, siguientePaso(r.practica)], [true, null]);
+      igual(marcarHecho(r.practica, 'd').completaAhora, false);
     });
 
     // --- Ajustes (T011) ---

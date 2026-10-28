@@ -1,0 +1,146 @@
+{
+  "banco": "dictado-audio",
+  "v": 1,
+  "items": [
+    {
+      "id": "da-001",
+      "nivel": "A1",
+      "tema": "programacion",
+      "frase": "I am a programmer.",
+      "traduccion": "Soy programador."
+    },
+    {
+      "id": "da-002",
+      "nivel": "A1",
+      "tema": "programacion",
+      "frase": "The computer is new.",
+      "traduccion": "El ordenador es nuevo."
+    },
+    {
+      "id": "da-003",
+      "nivel": "A1",
+      "tema": "web",
+      "frase": "Open the browser.",
+      "traduccion": "Abre el navegador."
+    },
+    {
+      "id": "da-004",
+      "nivel": "A1",
+      "tema": "equipo",
+      "frase": "We have a meeting today.",
+      "traduccion": "Hoy tenemos una reunión."
+    },
+    {
+      "id": "da-005",
+      "nivel": "A2",
+      "tema": "programacion",
+      "frase": "My laptop is slower than yours.",
+      "traduccion": "Mi portátil es más lento que el tuyo."
+    },
+    {
+      "id": "da-006",
+      "nivel": "A2",
+      "tema": "programacion",
+      "frase": "Did you save the file?",
+      "traduccion": "¿Guardaste el archivo?"
+    },
+    {
+      "id": "da-007",
+      "nivel": "A2",
+      "tema": "web",
+      "frase": "The website doesn't work on my phone.",
+      "traduccion": "La web no funciona en mi móvil."
+    },
+    {
+      "id": "da-008",
+      "nivel": "A2",
+      "tema": "equipo",
+      "frase": "I'll call you after lunch.",
+      "traduccion": "Te llamo después de comer."
+    },
+    {
+      "id": "da-009",
+      "nivel": "B1",
+      "tema": "equipo",
+      "frase": "I've been learning English for three years.",
+      "traduccion": "Llevo tres años aprendiendo inglés."
+    },
+    {
+      "id": "da-010",
+      "nivel": "B1",
+      "tema": "equipo",
+      "frase": "If you have any questions, let me know.",
+      "traduccion": "Si tienes alguna pregunta, dímelo."
+    },
+    {
+      "id": "da-011",
+      "nivel": "B1",
+      "tema": "web",
+      "frase": "The page takes too long to load.",
+      "traduccion": "La página tarda demasiado en cargar."
+    },
+    {
+      "id": "da-012",
+      "nivel": "B1",
+      "tema": "programacion",
+      "frase": "We need to fix this before the release.",
+      "traduccion": "Tenemos que arreglar esto antes de la release."
+    },
+    {
+      "id": "da-013",
+      "nivel": "B2",
+      "tema": "programacion",
+      "frase": "The bug should have been fixed by now.",
+      "traduccion": "El bug ya debería estar arreglado."
+    },
+    {
+      "id": "da-014",
+      "nivel": "B2",
+      "tema": "equipo",
+      "frase": "I'd appreciate it if you could review my code.",
+      "traduccion": "Te agradecería que revisaras mi código."
+    },
+    {
+      "id": "da-015",
+      "nivel": "B2",
+      "tema": "equipo",
+      "frase": "We're running out of time, so let's prioritise.",
+      "traduccion": "Nos estamos quedando sin tiempo, así que prioricemos."
+    },
+    {
+      "id": "da-016",
+      "nivel": "B2",
+      "tema": "web",
+      "frase": "The update caused more problems than it solved.",
+      "traduccion": "La actualización causó más problemas de los que resolvió."
+    },
+    {
+      "id": "da-017",
+      "nivel": "C1",
+      "tema": "programacion",
+      "frase": "Had I known about the outage, I would have postponed the release.",
+      "traduccion": "Si hubiera sabido lo de la caída, habría aplazado la release."
+    },
+    {
+      "id": "da-018",
+      "nivel": "C1",
+      "tema": "web",
+      "frase": "Not only does it reduce costs, but it also improves performance.",
+      "traduccion": "No solo reduce costes, sino que además mejora el rendimiento."
+    },
+    {
+      "id": "da-019",
+      "nivel": "C1",
+      "tema": "equipo",
+      "frase": "The decision was made in spite of the team's concerns.",
+      "traduccion": "La decisión se tomó a pesar de las preocupaciones del equipo."
+    },
+    {
+      "id": "da-020",
+      "nivel": "C1",
+      "tema": "programacion",
+      "frase": "It remains to be seen whether the new architecture will scale.",
+      "traduccion": "Está por ver si la nueva arquitectura escalará."
+    }
+  ]
+}

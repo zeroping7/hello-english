@@ -1,0 +1,867 @@
+{
+  "banco": "incidente",
+  "v": 1,
+  "items": [
+    {
+      "id": "in-001",
+      "nivel": "A1",
+      "tema": "web",
+      "titulo": "The website is down",
+      "causa": "The disk on the web server was full of old log files.",
+      "pasos": [
+        {
+          "log": [
+            "ERROR 503 Service Unavailable",
+            "@maria: The website is down! Customers can't open it."
+          ],
+          "pregunta": "What do you do first?",
+          "opciones": [
+            {
+              "texto": "Check the server logs.",
+              "bien": true,
+              "nota": {
+                "es": "Bien: los logs (registros) dicen qué está pasando.",
+                "en": "Good: the logs tell you what is happening."
+              }
+            },
+            {
+              "texto": "Go home.",
+              "bien": false,
+              "nota": {
+                "es": "Irse a casa (go home) no arregla nada.",
+                "en": "Going home doesn't fix anything."
+              }
+            },
+            {
+              "texto": "Delete the website.",
+              "bien": false,
+              "nota": {
+                "es": "Borrar la web (delete) lo empeoraría todo.",
+                "en": "Deleting the website would make everything worse."
+              }
+            }
+          ]
+        },
+        {
+          "log": [
+            "ERROR No space left on device",
+            "WARN Disk usage: 100%"
+          ],
+          "pregunta": "What is the problem?",
+          "opciones": [
+            {
+              "texto": "The disk is full.",
+              "bien": true,
+              "nota": {
+                "es": "«No space left on device»: no queda espacio en el disco.",
+                "en": "'No space left on device' means the disk is full."
+              }
+            },
+            {
+              "texto": "The computer is off.",
+              "bien": false,
+              "nota": {
+                "es": "Si estuviera apagado no habría logs.",
+                "en": "If it were off, there would be no logs."
+              }
+            },
+            {
+              "texto": "The password is wrong.",
+              "bien": false,
+              "nota": {
+                "es": "El log no habla de contraseñas.",
+                "en": "The log doesn't mention passwords."
+              }
+            }
+          ]
+        },
+        {
+          "log": [
+            "@maria: Can you fix it?",
+            "INFO /var/log: 40 GB of old files"
+          ],
+          "pregunta": "What is the best fix?",
+          "opciones": [
+            {
+              "texto": "Delete the old log files.",
+              "bien": true,
+              "nota": {
+                "es": "Borrar los logs viejos libera espacio enseguida.",
+                "en": "Deleting the old log files frees space right away."
+              }
+            },
+            {
+              "texto": "Buy a new office.",
+              "bien": false,
+              "nota": {
+                "es": "Una oficina nueva no libera espacio en el disco.",
+                "en": "A new office doesn't free any disk space."
+              }
+            },
+            {
+              "texto": "Restart the router.",
+              "bien": false,
+              "nota": {
+                "es": "El router no tiene nada que ver con el disco.",
+                "en": "The router has nothing to do with the disk."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "in-002",
+      "nivel": "A2",
+      "tema": "programacion",
+      "titulo": "The app crashes on login",
+      "causa": "Version 2.3.0 had a bug: the user's name could be empty (null).",
+      "pasos": [
+        {
+          "log": [
+            "@tom: The app crashes when I log in!",
+            "ERROR NullPointerException at LoginScreen.kt:42"
+          ],
+          "pregunta": "Where is the error?",
+          "opciones": [
+            {
+              "texto": "In LoginScreen.kt, line 42.",
+              "bien": true,
+              "nota": {
+                "es": "El log dice el archivo y la línea: LoginScreen.kt:42.",
+                "en": "The log gives the file and the line: LoginScreen.kt:42."
+              }
+            },
+            {
+              "texto": "In the database.",
+              "bien": false,
+              "nota": {
+                "es": "El log apunta a un archivo de la app, no a la base de datos.",
+                "en": "The log points to a file in the app, not to the database."
+              }
+            },
+            {
+              "texto": "In Tom's phone.",
+              "bien": false,
+              "nota": {
+                "es": "El fallo está en el código, no en el móvil de Tom.",
+                "en": "The bug is in the code, not in Tom's phone."
+              }
+            }
+          ]
+        },
+        {
+          "log": [
+            "INFO Version 2.3.0 released 1 hour ago",
+            "INFO Version 2.2.9: no crashes"
+          ],
+          "pregunta": "What happened?",
+          "opciones": [
+            {
+              "texto": "The new version has a bug.",
+              "bien": true,
+              "nota": {
+                "es": "Los cierres empezaron con la versión nueva.",
+                "en": "The crashes started with the new version."
+              }
+            },
+            {
+              "texto": "The old version is broken.",
+              "bien": false,
+              "nota": {
+                "es": "La versión anterior no tenía cierres.",
+                "en": "The old version had no crashes."
+              }
+            },
+            {
+              "texto": "Nobody uses the app.",
+              "bien": false,
+              "nota": {
+                "es": "Tom la usa, y el log no dice eso.",
+                "en": "Tom uses it, and the log doesn't say that."
+              }
+            }
+          ]
+        },
+        {
+          "log": [
+            "@tom: Users are angry. What now?"
+          ],
+          "pregunta": "What should you do now?",
+          "opciones": [
+            {
+              "texto": "Go back to version 2.2.9 and fix the bug.",
+              "bien": true,
+              "nota": {
+                "es": "Volver a la versión anterior (roll back) para el problema mientras lo arreglas.",
+                "en": "Rolling back stops the problem while you fix it."
+              }
+            },
+            {
+              "texto": "Wait until tomorrow.",
+              "bien": false,
+              "nota": {
+                "es": "Mientras esperas, los usuarios siguen sin poder entrar.",
+                "en": "While you wait, users still can't log in."
+              }
+            },
+            {
+              "texto": "Ask users to buy a new phone.",
+              "bien": false,
+              "nota": {
+                "es": "El problema no es el móvil.",
+                "en": "The phone isn't the problem."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "in-003",
+      "nivel": "A2",
+      "tema": "equipo",
+      "titulo": "The demo is in ten minutes",
+      "causa": "Someone changed the staging password and forgot to tell the team.",
+      "pasos": [
+        {
+          "log": [
+            "@lucy: The demo for the client starts in 10 minutes!",
+            "ERROR 401 Unauthorized: staging.company.com"
+          ],
+          "pregunta": "What does \"401 Unauthorized\" mean?",
+          "opciones": [
+            {
+              "texto": "You can't log in: the password or token is wrong.",
+              "bien": true,
+              "nota": {
+                "es": "401 significa «no autorizado»: las credenciales no valen.",
+                "en": "401 means your credentials were not accepted."
+              }
+            },
+            {
+              "texto": "The server is on fire.",
+              "bien": false,
+              "nota": {
+                "es": "Un 401 no dice nada del servidor: es un problema de acceso.",
+                "en": "A 401 says nothing about the server: it's an access problem."
+              }
+            },
+            {
+              "texto": "The page doesn't exist.",
+              "bien": false,
+              "nota": {
+                "es": "Eso sería un 404 Not Found.",
+                "en": "That would be 404 Not Found."
+              }
+            }
+          ]
+        },
+        {
+          "log": [
+            "@dan: Oh no. I changed the staging password this morning.",
+            "@dan: Sorry, I forgot to tell you."
+          ],
+          "pregunta": "What do you reply to Dan?",
+          "opciones": [
+            {
+              "texto": "No worries. Can you send me the new password in a private message?",
+              "bien": true,
+              "nota": {
+                "es": "Tono tranquilo y pides lo que necesitas por un canal privado.",
+                "en": "A calm tone, and you ask for what you need privately."
+              }
+            },
+            {
+              "texto": "Why are you so useless?",
+              "bien": false,
+              "nota": {
+                "es": "Es un insulto: nunca en el trabajo.",
+                "en": "That's an insult: never at work."
+              }
+            },
+            {
+              "texto": "Please post the new password here in the channel.",
+              "bien": false,
+              "nota": {
+                "es": "Las contraseñas no se comparten en canales públicos.",
+                "en": "Never share passwords in a public channel."
+              }
+            }
+          ]
+        },
+        {
+          "log": [
+            "INFO Login successful",
+            "@lucy: It works! The client is joining now."
+          ],
+          "pregunta": "What do you suggest for next time?",
+          "opciones": [
+            {
+              "texto": "Let's keep shared passwords in a password manager.",
+              "bien": true,
+              "nota": {
+                "es": "Un gestor de contraseñas evita este problema.",
+                "en": "A password manager prevents this problem."
+              }
+            },
+            {
+              "texto": "Let's never change passwords.",
+              "bien": false,
+              "nota": {
+                "es": "Cambiar las contraseñas es bueno para la seguridad.",
+                "en": "Changing passwords is good for security."
+              }
+            },
+            {
+              "texto": "Let's write the password on the wall.",
+              "bien": false,
+              "nota": {
+                "es": "Nada seguro.",
+                "en": "Not secure at all."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "in-004",
+      "nivel": "B1",
+      "tema": "web",
+      "titulo": "Checkout is very slow",
+      "causa": "A missing database index made every order query scan the whole table.",
+      "pasos": [
+        {
+          "log": [
+            "WARN Response time /checkout: 9.8 s (normal: 0.4 s)",
+            "@sara: Customers say paying takes forever."
+          ],
+          "pregunta": "What is the problem?",
+          "opciones": [
+            {
+              "texto": "The checkout page responds much more slowly than normal.",
+              "bien": true,
+              "nota": {
+                "es": "Tarda 9,8 s cuando lo normal son 0,4 s.",
+                "en": "It takes 9.8 s when 0.4 s is normal."
+              }
+            },
+            {
+              "texto": "The checkout page returns a 404 error.",
+              "bien": false,
+              "nota": {
+                "es": "No hay ningún 404: la página responde, pero lenta.",
+                "en": "There is no 404: the page responds, just slowly."
+              }
+            },
+            {
+              "texto": "Customers can't find the checkout button.",
+              "bien": false,
+              "nota": {
+                "es": "El log habla de tiempos de respuesta, no del botón.",
+                "en": "The log is about response times, not the button."
+              }
+            }
+          ]
+        },
+        {
+          "log": [
+            "INFO CPU 15% | Memory 40%",
+            "WARN Slow query (9.5 s): SELECT * FROM orders WHERE user_id = ?"
+          ],
+          "pregunta": "Where is most of the time spent?",
+          "opciones": [
+            {
+              "texto": "In a slow database query.",
+              "bien": true,
+              "nota": {
+                "es": "La consulta tarda 9,5 de los 9,8 segundos.",
+                "en": "The query takes 9.5 of the 9.8 seconds."
+              }
+            },
+            {
+              "texto": "The CPU is overloaded.",
+              "bien": false,
+              "nota": {
+                "es": "La CPU está al 15 %: no es el cuello de botella.",
+                "en": "The CPU is at 15%: it isn't the bottleneck."
+              }
+            },
+            {
+              "texto": "The server is out of memory.",
+              "bien": false,
+              "nota": {
+                "es": "La memoria está al 40 %.",
+                "en": "Memory is only at 40%."
+              }
+            }
+          ]
+        },
+        {
+          "log": [
+            "INFO Table orders: 12 million rows",
+            "INFO Indexes on orders: id"
+          ],
+          "pregunta": "What is the best fix?",
+          "opciones": [
+            {
+              "texto": "Add an index on orders.user_id.",
+              "bien": true,
+              "nota": {
+                "es": "Con un índice, la base de datos no tiene que recorrer los 12 millones de filas.",
+                "en": "With an index, the database doesn't have to scan 12 million rows."
+              }
+            },
+            {
+              "texto": "Delete old orders every day.",
+              "bien": false,
+              "nota": {
+                "es": "Perderías datos y no arreglas la causa.",
+                "en": "You would lose data and not fix the cause."
+              }
+            },
+            {
+              "texto": "Buy a faster CPU.",
+              "bien": false,
+              "nota": {
+                "es": "La CPU no era el problema.",
+                "en": "The CPU wasn't the problem."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "in-005",
+      "nivel": "B1",
+      "tema": "programacion",
+      "titulo": "Last night's backup failed",
+      "causa": "A deploy changed the owner of the backups folder, so the backup script could no longer write to it.",
+      "pasos": [
+        {
+          "log": [
+            "ERROR backup.sh: Permission denied: /backups/db.sql",
+            "@ops: Last night's backup failed."
+          ],
+          "pregunta": "Why did the backup fail?",
+          "opciones": [
+            {
+              "texto": "The script isn't allowed to write to the folder.",
+              "bien": true,
+              "nota": {
+                "es": "«Permission denied»: no tiene permiso para escribir ahí.",
+                "en": "'Permission denied' means it can't write there."
+              }
+            },
+            {
+              "texto": "The database was deleted.",
+              "bien": false,
+              "nota": {
+                "es": "El log no dice eso.",
+                "en": "The log doesn't say that."
+              }
+            },
+            {
+              "texto": "The backup file was too small.",
+              "bien": false,
+              "nota": {
+                "es": "El archivo ni siquiera se pudo crear.",
+                "en": "The file couldn't even be created."
+              }
+            }
+          ]
+        },
+        {
+          "log": [
+            "INFO Yesterday's deploy changed the owner of /backups to \"root\"",
+            "INFO backup.sh runs as the user \"app\""
+          ],
+          "pregunta": "What changed?",
+          "opciones": [
+            {
+              "texto": "A deploy changed who owns the folder.",
+              "bien": true,
+              "nota": {
+                "es": "Ahora la carpeta es de root, y el script se ejecuta como app.",
+                "en": "The folder now belongs to root, but the script runs as app."
+              }
+            },
+            {
+              "texto": "Someone deleted the script.",
+              "bien": false,
+              "nota": {
+                "es": "El script existe: se ejecutó y falló.",
+                "en": "The script exists: it ran and failed."
+              }
+            },
+            {
+              "texto": "The user \"app\" was deleted.",
+              "bien": false,
+              "nota": {
+                "es": "El usuario existe: el script se ejecuta con él.",
+                "en": "The user exists: the script runs as it."
+              }
+            }
+          ]
+        },
+        {
+          "log": [
+            "@ops: What should we do?"
+          ],
+          "pregunta": "What is the best plan?",
+          "opciones": [
+            {
+              "texto": "Give \"app\" write access, run the backup now and add an alert if it fails.",
+              "bien": true,
+              "nota": {
+                "es": "Arreglas, tienes la copia de hoy y te enterarás si vuelve a pasar.",
+                "en": "You fix it, get today's backup and will know if it happens again."
+              }
+            },
+            {
+              "texto": "Run the script as root from now on.",
+              "bien": false,
+              "nota": {
+                "es": "Funcionaría, pero dar más permisos de los necesarios es inseguro.",
+                "en": "It would work, but giving more permissions than needed is unsafe."
+              }
+            },
+            {
+              "texto": "Wait for tonight's backup.",
+              "bien": false,
+              "nota": {
+                "es": "Pasarías otro día sin copia de seguridad.",
+                "en": "You would go another day without a backup."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "in-006",
+      "nivel": "B2",
+      "tema": "equipo",
+      "titulo": "A test email went to every customer",
+      "causa": "Staging and production shared the same mailer API key, so a test campaign was sent from production.",
+      "pasos": [
+        {
+          "log": [
+            "@support: 50,000 customers just got an email saying \"TEST TEST ignore this\"!",
+            "INFO mailer: campaign \"test-123\" sent from prod"
+          ],
+          "pregunta": "What do you do first?",
+          "opciones": [
+            {
+              "texto": "Stop any campaigns that are still sending and let the team know.",
+              "bien": true,
+              "nota": {
+                "es": "Primero se contiene el daño y se avisa.",
+                "en": "First contain the damage and let people know."
+              }
+            },
+            {
+              "texto": "Find out who did it and blame them.",
+              "bien": false,
+              "nota": {
+                "es": "Buscar culpables no ayuda: en un incidente se mira el sistema, no a la persona (blameless).",
+                "en": "Blaming doesn't help: incidents focus on the system, not the person (blameless)."
+              }
+            },
+            {
+              "texto": "Send another test email to check.",
+              "bien": false,
+              "nota": {
+                "es": "Lo empeorarías.",
+                "en": "You would make it worse."
+              }
+            }
+          ]
+        },
+        {
+          "log": [
+            "INFO staging and prod share MAILER_API_KEY",
+            "@jo: I thought I was on staging, sorry!"
+          ],
+          "pregunta": "What is the root cause?",
+          "opciones": [
+            {
+              "texto": "Both environments use the same API key.",
+              "bien": true,
+              "nota": {
+                "es": "Con su propia clave, una prueba en staging nunca llegaría a los clientes.",
+                "en": "With its own key, a test on staging could never reach customers."
+              }
+            },
+            {
+              "texto": "Jo is careless.",
+              "bien": false,
+              "nota": {
+                "es": "Cualquiera puede equivocarse; la causa es el sistema que lo permitió.",
+                "en": "Anyone can make a mistake; the cause is the system that allowed it."
+              }
+            },
+            {
+              "texto": "The email had a typo.",
+              "bien": false,
+              "nota": {
+                "es": "Una errata no es el problema.",
+                "en": "A typo isn't the issue."
+              }
+            }
+          ]
+        },
+        {
+          "log": [
+            "@support: Customers are asking what happened."
+          ],
+          "pregunta": "Which message do you send to customers?",
+          "opciones": [
+            {
+              "texto": "Earlier today we sent you a test email by mistake. Please ignore it, and sorry for the inconvenience.",
+              "bien": true,
+              "nota": {
+                "es": "Breve, sincero y con una disculpa.",
+                "en": "Short, honest and apologetic."
+              }
+            },
+            {
+              "texto": "Our system was hacked.",
+              "bien": false,
+              "nota": {
+                "es": "Es falso y alarmaría a todo el mundo.",
+                "en": "It's false and would alarm everyone."
+              }
+            },
+            {
+              "texto": "Some customers are overreacting to one small email.",
+              "bien": false,
+              "nota": {
+                "es": "Culpa a los clientes: tono muy inadecuado.",
+                "en": "It blames the customers: completely the wrong tone."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "in-007",
+      "nivel": "B2",
+      "tema": "web",
+      "titulo": "Users keep getting logged out",
+      "causa": "The two servers behind the load balancer signed sessions with different secrets.",
+      "pasos": [
+        {
+          "log": [
+            "@pm: Users keep getting logged out every few minutes.",
+            "INFO load balancer: traffic split between web-1 and web-2"
+          ],
+          "pregunta": "What is a likely explanation worth checking?",
+          "opciones": [
+            {
+              "texto": "Requests go to different servers that don't share sessions.",
+              "bien": true,
+              "nota": {
+                "es": "Si cada petición puede ir a un servidor distinto, las sesiones tienen que valer en los dos.",
+                "en": "If each request can hit a different server, sessions must be valid on both."
+              }
+            },
+            {
+              "texto": "Users are clicking \"Log out\" by accident.",
+              "bien": false,
+              "nota": {
+                "es": "Que les pase a muchos y cada pocos minutos apunta a otra causa.",
+                "en": "It happening to many users every few minutes points elsewhere."
+              }
+            },
+            {
+              "texto": "The users' internet connection is too fast.",
+              "bien": false,
+              "nota": {
+                "es": "Una conexión rápida no cierra sesiones.",
+                "en": "A fast connection doesn't log you out."
+              }
+            }
+          ]
+        },
+        {
+          "log": [
+            "WARN web-2: invalid session signature",
+            "INFO web-1 SESSION_SECRET=a91f…",
+            "INFO web-2 SESSION_SECRET=77c2…"
+          ],
+          "pregunta": "What do the logs reveal?",
+          "opciones": [
+            {
+              "texto": "Each server signs sessions with a different secret.",
+              "bien": true,
+              "nota": {
+                "es": "Una sesión firmada en web-1 no es válida en web-2.",
+                "en": "A session signed on web-1 isn't valid on web-2."
+              }
+            },
+            {
+              "texto": "The sessions have simply expired.",
+              "bien": false,
+              "nota": {
+                "es": "«Invalid signature» no es caducidad.",
+                "en": "'Invalid signature' isn't expiry."
+              }
+            },
+            {
+              "texto": "web-2 is down.",
+              "bien": false,
+              "nota": {
+                "es": "web-2 responde: lo que hace es rechazar la firma.",
+                "en": "web-2 is responding: it's rejecting the signature."
+              }
+            }
+          ]
+        },
+        {
+          "log": [
+            "@pm: Can we fix it today without logging everyone out again?"
+          ],
+          "pregunta": "What is the best approach?",
+          "opciones": [
+            {
+              "texto": "Load the same secret on both servers from shared config, then roll it out one server at a time.",
+              "bien": true,
+              "nota": {
+                "es": "Un único secreto compartido arregla la causa, y desplegarlo por partes reduce el impacto.",
+                "en": "One shared secret fixes the cause, and a gradual rollout limits the impact."
+              }
+            },
+            {
+              "texto": "Turn off session signatures.",
+              "bien": false,
+              "nota": {
+                "es": "Cualquiera podría falsificar sesiones.",
+                "en": "Anyone could forge sessions."
+              }
+            },
+            {
+              "texto": "Shut down web-2 for good.",
+              "bien": false,
+              "nota": {
+                "es": "Perderías la mitad de la capacidad y la redundancia.",
+                "en": "You would lose half your capacity and your redundancy."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "in-008",
+      "nivel": "C1",
+      "tema": "programacion",
+      "titulo": "Pods keep restarting after the release",
+      "causa": "A new in-memory cache had no eviction policy, so it grew until the process was killed.",
+      "pasos": [
+        {
+          "log": [
+            "CRITICAL api-3 OOMKilled (memory limit 2Gi)",
+            "INFO restarts in the last hour: 14",
+            "@lead: Pods keep restarting since this morning's release."
+          ],
+          "pregunta": "What is the most plausible reading of these logs?",
+          "opciones": [
+            {
+              "texto": "The process exceeds its memory limit and gets killed.",
+              "bien": true,
+              "nota": {
+                "es": "«OOMKilled»: el sistema lo mata por quedarse sin memoria.",
+                "en": "'OOMKilled' means it was killed for running out of memory."
+              }
+            },
+            {
+              "texto": "A scheduled job restarts the pods.",
+              "bien": false,
+              "nota": {
+                "es": "No hay ninguna tarea programada: es el límite de memoria.",
+                "en": "There is no scheduled job: it's the memory limit."
+              }
+            },
+            {
+              "texto": "The release removed the memory limit.",
+              "bien": false,
+              "nota": {
+                "es": "El límite sigue ahí (2Gi) y se supera.",
+                "en": "The limit is still there (2Gi) and it's being exceeded."
+              }
+            }
+          ]
+        },
+        {
+          "log": [
+            "INFO heap grows by ~30 MB/min and never drops",
+            "INFO release diff: added UserCache (a Map) to ProfileService"
+          ],
+          "pregunta": "Which hypothesis best fits the evidence?",
+          "opciones": [
+            {
+              "texto": "The new cache keeps growing because nothing is ever evicted.",
+              "bien": true,
+              "nota": {
+                "es": "Crece sin parar y coincide con el cambio nuevo.",
+                "en": "It grows steadily and lines up with the new change."
+              }
+            },
+            {
+              "texto": "Traffic doubled this morning.",
+              "bien": false,
+              "nota": {
+                "es": "Más tráfico daría picos, no un crecimiento que nunca baja.",
+                "en": "More traffic would cause spikes, not growth that never drops."
+              }
+            },
+            {
+              "texto": "The garbage collector is disabled by default.",
+              "bien": false,
+              "nota": {
+                "es": "No lo está; el GC no puede liberar lo que sigue referenciado.",
+                "en": "It isn't; the GC can't free what is still referenced."
+              }
+            }
+          ]
+        },
+        {
+          "log": [
+            "@lead: Customers are seeing errors. Your call."
+          ],
+          "pregunta": "What do you propose?",
+          "opciones": [
+            {
+              "texto": "Roll back now, then reintroduce the cache with a size limit and an expiry time.",
+              "bien": true,
+              "nota": {
+                "es": "Primero se estabiliza; luego se arregla con un límite (LRU) o caducidad (TTL).",
+                "en": "Stabilise first; then fix it with a size limit (LRU) or an expiry (TTL)."
+              }
+            },
+            {
+              "texto": "Double the memory limit and see what happens.",
+              "bien": false,
+              "nota": {
+                "es": "Solo retrasa el problema: seguiría creciendo.",
+                "en": "It only delays the problem: it would keep growing."
+              }
+            },
+            {
+              "texto": "Restart the pods every 30 minutes with a cron job.",
+              "bien": false,
+              "nota": {
+                "es": "Es un parche que oculta el fallo.",
+                "en": "It's a hack that hides the bug."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

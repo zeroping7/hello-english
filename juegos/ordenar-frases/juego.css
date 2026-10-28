@@ -1,0 +1,20 @@
+/* Ordenar frases: la frase que se va formando y las palabras que quedan */
+.of-pista { margin: 0 0 var(--espacio-3); }
+
+.of-frase {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--espacio-2);
+  min-height: 64px;
+  margin-bottom: var(--espacio-3);
+  padding: var(--espacio-2);
+  border: 1px dashed var(--borde);
+  border-radius: var(--radio);
+}
+
+.of-banco { margin-bottom: var(--espacio-3); }
+.of-tecla { margin-right: 6px; color: var(--tenue); font-size: 0.75rem; }
+.of-tecla:empty { display: none; }
+.of-acciones { display: flex; justify-content: flex-end; }
+@media (pointer: coarse) { .of-tecla { display: none; } }

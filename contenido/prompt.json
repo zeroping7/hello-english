@@ -1,0 +1,403 @@
+{
+  "banco": "prompt",
+  "v": 1,
+  "items": [
+    {
+      "id": "pr-001",
+      "nivel": "A1",
+      "tema": "programacion",
+      "enunciado": "Save the ___ before you close the editor.",
+      "respuesta": "file",
+      "traduccion": "Guarda el archivo antes de cerrar el editor.",
+      "explicacion": {
+        "es": "Un archivo es un «file».",
+        "en": "A document on your computer is a 'file'."
+      }
+    },
+    {
+      "id": "pr-002",
+      "nivel": "A1",
+      "tema": "programacion",
+      "enunciado": "Press ___ to run the command.",
+      "respuesta": "Enter",
+      "aceptadas": [
+        "return"
+      ],
+      "traduccion": "Pulsa Intro para ejecutar el comando.",
+      "explicacion": {
+        "es": "La tecla Intro se llama «Enter» (o «Return» en Mac).",
+        "en": "The key is called 'Enter' ('Return' on a Mac)."
+      }
+    },
+    {
+      "id": "pr-003",
+      "nivel": "A1",
+      "tema": "web",
+      "enunciado": "Click the blue ___ to send the form.",
+      "respuesta": "button",
+      "traduccion": "Haz clic en el botón azul para enviar el formulario.",
+      "explicacion": {
+        "es": "Un botón es un «button».",
+        "en": "The thing you click on a form is a 'button'."
+      }
+    },
+    {
+      "id": "pr-004",
+      "nivel": "A1",
+      "tema": "web",
+      "enunciado": "Type the ___ in the address bar.",
+      "respuesta": "URL",
+      "aceptadas": [
+        "address"
+      ],
+      "traduccion": "Escribe la URL en la barra de direcciones.",
+      "explicacion": {
+        "es": "La dirección de una web es su «URL».",
+        "en": "The address of a web page is its 'URL'."
+      }
+    },
+    {
+      "id": "pr-005",
+      "nivel": "A1",
+      "tema": "equipo",
+      "enunciado": "Our team ___ is at ten o'clock.",
+      "respuesta": "meeting",
+      "traduccion": "La reunión de nuestro equipo es a las diez.",
+      "explicacion": {
+        "es": "Una reunión es un «meeting».",
+        "en": "When people get together to talk about work, it's a 'meeting'."
+      }
+    },
+    {
+      "id": "pr-006",
+      "nivel": "A1",
+      "tema": "equipo",
+      "enunciado": "Can you ___ me the link, please?",
+      "respuesta": "send",
+      "aceptadas": [
+        "give"
+      ],
+      "traduccion": "¿Me puedes enviar el enlace, por favor?",
+      "explicacion": {
+        "es": "Enviar es «send».",
+        "en": "To make something reach someone is to 'send' it."
+      }
+    },
+    {
+      "id": "pr-007",
+      "nivel": "A2",
+      "tema": "programacion",
+      "enunciado": "The program ___ when I open a big file.",
+      "respuesta": "crashes",
+      "traduccion": "El programa se cierra de golpe cuando abro un archivo grande.",
+      "explicacion": {
+        "es": "«Crash» es fallar y cerrarse de golpe. Con «the program» lleva -es.",
+        "en": "'Crash' means to fail and close suddenly; with 'the program' it takes -es."
+      }
+    },
+    {
+      "id": "pr-008",
+      "nivel": "A2",
+      "tema": "programacion",
+      "enunciado": "I need to ___ the new version of Node.",
+      "respuesta": "install",
+      "traduccion": "Tengo que instalar la nueva versión de Node.",
+      "explicacion": {
+        "es": "Instalar es «install».",
+        "en": "To put software on your computer is to 'install' it."
+      }
+    },
+    {
+      "id": "pr-009",
+      "nivel": "A2",
+      "tema": "web",
+      "enunciado": "Please ___ your password to log in.",
+      "respuesta": "enter",
+      "aceptadas": [
+        "type"
+      ],
+      "traduccion": "Introduce tu contraseña para entrar.",
+      "explicacion": {
+        "es": "Introducir datos es «enter» (o «type», escribir).",
+        "en": "To put data in is 'enter' (or 'type')."
+      }
+    },
+    {
+      "id": "pr-010",
+      "nivel": "A2",
+      "tema": "web",
+      "enunciado": "The website is very ___ today. It takes ages to load.",
+      "respuesta": "slow",
+      "traduccion": "La web va muy lenta hoy. Tarda muchísimo en cargar.",
+      "explicacion": {
+        "es": "Lento es «slow»; rápido es «fast».",
+        "en": "Not fast is 'slow'."
+      }
+    },
+    {
+      "id": "pr-011",
+      "nivel": "A2",
+      "tema": "equipo",
+      "enunciado": "I'll be ___ for the stand-up. My train is delayed.",
+      "respuesta": "late",
+      "traduccion": "Llegaré tarde al stand-up. Mi tren va con retraso.",
+      "explicacion": {
+        "es": "Llegar tarde es «be late».",
+        "en": "To arrive after the time is 'be late'."
+      }
+    },
+    {
+      "id": "pr-012",
+      "nivel": "A2",
+      "tema": "equipo",
+      "enunciado": "Could you ___ my pull request when you have time?",
+      "respuesta": "review",
+      "traduccion": "¿Puedes revisar mi pull request cuando tengas tiempo?",
+      "explicacion": {
+        "es": "Revisar código es «review»; «revise» es modificar un texto.",
+        "en": "Checking someone's code is 'review'; 'revise' means to change a text."
+      }
+    },
+    {
+      "id": "pr-013",
+      "nivel": "B1",
+      "tema": "programacion",
+      "enunciado": "We need to ___ this function: it's too long and hard to read.",
+      "respuesta": "refactor",
+      "traduccion": "Tenemos que refactorizar esta función: es demasiado larga y difícil de leer.",
+      "explicacion": {
+        "es": "«Refactor» es reorganizar el código sin cambiar lo que hace.",
+        "en": "To 'refactor' is to restructure code without changing what it does."
+      }
+    },
+    {
+      "id": "pr-014",
+      "nivel": "B1",
+      "tema": "programacion",
+      "enunciado": "Don't forget to ___ your changes before you push.",
+      "respuesta": "commit",
+      "traduccion": "No olvides hacer commit de tus cambios antes de hacer push.",
+      "explicacion": {
+        "es": "En Git primero se hace «commit» y luego «push».",
+        "en": "In Git you 'commit' first and then 'push'."
+      }
+    },
+    {
+      "id": "pr-015",
+      "nivel": "B1",
+      "tema": "web",
+      "enunciado": "The site isn't ___, so it looks broken on phones.",
+      "respuesta": "responsive",
+      "traduccion": "La web no es responsive, así que se ve rota en los móviles.",
+      "explicacion": {
+        "es": "Una web «responsive» se adapta al tamaño de la pantalla.",
+        "en": "A 'responsive' site adapts to the screen size."
+      }
+    },
+    {
+      "id": "pr-016",
+      "nivel": "B1",
+      "tema": "web",
+      "enunciado": "We store the session ___ in a cookie.",
+      "respuesta": "token",
+      "aceptadas": [
+        "id"
+      ],
+      "traduccion": "Guardamos el token de sesión en una cookie.",
+      "explicacion": {
+        "es": "El «token» identifica la sesión del usuario.",
+        "en": "The 'token' identifies the user's session."
+      }
+    },
+    {
+      "id": "pr-017",
+      "nivel": "B1",
+      "tema": "equipo",
+      "enunciado": "Sorry, I didn't catch that. Could you ___ it, please?",
+      "respuesta": "repeat",
+      "traduccion": "Perdona, no lo he pillado. ¿Puedes repetirlo, por favor?",
+      "explicacion": {
+        "es": "«Catch» aquí es entender lo que alguien dice; repetir es «repeat».",
+        "en": "'Catch' here means to hear and understand, and to say it again is 'repeat'."
+      }
+    },
+    {
+      "id": "pr-018",
+      "nivel": "B1",
+      "tema": "equipo",
+      "enunciado": "Let's ___ the meeting to Thursday.",
+      "respuesta": "move",
+      "aceptadas": [
+        "postpone",
+        "push",
+        "reschedule"
+      ],
+      "traduccion": "Pasemos la reunión al jueves.",
+      "explicacion": {
+        "es": "Cambiar una reunión de día: «move», «push» o «postpone».",
+        "en": "To change the day of a meeting: 'move', 'push' or 'postpone'."
+      }
+    },
+    {
+      "id": "pr-019",
+      "nivel": "B2",
+      "tema": "programacion",
+      "enunciado": "This endpoint is ___, so we'll remove it in version 3.",
+      "respuesta": "deprecated",
+      "traduccion": "Este endpoint está obsoleto, así que lo quitaremos en la versión 3.",
+      "explicacion": {
+        "es": "«Deprecated»: aún existe, pero no se recomienda y desaparecerá.",
+        "en": "'Deprecated': it still exists but isn't recommended and will be removed."
+      }
+    },
+    {
+      "id": "pr-020",
+      "nivel": "B2",
+      "tema": "programacion",
+      "enunciado": "The query is slow because the column isn't ___.",
+      "respuesta": "indexed",
+      "traduccion": "La consulta es lenta porque la columna no está indexada.",
+      "explicacion": {
+        "es": "Una columna con índice está «indexed».",
+        "en": "A column with an index is 'indexed'."
+      }
+    },
+    {
+      "id": "pr-021",
+      "nivel": "B2",
+      "tema": "web",
+      "enunciado": "We ___ the old URLs to the new ones with a 301.",
+      "respuesta": "redirect",
+      "traduccion": "Redirigimos las URL antiguas a las nuevas con un 301.",
+      "explicacion": {
+        "es": "Redirigir es «redirect».",
+        "en": "To send users from one URL to another is to 'redirect'."
+      }
+    },
+    {
+      "id": "pr-022",
+      "nivel": "B2",
+      "tema": "web",
+      "enunciado": "The bundle is too big: we should ___ the images.",
+      "respuesta": "compress",
+      "aceptadas": [
+        "optimise",
+        "optimize",
+        "resize"
+      ],
+      "traduccion": "El bundle es demasiado grande: deberíamos comprimir las imágenes.",
+      "explicacion": {
+        "es": "Comprimir es «compress».",
+        "en": "To make files smaller is to 'compress' them."
+      }
+    },
+    {
+      "id": "pr-023",
+      "nivel": "B2",
+      "tema": "equipo",
+      "enunciado": "I'll ___ up with the client and get back to you.",
+      "respuesta": "follow",
+      "traduccion": "Haré el seguimiento con el cliente y te digo algo.",
+      "explicacion": {
+        "es": "«Follow up» es hacer seguimiento de algo.",
+        "en": "To 'follow up' is to check on something later."
+      }
+    },
+    {
+      "id": "pr-024",
+      "nivel": "B2",
+      "tema": "equipo",
+      "enunciado": "We're behind schedule, so we need to ___ the scope of the release.",
+      "respuesta": "reduce",
+      "aceptadas": [
+        "cut",
+        "limit",
+        "narrow"
+      ],
+      "traduccion": "Vamos con retraso, así que tenemos que reducir el alcance de la release.",
+      "explicacion": {
+        "es": "Reducir el alcance: «reduce» (o «cut») the scope.",
+        "en": "To make the scope smaller: 'reduce' (or 'cut') the scope."
+      }
+    },
+    {
+      "id": "pr-025",
+      "nivel": "C1",
+      "tema": "programacion",
+      "enunciado": "The service must be ___ so that we can scale it horizontally.",
+      "respuesta": "stateless",
+      "traduccion": "El servicio tiene que ser sin estado para poder escalarlo horizontalmente.",
+      "explicacion": {
+        "es": "Un servicio «stateless» no guarda estado entre peticiones.",
+        "en": "A 'stateless' service keeps no state between requests."
+      }
+    },
+    {
+      "id": "pr-026",
+      "nivel": "C1",
+      "tema": "programacion",
+      "enunciado": "Calling it twice has the same effect: the operation is ___.",
+      "respuesta": "idempotent",
+      "traduccion": "Llamarla dos veces tiene el mismo efecto: la operación es idempotente.",
+      "explicacion": {
+        "es": "«Idempotent»: repetirla no cambia el resultado.",
+        "en": "'Idempotent': repeating it doesn't change the result."
+      }
+    },
+    {
+      "id": "pr-027",
+      "nivel": "C1",
+      "tema": "web",
+      "enunciado": "We ___ the search input so it doesn't send a request on every keystroke.",
+      "respuesta": "debounce",
+      "aceptadas": [
+        "throttle"
+      ],
+      "traduccion": "Aplicamos debounce al campo de búsqueda para que no envíe una petición con cada tecla.",
+      "explicacion": {
+        "es": "«Debounce» espera a que el usuario deje de escribir.",
+        "en": "'Debounce' waits until the user stops typing."
+      }
+    },
+    {
+      "id": "pr-028",
+      "nivel": "C1",
+      "tema": "web",
+      "enunciado": "The layout ___ gracefully on older browsers.",
+      "respuesta": "degrades",
+      "traduccion": "El diseño se degrada con elegancia en navegadores antiguos.",
+      "explicacion": {
+        "es": "«Degrade gracefully»: seguir funcionando, aunque con menos funciones.",
+        "en": "To 'degrade gracefully' is to keep working with fewer features."
+      }
+    },
+    {
+      "id": "pr-029",
+      "nivel": "C1",
+      "tema": "equipo",
+      "enunciado": "Let's not ___ the boat: the release is on Friday.",
+      "respuesta": "rock",
+      "traduccion": "No compliquemos las cosas: la release es el viernes.",
+      "explicacion": {
+        "es": "«Rock the boat» es causar problemas cuando las cosas van bien.",
+        "en": "To 'rock the boat' is to cause trouble when things are going well."
+      }
+    },
+    {
+      "id": "pr-030",
+      "nivel": "C1",
+      "tema": "equipo",
+      "enunciado": "I'd like to ___ on what Sam said about testing.",
+      "respuesta": "build",
+      "aceptadas": [
+        "expand",
+        "elaborate"
+      ],
+      "traduccion": "Me gustaría ampliar lo que ha dicho Sam sobre los tests.",
+      "explicacion": {
+        "es": "«Build on» algo es partir de ello y ampliarlo.",
+        "en": "To 'build on' something is to develop it further."
+      }
+    }
+  ]
+}

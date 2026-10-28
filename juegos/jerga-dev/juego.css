@@ -1,0 +1,3 @@
+/* Jerga dev: la expresión y su ejemplo */
+.jd-expresion { margin: var(--espacio-2) 0; font-family: var(--fuente-mono); font-size: clamp(1.5rem, 6vw, 2rem); font-weight: 700; color: var(--keyword); }
+.jd-ejemplo { margin: 0 0 var(--espacio-4); padding-left: var(--espacio-3); border-left: 3px solid var(--borde); color: var(--tenue); font-style: italic; }

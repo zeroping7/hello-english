@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pruebas: minijuegos</title>
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/app.css">
+</head>
+<body>
+  <div id="app">
+    <h1 class="logo">tests/minijuegos</h1>
+  </div>
+  <script type="module">
+    // Reglas de los minijuegos de las specs 005-021 y de src/contenido/texto.js.
+    // Falsos amigos y Merge Conflict tienen su propia página en su carpeta.
+    import { prueba, igual, verdadero, ejecutar } from '../src/pruebas/mini.js';
+    import { crearAzar } from '../src/contenido/azar.js';
+    import * as T from '../src/contenido/texto.js';
+    import * as CB from './caza-el-bug/logica.js';
+    import * as PR from './prompt/logica.js';
+    import * as IN from './incidente/logica.js';
+    import * as OF from './ordenar-frases/logica.js';
+    import * as AH from './ahorcado/logica.js';
+    import * as DC from './dictado-codigo/logica.js';
+    import * as DB from './dilo-bien/logica.js';
+    import * as SC from './sopa-crucigrama/logica.js';
+    import * as EM from './emparejar/logica.js';
+    import * as CR from './contrarreloj/logica.js';
+    import * as BR from './bug-report/logica.js';
+    import { JUEGOS } from './registro.js';
+
+    // --- Registro ---
+
+    prueba('Registro: los 19 minijuegos están disponibles y tienen módulo', async () => {
+      igual(JUEGOS.length, 19);
+      for (const j of JUEGOS) {
+        verdadero(j.disponible, `${j.id} disponible`);
+        const m = await import(`./${j.id}/juego.js`);
+        verdadero(m.BANCO === j.id && Number.isInteger(m.EJERCICIOS) && typeof m.montar === 'function', j.id);
+      }
+    });
+
+    // --- Texto ---
+
+    prueba('Texto: normalizar quita mayúsculas, puntuación y espacios de más', () => {
+      igual(T.normalizar('  Hello,   World!  '), 'hello world');
+      igual(T.normalizar('It’s fine.'), "it's fine");
+      verdadero(T.mismaFrase('Did you save the file?', 'did you save the file'), 'misma frase');
+    });
+
+    prueba('Texto: compararPalabras marca las que faltan o están mal', () => {
+      const r = T.compararPalabras('the page take long to load', 'The page takes too long to load.');
+      igual(r.map((p) => p.bien), [true, true, false, false, true, true, true]);
+      igual(T.compararPalabras('', 'Hi there').every((p) => !p.bien), true);
+    });
+
+    prueba('Texto: masParecida elige la opción más cercana a lo reconocido', () => {
+      const ops = ["I'm working on the reports, but I'm blocked.", 'Nothing. Next person, please.', 'Why should I be brief?'];
+      igual(T.masParecida(['i am working on the reports but im blocked'], ops), 0);
+      igual(T.masParecida(['nothing next person'], ops), 1);
+      igual(T.masParecida(['banana'], ops), -1);
+    });
+
+    // --- Caza el bug ---
+
+    prueba('Caza el bug: separa la palabra con error y su corrección', () => {
+      const p = CB.prepararTexto('Please {revise|review} my PR.');
+      igual(CB.conError(p), 'Please revise my PR.');
+      igual(CB.corregido(p), 'Please review my PR.');
+      igual([CB.comprobar(p, 1), CB.comprobar(p, 0)], [true, false]);
+    });
+
+    prueba('Caza el bug: la puntuación pegada a la palabra se conserva', () => {
+      const p = CB.prepararTexto('Fix the {functon|function}.');
+      igual(p[2], { mal: 'functon.', bien: 'function.', bug: true });
+    });
+
+    // --- Prompt ---
+
+    prueba('Prompt: acepta la respuesta sin mayúsculas ni espacios y las alternativas', () => {
+      const item = { respuesta: 'Enter', aceptadas: ['return'] };
+      igual([PR.comprobar(item, ' enter '), PR.comprobar(item, 'Return'), PR.comprobar(item, 'tab')], [true, true, false]);
+    });
+
+    prueba('Prompt: la pista completa la parte buena más una letra', () => {
+      igual(PR.pista('', 'commit'), 'c');
+      igual(PR.pista('com', 'commit'), 'comm');
+      igual(PR.pista('cox', 'commit'), 'com');
+      igual(PR.pista('commit', 'commit'), 'commit');
+    });
+
+    // --- Incidente ---
+
+    prueba('Incidente: colores de las líneas del log y finales', () => {
+      igual(['ERROR 503', 'WARN Disk', '@maria: hi', 'INFO ok'].map(IN.tipoDeLinea), ['error', 'aviso', 'mensaje', 'info']);
+      igual([IN.final(3, 3), IN.final(2, 3), IN.final(1, 3), IN.final(0, 3)], ['bien', 'regular', 'mal', 'mal']);
+    });
+
+    // --- Ordenar frases ---
+
+    prueba('Ordenar frases: el desorden nunca es la frase buena', () => {
+      const azar = crearAzar(4);
+      for (let i = 0; i < 20; i++) {
+        const r = OF.desordenar('This is my first program.', azar).map((p) => p.texto).join(' ');
+        verdadero(r !== 'This is my first program.', r);
+      }
+    });
+
+    prueba('Ordenar frases: comprobar compara palabra a palabra', () => {
+      igual(OF.comprobar('The code is on GitHub.', ['The', 'code', 'is', 'on', 'GitHub.']), true);
+      igual(OF.comprobar('The code is on GitHub.', ['The', 'is', 'code', 'on', 'GitHub.']), false);
+    });
+
+    // --- Ahorcado ---
+
+    prueba('Ahorcado: aciertos, fallos, letras repetidas y final', () => {
+      let e = AH.crearEstado('Bug');
+      e = AH.probar(e, 'b');
+      e = AH.probar(e, 'x');
+      e = AH.probar(e, 'x');
+      igual([AH.mascara(e), e.fallos], ['b__', 1]);
+      e = AH.probar(AH.probar(e, 'U'), 'g');
+      igual([AH.ganado(e), AH.terminado(e)], [true, true]);
+      let p = AH.crearEstado('a');
+      for (const l of 'bcdefg') p = AH.probar(p, l);
+      igual([AH.perdido(p), AH.probar(p, 'a')], [true, p]);
+    });
+
+    // --- Dictado de código ---
+
+    prueba('Dictado de código: no importan los espacios ni el tipo de comillas', () => {
+      igual(DC.comprobar("print( 'hello' )", 'print("hello")'), true);
+      igual(DC.comprobar('x=5', 'x = 5'), true);
+      igual(DC.comprobar('X = 5', 'x = 5'), false);
+    });
+
+    prueba('Dictado de código: lista los símbolos sin repetir', () => {
+      igual(DC.simbolosDe('a[0] = b[1];').map((s) => s.simbolo), ['[', ']', '=', ';']);
+    });
+
+    // --- Dilo bien ---
+
+    prueba('Dilo bien: reconoce el término o una forma aceptada', () => {
+      const cache = { termino: 'cache', aceptadas: ['cash'] };
+      igual([DB.reconocido(cache, ['I said cash']), DB.reconocido(cache, ['catch'])], [true, false]);
+      igual(DB.reconocido({ termino: 'nginx', aceptadas: ['engine x'] }, ['Engine X']), true);
+      igual(DB.opcionesDe({ suena: 'kash', otras: ['ka-CHÉ', 'KA-che'] })[0], 'kash');
+    });
+
+    // --- Sopa y crucigrama ---
+
+    const palabras = ['code', 'file', 'mouse', 'screen', 'email', 'team'];
+
+    prueba('Sopa: todas las palabras quedan colocadas y se pueden leer en la cuadrícula', () => {
+      const s = SC.crearSopa(palabras, crearAzar(1));
+      igual(s.colocadas.length, palabras.length);
+      for (const p of s.colocadas) igual(p.celdas.map(([f, c]) => s.celdas[f][c]).join(''), p.palabra);
+      verdadero(s.celdas.flat().every((l) => /^[A-Z]$/.test(l)), 'solo letras');
+    });
+
+    prueba('Sopa: buscarPalabra encuentra de principio a fin y al revés', () => {
+      const s = SC.crearSopa(palabras, crearAzar(2));
+      const p = s.colocadas[0];
+      const a = p.celdas[0];
+      const b = p.celdas[p.celdas.length - 1];
+      igual([SC.buscarPalabra(s, a, b), SC.buscarPalabra(s, b, a)], [0, 0]);
+      igual(SC.lineaEntre([0, 0], [1, 3]), null);
+    });
+
+    prueba('Crucigrama: las palabras se cruzan con letras coherentes y numeradas', () => {
+      const c = SC.crearCrucigrama(['database', 'branch', 'merge', 'backup', 'cookie', 'testing'], crearAzar(3));
+      verdadero(c.palabras.length >= 4, `colocadas: ${c.palabras.length}`);
+      for (const p of c.palabras) {
+        igual(SC.celdasDe(p).map((k) => c.letras.get(k)).join(''), p.palabra);
+        verdadero(p.numero >= 1, 'numerada');
+      }
+      verdadero(c.palabras.every((p, i) => i === 0 || SC.celdasDe(p).some((k) => c.palabras.some((q, j) => j !== i && SC.celdasDe(q).includes(k)))), 'todas se cruzan con otra');
+    });
+
+    // --- Emparejar ---
+
+    prueba('Emparejar: tableros de 5 sin dejar uno de 1', () => {
+      const items = Array.from({ length: 11 }, (_, i) => ({ id: String(i) }));
+      igual(EM.tableros(items).map((t) => t.length), [5, 6]);
+      igual(EM.tableros(items.slice(0, 10)).map((t) => t.length), [5, 5]);
+    });
+
+    prueba('Emparejar: acierto a la primera solo si esa palabra no ha fallado antes', () => {
+      const t = EM.crearTablero([{ id: 'a' }, { id: 'b' }]);
+      igual(EM.unir(t, 'a', 'b').bien, false);
+      igual(EM.unir(t, 'a', 'a'), { bien: true, primeraVez: false });
+      igual(EM.unir(t, 'b', 'b'), { bien: true, primeraVez: true });
+      igual(EM.completo(t), true);
+    });
+
+    // --- Contrarreloj ---
+
+    prueba('Contrarreloj: la buena sale en las dos posiciones y el tiempo no baja de 0', () => {
+      const item = { es: 'archivo', incorrecta: 'carpeta' };
+      igual(CR.prepararPregunta(item, () => 0.1), { opciones: ['archivo', 'carpeta'], correcta: 0 });
+      igual(CR.prepararPregunta(item, () => 0.9), { opciones: ['carpeta', 'archivo'], correcta: 1 });
+      igual([CR.quedan(10), CR.quedan(99)], [CR.SEGUNDOS - 10, 0]);
+    });
+
+    // --- Bug report ---
+
+    prueba('Bug report: cuenta los campos bien colocados', () => {
+      igual(BR.corregir({ titulo: 'titulo', pasos: 'pasos', esperado: 'esperado', actual: 'actual' }).todo, true);
+      const r = BR.corregir({ titulo: 'titulo', pasos: 'pasos', esperado: 'actual', actual: 'esperado' });
+      igual([r.todo, r.bien], [false, ['titulo', 'pasos']]);
+    });
+
+    ejecutar(document.getElementById('app'));
+  </script>
+</body>
+</html>

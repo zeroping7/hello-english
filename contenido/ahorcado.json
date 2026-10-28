@@ -1,0 +1,166 @@
+{
+  "banco": "ahorcado",
+  "v": 1,
+  "items": [
+    {
+      "id": "ah-001",
+      "nivel": "A1",
+      "tema": "programacion",
+      "palabra": "file",
+      "pista": "A document saved on your computer.",
+      "traduccion": "archivo"
+    },
+    {
+      "id": "ah-002",
+      "nivel": "A1",
+      "tema": "programacion",
+      "palabra": "mouse",
+      "pista": "You move it with your hand to control the pointer on the screen.",
+      "traduccion": "ratón"
+    },
+    {
+      "id": "ah-003",
+      "nivel": "A1",
+      "tema": "equipo",
+      "palabra": "email",
+      "pista": "A message you send over the internet.",
+      "traduccion": "correo electrónico"
+    },
+    {
+      "id": "ah-004",
+      "nivel": "A1",
+      "tema": "web",
+      "palabra": "screen",
+      "pista": "The part of a computer or phone that shows images and text.",
+      "traduccion": "pantalla"
+    },
+    {
+      "id": "ah-005",
+      "nivel": "A2",
+      "tema": "web",
+      "palabra": "password",
+      "pista": "A secret word you use to log in.",
+      "traduccion": "contraseña"
+    },
+    {
+      "id": "ah-006",
+      "nivel": "A2",
+      "tema": "web",
+      "palabra": "browser",
+      "pista": "A program you use to visit websites, like Chrome or Firefox.",
+      "traduccion": "navegador"
+    },
+    {
+      "id": "ah-007",
+      "nivel": "A2",
+      "tema": "programacion",
+      "palabra": "keyboard",
+      "pista": "You type on it.",
+      "traduccion": "teclado"
+    },
+    {
+      "id": "ah-008",
+      "nivel": "A2",
+      "tema": "equipo",
+      "palabra": "meeting",
+      "pista": "When people get together to talk about work.",
+      "traduccion": "reunión"
+    },
+    {
+      "id": "ah-009",
+      "nivel": "B1",
+      "tema": "programacion",
+      "palabra": "database",
+      "pista": "An organised collection of data that a program can query.",
+      "traduccion": "base de datos"
+    },
+    {
+      "id": "ah-010",
+      "nivel": "B1",
+      "tema": "equipo",
+      "palabra": "deadline",
+      "pista": "The date by which a task must be finished.",
+      "traduccion": "fecha límite"
+    },
+    {
+      "id": "ah-011",
+      "nivel": "B1",
+      "tema": "web",
+      "palabra": "server",
+      "pista": "A computer that provides data or services to other computers.",
+      "traduccion": "servidor"
+    },
+    {
+      "id": "ah-012",
+      "nivel": "B1",
+      "tema": "programacion",
+      "palabra": "feature",
+      "pista": "A function or capability of a product.",
+      "traduccion": "funcionalidad"
+    },
+    {
+      "id": "ah-013",
+      "nivel": "B2",
+      "tema": "web",
+      "palabra": "deployment",
+      "pista": "The process of releasing software to a server or to users.",
+      "traduccion": "despliegue"
+    },
+    {
+      "id": "ah-014",
+      "nivel": "B2",
+      "tema": "programacion",
+      "palabra": "bottleneck",
+      "pista": "The slowest part of a system, which limits its overall speed.",
+      "traduccion": "cuello de botella"
+    },
+    {
+      "id": "ah-015",
+      "nivel": "B2",
+      "tema": "web",
+      "palabra": "framework",
+      "pista": "A set of tools and libraries that gives structure to your code.",
+      "traduccion": "framework (marco de trabajo)"
+    },
+    {
+      "id": "ah-016",
+      "nivel": "B2",
+      "tema": "equipo",
+      "palabra": "stakeholder",
+      "pista": "A person with an interest in a project, such as a client or a manager.",
+      "traduccion": "parte interesada"
+    },
+    {
+      "id": "ah-017",
+      "nivel": "C1",
+      "tema": "web",
+      "palabra": "scalability",
+      "pista": "The ability of a system to handle more load by adding resources.",
+      "traduccion": "escalabilidad"
+    },
+    {
+      "id": "ah-018",
+      "nivel": "C1",
+      "tema": "programacion",
+      "palabra": "idempotent",
+      "pista": "Describes an operation that gives the same result however many times you repeat it.",
+      "traduccion": "idempotente"
+    },
+    {
+      "id": "ah-019",
+      "nivel": "C1",
+      "tema": "web",
+      "palabra": "latency",
+      "pista": "The delay before data starts to arrive.",
+      "traduccion": "latencia"
+    },
+    {
+      "id": "ah-020",
+      "nivel": "C1",
+      "tema": "programacion",
+      "palabra": "deprecated",
+      "pista": "Still available, but no longer recommended and likely to be removed.",
+      "traduccion": "obsoleto"
+    }
+  ]
+}

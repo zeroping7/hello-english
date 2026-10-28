@@ -1,0 +1,29 @@
+/* Daily standup y Entrevista: estilos de src/ui/escucha-elige.js */
+.ee-cabecera { display: flex; align-items: center; gap: var(--espacio-2); margin-bottom: var(--espacio-3); }
+
+.ee-avatar {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--function);
+  color: var(--panel);
+  font-family: var(--fuente-mono);
+  font-weight: 700;
+}
+
+.ee-quien { display: grid; }
+.ee-burbuja {
+  margin-bottom: var(--espacio-3);
+  padding: var(--espacio-2) var(--espacio-3);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio) var(--radio) var(--radio) 2px;
+  background: var(--panel);
+}
+
+.ee-texto { margin: 0; font-size: 1.0625rem; }
+.ee-pregunta { color: var(--texto); font-weight: 700; }
+.ee-voz { display: grid; justify-items: start; gap: var(--espacio-1); margin-top: var(--espacio-3); }
+.ee-voz .db-estado { text-align: left; }
+.db-estado { min-height: 1.5em; margin: 0; }

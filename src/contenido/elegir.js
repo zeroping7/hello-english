@@ -37,3 +37,17 @@ export function elegirEjercicios(items, { nivel, n, azar, tema = null }) {
 
   return barajar(elegidos, azar).slice(0, n);
 }
+
+/**
+ * Como elegirEjercicios, pero antes mete los que toca repasar hoy (spec 022): como mucho
+ * un 40 % de la partida, para que siga habiendo ejercicios nuevos.
+ * @param {Set<string>|string[]} pendientes ids que toca repasar
+ */
+export function elegirConRepaso(items, { nivel, n, azar, tema = null, pendientes = [] }) {
+  const ids = new Set(pendientes);
+  const repasar = barajar(items.filter((i) => ids.has(i.id) && (!tema || i.tema === tema)), azar)
+    .slice(0, Math.floor(n * 0.4));
+  const usados = new Set(repasar.map((i) => i.id));
+  const resto = elegirEjercicios(items.filter((i) => !usados.has(i.id)), { nivel, n: n - repasar.length, azar, tema });
+  return barajar([...repasar, ...resto], azar);
+}

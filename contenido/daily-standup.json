@@ -1,0 +1,366 @@
+{
+  "banco": "daily-standup",
+  "v": 1,
+  "items": [
+    {
+      "id": "ds-001",
+      "nivel": "A1",
+      "tema": "programacion",
+      "quien": "Priya",
+      "audio": "Hi! Yesterday I fixed a bug. Today I'm writing tests.",
+      "pregunta": "What is Priya doing today?",
+      "opciones": [
+        "Writing tests.",
+        "Fixing a bug.",
+        "Going on holiday."
+      ],
+      "traduccion": "¡Hola! Ayer arreglé un bug. Hoy estoy escribiendo tests.",
+      "explicacion": {
+        "es": "«Yesterday» (ayer) fue el bug; «today» (hoy) son los tests.",
+        "en": "'Yesterday' was the bug; 'today' is the tests."
+      }
+    },
+    {
+      "id": "ds-002",
+      "nivel": "A1",
+      "tema": "web",
+      "quien": "Tom",
+      "audio": "Good morning. Today I'm working on the home page. No problems.",
+      "pregunta": "Does Tom have any problems?",
+      "opciones": [
+        "No, he doesn't.",
+        "Yes, with the home page.",
+        "Yes, he is ill."
+      ],
+      "traduccion": "Buenos días. Hoy trabajo en la página de inicio. Sin problemas.",
+      "explicacion": {
+        "es": "«No problems» quiere decir que no tiene problemas.",
+        "en": "'No problems' means he has no problems."
+      }
+    },
+    {
+      "id": "ds-003",
+      "nivel": "A1",
+      "tema": "equipo",
+      "quien": "Lucy",
+      "audio": "Hello, everyone. I'm on holiday tomorrow. Sam is helping with my tasks.",
+      "pregunta": "Who is helping with Lucy's tasks?",
+      "opciones": [
+        "Sam.",
+        "Lucy.",
+        "Nobody."
+      ],
+      "traduccion": "Hola a todos. Mañana estoy de vacaciones. Sam me ayuda con mis tareas.",
+      "explicacion": {
+        "es": "Lo dice al final: «Sam is helping with my tasks».",
+        "en": "She says it at the end: 'Sam is helping with my tasks'."
+      }
+    },
+    {
+      "id": "ds-004",
+      "nivel": "A1",
+      "tema": "programacion",
+      "quien": "Ben",
+      "audio": "Today I'm learning Python. It's my first week!",
+      "pregunta": "What is Ben learning?",
+      "opciones": [
+        "Python.",
+        "Java.",
+        "English."
+      ],
+      "traduccion": "Hoy estoy aprendiendo Python. ¡Es mi primera semana!",
+      "explicacion": {
+        "es": "«I'm learning Python»: está aprendiendo Python.",
+        "en": "'I'm learning Python'."
+      }
+    },
+    {
+      "id": "ds-005",
+      "nivel": "A2",
+      "tema": "web",
+      "quien": "Priya",
+      "audio": "Yesterday I finished the login page. Today I'm going to start the profile page, but I'm blocked because I don't have the designs.",
+      "pregunta": "Why is Priya blocked?",
+      "opciones": [
+        "She doesn't have the designs.",
+        "She is ill.",
+        "The login page doesn't work."
+      ],
+      "traduccion": "Ayer terminé la página de login. Hoy voy a empezar la del perfil, pero estoy bloqueada porque no tengo los diseños.",
+      "explicacion": {
+        "es": "«I'm blocked because...» explica qué la bloquea.",
+        "en": "'I'm blocked because...' explains what is blocking her."
+      }
+    },
+    {
+      "id": "ds-006",
+      "nivel": "A2",
+      "tema": "programacion",
+      "quien": "Tom",
+      "audio": "I had some problems with the database yesterday, but now it works. Today I'm fixing two small bugs.",
+      "pregunta": "How is the database now?",
+      "opciones": [
+        "It works.",
+        "It's still broken.",
+        "Tom deleted it."
+      ],
+      "traduccion": "Ayer tuve problemas con la base de datos, pero ahora funciona. Hoy arreglo dos bugs pequeños.",
+      "explicacion": {
+        "es": "«But now it works»: ahora funciona.",
+        "en": "'But now it works'."
+      }
+    },
+    {
+      "id": "ds-007",
+      "nivel": "A2",
+      "tema": "equipo",
+      "quien": "Lucy",
+      "audio": "Quick update: the client meeting has moved to Thursday at three. Please check your calendars.",
+      "pregunta": "When is the client meeting now?",
+      "opciones": [
+        "On Thursday at three.",
+        "Today at three.",
+        "On Tuesday at three."
+      ],
+      "traduccion": "Novedad rápida: la reunión con el cliente se ha cambiado al jueves a las tres. Mirad vuestros calendarios.",
+      "explicacion": {
+        "es": "Ojo: «Thursday» es jueves y «Tuesday» es martes.",
+        "en": "Careful: 'Thursday' and 'Tuesday' sound similar."
+      }
+    },
+    {
+      "id": "ds-008",
+      "nivel": "A2",
+      "tema": "web",
+      "quien": "Ben",
+      "audio": "I've finished the CSS for the menu. Can someone review my pull request this morning?",
+      "pregunta": "What does Ben need?",
+      "opciones": [
+        "Someone to review his pull request.",
+        "Help with the CSS.",
+        "A new menu design."
+      ],
+      "traduccion": "He terminado el CSS del menú. ¿Alguien puede revisar mi pull request esta mañana?",
+      "explicacion": {
+        "es": "Pide que alguien revise («review») su pull request.",
+        "en": "He asks someone to review his pull request."
+      }
+    },
+    {
+      "id": "ds-009",
+      "nivel": "B1",
+      "tema": "programacion",
+      "quien": "Priya",
+      "audio": "I spent most of yesterday tracking down a memory issue. I think I've found the cause, so today I'll write a fix and some tests.",
+      "pregunta": "What will Priya do today?",
+      "opciones": [
+        "Write a fix and some tests.",
+        "Start looking for the memory issue.",
+        "Take the day off."
+      ],
+      "traduccion": "Ayer pasé casi todo el día buscando un problema de memoria. Creo que he encontrado la causa, así que hoy escribiré el arreglo y algunos tests.",
+      "explicacion": {
+        "es": "«Tracking down» es buscar; como ya ha encontrado la causa, hoy toca arreglarlo.",
+        "en": "'Tracking down' means searching; she has found the cause, so today she'll fix it."
+      }
+    },
+    {
+      "id": "ds-010",
+      "nivel": "B1",
+      "tema": "equipo",
+      "quien": "Tom",
+      "audio": "No real progress yesterday. I was stuck in meetings all day. Today I'm hoping to get back to the payment feature.",
+      "pregunta": "Why didn't Tom make progress?",
+      "opciones": [
+        "He was in meetings all day.",
+        "The payment feature is finished.",
+        "He was stuck in traffic."
+      ],
+      "traduccion": "Ayer no avancé mucho: estuve todo el día metido en reuniones. Hoy espero volver a la funcionalidad de pagos.",
+      "explicacion": {
+        "es": "«Stuck in meetings» = atrapado en reuniones (no en un atasco).",
+        "en": "'Stuck in meetings', not stuck in traffic."
+      }
+    },
+    {
+      "id": "ds-011",
+      "nivel": "B1",
+      "tema": "web",
+      "quien": "Lucy",
+      "audio": "The new search page is live, but a few users say it's slow on mobile. I'll look into it today.",
+      "pregunta": "What is the problem with the search page?",
+      "opciones": [
+        "It's slow on mobile for some users.",
+        "It isn't live yet.",
+        "Nobody uses it."
+      ],
+      "traduccion": "La nueva página de búsqueda ya está publicada, pero algunos usuarios dicen que va lenta en el móvil. Hoy lo investigo.",
+      "explicacion": {
+        "es": "«Look into it» = investigarlo; el problema es que va lenta en el móvil.",
+        "en": "'Look into it' means investigate it; the problem is that it's slow on mobile."
+      }
+    },
+    {
+      "id": "ds-012",
+      "nivel": "B1",
+      "tema": "programacion",
+      "quien": "Lucy",
+      "audio": "Thanks, Tom. Okay, you're next. How's it going?",
+      "pregunta": "It's your turn. You're blocked until you get access to the API. What do you say?",
+      "opciones": [
+        "I'm working on the reports, but I'm blocked until I get access to the API.",
+        "I'm blocked the API because waiting access.",
+        "Nothing. Next person, please."
+      ],
+      "traduccion": "Gracias, Tom. Vale, te toca. ¿Qué tal va?",
+      "explicacion": {
+        "es": "La buena dice en qué trabajas y qué te bloquea, con una gramática correcta.",
+        "en": "The right answer says what you're working on and what is blocking you, with correct grammar."
+      }
+    },
+    {
+      "id": "ds-013",
+      "nivel": "B2",
+      "tema": "programacion",
+      "quien": "Priya",
+      "audio": "I've wrapped up the refactoring of the auth module, so that's ready for review. Heads-up: it touches quite a few files, so it might take a while to go through.",
+      "pregunta": "What is Priya warning the team about?",
+      "opciones": [
+        "The review may take a long time.",
+        "The refactoring isn't finished.",
+        "The auth module is broken."
+      ],
+      "traduccion": "He terminado la refactorización del módulo de autenticación, así que ya se puede revisar. Aviso: toca bastantes archivos, así que puede llevar un rato revisarlo.",
+      "explicacion": {
+        "es": "«Heads-up» es un aviso; «it might take a while to go through» = puede tardar en revisarse.",
+        "en": "A 'heads-up' is a warning; 'it might take a while to go through' means the review may be slow."
+      }
+    },
+    {
+      "id": "ds-014",
+      "nivel": "B2",
+      "tema": "web",
+      "quien": "Tom",
+      "audio": "We're still waiting on legal to sign off on the cookie banner, so I've put that on hold and picked up the accessibility tickets instead.",
+      "pregunta": "Why did Tom put the cookie banner on hold?",
+      "opciones": [
+        "Legal hasn't approved it yet.",
+        "It's already finished.",
+        "Users don't like it."
+      ],
+      "traduccion": "Seguimos esperando a que el departamento legal apruebe el banner de cookies, así que lo he dejado en pausa y he cogido los tickets de accesibilidad.",
+      "explicacion": {
+        "es": "«Sign off on» = dar la aprobación final.",
+        "en": "'Sign off on' means to give final approval."
+      }
+    },
+    {
+      "id": "ds-015",
+      "nivel": "B2",
+      "tema": "equipo",
+      "quien": "Lucy",
+      "audio": "Just a reminder that the retro's been pushed back to Friday, and please add your notes to the board beforehand.",
+      "pregunta": "What should people do before the retro?",
+      "opciones": [
+        "Add their notes to the board.",
+        "Push the retro back.",
+        "Cancel Friday's meeting."
+      ],
+      "traduccion": "Os recuerdo que la retro se ha retrasado al viernes, y que añadáis vuestras notas al tablero antes.",
+      "explicacion": {
+        "es": "«Pushed back» = retrasado; «beforehand» = antes.",
+        "en": "'Pushed back' means delayed; 'beforehand' means before it."
+      }
+    },
+    {
+      "id": "ds-016",
+      "nivel": "B2",
+      "tema": "equipo",
+      "quien": "Tom",
+      "audio": "Can you give us a quick update on the migration?",
+      "pregunta": "The migration needs one more day. What do you say?",
+      "opciones": [
+        "It's going well, but it'll take one more day than planned. I'll keep you posted.",
+        "The migration is late because of you.",
+        "I don't know. Maybe never."
+      ],
+      "traduccion": "¿Nos das una actualización rápida de la migración?",
+      "explicacion": {
+        "es": "Das el dato (un día más), con tono profesional, y te comprometes a ir informando («keep you posted»).",
+        "en": "You give the facts (one more day) in a professional tone and promise to keep them posted."
+      }
+    },
+    {
+      "id": "ds-017",
+      "nivel": "C1",
+      "tema": "programacion",
+      "quien": "Priya",
+      "audio": "We've been chasing an intermittent failure in CI. It turns out it's a race condition in the test setup, not in the product code, so it's not a release blocker.",
+      "pregunta": "What did Priya conclude?",
+      "opciones": [
+        "The bug is in the tests, so it doesn't block the release.",
+        "The product code has a race condition.",
+        "The release must be delayed."
+      ],
+      "traduccion": "Llevamos un tiempo persiguiendo un fallo intermitente en la CI. Resulta que es una condición de carrera en la preparación de los tests, no en el código del producto, así que no bloquea la release.",
+      "explicacion": {
+        "es": "«It turns out» = resulta que; «not a release blocker» = no impide publicar.",
+        "en": "'It turns out' introduces the finding; 'not a release blocker' means it doesn't stop the release."
+      }
+    },
+    {
+      "id": "ds-018",
+      "nivel": "C1",
+      "tema": "web",
+      "quien": "Tom",
+      "audio": "Conversion's dipped since Tuesday's deploy. It could be a coincidence, but I'd rather we err on the side of caution and roll back the checkout changes.",
+      "pregunta": "What does Tom suggest?",
+      "opciones": [
+        "Rolling back the checkout changes to be safe.",
+        "Waiting to see if it's a coincidence.",
+        "Deploying again on Tuesday."
+      ],
+      "traduccion": "La conversión ha bajado desde el despliegue del martes. Puede ser casualidad, pero prefiero pecar de prudente y revertir los cambios del pago.",
+      "explicacion": {
+        "es": "«Err on the side of caution» = pecar de prudente.",
+        "en": "'Err on the side of caution' means to choose the safer option."
+      }
+    },
+    {
+      "id": "ds-019",
+      "nivel": "C1",
+      "tema": "equipo",
+      "quien": "Lucy",
+      "audio": "Bear in mind that half the team is off next week, so let's not overcommit in planning. I'd rather under-promise and over-deliver.",
+      "pregunta": "What is Lucy's advice for planning?",
+      "opciones": [
+        "Commit to less work, because many people will be away.",
+        "Plan more work to finish faster.",
+        "Cancel the planning meeting."
+      ],
+      "traduccion": "Tened en cuenta que la mitad del equipo no estará la semana que viene, así que no nos comprometamos a demasiado en la planificación. Prefiero prometer poco y dar más.",
+      "explicacion": {
+        "es": "«Overcommit» = comprometerse a demasiado.",
+        "en": "'Overcommit' means to promise more than you can do."
+      }
+    },
+    {
+      "id": "ds-020",
+      "nivel": "C1",
+      "tema": "programacion",
+      "quien": "Lucy",
+      "audio": "We're running short on time. Can you keep your update brief?",
+      "pregunta": "You've finished the API and you're starting on the docs. What do you say?",
+      "opciones": [
+        "Sure. The API's done, and I'm moving on to the docs today. No blockers.",
+        "Sure. Yesterday I opened my laptop, then I read my emails, then I had a coffee…",
+        "Why should I be brief?"
+      ],
+      "traduccion": "Vamos justos de tiempo. ¿Puedes ser breve?",
+      "explicacion": {
+        "es": "Breve y con lo esencial: qué está hecho, qué sigue y si hay bloqueos.",
+        "en": "Brief and to the point: what's done, what's next and any blockers."
+      }
+    }
+  ]
+}

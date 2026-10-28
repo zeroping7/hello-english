@@ -133,3 +133,43 @@ Una entrada por decisión. Nunca se borran; si cambian, se añade una nueva que 
 - Decisión: archivo `.nojekyll` vacío en la raíz, así Pages publica los archivos sin procesarlos (constitución P1: lo que está en el repo es lo que se sirve).
 - Alternativas descartadas: excluir `docs/` y `specs/` en un `_config.yml` (sigue dependiendo de Jekyll).
 - Consecuencias: los `.md` se sirven como texto, no como páginas; no hace falta otra cosa.
+
+## D-016 — `ronda()`: bucle común de los minijuegos por ejercicios
+- Fecha: 2026-10-28
+- Estado: Aceptada
+- Contexto: 12 de los 17 minijuegos nuevos repiten lo mismo: pintar un ejercicio, esperar la respuesta, enseñar el panel ✓/✗ con «Siguiente» y seguir con Enter.
+- Decisión: `src/ui/ronda.js` hace ese bucle. Cada minijuego solo devuelve los nodos del ejercicio y sus teclas, y llama a `responder(acierto, lineas)`. En el mismo archivo están `preguntaOpciones` (opciones barajadas con teclas 1-9), `botonesEscucha`, `botonAltavoz` y `formularioRespuesta`. Los minijuegos con otra forma (Incidente, Sopa y crucigrama, Emparejar y Contrarreloj) llevan su propio bucle con la misma interfaz de D-014.
+- Alternativas descartadas: copiar el bucle de Merge Conflict en cada uno (12 copias que acabarían siendo distintas).
+- Consecuencias: `ponerContador(n, total)` acepta un total propio y el resumen cuenta las respuestas reales, no `EJERCICIOS`.
+
+## D-017 — Reconocimiento de voz del navegador, siempre con alternativa
+- Fecha: 2026-10-28
+- Estado: Aceptada
+- Contexto: Dilo bien, Daily standup y Entrevista se pueden jugar hablando. La Web Speech API existe en Chrome, Edge y Safari, pero en Chrome el audio se procesa en los servidores de Google (constitución PR1).
+- Decisión: `src/voz/reconocer.js` con `reconocer()` (inglés del acento elegido, 5 alternativas, 8 s como mucho). Las pantallas que lo usan dicen dónde se procesa el audio. Sin reconocimiento o sin permiso, se elige la respuesta tocando (constitución C1). En Daily standup y Entrevista, lo dicho elige la opción más parecida (`masParecida`, por palabras en común).
+- Alternativas descartadas: un modelo de reconocimiento dentro de la app (sin build y sin servidor no es viable, y pesa demasiado).
+- Consecuencias: el reconocimiento dice qué palabra ha entendido, no cómo de bien se ha pronunciado; Dilo bien acepta homófonos (`aceptadas`).
+
+## D-018 — Progreso v2 y repaso espaciado solo de lo fallado
+- Fecha: 2026-10-28
+- Estado: Aceptada
+- Contexto: las specs 022-025 necesitan guardar repasos, estadísticas, logros, la ventana de nivel y la práctica del día.
+- Decisión: `he-progreso` pasa a v2 con `repaso`, `stats`, `logros`, `ventana` y `practica`; la migración 1 → 2 los añade vacíos (y `rachaMax` = racha actual). Al importar se limpian esos campos y se descarta lo que no tenga la forma esperada. El repaso solo guarda lo fallado, en tres cajas (mañana, a los 3 días y a los 7); al acertar el tercer repaso queda aprendido.
+- Alternativas descartadas: Leitner con todo lo respondido (crece sin límite y repasa lo que ya se sabe); otra clave `he-repaso` (dos bloques que exportar e importar a la vez).
+- Consecuencias: cada partida mete hasta un 40 % de repasos (`elegirConRepaso`) antes del reparto 60/30/10 (D-012).
+
+## D-019 — El nivel sube con 16 de los últimos 20
+- Fecha: 2026-10-28
+- Estado: Aceptada
+- Contexto: la visión pide que el nivel suba solo con el uso.
+- Decisión: se cuentan solo los ejercicios del nivel actual del usuario; con 16 bien de los últimos 20 (80 %) se sube uno y la cuenta empieza de cero. No se baja solo.
+- Alternativas descartadas: subir por puntos acumulados (sube aunque se falle mucho); bajar también (frustra; para eso está repetir la prueba).
+- Consecuencias: alguien con nivel de sobra necesita unas 3 partidas buenas para subir.
+
+## D-020 — Práctica de hoy estable durante el día
+- Fecha: 2026-10-28
+- Estado: Aceptada
+- Contexto: la Práctica de hoy tiene que ser la misma aunque se recargue, y distinta cada día.
+- Decisión: se elige una vez al día con una semilla sacada de la fecha y se guarda en el progreso: primero el minijuego con más repasos y luego, de categorías distintas, los menos jugados. Los que necesitan voz no entran si el navegador no puede hablar. Cada paso abre `#/juego/<id>/practica`, que empieza sin elegir tema y al terminar vuelve a `#/practica`.
+- Alternativas descartadas: una sesión que mezcle ejercicios de varios minijuegos en una sola pantalla (cada minijuego tiene su forma de jugar).
+- Consecuencias: completar la práctica cuenta para los logros de práctica.

@@ -49,7 +49,7 @@ specs/
 ```
 
 ## 2. Navegación
-- Una sola página con **router por hash**: `#/inicio`, `#/ajustes`, `#/juego/<id>`, `#/practica`, `#/prueba-nivel`, `#/bienvenida`.
+- Una sola página con **router por hash**: `#/inicio`, `#/ajustes`, `#/juego/<id>`, `#/juego/<id>/practica`, `#/practica`, `#/logros`, `#/prueba-nivel`, `#/bienvenida`.
 - El botón "atrás" del navegador y del móvil funciona en todas las pantallas.
 - Los minijuegos se cargan con `import()` al entrar (constitución R2) y se desmontan al salir, liberando sus escuchas y temporizadores.
 - `iniciarRouter(raiz, rutas, porDefecto, redirigir)`: `redirigir(ruta)` puede mandar a otra (sin bienvenida hecha, todo va a `#/bienvenida`).
@@ -88,18 +88,20 @@ Así el inicio, la Práctica de hoy y la prueba de nivel usan cualquier minijueg
 
 **Versión implementada (spec 003, D-014):** el módulo exporta también `BANCO` y `EJERCICIOS`, y `montar(raiz, { ejercicios, idioma, ponerContador, alResponder(item, acierto), alTerminar })`. La pantalla común `src/pantallas/juego.js` elige tema, carga el banco, elige los ejercicios, cuenta tiempo y puntos, pone sonido y vibración, y enseña el resumen. Los estilos propios van en `juegos/<id>/juego.css`.
 
+**v1.0.0 (D-016):** los minijuegos de un ejercicio cada vez se montan sobre `ronda()` (`src/ui/ronda.js`); `alResponder(item, acierto, { sonido })` y `ponerContador(n, total)`. La pantalla común registra cada resultado con `registrarResultado` (puntos, repaso espaciado y nivel, D-018 y D-019) y cada partida con `registrarPartida` (estadísticas, logros y Práctica de hoy, D-020). Las reglas de los minijuegos nuevos se prueban en `juegos/tests.html`.
+
 ## 5. Idiomas de la interfaz
 - `t('clave', { variables })` devuelve el texto en el idioma elegido. Si falta una clave en inglés, se usa la española y `?debug=1` lo avisa.
 - Al cambiar de idioma en Ajustes, la pantalla se vuelve a pintar sin recargar.
 
 ## 6. Progreso y almacenamiento
-- Todo en `localStorage`, con una clave por bloque (`he-ajustes`, `he-progreso`, `he-repaso`) y un campo `v` con la versión del formato. Formato exacto en el plan de 000, §3.
+- Todo en `localStorage`, con una clave por bloque (`he-ajustes`, `he-progreso`) y un campo `v` con la versión del formato. Formato v1 en el plan de 000, §3; la v2 añade `repaso`, `stats`, `logros`, `ventana` y `practica` (D-018).
 - Exportar descarga un archivo `.json`; importar lo valida antes de sustituir nada.
 - Si el almacenamiento falla (modo privado), la app funciona igual y avisa de que no se guardará el progreso.
 
 ## 7. Voz
 - Leer en voz alta con `speechSynthesis`: voz británica por defecto, americana en Ajustes, velocidad normal o lenta.
-- Reconocer voz con `SpeechRecognition` donde exista. Antes del primer uso se avisa de que el audio lo procesa el servicio del navegador. En Safari iOS se avisa de que puede fallar y se ofrece la alternativa sin hablar (constitución C1).
+- Reconocer voz con `SpeechRecognition` donde exista (`src/voz/reconocer.js`, D-017). Las pantallas que lo usan avisan de que el audio lo procesa el servicio del navegador, y siempre hay alternativa sin hablar (constitución C1).
 
 ## 8. App instalable y caché
 - `sw.js`: primero red (con `cache: 'no-cache'`, para ver una versión recién publicada al recargar) y, sin conexión, lo guardado. Al cambiar la lista `FILES`, subir `CACHE`.

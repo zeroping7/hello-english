@@ -1,0 +1,406 @@
+{
+  "banco": "contrarreloj",
+  "v": 1,
+  "items": [
+    {
+      "id": "cr-001",
+      "nivel": "A1",
+      "tema": "programacion",
+      "en": "file",
+      "es": "archivo",
+      "incorrecta": "carpeta"
+    },
+    {
+      "id": "cr-002",
+      "nivel": "A1",
+      "tema": "programacion",
+      "en": "screen",
+      "es": "pantalla",
+      "incorrecta": "teclado"
+    },
+    {
+      "id": "cr-003",
+      "nivel": "A1",
+      "tema": "programacion",
+      "en": "mouse",
+      "es": "ratón",
+      "incorrecta": "altavoz"
+    },
+    {
+      "id": "cr-004",
+      "nivel": "A1",
+      "tema": "programacion",
+      "en": "key",
+      "es": "tecla",
+      "incorrecta": "puerta"
+    },
+    {
+      "id": "cr-005",
+      "nivel": "A1",
+      "tema": "web",
+      "en": "page",
+      "es": "página",
+      "incorrecta": "papel"
+    },
+    {
+      "id": "cr-006",
+      "nivel": "A1",
+      "tema": "web",
+      "en": "to click",
+      "es": "hacer clic",
+      "incorrecta": "escribir"
+    },
+    {
+      "id": "cr-007",
+      "nivel": "A1",
+      "tema": "web",
+      "en": "to open",
+      "es": "abrir",
+      "incorrecta": "cerrar"
+    },
+    {
+      "id": "cr-008",
+      "nivel": "A1",
+      "tema": "web",
+      "en": "to close",
+      "es": "cerrar",
+      "incorrecta": "abrir"
+    },
+    {
+      "id": "cr-009",
+      "nivel": "A1",
+      "tema": "equipo",
+      "en": "team",
+      "es": "equipo",
+      "incorrecta": "tiempo"
+    },
+    {
+      "id": "cr-010",
+      "nivel": "A1",
+      "tema": "equipo",
+      "en": "meeting",
+      "es": "reunión",
+      "incorrecta": "comida"
+    },
+    {
+      "id": "cr-011",
+      "nivel": "A2",
+      "tema": "programacion",
+      "en": "to save",
+      "es": "guardar",
+      "incorrecta": "borrar"
+    },
+    {
+      "id": "cr-012",
+      "nivel": "A2",
+      "tema": "programacion",
+      "en": "to delete",
+      "es": "borrar",
+      "incorrecta": "guardar"
+    },
+    {
+      "id": "cr-013",
+      "nivel": "A2",
+      "tema": "web",
+      "en": "password",
+      "es": "contraseña",
+      "incorrecta": "usuario"
+    },
+    {
+      "id": "cr-014",
+      "nivel": "A2",
+      "tema": "web",
+      "en": "browser",
+      "es": "navegador",
+      "incorrecta": "buscador"
+    },
+    {
+      "id": "cr-015",
+      "nivel": "A2",
+      "tema": "web",
+      "en": "to download",
+      "es": "descargar",
+      "incorrecta": "subir"
+    },
+    {
+      "id": "cr-016",
+      "nivel": "A2",
+      "tema": "web",
+      "en": "to upload",
+      "es": "subir (un archivo)",
+      "incorrecta": "descargar"
+    },
+    {
+      "id": "cr-017",
+      "nivel": "A2",
+      "tema": "programacion",
+      "en": "folder",
+      "es": "carpeta",
+      "incorrecta": "archivo"
+    },
+    {
+      "id": "cr-018",
+      "nivel": "A2",
+      "tema": "web",
+      "en": "slow",
+      "es": "lento",
+      "incorrecta": "rápido"
+    },
+    {
+      "id": "cr-019",
+      "nivel": "A2",
+      "tema": "equipo",
+      "en": "to share",
+      "es": "compartir",
+      "incorrecta": "cortar"
+    },
+    {
+      "id": "cr-020",
+      "nivel": "A2",
+      "tema": "equipo",
+      "en": "late",
+      "es": "tarde",
+      "incorrecta": "pronto"
+    },
+    {
+      "id": "cr-021",
+      "nivel": "B1",
+      "tema": "equipo",
+      "en": "deadline",
+      "es": "fecha límite",
+      "incorrecta": "línea muerta"
+    },
+    {
+      "id": "cr-022",
+      "nivel": "B1",
+      "tema": "programacion",
+      "en": "to fix",
+      "es": "arreglar",
+      "incorrecta": "fijar"
+    },
+    {
+      "id": "cr-023",
+      "nivel": "B1",
+      "tema": "programacion",
+      "en": "to run (a program)",
+      "es": "ejecutar",
+      "incorrecta": "correr"
+    },
+    {
+      "id": "cr-024",
+      "nivel": "B1",
+      "tema": "programacion",
+      "en": "to merge",
+      "es": "fusionar",
+      "incorrecta": "dividir"
+    },
+    {
+      "id": "cr-025",
+      "nivel": "B1",
+      "tema": "programacion",
+      "en": "branch",
+      "es": "rama",
+      "incorrecta": "sucursal"
+    },
+    {
+      "id": "cr-026",
+      "nivel": "B1",
+      "tema": "web",
+      "en": "to support (a browser)",
+      "es": "ser compatible con",
+      "incorrecta": "aguantar"
+    },
+    {
+      "id": "cr-027",
+      "nivel": "B1",
+      "tema": "equipo",
+      "en": "actually",
+      "es": "en realidad",
+      "incorrecta": "actualmente"
+    },
+    {
+      "id": "cr-028",
+      "nivel": "B1",
+      "tema": "equipo",
+      "en": "to attend",
+      "es": "asistir",
+      "incorrecta": "atender"
+    },
+    {
+      "id": "cr-029",
+      "nivel": "B1",
+      "tema": "programacion",
+      "en": "library",
+      "es": "biblioteca",
+      "incorrecta": "librería (tienda)"
+    },
+    {
+      "id": "cr-030",
+      "nivel": "B1",
+      "tema": "equipo",
+      "en": "eventually",
+      "es": "al final",
+      "incorrecta": "eventualmente"
+    },
+    {
+      "id": "cr-031",
+      "nivel": "B2",
+      "tema": "programacion",
+      "en": "to roll back",
+      "es": "revertir",
+      "incorrecta": "avanzar"
+    },
+    {
+      "id": "cr-032",
+      "nivel": "B2",
+      "tema": "web",
+      "en": "bottleneck",
+      "es": "cuello de botella",
+      "incorrecta": "botellón"
+    },
+    {
+      "id": "cr-033",
+      "nivel": "B2",
+      "tema": "web",
+      "en": "to deploy",
+      "es": "desplegar",
+      "incorrecta": "diseñar"
+    },
+    {
+      "id": "cr-034",
+      "nivel": "B2",
+      "tema": "equipo",
+      "en": "scope",
+      "es": "alcance",
+      "incorrecta": "presupuesto"
+    },
+    {
+      "id": "cr-035",
+      "nivel": "B2",
+      "tema": "equipo",
+      "en": "requirement",
+      "es": "requisito",
+      "incorrecta": "recompensa"
+    },
+    {
+      "id": "cr-036",
+      "nivel": "B2",
+      "tema": "equipo",
+      "en": "to tackle (a problem)",
+      "es": "abordar",
+      "incorrecta": "evitar"
+    },
+    {
+      "id": "cr-037",
+      "nivel": "B2",
+      "tema": "web",
+      "en": "outage",
+      "es": "caída del servicio",
+      "incorrecta": "salida"
+    },
+    {
+      "id": "cr-038",
+      "nivel": "B2",
+      "tema": "equipo",
+      "en": "to assess",
+      "es": "evaluar",
+      "incorrecta": "asesorar"
+    },
+    {
+      "id": "cr-039",
+      "nivel": "B2",
+      "tema": "equipo",
+      "en": "sensible",
+      "es": "sensato",
+      "incorrecta": "sensible"
+    },
+    {
+      "id": "cr-040",
+      "nivel": "B2",
+      "tema": "programacion",
+      "en": "to compile",
+      "es": "compilar",
+      "incorrecta": "recopilar"
+    },
+    {
+      "id": "cr-041",
+      "nivel": "C1",
+      "tema": "programacion",
+      "en": "to deprecate",
+      "es": "declarar obsoleto",
+      "incorrecta": "despreciar"
+    },
+    {
+      "id": "cr-042",
+      "nivel": "C1",
+      "tema": "equipo",
+      "en": "to leverage",
+      "es": "aprovechar",
+      "incorrecta": "elevar"
+    },
+    {
+      "id": "cr-043",
+      "nivel": "C1",
+      "tema": "equipo",
+      "en": "to streamline",
+      "es": "simplificar",
+      "incorrecta": "alargar"
+    },
+    {
+      "id": "cr-044",
+      "nivel": "C1",
+      "tema": "equipo",
+      "en": "to mitigate",
+      "es": "mitigar",
+      "incorrecta": "empeorar"
+    },
+    {
+      "id": "cr-045",
+      "nivel": "C1",
+      "tema": "web",
+      "en": "to sunset (a product)",
+      "es": "retirar",
+      "incorrecta": "lanzar"
+    },
+    {
+      "id": "cr-046",
+      "nivel": "C1",
+      "tema": "programacion",
+      "en": "overhead",
+      "es": "coste adicional",
+      "incorrecta": "techo"
+    },
+    {
+      "id": "cr-047",
+      "nivel": "C1",
+      "tema": "programacion",
+      "en": "to backfill (data)",
+      "es": "rellenar datos antiguos",
+      "incorrecta": "borrar datos antiguos"
+    },
+    {
+      "id": "cr-048",
+      "nivel": "C1",
+      "tema": "equipo",
+      "en": "to flag (an issue)",
+      "es": "señalar",
+      "incorrecta": "ignorar"
+    },
+    {
+      "id": "cr-049",
+      "nivel": "C1",
+      "tema": "equipo",
+      "en": "to onboard (someone)",
+      "es": "incorporar a alguien nuevo",
+      "incorrecta": "subir a bordo"
+    },
+    {
+      "id": "cr-050",
+      "nivel": "C1",
+      "tema": "equipo",
+      "en": "caveat",
+      "es": "advertencia",
+      "incorrecta": "cueva"
+    }
+  ]
+}

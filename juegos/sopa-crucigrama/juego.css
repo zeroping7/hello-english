@@ -1,0 +1,73 @@
+/* Sopa y crucigrama */
+.sc-sopa { display: grid; gap: 2px; width: min(100%, 30rem); margin: 0 auto var(--espacio-2); }
+.sc-fila { display: grid; grid-template-columns: repeat(var(--tam), 1fr); gap: 2px; }
+
+.sc-celda {
+  aspect-ratio: 1;
+  min-width: 0;
+  padding: 0;
+  border: 1px solid var(--borde);
+  border-radius: 4px;
+  background: var(--panel);
+  color: var(--texto);
+  font-family: var(--fuente-mono);
+  font-size: clamp(0.875rem, 4vw, 1.125rem);
+  font-weight: 700;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.sc-celda:focus-visible { outline: 2px solid var(--keyword); outline-offset: 1px; }
+.sc-celda.elegida { background: var(--keyword); color: var(--panel); }
+.sc-celda.hallada { border-color: var(--string); background: color-mix(in srgb, var(--string) 22%, var(--panel)); color: var(--string); }
+.sc-celda.revelada { border-color: var(--error); border-style: dashed; color: var(--error); }
+.sc-celda.fallida { border-color: var(--error); }
+
+.sc-pistas { display: grid; gap: var(--espacio-1); margin: var(--espacio-3) 0; padding-left: 1.5rem; }
+.sc-pistas li.hallada { color: var(--tenue); text-decoration: line-through; }
+.sc-pistas li.hallada .sc-largo { color: var(--string); text-decoration: none; }
+.sc-largo { color: var(--tenue); font-family: var(--fuente-mono); }
+.sc-acciones { display: flex; justify-content: flex-end; }
+.sc-repaso { margin: 0; padding-left: 1.25rem; }
+
+/* Crucigrama */
+.sc-cruci-marco { overflow-x: auto; margin-bottom: var(--espacio-3); }
+.sc-cruci { display: grid; grid-template-columns: repeat(var(--columnas), minmax(1.75rem, 2.25rem)); gap: 2px; width: max-content; margin: 0 auto; }
+.sc-vacia { aspect-ratio: 1; }
+
+.sc-casilla {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  border: 1px solid var(--borde);
+  border-radius: 3px;
+  background: var(--panel);
+  font-family: var(--fuente-mono);
+  font-weight: 700;
+}
+
+.sc-casilla.actual { border-color: var(--keyword); box-shadow: inset 0 0 0 1px var(--keyword); }
+.sc-casilla.bien { color: var(--string); }
+.sc-casilla.revelada { color: var(--error); }
+.sc-numero { position: absolute; top: 0; left: 2px; color: var(--tenue); font-size: 0.5625rem; font-weight: 400; }
+.sc-pistas-cruci { padding-left: 0; list-style: none; }
+
+.sc-pista {
+  width: 100%;
+  min-height: 44px;
+  padding: var(--espacio-1) var(--espacio-2);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: none;
+  color: var(--texto);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.sc-pista:hover:not(:disabled), .sc-pista.actual { border-color: var(--keyword); }
+.sc-pista:disabled { cursor: default; }
+.sc-pista.hallada { color: var(--tenue); }
+.sc-num { color: var(--keyword); font-family: var(--fuente-mono); font-weight: 700; }
+.sc-actual { margin: 0 0 var(--espacio-2); }
