@@ -160,5 +160,11 @@
   "fa.verdad": "True",
   "fa.falso": "False friend",
   "fa.escuchar": "Listen to the word",
-  "fa.escucharEjemplo": "Listen to the example"
+  "fa.escucharEjemplo": "Listen to the example",
+  "mc.instruccion": "There's a conflict: keep the version that's written correctly.",
+  "mc.aceptarArriba": "Accept current",
+  "mc.aceptarAbajo": "Accept incoming",
+  "mc.ayudaArriba": "Keep the top one",
+  "mc.ayudaAbajo": "Keep the bottom one",
+  "mc.escuchar": "Listen to the sentence"
 }

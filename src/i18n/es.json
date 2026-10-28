@@ -160,5 +160,11 @@
   "fa.verdad": "Verdad",
   "fa.falso": "Falso amigo",
   "fa.escuchar": "Escuchar la palabra",
-  "fa.escucharEjemplo": "Escuchar el ejemplo"
+  "fa.escucharEjemplo": "Escuchar el ejemplo",
+  "mc.instruccion": "Hay un conflicto: quédate con la versión bien escrita.",
+  "mc.aceptarArriba": "Accept current",
+  "mc.aceptarAbajo": "Accept incoming",
+  "mc.ayudaArriba": "Quedarse con la de arriba",
+  "mc.ayudaAbajo": "Quedarse con la de abajo",
+  "mc.escuchar": "Escuchar la frase"
 }

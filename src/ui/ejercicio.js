@@ -61,16 +61,18 @@ export function resumen({ titulo, aciertos, total, puntos = null, botones = [] }
 }
 
 /**
- * Teclas de los ejercicios: 1-9 eligen opción, Enter sigue, ← y → para respuestas de dos lados.
+ * Teclas de los ejercicios: 1-9 eligen opción, Enter sigue, flechas para respuestas de dos lados.
  * Devuelve la función que las quita.
  */
-export function teclas({ alNumero, alEnter, alIzquierda, alDerecha }) {
+export function teclas({ alNumero, alEnter, alIzquierda, alDerecha, alArriba, alAbajo }) {
   function alPulsar(e) {
     if (e.ctrlKey || e.metaKey || e.altKey || e.target.closest?.('input, textarea, dialog')) return;
-    if (alNumero && /^[1-9]$/.test(e.key)) { alNumero(Number(e.key) - 1); e.preventDefault(); }
-    else if (alEnter && e.key === 'Enter' && !e.target.closest?.('button, a')) { alEnter(); e.preventDefault(); }
-    else if (alIzquierda && e.key === 'ArrowLeft') { alIzquierda(); e.preventDefault(); }
-    else if (alDerecha && e.key === 'ArrowRight') { alDerecha(); e.preventDefault(); }
+    let accion = null;
+    if (/^[1-9]$/.test(e.key)) accion = alNumero && (() => alNumero(Number(e.key) - 1));
+    else if (e.key === 'Enter' && !e.target.closest?.('button, a')) accion = alEnter;
+    else accion = { ArrowLeft: alIzquierda, ArrowRight: alDerecha, ArrowUp: alArriba, ArrowDown: alAbajo }[e.key];
+    // Si la acción devuelve false (p. ej. ya respondida), la tecla hace lo de siempre (scroll)
+    if (accion && accion() !== false) e.preventDefault();
   }
   document.addEventListener('keydown', alPulsar);
   return () => document.removeEventListener('keydown', alPulsar);

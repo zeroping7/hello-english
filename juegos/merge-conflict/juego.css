@@ -1,0 +1,58 @@
+/* Merge Conflict: bloque con aspecto de editor */
+.mc-bloque {
+  margin-bottom: var(--espacio-4);
+  padding: var(--espacio-2) 0;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--panel);
+  font-family: var(--fuente-mono);
+  font-size: clamp(0.875rem, 3.6vw, 1rem);
+  overflow-x: auto;
+}
+
+.mc-linea {
+  display: flex;
+  gap: var(--espacio-3);
+  padding: 2px var(--espacio-3) 2px 0;
+  line-height: 1.6;
+}
+
+.mc-numero {
+  flex: none;
+  width: 2.5rem;
+  padding-right: var(--espacio-2);
+  color: var(--tenue);
+  text-align: right;
+  opacity: 0.7;
+}
+
+.mc-texto { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.mc-marca { color: var(--tenue); }
+.mc-nota { font-size: 0.8125em; opacity: 0.85; }
+
+/* Mismos colores que un editor: verde para current, azul para incoming */
+.mc-arriba { background: color-mix(in srgb, var(--string) 14%, transparent); }
+.mc-abajo { background: color-mix(in srgb, var(--function) 14%, transparent); }
+
+.mc-fusionada.ok { background: color-mix(in srgb, var(--string) 16%, transparent); }
+.mc-fusionada.mal { background: color-mix(in srgb, var(--string) 10%, transparent); }
+.mc-fusionada .mc-texto { color: var(--string); font-weight: 700; }
+
+.mc-botones { display: grid; gap: var(--espacio-2); }
+
+.mc-boton {
+  justify-content: flex-start;
+  min-height: 56px;
+  padding: var(--espacio-2) var(--espacio-3);
+  text-align: left;
+}
+
+.mc-boton-arriba:hover:not(:disabled) { border-color: var(--string); }
+.mc-boton-abajo:hover:not(:disabled) { border-color: var(--function); }
+.mc-boton-texto { display: grid; }
+.mc-ayuda { color: var(--tenue); font-family: var(--fuente-texto); font-size: 0.8125rem; }
+.mc-elegida { font-family: var(--fuente-mono); color: var(--error); text-decoration: line-through; }
+
+@media (min-width: 640px) {
+  .mc-botones { grid-template-columns: 1fr 1fr; }
+}

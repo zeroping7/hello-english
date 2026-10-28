@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pruebas: Merge Conflict</title>
+  <link rel="stylesheet" href="../../css/tokens.css">
+  <link rel="stylesheet" href="../../css/app.css">
+</head>
+<body>
+  <div id="app">
+    <h1 class="logo">tests/merge-conflict</h1>
+  </div>
+  <script type="module">
+    import { prueba, igual, verdadero, ejecutar } from '../../src/pruebas/mini.js';
+    import { prepararConflicto, comprobar } from './logica.js';
+    import { crearAzar } from '../../src/contenido/azar.js';
+
+    const item = { correcta: 'The function returns a number.', incorrecta: 'The function return a number.', tema: 'programacion' };
+
+    prueba('La correcta sale arriba con azar < 0,5 y abajo con azar ≥ 0,5', () => {
+      const arriba = prepararConflicto(item, () => 0.2);
+      const abajo = prepararConflicto(item, () => 0.8);
+      igual([arriba.arriba, arriba.correcta], [item.correcta, 'arriba']);
+      igual([abajo.abajo, abajo.correcta], [item.correcta, 'abajo']);
+    });
+
+    prueba('Con una semilla real salen los dos lados', () => {
+      const azar = crearAzar(11);
+      const lados = new Set(Array.from({ length: 20 }, () => prepararConflicto(item, azar).correcta));
+      verdadero(lados.size === 2, [...lados].join(','));
+    });
+
+    prueba('Comprobar: acierta solo el lado correcto', () => {
+      const c = prepararConflicto(item, () => 0.9);
+      igual([comprobar(c, 'abajo'), comprobar(c, 'arriba')], [true, false]);
+    });
+
+    prueba('La rama lleva el tema', () => {
+      igual(prepararConflicto(item, () => 0).rama, 'feature/programacion-fix');
+    });
+
+    ejecutar(document.getElementById('app'));
+  </script>
+</body>
+</html>

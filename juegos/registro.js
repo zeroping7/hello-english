@@ -26,7 +26,7 @@ function juego(id, categoria, habilidades, { necesita = [], dificultad = 1, disp
 
 export const JUEGOS = [
   // Lectura y gramática
-  juego('merge-conflict', 'lectura', ['gramatica', 'lectura']),
+  juego('merge-conflict', 'lectura', ['gramatica', 'lectura'], { disponible: true }),
   juego('caza-el-bug', 'lectura', ['gramatica', 'lectura']),
   juego('prompt', 'lectura', ['escritura', 'vocabulario']),
   juego('incidente', 'lectura', ['lectura'], { dificultad: 1.5 }),

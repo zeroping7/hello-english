@@ -81,16 +81,17 @@ export function montar(raiz, params) {
     try {
       modulo ??= await import(`../../juegos/${juego.id}/juego.js`);
       const items = await cargarBanco(modulo.BANCO);
+      const azar = crearAzar();
       const ejercicios = elegirEjercicios(items, {
-        nivel: leerProgreso().nivel, n: modulo.EJERCICIOS, azar: crearAzar(), tema: temaElegido,
+        nivel: leerProgreso().nivel, n: modulo.EJERCICIOS, azar, tema: temaElegido,
       });
-      jugar(ejercicios);
+      jugar(ejercicios, azar);
     } catch {
       cuerpo.replaceChildren(avisoFijo(t('ejercicio.errorCarga'), { tipo: 'error' }));
     }
   }
 
-  function jugar(ejercicios) {
+  function jugar(ejercicios, azar) {
     aciertos = 0;
     puntos = 0;
     enCurso = true;
@@ -100,6 +101,7 @@ export function montar(raiz, params) {
     cuerpo.append(zona);
     partida = modulo.montar(zona, {
       ejercicios,
+      azar,
       idioma: idiomaActual(),
       ponerContador: (n) => zonaContador.replaceChildren(contador(n, ejercicios.length)),
       alResponder(item, acierto) {

@@ -28,6 +28,6 @@ Reglas en [`docs/constitucion.md`](docs/constitucion.md), estructura en [`docs/a
 | 001 | Contenido: formato de los ejercicios y primer banco (2-3 temas) | Implementada (v0.1.1) |
 | 002 | Prueba de nivel | Implementada (v0.2.0) |
 | 003 | Minijuego: Falsos amigos (y pantalla común de minijuego) | Implementada (v0.3.0) |
-| 004 | Minijuego: Merge Conflict | — |
+| 004 | Minijuego: Merge Conflict | Implementada (v0.4.0) |
 | … | Resto de minijuegos, uno por spec | — |
 | … | Repaso espaciado, logros y Práctica de hoy | — |
