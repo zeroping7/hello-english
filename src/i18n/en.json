@@ -87,5 +87,6 @@
   "inicio.racha.varios": "{n} days",
   "inicio.objetivo": "Today's goal",
   "inicio.objetivo.valor": "{hecho} of {total} min",
-  "inicio.objetivo.cumplido": "Done"
+  "inicio.objetivo.cumplido": "Done",
+  "aviso.objetivo": "Today's goal done! Streak: {racha}"
 }

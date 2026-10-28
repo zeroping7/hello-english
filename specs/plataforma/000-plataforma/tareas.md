@@ -54,7 +54,7 @@ Formato de cada tarea:
   - Archivos: `src/progreso/progreso.js`, `src/progreso/reloj.js`, `src/progreso/cronometro.js`, `src/pantallas/inicio.js`, i18n
   - Hecho cuando: el inicio muestra nivel, puntos, racha y la barra del objetivo de hoy, y se repinta con el evento `cambio`; el cronómetro solo cuenta con la pestaña visible y guarda cada 15 s y al ocultarse
   - Probar: ver el resumen en el inicio con valores a 0. El cronómetro se prueba de verdad en T022 y con el primer minijuego
-- [ ] T022 — `?debug=1` y aviso de objetivo cumplido
+- [x] T022 — `?debug=1` y aviso de objetivo cumplido
   - Archivos: `src/ui/debug.js`, `src/progreso/reloj.js`, `src/progreso/progreso.js`, i18n
   - Hecho cuando: el panel muestra lo del plan §9 y funcionan **+1 min**, **+1 día** y **Ver JSON**; al cumplir el objetivo aparece "¡Objetivo de hoy cumplido!" y la racha sube
   - Probar: con objetivo de 5 min, pulsar **+1 min** cinco veces (aviso y racha 1); **+1 día** y repetir (racha 2); **+1 día** dos veces sin cumplir (racha 0)

@@ -87,5 +87,6 @@
   "inicio.racha.varios": "{n} días",
   "inicio.objetivo": "Objetivo de hoy",
   "inicio.objetivo.valor": "{hecho} de {total} min",
-  "inicio.objetivo.cumplido": "Cumplido"
+  "inicio.objetivo.cumplido": "Cumplido",
+  "aviso.objetivo": "¡Objetivo de hoy cumplido! Racha: {racha}"
 }

@@ -592,3 +592,41 @@ code {
 .objetivo-barra::-webkit-progress-bar { background: var(--borde); }
 .objetivo-barra::-webkit-progress-value { background: var(--string); border-radius: 999px; }
 .objetivo-barra::-moz-progress-bar { background: var(--string); border-radius: 999px; }
+
+/* Panel ?debug=1 (src/ui/debug.js) */
+.debug {
+  position: fixed;
+  left: var(--espacio-2);
+  bottom: var(--espacio-2);
+  z-index: 20;
+  max-width: min(420px, calc(100% - 2 * var(--espacio-2)));
+  max-height: 70vh;
+  overflow: auto;
+  padding: var(--espacio-2);
+  border: 1px solid var(--number);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--texto);
+  font-family: var(--fuente-mono);
+  font-size: 0.75rem;
+  box-shadow: 0 4px 16px rgb(0 0 0 / 0.3);
+}
+
+.debug summary { cursor: pointer; color: var(--number); font-weight: 700; }
+.debug table { border-collapse: collapse; margin: var(--espacio-2) 0; }
+.debug th { padding-right: var(--espacio-2); color: var(--tenue); font-weight: 400; text-align: left; vertical-align: top; }
+.debug td { word-break: break-word; }
+.debug-botones { display: flex; flex-wrap: wrap; gap: var(--espacio-1); }
+
+.debug-botones button {
+  min-height: 32px;
+  padding: 0 var(--espacio-2);
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  background: var(--fondo);
+  color: var(--texto);
+  font: inherit;
+  cursor: pointer;
+}
+
+.debug-json { max-height: 240px; overflow: auto; white-space: pre-wrap; }
