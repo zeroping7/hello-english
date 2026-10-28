@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="112" fill="#0f1117"/>
+  <path d="M120 150 L218 226 L120 302" fill="none" stroke="#c792ea" stroke-width="44" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="246" y="280" width="146" height="40" rx="20" fill="#c792ea"/>
+  <text x="256" y="420" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace" font-size="84" font-weight="700" fill="#e6e8ee">hello</text>
+</svg>

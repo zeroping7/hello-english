@@ -13,7 +13,7 @@ Formato de cada tarea:
 ```
 
 ## Fase 0 — Esqueleto
-- [ ] T001 — Página base, estilo y fuentes
+- [x] T001 — Página base, estilo y fuentes
   - Archivos: `index.html`, `css/tokens.css`, `css/app.css`, `fuentes/`, `iconos/icono.svg`, `src/version.js`, `src/app.js`, `docs/creditos.md`
   - Hecho cuando: la web muestra el logo `>_ hello` con el cursor parpadeante en JetBrains Mono, sobre el fondo del tema del sistema; la pestaña del navegador lleva el favicon
   - Probar: abrir la web en el móvil y en el PC, y cambiar el modo oscuro del sistema: la web cambia de tema

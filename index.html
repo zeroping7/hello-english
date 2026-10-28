@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Hello English</title>
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#0f1117" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="iconos/icono.svg" type="image/svg+xml">
+  <link rel="preload" href="fuentes/jetbrains-mono-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/app.css">
+  <script>
+    // Aplica el tema guardado antes de pintar para evitar un destello de otro color (plan de 000, §2)
+    try {
+      var tema = JSON.parse(localStorage.getItem('he-ajustes') || '{}').tema;
+      if (tema === 'claro' || tema === 'oscuro') document.documentElement.dataset.theme = tema;
+    } catch (e) {}
+  </script>
+  <script type="module" src="src/app.js"></script>
+</head>
+<body>
+  <div id="app"></div>
+</body>
+</html>

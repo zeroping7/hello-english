@@ -1,0 +1,56 @@
+/* Tokens de diseño (constitución E2 y E3). Claro por defecto; oscuro por sistema o por ajuste. */
+:root {
+  --fondo: #fafafa;
+  --panel: #ffffff;
+  --texto: #1f2330;
+  --tenue: #5d6475;
+  --borde: #e3e5eb;
+  --keyword: #7c3aed;
+  --string: #16803c;
+  --error: #c62828;
+  --number: #b45309;
+  --function: #1d4ed8;
+
+  --fuente-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace;
+  --fuente-texto: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --espacio-1: 4px;
+  --espacio-2: 8px;
+  --espacio-3: 16px;
+  --espacio-4: 24px;
+  --espacio-5: 40px;
+  --radio: 12px;
+  --toque: 44px; /* zona táctil mínima (constitución C2) */
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="claro"]) {
+    --fondo: #0f1117;
+    --panel: #181b24;
+    --texto: #e6e8ee;
+    --tenue: #8b93a7;
+    --borde: #2a2f3c;
+    --keyword: #c792ea;
+    --string: #8fd694;
+    --error: #ff7a7a;
+    --number: #f6a35b;
+    --function: #82aaff;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="oscuro"] {
+  --fondo: #0f1117;
+  --panel: #181b24;
+  --texto: #e6e8ee;
+  --tenue: #8b93a7;
+  --borde: #2a2f3c;
+  --keyword: #c792ea;
+  --string: #8fd694;
+  --error: #ff7a7a;
+  --number: #f6a35b;
+  --function: #82aaff;
+  color-scheme: dark;
+}
