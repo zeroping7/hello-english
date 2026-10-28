@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pruebas: textos de interfaz</title>
+  <link rel="stylesheet" href="../../css/tokens.css">
+  <link rel="stylesheet" href="../../css/app.css">
+</head>
+<body>
+  <div id="app">
+    <h1 class="logo">tests/i18n</h1>
+  </div>
+  <script type="module">
+    import { prueba, igual, verdadero, ejecutar } from '../pruebas/mini.js';
+    import { definirTextos, t, idiomaDelNavegador, clavesQueFaltan, idiomaActual } from './textos.js';
+
+    const leer = async (id) => (await fetch(`./${id}.json`, { cache: 'no-cache' })).json();
+    const variablesDe = (texto) => (texto.match(/\{(\w+)\}/g) ?? []).sort();
+
+    const es = { 'saludo': 'Hola {nombre}', 'doble': '{n} y {n}', 'solo.es': 'Solo en español' };
+    const en = { 'saludo': 'Hello {nombre}', 'doble': '{n} and {n}' };
+
+    prueba('t() devuelve el texto del idioma activo', () => {
+      definirTextos('en', en, es);
+      igual(idiomaActual(), 'en');
+      igual(t('saludo', { nombre: 'Ana' }), 'Hello Ana');
+    });
+
+    prueba('t() sustituye todas las apariciones de una variable', () => {
+      definirTextos('es', es, es);
+      igual(t('doble', { n: 3 }), '3 y 3');
+    });
+
+    prueba('t() deja la marca si no se pasa la variable', () => {
+      definirTextos('es', es, es);
+      igual(t('saludo'), 'Hola {nombre}');
+    });
+
+    prueba('Si falta en inglés usa el español y lo anota', () => {
+      definirTextos('en', en, es);
+      igual(t('solo.es'), 'Solo en español');
+      igual(clavesQueFaltan(), ['solo.es']);
+    });
+
+    prueba('Si no existe en ningún idioma devuelve la clave', () => {
+      definirTextos('es', es, es);
+      igual(t('no.existe'), 'no.existe');
+    });
+
+    prueba('Al cambiar de idioma se vacía la lista de claves que faltan', () => {
+      definirTextos('en', en, es);
+      t('solo.es');
+      definirTextos('es', es, es);
+      igual(clavesQueFaltan(), []);
+    });
+
+    prueba('idiomaDelNavegador() elige el primero que la app tiene', () => {
+      igual(idiomaDelNavegador(['en-GB', 'es-ES']), 'en');
+      igual(idiomaDelNavegador(['fr-FR', 'es-MX']), 'es');
+      igual(idiomaDelNavegador(['EN-us']), 'en');
+    });
+
+    prueba('idiomaDelNavegador() usa español si no hay ninguno', () => {
+      igual(idiomaDelNavegador(['fr', 'de']), 'es');
+      igual(idiomaDelNavegador([]), 'es');
+    });
+
+    prueba('es.json y en.json tienen las mismas claves', async () => {
+      const [ce, ci] = [Object.keys(await leer('es')), Object.keys(await leer('en'))];
+      const soloEs = ce.filter((k) => !ci.includes(k));
+      const soloEn = ci.filter((k) => !ce.includes(k));
+      igual({ soloEs, soloEn }, { soloEs: [], soloEn: [] });
+    });
+
+    prueba('Cada clave usa las mismas variables en los dos idiomas', async () => {
+      const [te, ti] = [await leer('es'), await leer('en')];
+      const distintas = Object.keys(te).filter((k) =>
+        k in ti && JSON.stringify(variablesDe(te[k])) !== JSON.stringify(variablesDe(ti[k])));
+      igual(distintas, []);
+    });
+
+    prueba('Ningún texto está vacío', async () => {
+      for (const id of ['es', 'en']) {
+        const vacios = Object.entries(await leer(id))
+          .filter(([, v]) => typeof v !== 'string' || !v.trim()).map(([k]) => k);
+        verdadero(vacios.length === 0, `${id}.json tiene textos vacíos: ${vacios.join(', ')}`);
+      }
+    });
+
+    ejecutar(document.getElementById('app'));
+  </script>
+</body>
+</html>

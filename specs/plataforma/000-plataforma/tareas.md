@@ -17,7 +17,7 @@ Formato de cada tarea:
   - Archivos: `index.html`, `css/tokens.css`, `css/app.css`, `fuentes/`, `iconos/icono.svg`, `src/version.js`, `src/app.js`, `docs/creditos.md`
   - Hecho cuando: la web muestra el logo `>_ hello` con el cursor parpadeante en JetBrains Mono, sobre el fondo del tema del sistema; la pestaña del navegador lleva el favicon
   - Probar: abrir la web en el móvil y en el PC, y cambiar el modo oscuro del sistema: la web cambia de tema
-- [ ] T002 — Mini ejecutor de pruebas e idiomas
+- [x] T002 — Mini ejecutor de pruebas e idiomas
   - Archivos: `src/pruebas/mini.js`, `src/i18n/textos.js`, `src/i18n/es.json`, `src/i18n/en.json`, `src/i18n/tests.html`
   - Hecho cuando: `t()` devuelve textos con variables y, si falta una clave en inglés, usa la española; `src/i18n/tests.html` sale en verde
   - Probar: abrir `…/src/i18n/tests.html`

@@ -75,6 +75,33 @@ body {
 
 .portada .logo { font-size: clamp(2.5rem, 12vw, 5rem); }
 
+.portada-lema {
+  margin: var(--espacio-2) 0 0;
+  color: var(--tenue);
+  font-family: var(--fuente-mono);
+  font-size: clamp(0.875rem, 3.5vw, 1.125rem);
+}
+
+.portada-lema::before { content: '// '; }
+
+/* Páginas tests.html (src/pruebas/mini.js) */
+.pruebas {
+  font-family: var(--fuente-mono);
+  font-size: 0.875rem;
+  padding-left: var(--espacio-4);
+}
+
+.pruebas li { padding: var(--espacio-1) 0; }
+
+.resumen {
+  font-family: var(--fuente-mono);
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.ok { color: var(--string); }
+.fallo { color: var(--error); }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
