@@ -2,12 +2,12 @@
 import { almacen } from './almacen.js';
 import { hoy } from './reloj.js';
 import { crearExportacion, validarImportacion, progresoNuevo } from './logica.js';
-import { leerProgreso, reemplazarProgreso } from './progreso.js';
+import { leerProgreso, reemplazarProgreso, leerRanking, guardarRanking } from './progreso.js';
 import { leerAjustes, reemplazarAjustes } from '../ajustes/ajustes.js';
 
 /** Descarga 'hello-english-AAAA-MM-DD.json' sin servidor. */
 export function exportarArchivo() {
-  const datos = crearExportacion(leerAjustes(), leerProgreso());
+  const datos = crearExportacion(leerAjustes(), leerProgreso(), new Date(), leerRanking());
   const blob = new Blob([JSON.stringify(datos, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const enlace = document.createElement('a');
@@ -29,11 +29,12 @@ export async function leerArchivo(archivo) {
   }
 }
 
-/** Sustituye todo por lo importado. */
-export async function aplicarImportacion({ ajustes, progreso }) {
+/** Sustituye todo por lo importado. Si el archivo trae ranking, queda apuntado con ese alias (spec 027 HU-4). */
+export async function aplicarImportacion({ ajustes, progreso, ranking = null }) {
   // La bienvenida ya está hecha: quien importa viene de otro dispositivo
   await reemplazarAjustes({ ...ajustes, bienvenidaHecha: true });
   reemplazarProgreso(progreso);
+  if (ranking) guardarRanking(ranking);
 }
 
 /** Borra todo lo de la app en este dispositivo y vuelve a los valores de un usuario nuevo. */
@@ -42,4 +43,6 @@ export async function borrarTodo() {
   await reemplazarAjustes({});
   reemplazarProgreso(progresoNuevo());
   almacen.borrarTodo();
+  // El alias sigue en el servidor y se puede recuperar con el código (spec 027 HU-4)
+  guardarRanking(null);
 }

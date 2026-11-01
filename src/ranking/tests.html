@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pruebas: ranking</title>
+  <link rel="stylesheet" href="../../css/tokens.css">
+  <link rel="stylesheet" href="../../css/app.css">
+</head>
+<body>
+  <div id="app">
+    <h1 class="logo">tests/ranking</h1>
+  </div>
+  <script type="module">
+    import { prueba, igual, verdadero, ejecutar } from '../pruebas/mini.js';
+    import * as R from './logica.js';
+    import { crearExportacion, validarImportacion, progresoNuevo } from '../progreso/logica.js';
+    import * as S from '../../servidor/worker.js';
+
+    prueba('Alias: longitud y caracteres', () => {
+      igual(R.problemaAlias('ByteMaster'), null);
+      igual(R.problemaAlias('dev_2-x'), null);
+      igual(R.problemaAlias('ab'), 'corto');
+      igual(R.problemaAlias('a'.repeat(17)), 'largo');
+      igual(R.problemaAlias('con espacio'), 'caracteres');
+      igual(R.problemaAlias('ñandú'), 'caracteres');
+      igual(R.problemaAlias('12345'), 'caracteres');
+      igual(R.problemaAlias(undefined), 'corto');
+    });
+
+    prueba('Alias: la app no deja pasar nada que el servidor rechace por formato', () => {
+      for (const a of ['Ana', 'x_y', '---', '1a', 'a'.repeat(16), 'a b', 'á12', '😀😀😀']) {
+        igual(R.problemaAlias(a) === null, S.validarAlias(a).motivo !== 'formato', a);
+      }
+    });
+
+    prueba('Código: se normaliza igual que en el servidor', () => {
+      for (const c of ['he-abcd-efgh-jkmn', 'ABCDEFGHJKMN', ' he abcd efgh jkmn ', 'HE-ABCD', 'HE-OOOO-IIII-LLLL', null]) {
+        igual(R.normalizarCodigo(c), S.normalizarCodigo(c), String(c));
+      }
+    });
+
+    prueba('Día de Madrid igual que en el servidor', () => {
+      for (const f of ['2026-11-01T22:59:00Z', '2026-11-01T23:00:00Z', '2026-07-15T22:00:00Z']) {
+        igual(R.diaMadrid(new Date(f)), S.diaMadrid(new Date(f)), f);
+      }
+    });
+
+    prueba('Pendiente: se acumula en el día y empieza de cero al cambiar de día', () => {
+      let p = R.acumular(null, '2026-11-01', 100, 10);
+      p = R.acumular(p, '2026-11-01', 50, 5);
+      igual(p, { dia: '2026-11-01', puntos: 150, ejercicios: 15 });
+      igual(R.acumular(p, '2026-11-02', 20, 2), { dia: '2026-11-02', puntos: 20, ejercicios: 2 });
+    });
+
+    prueba('Pendiente: solo vale el de hoy y con puntos', () => {
+      const p = { dia: '2026-11-01', puntos: 10, ejercicios: 1 };
+      igual(R.pendienteDeHoy(p, '2026-11-01'), p);
+      igual(R.pendienteDeHoy(p, '2026-11-02'), null);
+      igual(R.pendienteDeHoy(null, '2026-11-01'), null);
+      igual(R.pendienteDeHoy({ ...p, puntos: 0 }, '2026-11-01'), null);
+    });
+
+    prueba('Trocear: envíos que el servidor acepta y que suman lo pendiente', () => {
+      for (const [puntos, ejercicios] of [[130, 10], [1200, 40], [2500, 95], [3000, 100], [7, 85], [60, 2]]) {
+        const envios = R.trocear({ puntos, ejercicios });
+        igual(envios.reduce((s, e) => s + e.puntos, 0), puntos, `${puntos}/${ejercicios} suma`);
+        for (const e of envios) verdadero(S.validarEnvio(e).ok, `${puntos}/${ejercicios}: ${JSON.stringify(e)}`);
+      }
+      igual(R.trocear({ puntos: 130, ejercicios: 10 }), [{ puntos: 130, ejercicios: 10 }]);
+    });
+
+    prueba('Trocear: si hay más puntos de los posibles, se recortan', () => {
+      const envios = R.trocear({ puntos: 1000, ejercicios: 10 });
+      igual(envios, [{ puntos: 300, ejercicios: 10 }]);
+    });
+
+    prueba('Restar: quita lo enviado y se vacía al acabar', () => {
+      const p = { dia: '2026-11-01', puntos: 200, ejercicios: 50 };
+      igual(R.restar(p, { puntos: 150, ejercicios: 40 }), { dia: '2026-11-01', puntos: 50, ejercicios: 10 });
+      igual(R.restar(p, { puntos: 200, ejercicios: 50 }), null);
+    });
+
+    prueba('Datos guardados: se aceptan bien formados y se descartan los raros', () => {
+      const bien = R.rankingNuevo('ByteMaster', 'HE-ABCD-EFGH-JKMN');
+      igual(R.limpiarRanking(bien), bien);
+      igual(R.limpiarRanking({ ...bien, codigo: 'abcd-efgh-jkmn' }).codigo, 'HE-ABCD-EFGH-JKMN');
+      igual(R.limpiarRanking({ ...bien, alias: 'a b' }), null);
+      igual(R.limpiarRanking({ ...bien, codigo: 'falso' }), null);
+      igual(R.limpiarRanking({ ...bien, v: 9 }), null);
+      igual(R.limpiarRanking(null), null);
+      igual(R.limpiarRanking({ ...bien, pendiente: { dia: 'ayer', puntos: 5, ejercicios: 1 } }).pendiente, null);
+      igual(R.limpiarRanking({ ...bien, trampa: 1 }), bien);
+    });
+
+    prueba('Exportar e importar: el código viaja en el archivo, sin lo pendiente', () => {
+      const ranking = { ...R.rankingNuevo('ByteMaster', 'HE-ABCD-EFGH-JKMN'), pendiente: { dia: '2026-11-01', puntos: 9, ejercicios: 1 } };
+      const archivo = JSON.parse(JSON.stringify(crearExportacion({ v: 1 }, progresoNuevo(), new Date(), ranking)));
+      igual(archivo.ranking.pendiente, null);
+      igual(validarImportacion(archivo).ranking, R.rankingNuevo('ByteMaster', 'HE-ABCD-EFGH-JKMN'));
+    });
+
+    prueba('Exportar e importar: sin ranking, o con uno roto, el archivo sigue valiendo', () => {
+      const sin = JSON.parse(JSON.stringify(crearExportacion({ v: 1 }, progresoNuevo())));
+      igual('ranking' in sin, false);
+      igual(validarImportacion(sin).ok, true);
+      igual(validarImportacion(sin).ranking, null);
+      const roto = validarImportacion({ ...sin, ranking: { v: 1, alias: '??', codigo: 'x' } });
+      igual([roto.ok, roto.ranking], [true, null]);
+    });
+
+    ejecutar(document.getElementById('app'));
+  </script>
+</body>
+</html>

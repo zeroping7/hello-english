@@ -10,6 +10,7 @@ import { comprobarLogros } from './logros.js';
 import { practicaDeHoy, marcarHecho } from './practica.js';
 import { leerAjustes } from '../ajustes/ajustes.js';
 import { JUEGOS } from '../../juegos/registro.js';
+import { VERSION_RANKING, limpiarRanking } from '../ranking/logica.js';
 
 const CLAVE = 'he-progreso';
 const eventos = new EventTarget();
@@ -116,7 +117,25 @@ function escuchar(tipo, fn) {
   return () => eventos.removeEventListener(tipo, escucha);
 }
 
+// --- Identidad del ranking (spec 027, D-022): 'he-ranking'; sin él, no está apuntado ---
+
+const CLAVE_RANKING = 'he-ranking';
+
+/** Alias, código y puntos pendientes de enviar, o null si no está en el ranking. */
+export function leerRanking() {
+  return limpiarRanking(almacen.leer(CLAVE_RANKING, VERSION_RANKING, () => null));
+}
+
+/** Guarda la identidad del ranking; con null la borra (salir del ranking). */
+export function guardarRanking(datos) {
+  const limpio = datos && limpiarRanking(datos);
+  if (limpio) almacen.guardar(CLAVE_RANKING, limpio);
+  else almacen.borrar(CLAVE_RANKING);
+  eventos.dispatchEvent(new Event('ranking'));
+}
+
 export const alCambiarProgreso = (fn) => escuchar('cambio', fn);
+export const alCambiarRanking = (fn) => escuchar('ranking', fn);
 export const alCumplirObjetivo = (fn) => escuchar('objetivo', fn);
 export const alConseguirLogro = (fn) => escuchar('logro', fn);
 export const alSubirNivel = (fn) => escuchar('nivel', fn);

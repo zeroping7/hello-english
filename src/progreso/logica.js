@@ -1,5 +1,6 @@
 // Reglas puras del progreso (constitución A1): no tocan el DOM ni el almacenamiento, y la
 // fecha llega desde fuera como texto 'AAAA-MM-DD' en hora local (plan de 000, §3; D-010).
+import { limpiarRanking } from '../ranking/logica.js';
 
 export const VERSION_PROGRESO = 2;
 export const NIVELES = ['A1', 'A2', 'B1', 'B2', 'C1'];
@@ -106,13 +107,15 @@ export const FORMATO_EXPORTACION = 1;
 const ES_FECHA = /^\d{4}-\d{2}-\d{2}$/;
 const esEnteroNoNegativo = (n) => Number.isInteger(n) && n >= 0;
 
-export function crearExportacion(ajustes, progreso, ahora = new Date()) {
+/** Con ranking, el archivo lleva el alias y el código para recuperarlo (D-022), sin lo pendiente. */
+export function crearExportacion(ajustes, progreso, ahora = new Date(), ranking = null) {
   return {
     app: 'hello-english',
     formato: FORMATO_EXPORTACION,
     exportado: ahora.toISOString(),
     ajustes,
     progreso,
+    ...(ranking && { ranking: { v: ranking.v, alias: ranking.alias, codigo: ranking.codigo, pendiente: null } }),
   };
 }
 
@@ -134,7 +137,7 @@ function progresoValido(p) {
 
 /**
  * Comprueba un archivo importado. No sustituye nada: devuelve lo que habría que guardar.
- * @returns {{ ok: true, ajustes: object, progreso: object } | { ok: false, motivo: string }}
+ * @returns {{ ok: true, ajustes: object, progreso: object, ranking: object|null } | { ok: false, motivo: string }}
  */
 export function validarImportacion(datos) {
   if (!datos || typeof datos !== 'object' || datos.app !== 'hello-english') return { ok: false, motivo: 'otra-app' };
@@ -156,6 +159,8 @@ export function validarImportacion(datos) {
     ok: true,
     ajustes: datos.ajustes,
     progreso: { v: VERSION_PROGRESO, nivel, nivelProbado, puntos, dias: { ...dias }, ultimoDiaCumplido, racha, ...limpiarV2(p) },
+    // Un ranking que no tenga la forma esperada se ignora: el resto del archivo vale igual
+    ranking: limpiarRanking(datos.ranking),
   };
 }
 

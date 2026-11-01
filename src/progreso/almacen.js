@@ -81,6 +81,17 @@ export function crearAlmacen(almacenamiento = localStorageSiFunciona()) {
       memoria.set(clave, texto);
     },
 
+    /** Borra un bloque (p. ej. 'he-ranking' al salir del ranking). */
+    borrar(clave) {
+      memoria.delete(clave);
+      if (!disco) return;
+      try {
+        disco.removeItem(clave);
+      } catch {
+        // si no se puede borrar del disco, al menos la memoria queda limpia
+      }
+    },
+
     /** Borra todos los bloques de la app (HU-5, "Borrar progreso"). */
     borrarTodo() {
       for (const clave of [...memoria.keys()]) if (clave.startsWith(PREFIJO)) memoria.delete(clave);

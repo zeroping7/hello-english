@@ -25,7 +25,7 @@
   - Probar: **tú** creas la cuenta de Cloudflare, la base de datos y el Worker siguiendo `LEEME.md` (desde el panel web, también en el móvil) y me pasas la URL del Worker; abrir `<URL>/ranking?periodo=dia` debe devolver una lista vacía
 
 ## Fase 2 — App
-- [ ] T2705 — Identidad guardada y lógica del cliente
+- [x] T2705 — Identidad guardada y lógica del cliente
   - Archivos: `src/progreso/progreso.js`, `src/progreso/logica.js`, `src/progreso/datos.js`, `src/ranking/config.js`, `src/ranking/logica.js`, `src/ranking/api.js`, `src/ranking/ranking.js`, `src/ranking/tests.html`, `sw.js`
   - Hecho cuando: `src/ranking/tests.html` sale en verde; exportar, importar y borrar incluyen `he-ranking`
   - Probar: abrir `src/ranking/tests.html`; exportar el progreso y ver que el archivo sigue siendo válido
