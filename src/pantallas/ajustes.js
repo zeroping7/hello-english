@@ -13,6 +13,8 @@ import { avisar } from '../ui/aviso.js';
 import { confirmar } from '../ui/confirmar.js';
 import { exportarArchivo, leerArchivo, aplicarImportacion, borrarTodo } from '../progreso/datos.js';
 import { leerProgreso } from '../progreso/progreso.js';
+import { disponible, yo, salir, alCambiarRanking } from '../ranking/ranking.js';
+import { bloqueCodigo, formularioRecuperar, textoError } from './ranking.js';
 
 function seccion(titulo, ...hijos) {
   return h('section', { class: 'seccion' },
@@ -97,6 +99,53 @@ async function anotarVozEnDebug(voz) {
   anotarDebug('voz', voz ? `${voz.name} (${voz.lang}${voz.localService ? ', local' : ', en línea'})` : '—');
 }
 
+/** Ranking (spec 027): alias, código, recuperar con código y salir. Se repinta al cambiar. */
+function seccionRanking() {
+  const zona = h('div');
+
+  async function salirDelRanking(boton) {
+    const si = await confirmar({
+      titulo: t('ranking.salir'),
+      texto: t('ranking.salir.confirmar', { alias: yo().alias }),
+      aceptar: t('ranking.salir'),
+      peligro: true,
+    });
+    if (!si) return;
+    boton.disabled = true;
+    const r = await salir();
+    boton.disabled = false;
+    avisar(r.ok ? t('ranking.salir.hecho') : textoError(r.motivo), { tipo: r.ok ? 'exito' : 'error' });
+  }
+
+  function pintar() {
+    const datos = yo();
+    if (datos) {
+      const botonSalir = h('button', { class: 'boton boton-peligro-borde', type: 'button' }, t('ranking.salir'));
+      botonSalir.addEventListener('click', () => salirDelRanking(botonSalir));
+      zona.replaceChildren(
+        h('p', {}, t('ranking.ajustes.alias', { alias: datos.alias })),
+        h('p', { class: 'opciones-leyenda' }, t('ranking.codigo')),
+        bloqueCodigo(datos.codigo),
+        h('p', { class: 'tenue nota' }, t('ranking.codigo.aviso')),
+        h('div', { class: 'botones-datos ranking-ajustes-botones' },
+          h('button', { class: 'boton', type: 'button', onclick: () => navegar('/ranking') }, t('ranking.ver')),
+          botonSalir),
+      );
+    } else {
+      zona.replaceChildren(
+        h('p', { class: 'tenue' }, t('ranking.ajustes.fuera')),
+        h('div', { class: 'botones-datos' },
+          h('button', { class: 'boton', type: 'button', onclick: () => navegar('/ranking') }, t('ranking.unirme'))),
+        h('p', { class: 'opciones-leyenda ranking-ajustes-recuperar' }, t('ranking.tengoCodigo')),
+        formularioRecuperar(() => {}),
+      );
+    }
+  }
+
+  pintar();
+  return { nodo: seccion(t('ranking.titulo'), zona), dejar: alCambiarRanking(pintar) };
+}
+
 /** Mis datos (HU-5): exportar, importar y borrar. */
 function seccionDatos() {
   const selector = h('input', { type: 'file', accept: '.json,application/json', hidden: true });
@@ -145,6 +194,7 @@ function seccionDatos() {
 
 export function montar(raiz) {
   const ajustes = leerAjustes();
+  const ranking = disponible() ? seccionRanking() : null;
 
   raiz.append(
     barraConVolver(t('ajustes.titulo')),
@@ -187,9 +237,10 @@ export function montar(raiz) {
           t('ajustes.repetirPrueba')),
         h('p', { class: 'tenue nota' }, t('ajustes.nivelActual', { nivel: leerProgreso().nivel })),
       ),
+      ranking?.nodo,
       seccionDatos(),
       h('p', { class: 'version' }, t('comun.version', { v: VERSION })),
     ),
   );
-  return { desmontar() {} };
+  return { desmontar() { ranking?.dejar(); } };
 }

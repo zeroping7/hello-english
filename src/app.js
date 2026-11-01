@@ -6,6 +6,7 @@ import { iniciarRouter, repintar } from './router.js';
 import { t } from './i18n/textos.js';
 import { avisar } from './ui/aviso.js';
 import { efecto } from './sonido/sonido.js';
+import { iniciarRanking } from './ranking/ranking.js';
 
 const RUTAS = [
   { patron: /^\/inicio$/, cargar: () => import('./pantallas/inicio.js') },
@@ -15,6 +16,7 @@ const RUTAS = [
   { patron: /^\/juego\/([a-z0-9-]+)(?:\/(practica))?$/, cargar: () => import('./pantallas/juego.js') },
   { patron: /^\/practica$/, cargar: () => import('./pantallas/practica.js') },
   { patron: /^\/logros$/, cargar: () => import('./pantallas/logros.js') },
+  { patron: /^\/ranking$/, cargar: () => import('./pantallas/ranking.js') },
 ];
 
 /** Sin bienvenida hecha todo lleva a ella (salvo la prueba de nivel, que es su paso 3); hecha, ya no vuelve a salir. */
@@ -57,6 +59,8 @@ async function arrancar() {
   }
 
   registrarServiceWorker();
+  // Puntos del ranking que quedaron sin enviar (spec 027 HU-2)
+  iniciarRanking();
 }
 
 /** App instalable y sin conexión (HU-6). */

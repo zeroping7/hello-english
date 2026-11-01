@@ -1,6 +1,6 @@
 # Spec de funcionalidad: Ranking diario y mensual
 
-> **ID:** 027-ranking · **Estado:** Aprobada · **Fecha:** 2026-11-01
+> **ID:** 027-ranking · **Estado:** Implementada (v1.1.0) · **Fecha:** 2026-11-01
 > Primera pieza con servidor. Cambia las reglas P2 y PR1 de la constitución: hay que justificarlo en `docs/decisiones.md`.
 
 ## 1. Problema

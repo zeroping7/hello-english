@@ -12,6 +12,7 @@ import { confirmar } from '../ui/confirmar.js';
 import { avisoFijo } from '../ui/aviso.js';
 import { icono } from '../ui/iconos.js';
 import { buscarJuego, iconoDe, ESFUERZO } from '../../juegos/registro.js';
+import { sumarPartida } from '../ranking/ranking.js';
 import { cargarBanco } from '../contenido/cargar.js';
 import { elegirConRepaso } from '../contenido/elegir.js';
 import { TEMAS, PREFIJO } from '../contenido/esquema.js';
@@ -49,6 +50,8 @@ export function montar(raiz, params) {
   let puntos = 0;
 
   function terminarPartida() {
+    // Lo jugado cuenta para el ranking aunque se salga a medias, igual que para los puntos (spec 027 HU-2)
+    if (partida) sumarPartida(puntos, respuestas);
     callar();
     pararReconocimiento();
     partida?.desmontar?.();

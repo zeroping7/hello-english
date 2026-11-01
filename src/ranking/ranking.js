@@ -67,46 +67,44 @@ let repetir = false;
 
 const REINTENTAR = ['sin-red', 'servidor', 'sin-servidor'];
 
+async function enviar() {
+  const datos = leerRanking();
+  if (!datos?.pendiente) return;
+  const pendiente = pendienteDeHoy(datos.pendiente, diaMadrid());
+  if (!pendiente) {
+    guardarRanking({ ...datos, pendiente: null });
+    return;
+  }
+  for (const envio of trocear(pendiente)) {
+    const r = await api.enviarPuntos(datos.codigo, envio);
+    if (!r.ok && REINTENTAR.includes(r.motivo)) return;
+    if (!r.ok && r.motivo === 'codigo') { // el alias ya no existe (salió desde otro dispositivo)
+      posicionHoy = null;
+      guardarRanking(null);
+      return;
+    }
+    // Enviado, o rechazado por imposible o tope: en los dos casos ya no se reintenta.
+    // Se resta de lo guardado ahora, que puede traer otra partida sumada mientras tanto.
+    const actual = leerRanking();
+    if (!actual) return;
+    guardarRanking({ ...actual, pendiente: actual.pendiente && restar(actual.pendiente, envio) });
+  }
+}
+
 /** Envía lo pendiente de hoy, en trozos que el servidor acepte. Lo de otro día se descarta. */
 export function enviarPendientes() {
   if (enviando) {
     repetir = true; // ha llegado otra partida mientras se enviaba: se envía al acabar
     return enviando;
   }
-  enviando = (async () => {
-    try {
-      const datos = leerRanking();
-      if (!datos?.pendiente) return;
-      const pendiente = pendienteDeHoy(datos.pendiente, diaMadrid());
-      if (!pendiente) {
-        guardarRanking({ ...datos, pendiente: null });
-        return;
-      }
-      for (const envio of trocear(pendiente)) {
-        const r = await api.enviarPuntos(datos.codigo, envio);
-        if (!r.ok && REINTENTAR.includes(r.motivo)) return;
-        if (!r.ok && r.motivo === 'codigo') { // el alias ya no existe (salió desde otro dispositivo)
-          posicionHoy = null;
-          guardarRanking(null);
-          return;
-        }
-        // Enviado, o rechazado por imposible o tope: en los dos casos ya no se reintenta.
-        // Se resta de lo guardado ahora, que puede traer otra partida sumada mientras tanto.
-        const actual = leerRanking();
-        if (!actual) return;
-        guardarRanking({ ...actual, pendiente: actual.pendiente && restar(actual.pendiente, envio) });
-      }
-      // Lo que no cabía en los trozos (más puntos de los posibles) se descarta
-      const resto = leerRanking();
-      if (resto?.pendiente && !repetir) guardarRanking({ ...resto, pendiente: null });
-    } finally {
-      enviando = null;
-      if (repetir) {
-        repetir = false;
-        enviarPendientes();
-      }
+  // .finally() siempre corre después de esta asignación, aunque enviar() acabe enseguida
+  enviando = enviar().finally(() => {
+    enviando = null;
+    if (repetir) {
+      repetir = false;
+      enviarPendientes();
     }
-  })();
+  });
   return enviando;
 }
 

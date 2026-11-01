@@ -11,7 +11,8 @@ Aprende inglés de informática y programación con minijuegos, desde el navegad
 - Puntos, racha diaria, 18 logros, repaso espaciado de lo que fallas y un nivel que sube solo al acertar.
 - Más de 500 ejercicios de A1 a C1 sobre programación, web y trabajo en equipo.
 - Interfaz en español o en inglés, tema claro u oscuro y voz británica o americana.
-- Sin cuentas, sin cookies y sin estadísticas: el progreso se queda en tu dispositivo.
+- **Ranking diario y mensual** opcional: te unes con un alias, sin cuenta ni email.
+- Sin cuentas, sin cookies y sin estadísticas: el progreso se queda en tu dispositivo. Si te unes al ranking, solo se envían tu alias y tus puntos.
 
 ## Cómo se desarrolla
 Con Spec Driven Development y Claude, desde el móvil o el PC:
@@ -36,6 +37,7 @@ Reglas en [`docs/constitucion.md`](docs/constitucion.md), estructura en [`docs/a
 | 024 | Práctica de hoy | Implementada (v1.0.0) |
 | 025 | Subida de nivel con el uso | Implementada (v1.0.0) |
 | 026 | Contenido de los 17 minijuegos | Implementada (v1.0.0) |
+| 027 | Ranking diario y mensual (servidor en Cloudflare, ver [`servidor/LEEME.md`](servidor/LEEME.md)) | Implementada (v1.1.0) |
 | — | Más temas: hardware, redes, cloud, seguridad, IA… («contenido de <tema> <nivel>») | Pendiente |
 
-**Pruebas:** abre en el navegador `contenido/tests.html`, `juegos/tests.html`, `src/progreso/tests.html`, `src/i18n/tests.html`, `src/prueba/tests.html` y los `tests.html` de Falsos amigos y Merge Conflict.
+**Pruebas:** abre en el navegador `contenido/tests.html`, `juegos/tests.html`, `src/progreso/tests.html`, `src/i18n/tests.html`, `src/prueba/tests.html`, `src/ranking/tests.html`, `servidor/tests.html` y los `tests.html` de Falsos amigos y Merge Conflict.

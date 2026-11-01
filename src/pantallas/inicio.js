@@ -9,6 +9,7 @@ import { almacen } from '../progreso/almacen.js';
 import { avisoFijo } from '../ui/aviso.js';
 import { icono } from '../ui/iconos.js';
 import { CATEGORIAS, juegosDe, iconoDe } from '../../juegos/registro.js';
+import { disponible, yo, posicionGuardada, clasificacion, alCambiarRanking } from '../ranking/ranking.js';
 
 function logo() {
   // La marca no se traduce: es la misma en todos los idiomas
@@ -27,21 +28,41 @@ function dato(nombreIcono, clase, etiqueta, valor) {
       h('span', { class: 'dato-valor' }, valor)));
 }
 
+/** Posición de hoy en el ranking, junto a los puntos (spec 027 HU-3). Lleva a #/ranking. */
+function datoRanking(cargando) {
+  const apuntado = yo();
+  const pos = posicionGuardada();
+  let valor = t('ranking.unete');
+  if (apuntado) valor = pos?.pos ? `#${pos.pos}` : cargando ? '…' : '—';
+  const etiqueta = apuntado ? t('ranking.inicio') : t('ranking.titulo');
+  return h('a', {
+    class: `dato dato-ranking${apuntado ? '' : ' unete'}`,
+    href: '#/ranking',
+    'aria-label': apuntado && pos?.pos ? t('ranking.inicio.lector', { pos: pos.pos }) : null,
+  },
+  icono('ranking'),
+  h('span', { class: 'dato-texto' },
+    h('span', { class: 'dato-etiqueta' }, etiqueta),
+    h('span', { class: 'dato-valor' }, valor)));
+}
+
 function textoRacha(n) {
   return n === 1 ? t('inicio.racha.uno') : t('inicio.racha.varios', { n });
 }
 
 /** Nivel, puntos, racha y objetivo de hoy (HU-2, HU-4). */
-function pintarResumen(contenedor) {
+function pintarResumen(contenedor, { cargandoRanking = false } = {}) {
   const r = resumen();
+  const conRanking = disponible();
   const hechos = Math.min(Math.floor(r.segundosHoy / 60), r.objetivoSegundos / 60);
   const total = r.objetivoSegundos / 60;
   const cumplido = r.segundosHoy >= r.objetivoSegundos;
 
   contenedor.replaceChildren(
-    h('div', { class: 'datos' },
+    h('div', { class: conRanking ? 'datos con-ranking' : 'datos' },
       dato('nivel', 'dato-nivel', t('inicio.nivel'), r.nivel),
       dato('puntos', 'dato-puntos', t('inicio.puntos'), r.puntos.toLocaleString(document.documentElement.lang)),
+      conRanking && datoRanking(cargandoRanking),
       dato('racha', 'dato-racha', t('inicio.racha'), textoRacha(r.racha))),
     h('div', { class: 'objetivo' },
       h('div', { class: 'objetivo-cabecera' },
@@ -109,8 +130,17 @@ function categoria({ id, icono: nombreIcono }) {
 
 export function montar(raiz) {
   const zonaResumen = h('section', { class: 'resumen-progreso', 'aria-label': t('inicio.tuProgreso') });
-  pintarResumen(zonaResumen);
-  const dejarDeEscuchar = alCambiarProgreso(() => pintarResumen(zonaResumen));
+  let cargandoRanking = Boolean(disponible() && yo());
+  const repintar = () => pintarResumen(zonaResumen, { cargandoRanking });
+  repintar();
+  const dejarDeEscuchar = alCambiarProgreso(repintar);
+  const dejarRanking = alCambiarRanking(repintar);
+  if (cargandoRanking) {
+    clasificacion('dia').then(() => {
+      cargandoRanking = false;
+      if (zonaResumen.isConnected) repintar();
+    });
+  }
 
   raiz.append(
     h('header', { class: 'barra barra-inicio' },
@@ -130,5 +160,5 @@ export function montar(raiz) {
       CATEGORIAS.map(categoria),
     ),
   );
-  return { desmontar: dejarDeEscuchar };
+  return { desmontar() { dejarDeEscuchar(); dejarRanking(); } };
 }
