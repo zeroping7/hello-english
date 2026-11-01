@@ -1,6 +1,6 @@
 # Plan técnico: Ranking diario y mensual
 
-> **Spec:** `specs/plataforma/027-ranking/spec.md` · **Estado:** Borrador · **Fecha:** 2026-11-01
+> **Spec:** `specs/plataforma/027-ranking/spec.md` · **Estado:** Aprobado · **Fecha:** 2026-11-01
 > Describe CÓMO. Cada decisión debe poder trazarse a una parte de la spec.
 
 ## 1. Cumplimiento de la constitución
