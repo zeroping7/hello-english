@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pruebas: servidor del ranking</title>
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/app.css">
+</head>
+<body>
+  <div id="app">
+    <h1 class="logo">tests/servidor</h1>
+  </div>
+  <script type="module">
+    import { prueba, igual, verdadero, ejecutar } from '../src/pruebas/mini.js';
+    import {
+      REGLAS, diaMadrid, rangoMes, inicioMesAnterior, validarAlias, validarEnvio,
+      crearCodigo, normalizarCodigo, sha256, posiciones, origenPermitido,
+    } from './worker.js';
+
+    // --- Día y mes de Madrid ---
+
+    prueba('Día: cambia a medianoche de Madrid, no de UTC', () => {
+      igual(diaMadrid(new Date('2026-11-01T22:59:00Z')), '2026-11-01'); // 23:59 en invierno (UTC+1)
+      igual(diaMadrid(new Date('2026-11-01T23:00:00Z')), '2026-11-02'); // 00:00
+      igual(diaMadrid(new Date('2026-07-15T21:59:00Z')), '2026-07-15'); // 23:59 en verano (UTC+2)
+      igual(diaMadrid(new Date('2026-07-15T22:00:00Z')), '2026-07-16');
+    });
+
+    prueba('Día: los cambios de hora no saltan ni repiten días', () => {
+      igual(diaMadrid(new Date('2026-03-29T00:30:00Z')), '2026-03-29'); // entre 1:30 y 3:30, se adelanta
+      igual(diaMadrid(new Date('2026-10-25T00:30:00Z')), '2026-10-25'); // la hora se repite
+      igual(diaMadrid(new Date('2026-12-31T23:30:00Z')), '2027-01-01'); // nochevieja → año nuevo
+    });
+
+    prueba('Mes: rango del mes y primer día del mes anterior', () => {
+      igual(rangoMes('2026-11-15'), ['2026-11-01', '2026-11-31']);
+      igual(inicioMesAnterior('2026-11-15'), '2026-10-01');
+      igual(inicioMesAnterior('2027-01-03'), '2026-12-01');
+    });
+
+    // --- Alias ---
+
+    prueba('Alias: de 3 a 16 letras, números, _ y -, con al menos una letra', () => {
+      for (const a of ['Ana', 'byte_master', 'dev-2026', 'a1b2c3d4e5f6g7h8', 'Xx_PRO_xX']) verdadero(validarAlias(a).ok, a);
+      for (const a of ['ab', 'a'.repeat(17), 'con espacio', 'ñandú', 'emoji😀', '1234', '___', '', null, 42]) {
+        igual(validarAlias(a), { ok: false, motivo: 'formato' }, String(a));
+      }
+    });
+
+    prueba('Alias: palabras ofensivas, también disimuladas', () => {
+      for (const a of ['puta', 'PutaMadre', 'p0lla', 'puuuta', 'gilipollas99', 'Hijo-de-puta', 'fuck_you', 'FuCkEr', 'sh1t', 'el_culo', 'culo1', 'ASSHOLE', 'nazi88', 'admin', 'Hello-English']) {
+        igual(validarAlias(a), { ok: false, motivo: 'vetado' }, a);
+      }
+    });
+
+    prueba('Alias: no veta palabras inocentes que contienen otras', () => {
+      for (const a of ['computadora', 'computa', 'class_act', 'as_del_code', 'Cassandra', 'Scripter', 'Moroder', 'skill_issue', 'assess', 'Mamonas2']) {
+        verdadero(validarAlias(a).ok, a);
+      }
+    });
+
+    // --- Envíos de puntos ---
+
+    prueba('Envío: puntos posibles para los ejercicios enviados', () => {
+      verdadero(validarEnvio({ puntos: 300, ejercicios: 10 }).ok, '30 por acierto');
+      igual(validarEnvio({ puntos: 301, ejercicios: 10 }), { ok: false, motivo: 'imposible' });
+      igual(validarEnvio({ puntos: 10, ejercicios: 0 }), { ok: false, motivo: 'imposible' });
+      igual(validarEnvio({ puntos: 10, ejercicios: REGLAS.maxEjercicios + 1 }), { ok: false, motivo: 'imposible' });
+      igual(validarEnvio({ puntos: 0, ejercicios: 5 }), { ok: false, motivo: 'imposible' });
+      igual(validarEnvio({ puntos: 12.5, ejercicios: 5 }), { ok: false, motivo: 'imposible' });
+      igual(validarEnvio({ puntos: '100', ejercicios: 5 }), { ok: false, motivo: 'imposible' });
+      igual(validarEnvio(null), { ok: false, motivo: 'imposible' });
+    });
+
+    prueba('Envío: topes de puntos y de envíos al día', () => {
+      verdadero(validarEnvio({ puntos: 100, ejercicios: 10 }, { puntos: REGLAS.maxPuntosDia - 100, envios: 0 }).ok, 'justo el tope');
+      igual(validarEnvio({ puntos: 101, ejercicios: 10 }, { puntos: REGLAS.maxPuntosDia - 100, envios: 0 }), { ok: false, motivo: 'tope' });
+      igual(validarEnvio({ puntos: 10, ejercicios: 1 }, { puntos: 0, envios: REGLAS.maxEnviosDia }), { ok: false, motivo: 'tope' });
+    });
+
+    // --- Código secreto ---
+
+    prueba('Código: forma HE-XXXX-XXXX-XXXX y distinto cada vez', () => {
+      const a = crearCodigo();
+      verdadero(/^HE-[2-9A-HJKMNP-Z]{4}-[2-9A-HJKMNP-Z]{4}-[2-9A-HJKMNP-Z]{4}$/.test(a), a);
+      verdadero(a !== crearCodigo(), 'distintos');
+    });
+
+    prueba('Código: se acepta escrito de otras formas', () => {
+      igual(normalizarCodigo('he-abcd-efgh-jkmn'), 'HE-ABCD-EFGH-JKMN');
+      igual(normalizarCodigo(' HE ABCD EFGH JKMN '), 'HE-ABCD-EFGH-JKMN');
+      igual(normalizarCodigo('ABCDEFGHJKMN'), 'HE-ABCD-EFGH-JKMN');
+      igual(normalizarCodigo('HE-ABCD-EFGH'), null);
+      igual(normalizarCodigo('HE-ABCD-EFGH-JKM!'), null);
+      igual(normalizarCodigo(undefined), null);
+    });
+
+    prueba('Código: solo se guarda su SHA-256', async () => {
+      igual(await sha256('abc'), 'ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad');
+    });
+
+    // --- Clasificación y CORS ---
+
+    prueba('Posiciones: los empates comparten puesto', () => {
+      const filas = [{ alias: 'a', puntos: 100 }, { alias: 'b', puntos: 80 }, { alias: 'c', puntos: 80 }, { alias: 'd', puntos: 50 }];
+      igual(posiciones(filas).map((f) => f.pos), [1, 2, 2, 4]);
+      igual(posiciones([]), []);
+    });
+
+    prueba('CORS: solo la web publicada y localhost', () => {
+      verdadero(origenPermitido('https://zeroping7.github.io'), 'publicada');
+      verdadero(origenPermitido('http://localhost:8000'), 'localhost');
+      verdadero(origenPermitido('http://127.0.0.1'), '127.0.0.1');
+      verdadero(!origenPermitido('https://otra-web.com'), 'otra web');
+      verdadero(!origenPermitido('https://zeroping7.github.io.evil.com'), 'imitación');
+      verdadero(!origenPermitido(null), 'sin origen');
+    });
+
+    ejecutar(document.getElementById('app'));
+  </script>
+</body>
+</html>

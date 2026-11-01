@@ -42,7 +42,7 @@ juegos/
 contenido/               # bancos de ejercicios en JSON (formato en la spec de contenido)
   tests.html             # valida todos los bancos
 servidor/                # API del ranking en Cloudflare Workers + D1 (D-021); no la usa la web directamente
-  worker.js  esquema.sql  vetadas.js  tests.html  LEEME.md
+  worker.js  esquema.sql  tests.html  LEEME.md
 docs/  CLAUDE.md
 specs/
   _plantillas/

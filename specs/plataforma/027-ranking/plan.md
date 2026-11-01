@@ -5,7 +5,7 @@
 
 ## 1. Cumplimiento de la constitución
 - [x] A1 Reglas puras en `src/ranking/logica.js` y en las funciones exportadas de `servidor/worker.js`
-- [x] A2 Ningún contenido escrito en el código (la lista de palabras vetadas del alias va en `servidor/vetadas.js`, no es contenido de aprendizaje)
+- [x] A2 Ningún contenido escrito en el código (la lista de palabras vetadas del alias va en `servidor/worker.js`, no es contenido de aprendizaje)
 - [x] A3 Textos nuevos en `src/i18n/es.json` y `en.json` (prefijo `ranking.`)
 - [x] A4 La identidad del ranking se guarda a través de `src/progreso/` (clave nueva `he-ranking`), y entra en exportar, importar y borrar
 - [ ] A5 No aplica (no es un minijuego)
@@ -19,9 +19,8 @@
 ## 2. Archivos
 | Archivo | Responsabilidad |
 |---|---|
-| `servidor/worker.js` | API del ranking (Cloudflare Worker). Exporta también sus reglas puras para probarlas |
+| `servidor/worker.js` | API del ranking (Cloudflare Worker), en un solo archivo para pegarlo en el panel: reglas puras exportadas para probarlas, palabras vetadas del alias y rutas |
 | `servidor/esquema.sql` | Tablas de D1; se pega una vez en la consola de D1 |
-| `servidor/vetadas.js` | Palabras ofensivas que no puede contener un alias (es y en) |
 | `servidor/tests.html` | Pruebas de las reglas del servidor en el navegador |
 | `servidor/LEEME.md` | Cómo crear la base de datos y el Worker desde el panel de Cloudflare |
 | `src/ranking/config.js` | URL de la API |

@@ -15,8 +15,8 @@
   - Probar: jugar Prompt y ver que un acierto A1 da 13 puntos; en Daily standup, responder hablando y eligiendo y comparar los puntos
 
 ## Fase 1 — Servidor
-- [ ] T2703 — Reglas del servidor y sus pruebas
-  - Archivos: `servidor/worker.js` (solo las funciones puras), `servidor/vetadas.js`, `servidor/tests.html`
+- [x] T2703 — Reglas del servidor y sus pruebas
+  - Archivos: `servidor/worker.js` (solo las funciones puras y las palabras vetadas), `servidor/tests.html`
   - Hecho cuando: `servidor/tests.html` sale en verde (día de Madrid, alias, envíos imposibles, topes)
   - Probar: abrir `servidor/tests.html` en el navegador
 - [ ] T2704 — API completa y base de datos
