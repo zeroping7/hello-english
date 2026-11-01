@@ -5,7 +5,7 @@
 > Mientras el ranking no esté terminado (hasta T2707), su entrada en el inicio solo se ve con `?debug=1`.
 
 ## Fase 0 — Decisiones y esfuerzo
-- [ ] T2701 — Decisiones y constitución
+- [x] T2701 — Decisiones y constitución
   - Archivos: `docs/decisiones.md` (D-021, D-022, D-023), `docs/constitucion.md` (P2 y PR1), `docs/arquitectura.md`
   - Hecho cuando: las tres decisiones están apuntadas y la constitución nombra la excepción del ranking
   - Probar: leer los documentos en GitHub

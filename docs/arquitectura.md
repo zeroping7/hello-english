@@ -30,6 +30,7 @@ src/
   pantallas/             # bienvenida, inicio, ajustes, prueba de nivel, juego (común a los minijuegos), próximamente
   contenido/             # carga, validación (esquema), azar con semilla y elección de ejercicios (D-011, D-012)
   prueba/                # lógica de la prueba de nivel (spec 002)
+  ranking/               # cliente del ranking: config, lógica pura, API y unión con el progreso (spec 027)
   pruebas/mini.js        # mini ejecutor de pruebas para los tests.html
 juegos/
   registro.js            # lista de minijuegos (§3)
@@ -40,6 +41,8 @@ juegos/
     juego.css  icono.svg
 contenido/               # bancos de ejercicios en JSON (formato en la spec de contenido)
   tests.html             # valida todos los bancos
+servidor/                # API del ranking en Cloudflare Workers + D1 (D-021); no la usa la web directamente
+  worker.js  esquema.sql  vetadas.js  tests.html  LEEME.md
 docs/  CLAUDE.md
 specs/
   _plantillas/
@@ -49,7 +52,7 @@ specs/
 ```
 
 ## 2. Navegación
-- Una sola página con **router por hash**: `#/inicio`, `#/ajustes`, `#/juego/<id>`, `#/juego/<id>/practica`, `#/practica`, `#/logros`, `#/prueba-nivel`, `#/bienvenida`.
+- Una sola página con **router por hash**: `#/inicio`, `#/ajustes`, `#/juego/<id>`, `#/juego/<id>/practica`, `#/practica`, `#/logros`, `#/ranking`, `#/prueba-nivel`, `#/bienvenida`.
 - El botón "atrás" del navegador y del móvil funciona en todas las pantallas.
 - Los minijuegos se cargan con `import()` al entrar (constitución R2) y se desmontan al salir, liberando sus escuchas y temporizadores.
 - `iniciarRouter(raiz, rutas, porDefecto, redirigir)`: `redirigir(ruta)` puede mandar a otra (sin bienvenida hecha, todo va a `#/bienvenida`).
@@ -65,7 +68,7 @@ specs/
   habilidades: ['vocabulario'],      // lo que suma al progreso
   icono: 'juegos/falsos-amigos/icono.svg',
   necesita: [],                      // p. ej. ['voz'] o ['microfono']
-  dificultad: 1,                     // 1 o 1.5: multiplica los puntos (D-010)
+  dificultad: 1,                     // 1, 1.3 o 1.5 según el esfuerzo: multiplica los puntos (D-023)
   disponible: true,                  // false = "Próximamente"
 }
 ```
@@ -95,7 +98,7 @@ Así el inicio, la Práctica de hoy y la prueba de nivel usan cualquier minijueg
 - Al cambiar de idioma en Ajustes, la pantalla se vuelve a pintar sin recargar.
 
 ## 6. Progreso y almacenamiento
-- Todo en `localStorage`, con una clave por bloque (`he-ajustes`, `he-progreso`) y un campo `v` con la versión del formato. Formato v1 en el plan de 000, §3; la v2 añade `repaso`, `stats`, `logros`, `ventana` y `practica` (D-018).
+- Todo en `localStorage`, con una clave por bloque (`he-ajustes`, `he-progreso` y, si se une al ranking, `he-ranking`) y un campo `v` con la versión del formato. Formato v1 en el plan de 000, §3; la v2 añade `repaso`, `stats`, `logros`, `ventana` y `practica` (D-018).
 - Exportar descarga un archivo `.json`; importar lo valida antes de sustituir nada.
 - Si el almacenamiento falla (modo privado), la app funciona igual y avisa de que no se guardará el progreso.
 
@@ -106,3 +109,8 @@ Así el inicio, la Práctica de hoy y la prueba de nivel usan cualquier minijueg
 ## 8. App instalable y caché
 - `sw.js`: primero red (con `cache: 'no-cache'`, para ver una versión recién publicada al recargar) y, sin conexión, lo guardado. Al cambiar la lista `FILES`, subir `CACHE`.
 - `manifest.webmanifest`: "Hello English", sin orientación fija.
+
+## 9. Ranking (spec 027)
+- La web llama a la API del Worker (`src/ranking/config.js`). El service worker no toca esas peticiones (no son del propio sitio).
+- Identidad: alias fijo y código secreto (D-022). Día y mes los decide el servidor en hora de Madrid.
+- Los puntos de cada partida se acumulan como pendientes del día y se envían al terminar, al abrir la app y al volver la red.

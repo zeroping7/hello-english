@@ -4,7 +4,7 @@ Reglas no negociables. Cualquier spec o plan que las incumpla debe justificarlo 
 
 ## 1. Plataforma
 - **P1 — Sin build.** HTML + CSS + JavaScript (módulos ES). Nada de npm, bundlers, frameworks ni compilación. Lo que está en el repo es lo que se sirve.
-- **P2 — GitHub Pages.** Sitio estático servido desde la rama `main` (raíz). Sin backend propio.
+- **P2 — GitHub Pages.** Sitio estático servido desde la rama `main` (raíz). Sin backend propio. **Excepción:** el ranking opcional usa una API en Cloudflare Workers (D-021).
 - **P3 — Sin dependencias externas por defecto.** Si hiciera falta una librería, por CDN con versión fijada (nunca `@latest`) y justificada en `docs/decisiones.md`. Fuentes e iconos van alojados en el propio repo (ver PR1).
 - **P4 — Navegadores objetivo:** Chrome Android (prioridad 1), Chrome/Firefox/Edge escritorio, Safari iOS (mejor esfuerzo; lo que no funcione se avisa al usuario).
 - **P5 — App instalable y sin conexión.** `sw.js` y `manifest.webmanifest` cubren todo el sitio. Tras la primera visita, todo funciona sin conexión.
@@ -37,7 +37,7 @@ Reglas no negociables. Cualquier spec o plan que las incumpla debe justificarlo 
 - **CO4 — Original.** Nada copiado de libros, cursos ni webs con derechos.
 
 ## 6. Privacidad
-- **PR1** — Sin cuentas, sin cookies, sin estadísticas ni seguimiento. Nada sale del dispositivo, salvo lo que el propio navegador envíe para el reconocimiento de voz, y eso se avisa antes de usarlo.
+- **PR1** — Sin cuentas, sin cookies, sin estadísticas ni seguimiento. Nada sale del dispositivo, salvo lo que el propio navegador envíe para el reconocimiento de voz, y eso se avisa antes de usarlo. **Excepción:** quien se une al ranking envía su alias y sus puntos al servidor del ranking; se explica antes de unirse y se puede salir borrándolo todo (D-021, D-022).
 - **PR2** — El usuario puede exportar, importar y borrar su progreso en cualquier momento.
 
 ## 7. Calidad y depuración

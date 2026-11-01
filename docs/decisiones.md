@@ -88,7 +88,7 @@ Una entrada por decisión. Nunca se borran; si cambian, se añade una nueva que 
 
 ## D-010 — Puntos y racha
 - Fecha: 2026-10-28
-- Estado: Aceptada
+- Estado: Aceptada (la dificultad de cada minijuego la sustituye D-023)
 - Contexto: la spec 000 deja los valores de puntos para el plan y define la racha por objetivo diario.
 - Decisión: acierto = `round(10 × nivel × dificultad)`, con nivel A1 1 · A2 1,2 · B1 1,5 · B2 1,8 · C1 2 y dificultad 1 o 1,5 según el minijuego (campo `dificultad` del registro). La racha suma un día al cumplir el objetivo un día seguido del anterior; si se salta un día, vuelve a 1 al cumplir y se ve 0 mientras tanto.
 - Alternativas descartadas: puntos fijos por acierto (no premia subir de nivel); racha por abrir la app (no mide práctica real).
@@ -173,3 +173,27 @@ Una entrada por decisión. Nunca se borran; si cambian, se añade una nueva que 
 - Decisión: se elige una vez al día con una semilla sacada de la fecha y se guarda en el progreso: primero el minijuego con más repasos y luego, de categorías distintas, los menos jugados. Los que necesitan voz no entran si el navegador no puede hablar. Cada paso abre `#/juego/<id>/practica`, que empieza sin elegir tema y al terminar vuelve a `#/practica`.
 - Alternativas descartadas: una sesión que mezcle ejercicios de varios minijuegos en una sola pantalla (cada minijuego tiene su forma de jugar).
 - Consecuencias: completar la práctica cuenta para los logros de práctica.
+
+## D-021 — Ranking opcional con servidor en Cloudflare
+- Fecha: 2026-11-01
+- Estado: Aceptada
+- Contexto: la spec 027 pide un ranking diario y mensual entre jugadores. Compartir puntos exige un servidor, y la constitución dice sin backend (P2) y que nada sale del dispositivo (PR1).
+- Decisión: excepción a P2 y PR1 **solo para el ranking**, que es opcional y está desactivado por defecto. La web sigue en GitHub Pages y llama a una API en Cloudflare Workers con base de datos D1, en el plan gratuito. Solo se envían el alias, los puntos y el número de ejercicios. El código del Worker vive en `servidor/` del repo y se publica pegándolo en el panel de Cloudflare (sin terminal ni build). El servidor decide el día y el mes (hora de Madrid) y rechaza puntuaciones imposibles.
+- Alternativas descartadas: Supabase (pausa el proyecto tras 7 días casi sin uso); Firebase (cobra por documento leído: cada vista del top 50 gasta 50 lecturas de las 50.000 diarias gratis); sin servidor (no hay forma de compartir puntos).
+- Consecuencias: quien no se apunta usa la app igual que antes. Si se supera el plan gratuito, el ranking falla hasta medianoche UTC sin coste. Los puntos se calculan en el navegador, así que las trampas se mitigan con topes pero no se evitan del todo.
+
+## D-022 — Identidad del ranking con alias y código secreto
+- Fecha: 2026-11-01
+- Estado: Aceptada
+- Contexto: la app no tiene cuentas y entra cualquiera sin identificarse; el ranking necesita saber de quién son los puntos y poder recuperarlos en otro dispositivo.
+- Decisión: al unirse se elige un alias fijo (3-16 caracteres: letras, números, `_` y `-`, único sin distinguir mayúsculas) y el servidor devuelve un código secreto aleatorio. El código identifica al jugador en cada petición (`Authorization: Bearer`) y sirve para recuperarlo. El servidor solo guarda su SHA-256. En el dispositivo va en `he-ranking`, a través de `src/progreso/` (A4), y entra en exportar, importar y borrar.
+- Alternativas descartadas: login con Google o GitHub (son cuentas, contra PR1); un id generado en el dispositivo sin código (se pierde al borrar datos y cualquiera podría suplantarlo).
+- Consecuencias: perder el código es perder el alias. Por eso se enseña al unirse, está en Ajustes y va en el archivo de exportación.
+
+## D-023 — La dificultad de cada minijuego depende del esfuerzo
+- Fecha: 2026-11-01
+- Estado: Aceptada
+- Contexto: la spec 027 pide que los puntos compensen el esfuerzo. Hasta ahora la dificultad era 1 o 1,5 sin criterio fijo (D-010).
+- Decisión: la `dificultad` del registro sigue la forma de responder: **1** elegir, tocar o deslizar; **1,3** ordenar, corregir o escribir; **1,5** escribir lo que se oye, hablar o leer textos largos (tabla de la spec 027, §4). En Daily standup y Entrevista, responder hablando vale 1,5 aunque el minijuego sea 1: `alResponder(item, acierto, { hablado: true })`.
+- Alternativas descartadas: puntos distintos para la app y para el ranking (dos marcadores confunden); medir el tiempo de respuesta (premia ir rápido, no el esfuerzo).
+- Consecuencias: un acierto vale como mucho `10 × 2 × 1,5 = 30` puntos, cifra que usan los topes del servidor. Los puntos ya ganados no cambian.
