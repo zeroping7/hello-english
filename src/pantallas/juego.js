@@ -11,7 +11,7 @@ import { grupoOpciones } from '../ui/opciones.js';
 import { confirmar } from '../ui/confirmar.js';
 import { avisoFijo } from '../ui/aviso.js';
 import { icono } from '../ui/iconos.js';
-import { buscarJuego, iconoDe } from '../../juegos/registro.js';
+import { buscarJuego, iconoDe, ESFUERZO } from '../../juegos/registro.js';
 import { cargarBanco } from '../contenido/cargar.js';
 import { elegirConRepaso } from '../contenido/elegir.js';
 import { TEMAS, PREFIJO } from '../contenido/esquema.js';
@@ -121,11 +121,12 @@ export function montar(raiz, params) {
       azar,
       idioma: idiomaActual(),
       ponerContador: (n, total = ejercicios.length) => zonaContador.replaceChildren(contador(n, total)),
-      alResponder(item, acierto, { sonido = true } = {}) {
+      // hablado: la respuesta se dio en voz alta, que vale ESFUERZO.alto (D-023).
+      alResponder(item, acierto, { sonido = true, hablado = false } = {}) {
         if (sonido) efecto(acierto ? 'acierto' : 'fallo');
         respuestas++;
         if (acierto) aciertos++;
-        puntos += registrarResultado(item, acierto, juego.dificultad);
+        puntos += registrarResultado(item, acierto, hablado ? ESFUERZO.alto : juego.dificultad);
       },
       alTerminar: () => pintarResumen(),
     });

@@ -28,7 +28,7 @@
     import * as EM from './emparejar/logica.js';
     import * as CR from './contrarreloj/logica.js';
     import * as BR from './bug-report/logica.js';
-    import { JUEGOS } from './registro.js';
+    import { JUEGOS, ESFUERZO } from './registro.js';
 
     // --- Registro ---
 
@@ -38,6 +38,15 @@
         verdadero(j.disponible, `${j.id} disponible`);
         const m = await import(`./${j.id}/juego.js`);
         verdadero(m.BANCO === j.id && Number.isInteger(m.EJERCICIOS) && typeof m.montar === 'function', j.id);
+      }
+    });
+
+    prueba('Registro: la dificultad sigue la tabla de esfuerzo (D-023)', () => {
+      const medio = ['caza-el-bug', 'prompt', 'ordenar-frases', 'ahorcado', 'sopa-crucigrama', 'bug-report'];
+      const alto = ['incidente', 'dictado-codigo', 'dilo-bien', 'dictado-audio'];
+      for (const j of JUEGOS) {
+        const esperado = medio.includes(j.id) ? ESFUERZO.medio : alto.includes(j.id) ? ESFUERZO.alto : ESFUERZO.bajo;
+        igual(j.dificultad, esperado, j.id);
       }
     });
 

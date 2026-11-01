@@ -9,7 +9,7 @@
   - Archivos: `docs/decisiones.md` (D-021, D-022, D-023), `docs/constitucion.md` (P2 y PR1), `docs/arquitectura.md`
   - Hecho cuando: las tres decisiones están apuntadas y la constitución nombra la excepción del ranking
   - Probar: leer los documentos en GitHub
-- [ ] T2702 — Multiplicador por esfuerzo
+- [x] T2702 — Multiplicador por esfuerzo
   - Archivos: `juegos/registro.js`, `src/ui/ronda.js`, `src/ui/escucha-elige.js`, `src/pantallas/juego.js`, `juegos/tests.html`
   - Hecho cuando: cada minijuego tiene la dificultad de la tabla de la spec y, en Daily standup y Entrevista, responder hablando da ×1,5
   - Probar: jugar Prompt y ver que un acierto A1 da 13 puntos; en Daily standup, responder hablando y eligiendo y comparar los puntos

@@ -21,10 +21,10 @@ export function ronda(raiz, { ejercicios, ponerContador, alResponder, alTerminar
   let actual = {};
   let zona = null;
 
-  function responder(acierto, lineas = []) {
+  function responder(acierto, lineas = [], opciones = {}) {
     if (respondida) return;
     respondida = true;
-    alResponder(ejercicios[i], acierto);
+    alResponder(ejercicios[i], acierto, opciones);
     const ultima = i === ejercicios.length - 1;
     const boton = h('button', { class: 'boton boton-principal', type: 'button', onclick: seguir },
       t(ultima ? 'juego.verResumen' : 'comun.siguiente'));

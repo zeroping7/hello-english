@@ -18,6 +18,7 @@ export function pintarEscuchaElige(item, { responder, respondida }, { azar, idio
   const verTexto = h('button', { class: 'boton-enlace', type: 'button', onclick: () => { texto.hidden = false; verTexto.remove(); } }, t('voz.verTexto'));
   const estadoVoz = h('p', { class: 'db-estado', 'aria-live': 'polite' });
 
+  let hablado = false; // la opción se eligió diciéndola: vale ESFUERZO.alto (D-023)
   const lista = preguntaOpciones(item.opciones, 0, azar, (acierto) => {
     parar();
     texto.hidden = false;
@@ -27,7 +28,7 @@ export function pintarEscuchaElige(item, { responder, respondida }, { azar, idio
       h('p', { lang: 'en' }, h('strong', {}, item.opciones[0]), ' ', botonAltavoz(item.opciones[0])),
       h('p', { class: 'traduccion' }, item.traduccion),
       item.explicacion?.[idioma],
-    ]);
+    ], { hablado });
   });
 
   async function decir() {
@@ -47,6 +48,7 @@ export function pintarEscuchaElige(item, { responder, respondida }, { azar, idio
       return;
     }
     estadoVoz.textContent = t('db.entendido', { texto: r.textos[0] });
+    hablado = true;
     lista.elegirTexto(i);
   }
 
