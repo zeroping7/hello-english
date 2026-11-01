@@ -1,6 +1,6 @@
 # Spec de funcionalidad: Ranking diario y mensual
 
-> **ID:** 027-ranking · **Estado:** En revisión · **Fecha:** 2026-11-01
+> **ID:** 027-ranking · **Estado:** Aprobada · **Fecha:** 2026-11-01
 > Primera pieza con servidor. Cambia las reglas P2 y PR1 de la constitución: hay que justificarlo en `docs/decisiones.md`.
 
 ## 1. Problema
@@ -66,4 +66,4 @@ Quien quiera puede apuntarse a un ranking con un alias y competir con otros juga
 - [x] Alias → 3-16 caracteres; no se puede cambiar.
 - [x] ¿Dónde se ve? → En el inicio, junto a los puntos totales.
 - [x] Tamaño → Top 50.
-- [ ] ¿Te parece bien la tabla de esfuerzo de §4 y el reparto de minijuegos?
+- [x] Tabla de esfuerzo → Aprobada.
