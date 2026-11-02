@@ -165,6 +165,46 @@
       "tema": "equipo",
       "codigo": "git push origin main --force",
       "dictado": "git push origin main, dash dash force"
+    },
+    {
+      "id": "dc-021",
+      "nivel": "B2",
+      "tema": "programacion",
+      "codigo": "for (let i = 0; i < 10; i++) {",
+      "dictado": "for, open bracket, let i equals zero, semicolon, i less than ten, semicolon, i plus plus, close bracket, open curly brace",
+      "explicacion": {
+        "es": "«++» se lee «plus plus»: suma uno a la variable.",
+        "en": "\"++\" is read \"plus plus\": it adds one to the variable."
+      }
+    },
+    {
+      "id": "dc-022",
+      "nivel": "B2",
+      "tema": "web",
+      "codigo": "<a href=\"/about\">",
+      "dictado": "less than, a, href equals, double quote, slash about, double quote, greater than"
+    },
+    {
+      "id": "dc-023",
+      "nivel": "C1",
+      "tema": "programacion",
+      "codigo": "SELECT * FROM users WHERE age >= 18;",
+      "dictado": "select star from users where age, greater than or equal to, eighteen, semicolon",
+      "explicacion": {
+        "es": "«*» se lee «star» o «asterisk», y «>=», «greater than or equal to».",
+        "en": "\"*\" is read \"star\" or \"asterisk\", and \">=\" is \"greater than or equal to\"."
+      }
+    },
+    {
+      "id": "dc-024",
+      "nivel": "C1",
+      "tema": "programacion",
+      "codigo": "const { id, ...rest } = user;",
+      "dictado": "const, open curly brace, id, comma, dot dot dot rest, close curly brace, equals user, semicolon",
+      "explicacion": {
+        "es": "«...» se lee «dot dot dot» (también «spread»).",
+        "en": "\"...\" is read \"dot dot dot\" (also \"spread\")."
+      }
     }
   ]
 }

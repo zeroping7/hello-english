@@ -468,6 +468,70 @@
         "es": "Acento en la segunda sílaba, y la «y» suena como una «i» corta.",
         "en": "Stress the second syllable; the \"y\" is a short \"i\"."
       }
+    },
+    {
+      "id": "db-029",
+      "nivel": "B2",
+      "tema": "programacion",
+      "termino": "syntax",
+      "suena": "SÍN-tacs",
+      "ipa": "/ˈsɪntæks/",
+      "otras": [
+        "sin-TÁCS",
+        "SÁIN-tacs"
+      ],
+      "explicacion": {
+        "es": "Acento en la primera sílaba, y la «y» suena como una «i» corta.",
+        "en": "Stress the first syllable; the \"y\" is a short \"i\"."
+      }
+    },
+    {
+      "id": "db-030",
+      "nivel": "B2",
+      "tema": "programacion",
+      "termino": "column",
+      "suena": "KÓ-lum",
+      "ipa": "/ˈkɒləm/",
+      "otras": [
+        "co-LÚMN",
+        "KÓ-lium"
+      ],
+      "explicacion": {
+        "es": "La «n» final no suena y el acento va al principio.",
+        "en": "The final \"n\" is silent, and the stress is on the first syllable."
+      }
+    },
+    {
+      "id": "db-031",
+      "nivel": "C1",
+      "tema": "web",
+      "termino": "protocol",
+      "suena": "PRÓU-to-col",
+      "ipa": "/ˈprəʊtəkɒl/",
+      "otras": [
+        "pro-to-CÓL",
+        "pro-TÓ-col"
+      ],
+      "explicacion": {
+        "es": "Acento en la primera sílaba, que suena «próu».",
+        "en": "Stress the first syllable, which sounds like \"pro\"."
+      }
+    },
+    {
+      "id": "db-032",
+      "nivel": "C1",
+      "tema": "programacion",
+      "termino": "asynchronous",
+      "suena": "ei-SÍN-cro-nos",
+      "ipa": "/eɪˈsɪŋkrənəs/",
+      "otras": [
+        "a-sin-CRÓ-nus",
+        "Á-sin-cro-nos"
+      ],
+      "explicacion": {
+        "es": "Empieza por «ei», el acento va en «SYN» y la «ch» suena «k».",
+        "en": "It starts with \"ay\", the stress is on \"SYN\", and the \"ch\" sounds like \"k\"."
+      }
     }
   ]
 }

@@ -421,6 +421,90 @@
           "en": "To overheat the server"
         }
       ]
+    },
+    {
+      "id": "jd-021",
+      "nivel": "B2",
+      "tema": "equipo",
+      "expresion": "to circle back",
+      "ejemplo": "Let's circle back to this after the release.",
+      "opciones": [
+        {
+          "es": "Volver a tratar un tema más adelante",
+          "en": "To return to a topic later"
+        },
+        {
+          "es": "Dar vueltas por la oficina",
+          "en": "To walk around the office"
+        },
+        {
+          "es": "Deshacer un cambio",
+          "en": "To undo a change"
+        }
+      ]
+    },
+    {
+      "id": "jd-022",
+      "nivel": "B2",
+      "tema": "programacion",
+      "expresion": "hotfix",
+      "ejemplo": "We pushed a hotfix to production to stop the crash.",
+      "opciones": [
+        {
+          "es": "Un arreglo urgente que se publica fuera del ciclo normal",
+          "en": "An urgent fix released outside the normal cycle"
+        },
+        {
+          "es": "Un ordenador que se calienta",
+          "en": "A computer that overheats"
+        },
+        {
+          "es": "Una función nueva muy popular",
+          "en": "A very popular new feature"
+        }
+      ]
+    },
+    {
+      "id": "jd-023",
+      "nivel": "C1",
+      "tema": "programacion",
+      "expresion": "happy path",
+      "ejemplo": "The happy path works, but we haven't tested what happens when the payment fails.",
+      "opciones": [
+        {
+          "es": "El caso en que todo sale bien, sin errores",
+          "en": "The scenario where everything goes right, with no errors"
+        },
+        {
+          "es": "Un camino de un jardín",
+          "en": "A path in a garden"
+        },
+        {
+          "es": "La parte más divertida del código",
+          "en": "The most fun part of the code"
+        }
+      ]
+    },
+    {
+      "id": "jd-024",
+      "nivel": "C1",
+      "tema": "equipo",
+      "expresion": "low-hanging fruit",
+      "ejemplo": "Let's start with the low-hanging fruit: renaming the confusing variables.",
+      "opciones": [
+        {
+          "es": "Las mejoras fáciles que dan resultado rápido",
+          "en": "Easy wins that pay off quickly"
+        },
+        {
+          "es": "La fruta de la cocina de la oficina",
+          "en": "The fruit in the office kitchen"
+        },
+        {
+          "es": "Tareas imposibles",
+          "en": "Impossible tasks"
+        }
+      ]
     }
   ]
 }

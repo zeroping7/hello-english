@@ -368,6 +368,62 @@
       ],
       "letras": true,
       "traduccion": "Indicador clave de rendimiento"
+    },
+    {
+      "id": "ac-026",
+      "nivel": "B2",
+      "tema": "equipo",
+      "sigla": "MVP",
+      "significa": "Minimum Viable Product",
+      "otras": [
+        "Main Version Prototype",
+        "Minimum Value Process",
+        "Managed Virtual Platform"
+      ],
+      "letras": true,
+      "traduccion": "Producto mínimo viable"
+    },
+    {
+      "id": "ac-027",
+      "nivel": "B2",
+      "tema": "web",
+      "sigla": "DNS",
+      "significa": "Domain Name System",
+      "otras": [
+        "Digital Network Service",
+        "Data Name Server",
+        "Dynamic Node System"
+      ],
+      "letras": true,
+      "traduccion": "Sistema de nombres de dominio"
+    },
+    {
+      "id": "ac-028",
+      "nivel": "C1",
+      "tema": "web",
+      "sigla": "SSO",
+      "significa": "Single Sign-On",
+      "otras": [
+        "Secure Server Operation",
+        "Shared Session Object",
+        "System Security Officer"
+      ],
+      "letras": true,
+      "traduccion": "Inicio de sesión único"
+    },
+    {
+      "id": "ac-029",
+      "nivel": "C1",
+      "tema": "equipo",
+      "sigla": "RFC",
+      "significa": "Request for Comments",
+      "otras": [
+        "Remote Function Call",
+        "Required Feature Change",
+        "Release File Control"
+      ],
+      "letras": true,
+      "traduccion": "Petición de comentarios (documento con una propuesta técnica)"
     }
   ]
 }

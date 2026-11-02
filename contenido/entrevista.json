@@ -321,6 +321,70 @@
         "es": "Hacer una pregunta pensada sobre el puesto muestra interés real.",
         "en": "Asking a thoughtful question about the role shows genuine interest."
       }
+    },
+    {
+      "id": "et-021",
+      "nivel": "B2",
+      "tema": "programacion",
+      "audio": "Tell me about a project you're proud of.",
+      "opciones": [
+        "I led the migration of our app to a new API. It cut loading times by half, and I learnt a lot about planning.",
+        "I'm proud of all my projects equally.",
+        "I can't remember any right now."
+      ],
+      "traduccion": "Háblame de un proyecto del que estés orgulloso.",
+      "explicacion": {
+        "es": "Concreta: qué hiciste, qué resultado tuvo y qué aprendiste.",
+        "en": "Be specific: what you did, the result, and what you learnt."
+      }
+    },
+    {
+      "id": "et-022",
+      "nivel": "B2",
+      "tema": "equipo",
+      "audio": "How do you keep your skills up to date?",
+      "opciones": [
+        "I follow a few technical blogs, and I build small side projects to try out new tools.",
+        "I don't need to. I already know everything.",
+        "My company should train me."
+      ],
+      "traduccion": "¿Cómo mantienes tus conocimientos al día?",
+      "explicacion": {
+        "es": "Muestra que aprendes por tu cuenta, con ejemplos concretos.",
+        "en": "Show that you learn on your own, with concrete examples."
+      }
+    },
+    {
+      "id": "et-023",
+      "nivel": "C1",
+      "tema": "programacion",
+      "audio": "Tell me about a time you made a mistake at work.",
+      "opciones": [
+        "I once deployed a change without checking a config value, and it broke checkout for ten minutes. I fixed it, wrote a post-mortem and added a check to our pipeline.",
+        "I don't make mistakes.",
+        "It was my colleague's fault, really."
+      ],
+      "traduccion": "Cuéntame alguna vez que cometieras un error en el trabajo.",
+      "explicacion": {
+        "es": "Reconoce el error, cuenta cómo lo arreglaste y qué cambiaste para que no se repita.",
+        "en": "Own the mistake, explain how you fixed it and what you changed so it would not happen again."
+      }
+    },
+    {
+      "id": "et-024",
+      "nivel": "C1",
+      "tema": "web",
+      "audio": "How would you explain an API to someone non-technical?",
+      "opciones": [
+        "I'd compare it to a waiter in a restaurant: you ask for what you want, and it brings it from the kitchen without you needing to know how it's cooked.",
+        "It's just an interface. Everybody knows that.",
+        "I'd tell them to google it."
+      ],
+      "traduccion": "¿Cómo le explicarías qué es una API a alguien sin conocimientos técnicos?",
+      "explicacion": {
+        "es": "Una buena analogía muestra que sabes comunicarte con gente no técnica.",
+        "en": "A good analogy shows you can communicate with non-technical people."
+      }
     }
   ]
 }

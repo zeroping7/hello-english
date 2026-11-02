@@ -161,6 +161,38 @@
       "palabra": "deprecated",
       "pista": "Still available, but no longer recommended and likely to be removed.",
       "traduccion": "obsoleto"
+    },
+    {
+      "id": "ah-021",
+      "nivel": "B2",
+      "tema": "programacion",
+      "palabra": "repository",
+      "pista": "A place where the code of a project and its history are stored.",
+      "traduccion": "repositorio"
+    },
+    {
+      "id": "ah-022",
+      "nivel": "B2",
+      "tema": "equipo",
+      "palabra": "backlog",
+      "pista": "The list of tasks that a team still has to do.",
+      "traduccion": "lista de tareas pendientes (backlog)"
+    },
+    {
+      "id": "ah-023",
+      "nivel": "C1",
+      "tema": "web",
+      "palabra": "throughput",
+      "pista": "The amount of work a system can process in a given time.",
+      "traduccion": "rendimiento (capacidad de procesamiento)"
+    },
+    {
+      "id": "ah-024",
+      "nivel": "C1",
+      "tema": "programacion",
+      "palabra": "concurrency",
+      "pista": "When several tasks make progress at the same time.",
+      "traduccion": "concurrencia"
     }
   ]
 }

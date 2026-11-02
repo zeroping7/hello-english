@@ -361,6 +361,78 @@
         "es": "Lo planteas como una conversación y lo justificas con hechos.",
         "en": "You frame it as a conversation and back it up with facts."
       }
+    },
+    {
+      "id": "eb-021",
+      "nivel": "B2",
+      "tema": "equipo",
+      "situacion": {
+        "es": "Necesitas que un compañero termine su parte para poder seguir.",
+        "en": "You need a colleague to finish their part so you can carry on."
+      },
+      "opciones": [
+        "When you get a chance, could you let me know when your part might be ready? I'm waiting on it to continue.",
+        "Hurry up, I'm waiting for you.",
+        "Your part is late again."
+      ],
+      "explicacion": {
+        "es": "«When you get a chance» suaviza la petición, y explicas por qué la necesitas.",
+        "en": "'When you get a chance' softens the request, and you explain why you need it."
+      }
+    },
+    {
+      "id": "eb-022",
+      "nivel": "B2",
+      "tema": "programacion",
+      "situacion": {
+        "es": "En una revisión de código, ves que una función se podría simplificar.",
+        "en": "In a code review, you notice that a function could be simpler."
+      },
+      "opciones": [
+        "Nice work! One suggestion: we could simplify this function with a map. What do you think?",
+        "This code is a mess.",
+        "Did you even test this?"
+      ],
+      "explicacion": {
+        "es": "Empiezas con algo positivo y planteas el cambio como una sugerencia.",
+        "en": "You start with something positive and frame the change as a suggestion."
+      }
+    },
+    {
+      "id": "eb-023",
+      "nivel": "C1",
+      "tema": "web",
+      "situacion": {
+        "es": "Un cliente pide una función nueva que no entra en el presupuesto.",
+        "en": "A client asks for a new feature that isn't in the budget."
+      },
+      "opciones": [
+        "That's a great idea. It falls outside the current scope, but we'd be happy to put together a quote for it.",
+        "That's not in the contract, so no.",
+        "You should have asked for that months ago."
+      ],
+      "explicacion": {
+        "es": "«Falls outside the current scope» dice que no sin cerrar la puerta, y ofreces una salida.",
+        "en": "'Falls outside the current scope' says no without closing the door, and you offer a way forward."
+      }
+    },
+    {
+      "id": "eb-024",
+      "nivel": "C1",
+      "tema": "equipo",
+      "situacion": {
+        "es": "En una reunión te culpan de un fallo que no fue culpa tuya.",
+        "en": "In a meeting, you're blamed for a failure that wasn't your fault."
+      },
+      "opciones": [
+        "I think there may be some confusion. Let me share the timeline so we can see where things went wrong.",
+        "That wasn't me, it was Dave.",
+        "Typical. I always get blamed for everything."
+      ],
+      "explicacion": {
+        "es": "Aclaras lo que pasó con hechos y sin acusar a nadie.",
+        "en": "You clear things up with facts and without pointing fingers."
+      }
     }
   ]
 }

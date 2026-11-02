@@ -141,6 +141,34 @@
       "tema": "programacion",
       "frase": "It remains to be seen whether the new architecture will scale.",
       "traduccion": "Está por ver si la nueva arquitectura escalará."
+    },
+    {
+      "id": "da-021",
+      "nivel": "B2",
+      "tema": "programacion",
+      "frase": "If the tests pass, we'll merge it this afternoon.",
+      "traduccion": "Si pasan los tests, lo fusionaremos esta tarde."
+    },
+    {
+      "id": "da-022",
+      "nivel": "B2",
+      "tema": "web",
+      "frase": "The page takes too long to load on mobile.",
+      "traduccion": "La página tarda demasiado en cargar en el móvil."
+    },
+    {
+      "id": "da-023",
+      "nivel": "C1",
+      "tema": "equipo",
+      "frase": "Had we known about the outage, we would have warned the client.",
+      "traduccion": "Si hubiéramos sabido lo de la caída, habríamos avisado al cliente."
+    },
+    {
+      "id": "da-024",
+      "nivel": "C1",
+      "tema": "programacion",
+      "frase": "Not only is the new code faster, but it's also easier to read.",
+      "traduccion": "El código nuevo no solo es más rápido, sino que además es más fácil de leer."
     }
   ]
 }

@@ -111,6 +111,28 @@
         "esperado": "The page stays stable while images and fonts load.",
         "actual": "The \"Add to cart\" button moves down by about 200 px when the main image loads, so users tap the wrong thing."
       }
+    },
+    {
+      "id": "br-011",
+      "nivel": "B2",
+      "tema": "web",
+      "partes": {
+        "titulo": "Search returns no results for words with accents",
+        "pasos": "Type 'café' in the product search box and press Enter.",
+        "esperado": "Products containing 'café' are listed.",
+        "actual": "The page shows 'No results found', although several products match."
+      }
+    },
+    {
+      "id": "br-012",
+      "nivel": "C1",
+      "tema": "programacion",
+      "partes": {
+        "titulo": "Memory usage grows steadily until the worker process is killed",
+        "pasos": "Leave the export service running under normal load for 24 hours.",
+        "esperado": "Memory usage stays roughly constant over time.",
+        "actual": "Memory usage grows by about 200 MB per hour until the operating system kills the process."
+      }
     }
   ]
 }

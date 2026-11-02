@@ -361,6 +361,78 @@
         "es": "Breve y con lo esencial: qué está hecho, qué sigue y si hay bloqueos.",
         "en": "Brief and to the point: what's done, what's next and any blockers."
       }
+    },
+    {
+      "id": "ds-021",
+      "nivel": "B2",
+      "tema": "programacion",
+      "quien": "Marco",
+      "audio": "I'm blocked on the payment integration until the API keys come through, so in the meantime I'll pair with Sara on the search bug.",
+      "pregunta": "What is Marco going to do while he waits?",
+      "opciones": [
+        "Work with Sara on the search bug.",
+        "Finish the payment integration.",
+        "Create new API keys."
+      ],
+      "traduccion": "Estoy bloqueado con la integración de pagos hasta que lleguen las claves de la API, así que mientras tanto programaré en pareja con Sara el bug de la búsqueda.",
+      "explicacion": {
+        "es": "«In the meantime» = mientras tanto; «pair with» = programar en pareja con alguien.",
+        "en": "'In the meantime' means while waiting; to 'pair with' someone means to program together."
+      }
+    },
+    {
+      "id": "ds-022",
+      "nivel": "B2",
+      "tema": "equipo",
+      "quien": "Hannah",
+      "audio": "Quick update: the client has moved the demo forward to Wednesday, so we'll need to cut scope and focus on the core features.",
+      "pregunta": "What has happened to the demo?",
+      "opciones": [
+        "It's earlier than planned.",
+        "It has been cancelled.",
+        "It's later than planned."
+      ],
+      "traduccion": "Actualización rápida: el cliente ha adelantado la demo al miércoles, así que tendremos que recortar el alcance y centrarnos en las funciones principales.",
+      "explicacion": {
+        "es": "«Move forward» = adelantar (lo contrario de «push back», retrasar).",
+        "en": "To 'move something forward' means to make it earlier (the opposite of 'push back')."
+      }
+    },
+    {
+      "id": "ds-023",
+      "nivel": "C1",
+      "tema": "web",
+      "quien": "Daniel",
+      "audio": "The latency spike we saw on Monday turned out to be a misconfigured cache header, so it wasn't the database after all. I've rolled out a fix and I'm keeping an eye on the dashboards.",
+      "pregunta": "What caused the latency spike?",
+      "opciones": [
+        "A wrong cache header setting.",
+        "A problem with the database.",
+        "The fix Daniel rolled out."
+      ],
+      "traduccion": "El pico de latencia que vimos el lunes resultó ser una cabecera de caché mal configurada, así que al final no era la base de datos. He desplegado un arreglo y estoy vigilando los paneles.",
+      "explicacion": {
+        "es": "«Turned out to be» = resultó ser; «after all» = al final, contra lo que se pensaba.",
+        "en": "'Turned out to be' introduces the real cause; 'after all' means contrary to what people thought."
+      }
+    },
+    {
+      "id": "ds-024",
+      "nivel": "C1",
+      "tema": "equipo",
+      "quien": "Aisha",
+      "audio": "I'd rather we didn't commit to the new deadline until we've scoped the migration properly. Otherwise, we'll be making promises we can't keep.",
+      "pregunta": "What does Aisha suggest?",
+      "opciones": [
+        "Waiting to agree on a deadline until the work is better understood.",
+        "Promising the new deadline straight away.",
+        "Cancelling the migration."
+      ],
+      "traduccion": "Preferiría que no nos comprometiéramos con la nueva fecha hasta haber definido bien el alcance de la migración. Si no, estaremos haciendo promesas que no podemos cumplir.",
+      "explicacion": {
+        "es": "«I'd rather we didn't…» = preferiría que no…; «to scope» = definir el alcance de un trabajo.",
+        "en": "'I'd rather we didn't…' is a polite way to object; to 'scope' work means to work out how big it is."
+      }
     }
   ]
 }
