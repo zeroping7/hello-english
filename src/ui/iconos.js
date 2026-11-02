@@ -22,6 +22,10 @@ const TRAZOS = {
   logros: ['M8 4h8v5a4 4 0 0 1-8 0z', 'M8 6H5a3 3 0 0 0 3 4', 'M16 6h3a3 3 0 0 1-3 4', 'M12 13v4', 'M8 20h8', 'M10 17h4'],
   ranking: ['M3 20h18', 'M9 20V8h6v12', 'M3 20v-7h6', 'M15 20v-5h6', 'M12 3v2'],
   repaso: ['M20 12a8 8 0 1 1-2.3-5.7', 'M20 4v4h-4'],
+  medalla: ['M8 3l2.5 6', 'M16 3l-2.5 6', { circulo: [12, 15, 6] }, 'M12 12.5v5'],
+  reto: ['M5 21V4', 'M5 4h12l-2.5 4 2.5 4H5'],
+  estadisticas: ['M4 4v16h16', 'M8 16v-4', 'M12 16V8', 'M16 16v-6'],
+  campana: ['M6 16V11a6 6 0 0 1 12 0v5l2 2H4z', 'M10 20a2 2 0 0 0 4 0'],
   microfono: ['M9 5a3 3 0 0 1 6 0v6a3 3 0 0 1-6 0z', 'M5 11a7 7 0 0 0 14 0', 'M12 18v3'],
   texto: ['M5 6h14', 'M5 12h14', 'M5 18h9'],
   // Minijuegos

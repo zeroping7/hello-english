@@ -2,10 +2,26 @@
 // Las pantallas solo usan este módulo.
 import * as api from './api.js';
 import { API } from './config.js';
-import { rankingNuevo, normalizarCodigo, diaMadrid, acumular, pendienteDeHoy, trocear, restar } from './logica.js';
-import { leerRanking, guardarRanking, alCambiarRanking } from '../progreso/progreso.js';
+import {
+  rankingNuevo, normalizarCodigo, diaMadrid, acumular, pendienteDeHoy, trocear, restar,
+  diaAnterior, mesAnterior, retoValido,
+} from './logica.js';
+import { leerRanking, guardarRanking, alCambiarRanking, resumen, registrarPuesto, puestoRevisado } from '../progreso/progreso.js';
 
 export { alCambiarRanking };
+
+const eventos = new EventTarget();
+
+/** Puesto final de ayer o del mes pasado, al abrir la app (spec 028): fn({ tipo, pos, jugadores, medalla }). */
+export function alVerResultado(fn) {
+  const escucha = (e) => fn(e.detail);
+  eventos.addEventListener('resultado', escucha);
+  return () => eventos.removeEventListener('resultado', escucha);
+}
+
+// El servidor ya tiene la v2 (ligas, rachas, reto): lo dice cada clasificación con api: 2
+let servidorV2 = null;
+export const servidorActualizado = () => servidorV2;
 
 /** Hay servidor configurado: si no, el ranking no aparece en la app. */
 export const disponible = () => Boolean(API);
@@ -25,6 +41,10 @@ export async function unirse(alias) {
   if (r.ok) {
     posicionHoy = null;
     guardarRanking(rankingNuevo(r.datos.alias, r.datos.codigo));
+    // Lo de antes de unirse no cuenta para las medallas
+    const hoy = diaMadrid();
+    registrarPuesto('dia', diaAnterior(hoy), null);
+    registrarPuesto('mes', mesAnterior(hoy), null);
   }
   return r;
 }
@@ -68,6 +88,7 @@ let repetir = false;
 const REINTENTAR = ['sin-red', 'servidor', 'sin-servidor'];
 
 async function enviar() {
+  await enviarReto();
   const datos = leerRanking();
   if (!datos?.pendiente) return;
   const pendiente = pendienteDeHoy(datos.pendiente, diaMadrid());
@@ -75,8 +96,10 @@ async function enviar() {
     guardarRanking({ ...datos, pendiente: null });
     return;
   }
+  // Con cada envío van la liga (nivel) y la racha actuales (specs 030 y 031)
+  const { nivel, racha } = resumen();
   for (const envio of trocear(pendiente)) {
-    const r = await api.enviarPuntos(datos.codigo, envio);
+    const r = await api.enviarPuntos(datos.codigo, { ...envio, nivel, racha });
     if (!r.ok && REINTENTAR.includes(r.motivo)) return;
     if (!r.ok && r.motivo === 'codigo') { // el alias ya no existe (salió desde otro dispositivo)
       posicionHoy = null;
@@ -89,6 +112,32 @@ async function enviar() {
     if (!actual) return;
     guardarRanking({ ...actual, pendiente: actual.pendiente && restar(actual.pendiente, envio) });
   }
+}
+
+/** Envía el resultado del reto de hoy si quedó pendiente (spec 033). */
+async function enviarReto() {
+  const datos = leerRanking();
+  if (!datos?.reto) return;
+  if (!retoValido(datos.reto, diaMadrid())) {
+    guardarRanking({ ...datos, reto: null });
+    return;
+  }
+  const r = await api.enviarReto(datos.codigo, datos.reto);
+  if (!r.ok && REINTENTAR.includes(r.motivo)) return;
+  if (!r.ok && r.motivo === 'codigo') {
+    guardarRanking(null);
+    return;
+  }
+  const actual = leerRanking();
+  if (actual) guardarRanking({ ...actual, reto: null }); // enviado, repetido o rechazado: ya no se reintenta
+}
+
+/** Guarda el resultado del reto de hoy para el ranking y lo intenta enviar. */
+export function guardarReto(resultado) {
+  const datos = leerRanking();
+  if (!datos) return;
+  guardarRanking({ ...datos, reto: { ...resultado, dia: diaMadrid() } });
+  enviarPendientes();
 }
 
 /** Envía lo pendiente de hoy, en trozos que el servidor acepte. Lo de otro día se descarta. */
@@ -108,19 +157,61 @@ export function enviarPendientes() {
   return enviando;
 }
 
+/** Tras una petición con código: si el servidor no lo conoce, se sale del ranking. */
+function comprobar(r) {
+  if (!r.ok && r.motivo === 'codigo') guardarRanking(null);
+  if (r.ok) servidorV2 = r.datos?.api === 2;
+  return r;
+}
+
 /**
- * Top 50 y mi posición de 'dia' o 'mes' (HU-3). Antes envía lo pendiente, para verse al día.
+ * Top 50 y mi posición (HU-3). periodo: 'dia', 'ayer', 'mes' o 'mesAnterior' (spec 028);
+ * liga: un nivel para ver solo esa liga (spec 030). Antes envía lo pendiente, para verse al día.
  * @returns {Promise<{ ok: true, datos: { top, yo, jugadores } } | { ok: false, motivo: string }>}
  */
-export async function clasificacion(periodo) {
+export async function clasificacion(periodo, { liga = null } = {}) {
   await enviarPendientes();
   const datos = leerRanking();
-  const r = await api.clasificacion(periodo, datos?.codigo);
-  if (r.ok && periodo === 'dia' && r.datos.yo) {
+  const r = await api.clasificacion(periodo, datos?.codigo, liga);
+  if (r.ok && periodo === 'dia' && !liga && r.datos.yo) {
     posicionHoy = { dia: r.datos.dia, pos: r.datos.yo.pos, puntos: r.datos.yo.puntos };
   }
-  if (!r.ok && r.motivo === 'codigo') guardarRanking(null);
-  return r;
+  return comprobar(r);
+}
+
+/** Rachas activas (spec 031). */
+export async function rachas() {
+  await enviarPendientes();
+  return comprobar(await api.rachas(leerRanking()?.codigo));
+}
+
+/** Clasificación del reto de hoy (spec 033). */
+export async function clasificacionReto() {
+  await enviarPendientes();
+  return comprobar(await api.reto(leerRanking()?.codigo));
+}
+
+/**
+ * Puesto final de ayer y del mes pasado (specs 028 y 029): se mira una vez por periodo, se
+ * anota la medalla si la hay y se avisa con alVerResultado. Sin red, se vuelve a intentar otro día.
+ */
+export async function comprobarResultados() {
+  if (!leerRanking()) return;
+  const hoy = diaMadrid();
+  const periodos = [
+    { tipo: 'dia', periodo: diaAnterior(hoy), consulta: 'ayer' },
+    { tipo: 'mes', periodo: mesAnterior(hoy), consulta: 'mesAnterior' },
+  ];
+  for (const { tipo, periodo, consulta } of periodos) {
+    if (puestoRevisado(tipo, periodo)) continue;
+    const datos = leerRanking();
+    if (!datos) return;
+    const r = comprobar(await api.clasificacion(consulta, datos.codigo));
+    if (!r.ok) return;
+    const pos = r.datos.yo?.pos ?? null;
+    const medalla = registrarPuesto(tipo, periodo, pos);
+    if (pos) eventos.dispatchEvent(new CustomEvent('resultado', { detail: { tipo, pos, jugadores: r.datos.jugadores, medalla } }));
+  }
 }
 
 let iniciado = false;
@@ -129,6 +220,6 @@ let iniciado = false;
 export function iniciarRanking() {
   if (iniciado || !disponible()) return;
   iniciado = true;
-  enviarPendientes();
+  enviarPendientes().then(() => comprobarResultados());
   globalThis.addEventListener?.('online', () => enviarPendientes());
 }

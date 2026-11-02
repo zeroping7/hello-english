@@ -8,8 +8,11 @@ import { navegar } from '../router.js';
 import { almacen } from '../progreso/almacen.js';
 import { avisoFijo } from '../ui/aviso.js';
 import { icono } from '../ui/iconos.js';
-import { CATEGORIAS, juegosDe, iconoDe } from '../../juegos/registro.js';
+import { CATEGORIAS, juegosDe, iconoDe, buscarJuego } from '../../juegos/registro.js';
 import { disponible, yo, posicionGuardada, clasificacion, alCambiarRanking } from '../ranking/ranking.js';
+import { diaMadrid } from '../ranking/logica.js';
+import { juegoDelReto, RETO_N } from '../reto/logica.js';
+import { tiempo } from './ranking.js';
 
 function logo() {
   // La marca no se traduce: es la misma en todos los idiomas
@@ -99,12 +102,32 @@ function practicaDeHoy() {
   );
 }
 
+/** Reto del día (spec 033): el mismo para todos; hecho, enseña el resultado. */
+function retoDelDia() {
+  const dia = diaMadrid();
+  const id = juegoDelReto(dia);
+  const r = leerProgreso().reto;
+  const hecho = r?.dia === dia;
+  const href = hecho ? (disponible() && yo() ? '#/ranking/reto' : '#/estadisticas') : `#/juego/${id}/reto`;
+  return h('a', { class: `practica reto ${hecho ? 'hecha' : ''}`, href },
+    h('span', { class: 'practica-icono' }, icono(hecho ? 'logros' : 'reto')),
+    h('span', { class: 'practica-texto' },
+      h('span', { class: 'practica-titulo' }, t('reto.titulo')),
+      h('span', { class: 'practica-desc' }, t('reto.desc', { juego: t(buscarJuego(id).titulo), n: RETO_N })),
+      h('span', { class: 'practica-avance' },
+        hecho ? `✓ ${t('reto.resultado', { aciertos: r.aciertos, total: r.total, tiempo: tiempo(r.segundos) })}` : t('reto.pendiente'))));
+}
+
 function enlaceLogros() {
   const conseguidos = LOGROS.filter((l) => leerProgreso().logros[l.id]).length;
-  return h('a', { class: 'enlace-logros', href: '#/logros' },
-    icono('logros'),
-    h('span', {}, t('logros.titulo')),
-    h('span', { class: 'enlace-logros-cuenta' }, `${conseguidos}/${LOGROS.length}`));
+  return h('div', { class: 'enlaces-inicio' },
+    h('a', { class: 'enlace-logros', href: '#/logros' },
+      icono('logros'),
+      h('span', {}, t('logros.titulo')),
+      h('span', { class: 'enlace-logros-cuenta' }, `${conseguidos}/${LOGROS.length}`)),
+    h('a', { class: 'enlace-logros enlace-stats', href: '#/estadisticas' },
+      icono('estadisticas'),
+      h('span', {}, t('stats.titulo'))));
 }
 
 function tarjeta(juego) {
@@ -156,6 +179,7 @@ export function montar(raiz) {
       !almacen.persistente() && avisoFijo(t('aviso.sinAlmacen'), { tipo: 'error' }),
       zonaResumen,
       practicaDeHoy(),
+      retoDelDia(),
       enlaceLogros(),
       CATEGORIAS.map(categoria),
     ),

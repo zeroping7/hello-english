@@ -30,7 +30,9 @@ src/
   pantallas/             # bienvenida, inicio, ajustes, prueba de nivel, juego (común a los minijuegos), próximamente
   contenido/             # carga, validación (esquema), azar con semilla y elección de ejercicios (D-011, D-012)
   prueba/                # lógica de la prueba de nivel (spec 002)
-  ranking/               # cliente del ranking: config, lógica pura, API y unión con el progreso (spec 027)
+  ranking/               # cliente del ranking: config, lógica pura, API y unión con el progreso (specs 027-033)
+  reto/                  # reto del día: minijuego y ejercicios con semilla de la fecha (spec 033)
+  recordatorio/          # recordatorio diario con Web Push (spec 032)
   pruebas/mini.js        # mini ejecutor de pruebas para los tests.html
 juegos/
   registro.js            # lista de minijuegos (§3)
@@ -52,7 +54,7 @@ specs/
 ```
 
 ## 2. Navegación
-- Una sola página con **router por hash**: `#/inicio`, `#/ajustes`, `#/juego/<id>`, `#/juego/<id>/practica`, `#/practica`, `#/logros`, `#/ranking`, `#/prueba-nivel`, `#/bienvenida`.
+- Una sola página con **router por hash**: `#/inicio`, `#/ajustes`, `#/juego/<id>`, `#/juego/<id>/practica`, `#/juego/<id>/reto`, `#/practica`, `#/logros`, `#/estadisticas`, `#/ranking[/dia|mes|rachas|reto]`, `#/prueba-nivel`, `#/bienvenida`.
 - El botón "atrás" del navegador y del móvil funciona en todas las pantallas.
 - Los minijuegos se cargan con `import()` al entrar (constitución R2) y se desmontan al salir, liberando sus escuchas y temporizadores.
 - `iniciarRouter(raiz, rutas, porDefecto, redirigir)`: `redirigir(ruta)` puede mandar a otra (sin bienvenida hecha, todo va a `#/bienvenida`).
@@ -98,7 +100,7 @@ Así el inicio, la Práctica de hoy y la prueba de nivel usan cualquier minijueg
 - Al cambiar de idioma en Ajustes, la pantalla se vuelve a pintar sin recargar.
 
 ## 6. Progreso y almacenamiento
-- Todo en `localStorage`, con una clave por bloque (`he-ajustes`, `he-progreso` y, si se une al ranking, `he-ranking`) y un campo `v` con la versión del formato. Formato v1 en el plan de 000, §3; la v2 añade `repaso`, `stats`, `logros`, `ventana` y `practica` (D-018).
+- Todo en `localStorage`, con una clave por bloque (`he-ajustes`, `he-progreso` y, si se une al ranking, `he-ranking`) y un campo `v` con la versión del formato. Formato v1 en el plan de 000, §3; la v2 añade `repaso`, `stats`, `logros`, `ventana` y `practica` (D-018); la v3, `medallas`, `reto` y aciertos por minijuego y tema (D-027).
 - Exportar descarga un archivo `.json`; importar lo valida antes de sustituir nada.
 - Si el almacenamiento falla (modo privado), la app funciona igual y avisa de que no se guardará el progreso.
 
@@ -113,4 +115,10 @@ Así el inicio, la Práctica de hoy y la prueba de nivel usan cualquier minijueg
 ## 9. Ranking (spec 027)
 - La web llama a la API del Worker (`src/ranking/config.js`). El service worker no toca esas peticiones (no son del propio sitio).
 - Identidad: alias fijo y código secreto (D-022). Día y mes los decide el servidor en hora de Madrid.
-- Los puntos de cada partida se acumulan como pendientes del día y se envían al terminar, al abrir la app y al volver la red.
+- Los puntos de cada partida se acumulan como pendientes del día y se envían al terminar, al abrir la app y al volver la red; con ellos van el nivel (liga) y la racha.
+- v2 (D-024): `/ranking?periodo=dia|ayer|mes|mesAnterior&liga=B1`, `/rachas`, `/reto` y `/recordatorio*`. El Worker crea solo las tablas y columnas que falten.
+- Al abrir la app se mira el puesto final de ayer y del mes pasado (una vez por periodo): aviso y, si toca, medalla.
+
+## 10. Recordatorio diario (spec 032, D-025)
+- La app se suscribe con `pushManager` usando la clave pública VAPID del Worker y le manda la suscripción, la hora, la zona y el idioma.
+- Un cron del Worker cada 15 minutos manda un push vacío a quien le toque; `sw.js` enseña la notificación con los textos de `src/i18n/` (idioma guardado en la caché `hello-config`).

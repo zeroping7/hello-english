@@ -9,6 +9,7 @@ import { JUEGOS, buscarJuego, iconoDe } from '../../juegos/registro.js';
 import { PREFIJO } from '../contenido/esquema.js';
 import { leerProgreso, leerPractica, pendientes } from '../progreso/progreso.js';
 import { elegirPractica, siguientePaso } from '../progreso/practica.js';
+import { juegosFlojos } from '../progreso/estadisticas.js';
 import { hoy } from '../progreso/reloj.js';
 import { hayVoz } from '../voz/voz.js';
 
@@ -30,7 +31,8 @@ function pendientesPorBanco() {
 
 /** La práctica de hoy (la crea si aún no existe). La usa también el inicio. */
 export function practicaActual() {
-  return leerPractica(() => elegirPractica(hoy(), disponibles(), pendientesPorBanco(), leerProgreso().stats.juegos));
+  const p = leerProgreso();
+  return leerPractica(() => elegirPractica(hoy(), disponibles(), pendientesPorBanco(), p.stats.juegos, juegosFlojos(p)));
 }
 
 export function montar(raiz) {

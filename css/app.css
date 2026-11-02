@@ -1041,3 +1041,143 @@ a.dato-ranking:focus-visible { outline: 2px solid var(--keyword); outline-offset
 .ranking-vacio { margin: var(--espacio-3) 0; }
 .ranking-ajustes-botones { margin-top: var(--espacio-3); }
 .ranking-ajustes-recuperar { margin-top: var(--espacio-4); }
+
+/* Solo para lectores de pantalla */
+.solo-lector {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Ranking v2: controles, medallas, rachas y reto (specs 028-033) */
+.ranking-controles { display: flex; flex-wrap: wrap; column-gap: var(--espacio-4); margin-bottom: var(--espacio-2); }
+.ranking-controles .opciones { margin-bottom: var(--espacio-3); }
+.ranking-controles .opciones-leyenda { font-size: 0.875rem; color: var(--tenue); font-weight: 400; }
+.ranking-reto-juego { display: flex; align-items: center; gap: var(--espacio-2); width: 100%; margin: 0 0 var(--espacio-3); font-family: var(--fuente-mono); }
+.ranking-reto-juego .icono { color: var(--function); flex: none; }
+.ranking-controles > .boton { margin-bottom: var(--espacio-3); text-decoration: none; }
+.ranking-lista-reto .ranking-puntos { white-space: nowrap; }
+
+.medallas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-2);
+  margin: 0 0 var(--espacio-3);
+  padding: 0;
+  list-style: none;
+}
+.medalla {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-1);
+  padding: var(--espacio-1) var(--espacio-2);
+  border: 1px solid var(--borde);
+  border-radius: 999px;
+  background: var(--panel);
+  font-family: var(--fuente-mono);
+  font-size: 0.875rem;
+}
+
+/* Reto del día en el inicio y en su pantalla */
+.practica.reto { border-color: var(--function); }
+.practica.reto .practica-icono { background: var(--function); }
+.practica.reto .practica-avance { color: var(--function); }
+.practica.reto.hecha { border-color: var(--string); }
+.practica.reto.hecha .practica-icono { background: var(--string); }
+.practica.reto.hecha .practica-avance { color: var(--string); }
+.practica.reto .practica-icono .icono { fill: none; }
+.cat-reto { color: var(--function); }
+.reto-resultado { font-family: var(--fuente-mono); font-size: 1.25rem; font-weight: 700; color: var(--number); }
+
+.enlaces-inicio { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--espacio-2); margin-bottom: var(--espacio-5); }
+.enlaces-inicio .enlace-logros { margin-bottom: 0; min-width: 0; }
+.enlaces-inicio .enlace-logros span:not(.enlace-logros-cuenta) { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.enlace-stats .icono { color: var(--function); }
+.enlace-stats:hover { border-color: var(--function); }
+
+/* Estadísticas (spec 034) */
+.cifras { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--espacio-2); margin-bottom: var(--espacio-3); }
+@media (min-width: 640px) { .cifras { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+.cifra {
+  display: grid;
+  gap: 2px;
+  padding: var(--espacio-2) var(--espacio-3);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--panel);
+  min-width: 0;
+}
+.cifra-valor { font-family: var(--fuente-mono); font-size: 1.25rem; font-weight: 700; color: var(--number); }
+.cifra-etiqueta { color: var(--tenue); font-size: 0.8125rem; overflow-wrap: anywhere; line-height: 1.2; }
+
+.historial {
+  display: grid;
+  grid-template-columns: repeat(14, minmax(0, 1fr));
+  gap: 3px;
+  align-items: end;
+  height: 8rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.historial-dia { display: grid; grid-template-rows: 1fr auto; height: 100%; gap: 2px; min-width: 0; }
+.historial-barra { position: relative; display: block; min-height: 0; }
+.historial-relleno {
+  position: absolute;
+  inset: 0;
+  border-radius: 4px 4px 0 0;
+  background: var(--keyword);
+  transform-origin: bottom;
+}
+.historial-relleno.vacio { background: var(--borde); }
+.historial-etiqueta { text-align: center; color: var(--tenue); font-family: var(--fuente-mono); font-size: 0.6875rem; }
+
+.flojos { display: grid; gap: var(--espacio-2); margin: 0; padding: 0; list-style: none; }
+.flojo {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-3);
+  min-height: var(--toque);
+  padding: var(--espacio-2) var(--espacio-3);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--panel);
+  color: var(--texto);
+  text-decoration: none;
+}
+.flojo:hover { border-color: var(--keyword); }
+.flojo:focus-visible { outline: 2px solid var(--keyword); outline-offset: 2px; }
+.flojo-texto { display: grid; flex: 1; min-width: 0; }
+.flojo-titulo { font-family: var(--fuente-mono); font-weight: 700; }
+.flojo-ir { color: var(--keyword); font-family: var(--fuente-mono); font-size: 0.875rem; }
+
+.stats-lista { display: grid; gap: var(--espacio-1); margin: 0; padding: 0; list-style: none; }
+.stats-fila {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: 'nombre pct' 'partidas pct';
+  align-items: center;
+  column-gap: var(--espacio-3);
+  padding: var(--espacio-2) 0;
+  border-bottom: 1px solid var(--borde);
+}
+.stats-nombre { grid-area: nombre; font-family: var(--fuente-mono); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--texto); }
+a.stats-nombre { color: var(--function); }
+.stats-partidas { grid-area: partidas; font-size: 0.8125rem; }
+.stats-fila > .porcentaje, .stats-fila > .tenue:last-child { grid-area: pct; }
+.porcentaje { display: inline-flex; align-items: center; gap: var(--espacio-2); }
+.porcentaje-barra { position: relative; display: block; width: 5rem; height: 0.5rem; border-radius: 999px; background: var(--borde); overflow: hidden; }
+.porcentaje-relleno { position: absolute; inset: 0; transform-origin: left; background: var(--string); }
+.porcentaje-relleno.medio { background: var(--number); }
+.porcentaje-relleno.mal { background: var(--error); }
+.porcentaje-texto { min-width: 3.25rem; text-align: right; font-family: var(--fuente-mono); font-size: 0.875rem; }
+
+/* Recordatorio (spec 032) */
+.recordatorio-fila { display: flex; flex-wrap: wrap; align-items: center; gap: var(--espacio-2) var(--espacio-3); margin: var(--espacio-3) 0 var(--espacio-2); }
+.recordatorio-fila .opciones-leyenda { margin: 0; }
+.interruptor-etiqueta { display: inline-flex; align-items: center; gap: var(--espacio-2); min-height: var(--toque); cursor: pointer; font-weight: 600; }
+.interruptor { width: 1.25rem; height: 1.25rem; accent-color: var(--keyword); margin: 0; }
+.campo-hora { width: auto; min-height: var(--toque); }

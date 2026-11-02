@@ -9,18 +9,22 @@ function semillaDe(dia) {
 }
 
 /**
- * Elige los minijuegos del día: primero el que más repasos tenga pendientes; luego, de
- * categorías distintas, los menos jugados.
+ * Elige los minijuegos del día: primero el que más repasos tenga pendientes; luego el punto
+ * más flojo (spec 034) y, de categorías distintas, los menos jugados.
  * @param {{ id: string, categoria: string, prefijo: string }[]} juegos disponibles (ya sin los que necesitan voz si no la hay)
  * @param {{ [prefijo: string]: number }} pendientes repasos de hoy por banco
  * @param {{ [id: string]: number }} jugados partidas por minijuego
+ * @param {string[]} flojos ids de los minijuegos que más cuestan, del peor al menos malo
  */
-export function elegirPractica(dia, juegos, pendientes, jugados) {
+export function elegirPractica(dia, juegos, pendientes, jugados, flojos = []) {
   const azar = crearAzar(semillaDe(dia));
   const lista = barajar(juegos, azar);
   const elegidos = [];
   const conRepaso = [...lista].sort((a, b) => (pendientes[b.prefijo] ?? 0) - (pendientes[a.prefijo] ?? 0));
   if (conRepaso.length && (pendientes[conRepaso[0].prefijo] ?? 0) > 0) elegidos.push(conRepaso[0]);
+
+  const flojo = flojos.map((id) => lista.find((j) => j.id === id)).find((j) => j && !elegidos.some((e) => e.id === j.id));
+  if (flojo && elegidos.length < PASOS) elegidos.push(flojo);
 
   const porUso = [...lista].sort((a, b) => (jugados[a.id] ?? 0) - (jugados[b.id] ?? 0));
   for (const j of porUso) {

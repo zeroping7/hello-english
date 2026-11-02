@@ -18,6 +18,7 @@
     import * as L from './logica.js';
     import { comprobarLogros, LOGROS } from './logros.js';
     import { elegirPractica, practicaDeHoy, marcarHecho, siguientePaso } from './practica.js';
+    import { calcularEstadisticas, juegosFlojos } from './estadisticas.js';
 
     // Almacenamiento falso con la misma interfaz que localStorage
     class Falso {
@@ -240,7 +241,7 @@
 
     prueba('Importar: un archivo v1 se migra; uno v2 conserva repaso y logros válidos', () => {
       const v1 = { v: 1, nivel: 'A2', nivelProbado: false, puntos: 10, dias: {}, ultimoDiaCumplido: null, racha: 0 };
-      igual(L.validarImportacion({ app: 'hello-english', formato: 1, ajustes: {}, progreso: v1 }).progreso.v, 2);
+      igual(L.validarImportacion({ app: 'hello-english', formato: 1, ajustes: {}, progreso: v1 }).progreso.v, L.VERSION_PROGRESO);
       const p = { ...L.progresoNuevo(), repaso: { 'fa-001': { c: 1, p: '2026-10-29' }, 'mal': { c: 9, p: 'x' } }, logros: { 'perfecta': '2026-10-28', 'x': 3 } };
       const r = L.validarImportacion(L.crearExportacion({}, p));
       igual([Object.keys(r.progreso.repaso), Object.keys(r.progreso.logros)], [['fa-001'], ['perfecta']]);
@@ -334,6 +335,93 @@
       r = marcarHecho(r.practica, 'd');
       igual([r.completaAhora, siguientePaso(r.practica)], [true, null]);
       igual(marcarHecho(r.practica, 'd').completaAhora, false);
+    });
+
+    // --- Formato v3: medallas, reto y aciertos por minijuego (specs 029, 033 y 034) ---
+
+    prueba('Migración v2 → v3: añade medallas, reto y aciertos sin perder las estadísticas', () => {
+      const v2 = { ...L.MIGRACIONES_PROGRESO[1]({ v: 1, nivel: 'B1', nivelProbado: true, puntos: 300, dias: {}, ultimoDiaCumplido: null, racha: 0 }), v: 2 };
+      v2.stats = { ...v2.stats, partidas: 7, juegos: { prompt: 7 } };
+      delete v2.stats.aciertos; delete v2.stats.temas; delete v2.stats.retos; delete v2.stats.retosPerfectos;
+      const v3 = { ...L.MIGRACIONES_PROGRESO[2](v2), v: 3 };
+      igual([v3.stats.partidas, v3.stats.juegos, v3.stats.aciertos, v3.stats.retos], [7, { prompt: 7 }, {}, 0]);
+      igual([v3.medallas.oro, v3.medallas.dia, v3.reto], [0, null, null]);
+    });
+
+    prueba('Aciertos: se cuentan por minijuego y por tema', () => {
+      let p = L.anotarRespuesta(L.progresoNuevo(), 'prompt', 'web', true);
+      p = L.anotarRespuesta(p, 'prompt', 'web', false);
+      p = L.anotarRespuesta(p, 'prompt', 'equipo', true);
+      igual(p.stats.aciertos, { prompt: [2, 1] });
+      igual(p.stats.temas, { web: [1, 1], equipo: [1, 0] });
+    });
+
+    prueba('Medallas: oro, plata y bronce del día; top 10 y campeón del mes; cada periodo una vez', () => {
+      let r = L.anotarPuesto(L.progresoNuevo(), 'dia', '2026-11-01', 1);
+      igual([r.medalla, r.progreso.medallas.oro, r.progreso.medallas.dia], ['oro', 1, '2026-11-01']);
+      igual(L.anotarPuesto(r.progreso, 'dia', '2026-11-01', 1).medalla, null, 'el mismo día no cuenta dos veces');
+      r = L.anotarPuesto(r.progreso, 'dia', '2026-11-02', 3);
+      igual([r.medalla, r.progreso.medallas.bronce], ['bronce', 1]);
+      igual(L.anotarPuesto(r.progreso, 'dia', '2026-11-03', 4).medalla, null);
+      igual(L.anotarPuesto(r.progreso, 'dia', '2026-11-03', null).progreso.medallas.dia, '2026-11-03', 'sin puesto también queda revisado');
+      r = L.anotarPuesto(r.progreso, 'mes', '2026-10', 1);
+      igual([r.medalla, r.progreso.medallas.campeonMes, r.progreso.medallas.top10Mes], ['campeonMes', 1, 1]);
+      igual(L.anotarPuesto(r.progreso, 'mes', '2026-11', 10).medalla, 'top10Mes');
+      igual(L.anotarPuesto(r.progreso, 'mes', '2026-11', 11).medalla, null);
+    });
+
+    prueba('Reto: solo cuenta el primer intento del día', () => {
+      let r = L.anotarReto(L.progresoNuevo(), { dia: '2026-11-02', juego: 'prompt', aciertos: 10, total: 10, segundos: 80 });
+      igual([r.nuevo, r.progreso.stats.retos, r.progreso.stats.retosPerfectos], [true, 1, 1]);
+      const otra = L.anotarReto(r.progreso, { dia: '2026-11-02', juego: 'prompt', aciertos: 3, total: 10, segundos: 30 });
+      igual([otra.nuevo, otra.progreso.reto.aciertos], [false, 10]);
+      r = L.anotarReto(r.progreso, { dia: '2026-11-03', juego: 'acronimos', aciertos: 6, total: 10, segundos: 99 });
+      igual([r.nuevo, r.progreso.stats.retos, r.progreso.stats.retosPerfectos], [true, 2, 1]);
+    });
+
+    prueba('Importar v3: conserva medallas, reto y aciertos válidos; descarta lo raro', () => {
+      const p = { ...L.progresoNuevo(),
+        medallas: { oro: 2, plata: 'x', bronce: 1, top10Mes: 0, campeonMes: 0, dia: '2026-11-01', mes: 'nope' },
+        reto: { dia: '2026-11-02', juego: 'prompt', aciertos: 12, total: 10, segundos: 50 },
+        stats: { ...L.progresoNuevo().stats, aciertos: { prompt: [3, 1], mal: [1] }, temas: { web: [2, 2] }, retos: 4 } };
+      const r = L.validarImportacion(L.crearExportacion({}, p)).progreso;
+      igual([r.medallas.oro, r.medallas.plata, r.medallas.dia, r.medallas.mes], [2, 0, '2026-11-01', null]);
+      igual(r.reto, null, 'más aciertos que ejercicios');
+      igual([r.stats.aciertos, r.stats.temas, r.stats.retos], [{ prompt: [3, 1] }, { web: [2, 2] }, 4]);
+    });
+
+    prueba('Logros nuevos: medalla, oro, top 10, campeón y retos', () => {
+      let p = { ...L.progresoNuevo(), medallas: { ...L.progresoNuevo().medallas, bronce: 1, top10Mes: 1 } };
+      p = { ...p, stats: { ...p.stats, retos: 1, retosPerfectos: 1 } };
+      const { nuevos } = comprobarLogros(p, '2026-11-02', { juegos: [] });
+      for (const id of ['medalla', 'top10-mes', 'reto-1', 'reto-perfecto']) verdadero(nuevos.includes(id), id);
+      for (const id of ['oro', 'campeon-mes', 'reto-7']) verdadero(!nuevos.includes(id), id);
+    });
+
+    prueba('Estadísticas: porcentajes, peores primero e historial de 14 días', () => {
+      const p = { ...L.progresoNuevo(), dias: { '2026-11-02': 600, '2026-10-20': 120 } };
+      p.stats = { ...p.stats, juegos: { a: 3, b: 1, c: 2 }, aciertos: { a: [9, 1], b: [2, 8], c: [6, 6] }, temas: { web: [5, 5] } };
+      const e = calcularEstadisticas(p, [{ id: 'a' }, { id: 'b' }, { id: 'c' }, { id: 'd' }], ['web', 'equipo'], '2026-11-02');
+      igual(e.porJuego.map((r) => [r.id, r.pct]), [['b', 20], ['c', 50], ['a', 90]]);
+      igual([e.respuestas, e.pct], [32, 53]);
+      igual(e.porTema, [{ id: 'web', aciertos: 5, fallos: 5, pct: 50 }, { id: 'equipo', aciertos: 0, fallos: 0, pct: null }]);
+      igual([e.historial.length, e.historial[13], e.historial[0].dia, e.historial[0].minutos], [14, { dia: '2026-11-02', minutos: 10 }, '2026-10-20', 2]);
+      igual(e.flojos, ['b', 'c']);
+    });
+
+    prueba('Flojos: hacen falta 10 respuestas y menos de un 75 % de aciertos', () => {
+      const p = { ...L.progresoNuevo() };
+      p.stats = { ...p.stats, aciertos: { pocas: [0, 9], bien: [8, 2], justo: [7, 3] } };
+      igual(juegosFlojos(p), ['justo']);
+    });
+
+    prueba('Práctica: después de los repasos entra el minijuego más flojo', () => {
+      const juegos = [
+        { id: 'a', categoria: 'x', prefijo: 'aa' }, { id: 'b', categoria: 'y', prefijo: 'bb' },
+        { id: 'c', categoria: 'z', prefijo: 'cc' }, { id: 'd', categoria: 'x', prefijo: 'dd' },
+      ];
+      igual(elegirPractica('2026-11-02', juegos, { cc: 3 }, {}, ['d', 'b']).slice(0, 2), ['c', 'd']);
+      verdadero(elegirPractica('2026-11-02', juegos, {}, {}, ['b']).includes('b'), 'sin repasos, el flojo primero');
     });
 
     // --- Ajustes (T011) ---

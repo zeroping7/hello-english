@@ -26,6 +26,14 @@ export const LOGROS = [
   { id: 'practica-7', icono: 'objetivo', cumple: (p) => p.stats.practicas >= 7 },
   { id: 'repaso-10', icono: 'repaso', cumple: (p) => p.stats.aprendidos >= 10 },
   { id: 'repaso-50', icono: 'repaso', cumple: (p) => p.stats.aprendidos >= 50 },
+  // Ranking y reto del día (specs 029 y 033)
+  { id: 'medalla', icono: 'medalla', cumple: (p) => p.medallas.oro + p.medallas.plata + p.medallas.bronce >= 1 },
+  { id: 'oro', icono: 'medalla', cumple: (p) => p.medallas.oro >= 1 },
+  { id: 'top10-mes', icono: 'ranking', cumple: (p) => p.medallas.top10Mes >= 1 },
+  { id: 'campeon-mes', icono: 'logros', cumple: (p) => p.medallas.campeonMes >= 1 },
+  { id: 'reto-1', icono: 'reto', cumple: (p) => p.stats.retos >= 1 },
+  { id: 'reto-perfecto', icono: 'reto', cumple: (p) => p.stats.retosPerfectos >= 1 },
+  { id: 'reto-7', icono: 'reto', cumple: (p) => p.stats.retos >= 7 },
 ];
 
 /**

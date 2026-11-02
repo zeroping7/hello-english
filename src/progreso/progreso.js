@@ -5,6 +5,7 @@ import { hoy } from './reloj.js';
 import {
   VERSION_PROGRESO, MIGRACIONES_PROGRESO, progresoNuevo, puntosPorAcierto, sumarPuntos,
   sumarSegundos, rachaVisible, segundosHoy, anotarRepaso, repasosPendientes, anotarNivel, anotarPartida,
+  anotarRespuesta, anotarPuesto, anotarReto,
 } from './logica.js';
 import { comprobarLogros } from './logros.js';
 import { practicaDeHoy, marcarHecho } from './practica.js';
@@ -61,14 +62,16 @@ export function registrarAcierto(nivel, dificultad = 1) {
 }
 
 /**
- * Resultado de un ejercicio: puntos si acierta, repaso espaciado y subida de nivel.
+ * Resultado de un ejercicio: puntos si acierta, repaso espaciado, subida de nivel y
+ * estadísticas por minijuego y tema (spec 034).
  * @returns {number} puntos ganados
  */
-export function registrarResultado(item, acierto, dificultad = 1) {
+export function registrarResultado(item, acierto, dificultad = 1, juegoId = null) {
   const dia = hoy();
   const puntos = acierto ? puntosPorAcierto(item.nivel, dificultad) : 0;
   let p = sumarPuntos(leerProgreso(), puntos);
   p = anotarRepaso(p, item.id, acierto, dia);
+  p = anotarRespuesta(p, juegoId, item.tema, acierto);
   const r = anotarNivel(p, item.nivel, acierto);
   guardar(r.progreso);
   if (r.sube) eventos.dispatchEvent(new CustomEvent('nivel', { detail: { nivel: r.progreso.nivel } }));
@@ -86,6 +89,27 @@ export function registrarPartida(juegoId, aciertos, total, { practica = false } 
   }
   guardar(p);
   return { practicaCompleta: completa };
+}
+
+/**
+ * Puesto final de un día o un mes del ranking (spec 029). Avisa con 'medalla' si gana una.
+ * @returns {string|null} la medalla ganada
+ */
+export function registrarPuesto(tipo, periodo, pos) {
+  const r = anotarPuesto(leerProgreso(), tipo, periodo, pos);
+  if (r.progreso !== leerProgreso()) guardar(r.progreso);
+  if (r.medalla) eventos.dispatchEvent(new CustomEvent('medalla', { detail: { medalla: r.medalla, tipo, periodo, pos } }));
+  return r.medalla;
+}
+
+/** Ya se revisó el puesto de ese periodo ('dia' o 'mes'). */
+export const puestoRevisado = (tipo, periodo) => leerProgreso().medallas[tipo] === periodo;
+
+/** Resultado del reto del día (spec 033). nuevo = es el primero de hoy, el que cuenta. */
+export function registrarReto(reto) {
+  const r = anotarReto(leerProgreso(), reto);
+  if (r.nuevo) guardar(r.progreso);
+  return { nuevo: r.nuevo };
 }
 
 /** Repasos pendientes hoy de un banco (por su prefijo) o de todos. */
@@ -139,3 +163,4 @@ export const alCambiarRanking = (fn) => escuchar('ranking', fn);
 export const alCumplirObjetivo = (fn) => escuchar('objetivo', fn);
 export const alConseguirLogro = (fn) => escuchar('logro', fn);
 export const alSubirNivel = (fn) => escuchar('nivel', fn);
+export const alGanarMedalla = (fn) => escuchar('medalla', fn);

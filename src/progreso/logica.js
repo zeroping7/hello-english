@@ -2,7 +2,7 @@
 // fecha llega desde fuera como texto 'AAAA-MM-DD' en hora local (plan de 000, §3; D-010).
 import { limpiarRanking } from '../ranking/logica.js';
 
-export const VERSION_PROGRESO = 2;
+export const VERSION_PROGRESO = 3;
 export const NIVELES = ['A1', 'A2', 'B1', 'B2', 'C1'];
 const MULTIPLICADOR = { A1: 1, A2: 1.2, B1: 1.5, B2: 1.8, C1: 2 };
 const DIAS_GUARDADOS = 60;
@@ -18,7 +18,18 @@ export function progresoNuevo() {
     ultimoDiaCumplido: null,
     racha: 0,
     ...camposV2(),
+    ...camposV3(),
   };
+}
+
+/** Lo que añade la v3 (specs 029, 033 y 034): medallas del ranking y último reto del día. */
+function camposV3() {
+  return { medallas: medallasNuevas(), reto: null };
+}
+
+function medallasNuevas() {
+  // dia / mes: último día ('AAAA-MM-DD') y mes ('AAAA-MM') ya revisados, para no contar dos veces
+  return { oro: 0, plata: 0, bronce: 0, top10Mes: 0, campeonMes: 0, dia: null, mes: null };
 }
 
 /** Lo que añade la v2 del formato (specs 022-025): repaso, estadísticas, logros, nivel y práctica. */
@@ -33,7 +44,11 @@ function camposV2() {
 }
 
 function statsNuevas() {
-  return { partidas: 0, perfectas: 0, juegos: {}, practicas: 0, aprendidos: 0, rachaMax: 0 };
+  return {
+    partidas: 0, perfectas: 0, juegos: {}, practicas: 0, aprendidos: 0, rachaMax: 0,
+    // v3 (spec 034): [aciertos, fallos] por minijuego y por tema; retos jugados y sin fallos (spec 033)
+    aciertos: {}, temas: {}, retos: 0, retosPerfectos: 0,
+  };
 }
 
 /** Puntos de un acierto: round(10 × nivel × dificultad). */
@@ -115,13 +130,14 @@ export function crearExportacion(ajustes, progreso, ahora = new Date(), ranking 
     exportado: ahora.toISOString(),
     ajustes,
     progreso,
-    ...(ranking && { ranking: { v: ranking.v, alias: ranking.alias, codigo: ranking.codigo, pendiente: null } }),
+    ...(ranking && { ranking: { v: ranking.v, alias: ranking.alias, codigo: ranking.codigo, pendiente: null, reto: null } }),
   };
 }
 
 /** Lleva un progreso antiguo a la versión actual: migraciones[n] pasa de la v n a la n+1. */
 export const MIGRACIONES_PROGRESO = {
   1: (p) => ({ ...p, ...camposV2(), stats: { ...statsNuevas(), rachaMax: esEnteroNoNegativo(p.racha) ? p.racha : 0 } }),
+  2: (p) => ({ ...p, ...camposV3(), stats: { ...statsNuevas(), ...p.stats } }),
 };
 
 function progresoValido(p) {
@@ -158,7 +174,7 @@ export function validarImportacion(datos) {
   return {
     ok: true,
     ajustes: datos.ajustes,
-    progreso: { v: VERSION_PROGRESO, nivel, nivelProbado, puntos, dias: { ...dias }, ultimoDiaCumplido, racha, ...limpiarV2(p) },
+    progreso: { v: VERSION_PROGRESO, nivel, nivelProbado, puntos, dias: { ...dias }, ultimoDiaCumplido, racha, ...limpiarV2(p), ...limpiarV3(p) },
     // Un ranking que no tenga la forma esperada se ignora: el resto del archivo vale igual
     ranking: limpiarRanking(datos.ranking),
   };
@@ -181,6 +197,11 @@ function limpiarV2(p) {
     if (esObjeto(p.stats.juegos)) {
       for (const [id, n] of Object.entries(p.stats.juegos)) if (esEnteroNoNegativo(n)) stats.juegos[id] = n;
     }
+    for (const k of ['retos', 'retosPerfectos']) if (esEnteroNoNegativo(p.stats[k])) stats[k] = p.stats[k];
+    const par = (v) => Array.isArray(v) && v.length === 2 && v.every(esEnteroNoNegativo);
+    for (const k of ['aciertos', 'temas']) {
+      if (esObjeto(p.stats[k])) for (const [id, v] of Object.entries(p.stats[k])) if (par(v)) stats[k][id] = [v[0], v[1]];
+    }
   }
   const logros = {};
   if (esObjeto(p.logros)) for (const [id, f] of Object.entries(p.logros)) if (ES_FECHA.test(f)) logros[id] = f;
@@ -190,6 +211,23 @@ function limpiarV2(p) {
     ? { dia: pr.dia, juegos: pr.juegos.filter((j) => typeof j === 'string'), hechos: pr.hechos.filter((j) => typeof j === 'string') }
     : null;
   return { repaso, stats, logros, ventana, practica };
+}
+
+/** Los campos de la v3 de un archivo importado (medallas y reto). */
+function limpiarV3(p) {
+  const medallas = medallasNuevas();
+  const m = p.medallas;
+  if (m && typeof m === 'object') {
+    for (const k of ['oro', 'plata', 'bronce', 'top10Mes', 'campeonMes']) if (esEnteroNoNegativo(m[k])) medallas[k] = m[k];
+    if (ES_FECHA.test(m.dia ?? '')) medallas.dia = m.dia;
+    if (/^\d{4}-\d{2}$/.test(m.mes ?? '')) medallas.mes = m.mes;
+  }
+  const r = p.reto;
+  const reto = r && typeof r === 'object' && ES_FECHA.test(r.dia ?? '') && typeof r.juego === 'string'
+    && [r.aciertos, r.total, r.segundos].every(esEnteroNoNegativo) && r.aciertos <= r.total
+    ? { dia: r.dia, juego: r.juego, aciertos: r.aciertos, total: r.total, segundos: r.segundos }
+    : null;
+  return { medallas, reto };
 }
 
 // --- Repaso espaciado (spec 022, D-018): solo lo que se ha fallado ---
@@ -254,5 +292,60 @@ export function anotarPartida(progreso, juegoId, aciertos, total) {
       perfectas: s.perfectas + (total > 0 && aciertos === total ? 1 : 0),
       juegos: { ...s.juegos, [juegoId]: (s.juegos[juegoId] ?? 0) + 1 },
     },
+  };
+}
+
+// --- Aciertos por minijuego y por tema (spec 034) ---
+
+const sumarPar = (par = [0, 0], acierto) => (acierto ? [par[0] + 1, par[1]] : [par[0], par[1] + 1]);
+
+export function anotarRespuesta(progreso, juegoId, tema, acierto) {
+  const s = progreso.stats;
+  return {
+    ...progreso,
+    stats: {
+      ...s,
+      aciertos: juegoId ? { ...s.aciertos, [juegoId]: sumarPar(s.aciertos[juegoId], acierto) } : s.aciertos,
+      temas: tema ? { ...s.temas, [tema]: sumarPar(s.temas[tema], acierto) } : s.temas,
+    },
+  };
+}
+
+// --- Medallas del ranking (spec 029) ---
+
+export const MEDALLA_DIA = { 1: 'oro', 2: 'plata', 3: 'bronce' };
+
+/**
+ * Anota el puesto de un día ya cerrado ('dia', periodo 'AAAA-MM-DD') o de un mes ('mes',
+ * 'AAAA-MM'). Cada periodo cuenta una sola vez.
+ * @returns {{ progreso: object, medalla: string|null }} medalla: 'oro' | 'plata' | 'bronce' | 'top10Mes' | 'campeonMes'
+ */
+export function anotarPuesto(progreso, tipo, periodo, pos) {
+  const m = progreso.medallas;
+  if (m[tipo] === periodo) return { progreso, medalla: null };
+  let medalla = null;
+  if (Number.isInteger(pos) && pos > 0) {
+    if (tipo === 'dia') medalla = MEDALLA_DIA[pos] ?? null;
+    else if (pos === 1) medalla = 'campeonMes';
+    else if (pos <= 10) medalla = 'top10Mes';
+  }
+  const nuevas = { ...m, [tipo]: periodo };
+  if (medalla) nuevas[medalla] += 1;
+  if (medalla === 'campeonMes') nuevas.top10Mes += 1; // el campeón también está en el top 10
+  return { progreso: { ...progreso, medallas: nuevas }, medalla };
+}
+
+// --- Reto del día (spec 033): solo cuenta el primer intento de cada día ---
+
+export function anotarReto(progreso, reto) {
+  if (progreso.reto?.dia === reto.dia) return { progreso, nuevo: false };
+  const s = progreso.stats;
+  return {
+    progreso: {
+      ...progreso,
+      reto: { dia: reto.dia, juego: reto.juego, aciertos: reto.aciertos, total: reto.total, segundos: reto.segundos },
+      stats: { ...s, retos: s.retos + 1, retosPerfectos: s.retosPerfectos + (reto.aciertos === reto.total ? 1 : 0) },
+    },
+    nuevo: true,
   };
 }

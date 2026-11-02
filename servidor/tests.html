@@ -16,6 +16,8 @@
     import {
       REGLAS, diaMadrid, rangoMes, inicioMesAnterior, validarAlias, validarEnvio,
       crearCodigo, normalizarCodigo, sha256, posiciones, origenPermitido,
+      diasEntre, diaAnterior, rangoPeriodo, nivelValido, rachaAceptada, validarReto, posicionesReto,
+      endpointValido, zonaValida, horaLocal, recordatorioToca, jwtVapid, aBase64Url,
     } from './worker.js';
 
     // --- Día y mes de Madrid ---
@@ -115,6 +117,90 @@
       verdadero(!origenPermitido('https://otra-web.com'), 'otra web');
       verdadero(!origenPermitido('https://zeroping7.github.io.evil.com'), 'imitación');
       verdadero(!origenPermitido(null), 'sin origen');
+    });
+
+    // --- v2: periodos, ligas, rachas, reto y recordatorios (specs 028-033) ---
+
+    prueba('Periodos: hoy, ayer, este mes y el mes pasado', () => {
+      igual(diasEntre('2026-10-30', '2026-11-02'), 3);
+      igual(diaAnterior('2026-03-01'), '2026-02-28');
+      igual(rangoPeriodo('ayer', '2026-11-01'), { periodo: 'ayer', desde: '2026-10-31', hasta: '2026-10-31', dia: '2026-10-31' });
+      igual(rangoPeriodo('mesAnterior', '2027-01-15'), { periodo: 'mesAnterior', desde: '2026-12-01', hasta: '2026-12-31', dia: '2026-12-01' });
+      igual(rangoPeriodo('mes', '2026-11-15').desde, '2026-11-01');
+      igual(rangoPeriodo('otro', '2026-11-15').periodo, 'dia');
+    });
+
+    prueba('Ligas: solo los cinco niveles', () => {
+      igual(nivelValido('B2'), 'B2');
+      igual(nivelValido('b2'), null);
+      igual(nivelValido(undefined), null);
+    });
+
+    prueba('Rachas: suben como mucho 1 por día; la primera, hasta un año', () => {
+      igual(rachaAceptada(12, null, '2026-11-02'), 12);
+      igual(rachaAceptada(5000, null, '2026-11-02'), 365);
+      igual(rachaAceptada(13, { racha: 12, dia: '2026-11-02' }, '2026-11-02'), 13, 'cumple el objetivo hoy');
+      igual(rachaAceptada(20, { racha: 12, dia: '2026-11-01' }, '2026-11-02'), 13);
+      igual(rachaAceptada(15, { racha: 12, dia: '2026-10-30' }, '2026-11-02'), 15, 'jugó sin red esos días');
+      igual(rachaAceptada(0, { racha: 12, dia: '2026-10-30' }, '2026-11-02'), 0, 'la perdió');
+      igual(rachaAceptada(-1, null, '2026-11-02'), null);
+      igual(rachaAceptada('7', null, '2026-11-02'), null);
+    });
+
+    prueba('Reto: 10 ejercicios, aciertos posibles y un tiempo razonable', () => {
+      const bien = { juego: 'merge-conflict', aciertos: 7, total: 10, segundos: 90 };
+      verdadero(validarReto(bien).ok);
+      for (const mal of [{ ...bien, total: 8 }, { ...bien, aciertos: 11 }, { ...bien, segundos: 3 }, { ...bien, juego: '../x' }, null]) {
+        igual(validarReto(mal), { ok: false, motivo: 'imposible' }, JSON.stringify(mal));
+      }
+    });
+
+    prueba('Reto: más aciertos primero; a igualdad, el más rápido', () => {
+      const filas = [
+        { alias: 'a', aciertos: 10, total: 10, segundos: 80 },
+        { alias: 'b', aciertos: 9, total: 10, segundos: 50 },
+        { alias: 'c', aciertos: 9, total: 10, segundos: 50 },
+        { alias: 'd', aciertos: 9, total: 10, segundos: 70 },
+      ];
+      igual(posicionesReto(filas).map((f) => f.pos), [1, 2, 2, 4]);
+    });
+
+    prueba('Recordatorios: solo direcciones de servicios push de navegadores', () => {
+      verdadero(endpointValido('https://fcm.googleapis.com/fcm/send/abc'), 'Chrome');
+      verdadero(endpointValido('https://updates.push.services.mozilla.com/wpush/v2/abc'), 'Firefox');
+      verdadero(endpointValido('https://web.push.apple.com/abc'), 'Safari');
+      verdadero(!endpointValido('https://mi-web.com/push'), 'otra web');
+      verdadero(!endpointValido('http://fcm.googleapis.com/x'), 'sin https');
+      verdadero(!endpointValido('https://googleapis.com.evil.com/x'), 'imitación');
+    });
+
+    prueba('Recordatorios: hora local de cada zona', () => {
+      igual(horaLocal(new Date('2026-11-02T08:30:00Z'), 'Europe/Madrid'), { dia: '2026-11-02', hora: 9 });
+      igual(horaLocal(new Date('2026-11-02T08:30:00Z'), 'America/Mexico_City'), { dia: '2026-11-02', hora: 2 });
+      verdadero(zonaValida('Atlantic/Canary'));
+      verdadero(!zonaValida('Marte/Base'));
+    });
+
+    prueba('Recordatorios: desde la hora elegida, una vez al día y si no ha cumplido', () => {
+      const r = { hora: 20, zona: 'Europe/Madrid', ultimo: null, hecho: null };
+      const a = (iso) => new Date(iso);
+      verdadero(!recordatorioToca(r, a('2026-11-02T18:50:00Z')), '19:50, aún no');
+      verdadero(recordatorioToca(r, a('2026-11-02T19:05:00Z')), '20:05');
+      verdadero(recordatorioToca(r, a('2026-11-02T21:30:00Z')), '22:30, dentro de la ventana');
+      verdadero(!recordatorioToca(r, a('2026-11-02T22:10:00Z')), '23:10, ya es tarde');
+      verdadero(!recordatorioToca({ ...r, ultimo: '2026-11-02' }, a('2026-11-02T19:20:00Z')), 'ya avisado hoy');
+      verdadero(!recordatorioToca({ ...r, hecho: '2026-11-02' }, a('2026-11-02T19:20:00Z')), 'objetivo cumplido');
+    });
+
+    prueba('Recordatorios: la firma VAPID se verifica con la clave pública', async () => {
+      const par = await crypto.subtle.generateKey({ name: 'ECDSA', namedCurve: 'P-256' }, true, ['sign', 'verify']);
+      const jwt = await jwtVapid(par.privateKey, 'https://fcm.googleapis.com', new Date('2026-11-02T10:00:00Z'));
+      const [cab, datos, firma] = jwt.split('.');
+      const de64 = (s) => Uint8Array.from(atob(s.replace(/-/g, '+').replace(/_/g, '/') + '='.repeat((4 - (s.length % 4)) % 4)), (c) => c.charCodeAt(0));
+      igual(JSON.parse(new TextDecoder().decode(de64(cab))), { typ: 'JWT', alg: 'ES256' });
+      igual(JSON.parse(new TextDecoder().decode(de64(datos))).aud, 'https://fcm.googleapis.com');
+      verdadero(await crypto.subtle.verify({ name: 'ECDSA', hash: 'SHA-256' }, par.publicKey, de64(firma), new TextEncoder().encode(`${cab}.${datos}`)), 'firma');
+      igual(aBase64Url(new Uint8Array([251, 255])), '-_8');
     });
 
     ejecutar(document.getElementById('app'));

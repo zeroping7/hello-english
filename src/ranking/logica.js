@@ -35,9 +35,28 @@ export function diaMadrid(fecha = new Date()) {
   }).format(fecha);
 }
 
+/** Día anterior a uno 'AAAA-MM-DD'. */
+export function diaAnterior(dia) {
+  const [a, m, d] = dia.split('-').map(Number);
+  return new Date(Date.UTC(a, m - 1, d - 1)).toISOString().slice(0, 10);
+}
+
+/** Mes anterior al de un día: '2026-01-15' → '2025-12'. */
+export function mesAnterior(dia) {
+  const [a, m] = dia.split('-').map(Number);
+  return m === 1 ? `${a - 1}-12` : `${a}-${String(m - 1).padStart(2, '0')}`;
+}
+
 /** Datos guardados al unirse o recuperar. */
 export function rankingNuevo(alias, codigo) {
-  return { v: VERSION_RANKING, alias, codigo, pendiente: null };
+  return { v: VERSION_RANKING, alias, codigo, pendiente: null, reto: null };
+}
+
+/** Resultado del reto que se puede enviar: el de hoy y con la forma que acepta el servidor. */
+export function retoValido(r, dia) {
+  return Boolean(r && r.dia === dia && typeof r.juego === 'string'
+    && Number.isInteger(r.aciertos) && Number.isInteger(r.total) && Number.isInteger(r.segundos)
+    && r.aciertos >= 0 && r.aciertos <= r.total);
 }
 
 /** Suma una partida a lo pendiente de enviar; lo de otro día se descarta (spec HU-2). */
@@ -90,5 +109,9 @@ export function limpiarRanking(r) {
     && Number.isInteger(p.puntos) && p.puntos > 0 && Number.isInteger(p.ejercicios) && p.ejercicios > 0
     ? { dia: p.dia, puntos: p.puntos, ejercicios: p.ejercicios }
     : null;
-  return { v: VERSION_RANKING, alias: r.alias, codigo, pendiente };
+  // Reto del día pendiente de enviar (spec 033); opcional, no cambia la versión del formato
+  const reto = r.reto && retoValido(r.reto, r.reto.dia)
+    ? { dia: r.reto.dia, juego: r.reto.juego, aciertos: r.reto.aciertos, total: r.reto.total, segundos: r.reto.segundos }
+    : null;
+  return { v: VERSION_RANKING, alias: r.alias, codigo, pendiente, reto };
 }

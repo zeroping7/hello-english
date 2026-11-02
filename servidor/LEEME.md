@@ -5,7 +5,7 @@ API del ranking (spec 027): un **Cloudflare Worker** con una base de datos **D1*
 | Archivo | Para qué |
 |---|---|
 | `worker.js` | El código del Worker. Se pega entero en el editor de Cloudflare |
-| `esquema.sql` | Las tablas. Se pega una vez en la consola de D1 |
+| `esquema.sql` | Las tablas. Se pega una vez en la consola de D1 (solo en una instalación nueva) |
 | `tests.html` | Pruebas de las reglas (ábrelo en el navegador) |
 
 > Los nombres de los menús de Cloudflare pueden cambiar un poco; si algo no coincide, busca la opción equivalente.
@@ -48,6 +48,20 @@ Pon esa URL (sin `/ranking...`) en `src/ranking/config.js` y sube la versión, o
 Para probar la app contra el Worker sin cambiar nada: abre la web con
 `?debug=1&api=https://hello-english-ranking.<tu-usuario>.workers.dev`.
 
+### 7. Recordatorios: cron cada 15 minutos
+Para que lleguen los recordatorios diarios (spec 032), el Worker tiene que despertarse solo:
+1. En el Worker: **Settings → Trigger events** (en algunos paneles, **Triggers**) → **Add → Cron trigger**.
+2. Elige **Custom** / escribe `*/15 * * * *` → **Add** / **Deploy**.
+
+Sin esto, todo lo demás funciona, pero no llega ningún recordatorio.
+
+## Actualizar a la v2 (app 1.2.0)
+Si ya tenías el ranking de la v1.1:
+1. Worker → **Edit code** → borra todo, pega el `worker.js` nuevo → **Deploy**.
+2. Añade el cron del paso 7.
+
+No hace falta tocar la base de datos: el Worker añade solo las columnas y tablas nuevas la primera vez que recibe una petición (D-024). Para comprobarlo, abre `<URL>/rachas`: debe responder `{"api":2, ... "top":[] ...}`.
+
 ## Mantenimiento
 - **Actualizar el Worker** tras un cambio en `worker.js`: Worker → **Edit code** → pegar → **Deploy**.
 - **Borrar un alias ofensivo**: base de datos → **Console**:
@@ -57,6 +71,7 @@ Para probar la app contra el Worker sin cambiar nada: abre la web con
   ```
   Y añade la palabra a `VETADAS_PARTE` o `VETADAS_ENTERA` en `worker.js`.
 - **Ver cuántos jugadores hay**: `SELECT COUNT(*) FROM jugadores;`
+- **Ver cuántos recordatorios hay**: `SELECT COUNT(*) FROM recordatorios;`
 - **Límites gratis**: 100.000 peticiones al día. Si se superan, el ranking falla hasta medianoche UTC; la app sigue funcionando y no se cobra nada.
 
 ## API
@@ -69,3 +84,11 @@ Todas las respuestas son JSON. Las rutas de un jugador llevan `Authorization: Be
 | `GET /ranking?periodo=dia\|mes` | código opcional | 200 `{ periodo, dia, top: [{ pos, alias, puntos }], yo, jugadores }` |
 | `POST /recuperar` | — | 200 `{ alias }` · 401 código |
 | `DELETE /yo` | — | 204 · 401 código |
+| `GET /ranking?periodo=ayer\|mesAnterior&liga=B1` | código opcional | Igual que arriba, con `api: 2`, `desde`, `hasta` y `liga` (specs 028 y 030) |
+| `GET /rachas` | código opcional | 200 `{ dia, top: [{ pos, alias, racha }], yo, jugadores }` (spec 031) |
+| `POST /reto` | `{ juego, aciertos, total: 10, segundos }` | 201 · 409 ya jugado · 422 imposible (spec 033) |
+| `GET /reto` | código opcional | 200 `{ dia, top: [{ pos, alias, aciertos, total, segundos }], yo, jugadores }` |
+| `GET /recordatorio/clave` | — | 200 `{ clave }` (clave pública VAPID, spec 032) |
+| `POST /recordatorio` | `{ endpoint, hora, zona, idioma }` | 201 · 422 · 429 |
+| `DELETE /recordatorio` | `{ endpoint }` | 204 |
+| `POST /recordatorio/hecho` | `{ endpoint, dia }` | 204 (ese día no se avisa) |

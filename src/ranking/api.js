@@ -1,7 +1,7 @@
 // Llamadas a la API del ranking (servidor/LEEME.md). Cada función devuelve
 // { ok: true, datos } o { ok: false, motivo } con un motivo que la interfaz sabe traducir:
 // 'sin-servidor', 'sin-red', 'alias-usado', 'alias-no-valido', 'vetado', 'codigo',
-// 'imposible', 'tope' o 'servidor'.
+// 'imposible', 'tope', 'ya-jugado', 'sin-version' (servidor antiguo) o 'servidor'.
 import { API } from './config.js';
 
 const ESPERA_MS = 8000;
@@ -35,7 +35,8 @@ async function pedir(metodo, ruta, { codigo = null, cuerpo = null } = {}) {
 function motivoDe(estado, datos) {
   const error = datos?.error;
   if (error === 'alias-no-valido' && datos.motivo === 'vetado') return 'vetado';
-  if (['alias-usado', 'alias-no-valido', 'codigo', 'imposible', 'tope'].includes(error)) return error;
+  if (['alias-usado', 'alias-no-valido', 'codigo', 'imposible', 'tope', 'ya-jugado'].includes(error)) return error;
+  if (estado === 404) return 'sin-version'; // servidor sin actualizar a la v2
   if (estado === 401) return 'codigo';
   if (estado === 429) return 'tope';
   return 'servidor';
@@ -43,6 +44,15 @@ function motivoDe(estado, datos) {
 
 export const unirse = (alias) => pedir('POST', '/unirse', { cuerpo: { alias } });
 export const enviarPuntos = (codigo, envio) => pedir('POST', '/puntos', { codigo, cuerpo: envio });
-export const clasificacion = (periodo, codigo = null) => pedir('GET', `/ranking?periodo=${periodo}`, { codigo });
+export const clasificacion = (periodo, codigo = null, liga = null) =>
+  pedir('GET', `/ranking?periodo=${periodo}${liga ? `&liga=${liga}` : ''}`, { codigo });
+export const rachas = (codigo = null) => pedir('GET', '/rachas', { codigo });
+export const reto = (codigo = null) => pedir('GET', '/reto', { codigo });
+export const enviarReto = (codigo, resultado) => pedir('POST', '/reto', { codigo, cuerpo: resultado });
+// Recordatorios (spec 032): no necesitan estar en el ranking
+export const claveRecordatorio = () => pedir('GET', '/recordatorio/clave');
+export const guardarRecordatorio = (datos) => pedir('POST', '/recordatorio', { cuerpo: datos });
+export const borrarRecordatorio = (endpoint) => pedir('DELETE', '/recordatorio', { cuerpo: { endpoint } });
+export const recordatorioHecho = (endpoint, dia) => pedir('POST', '/recordatorio/hecho', { cuerpo: { endpoint, dia } });
 export const recuperar = (codigo) => pedir('POST', '/recuperar', { codigo });
 export const salir = (codigo) => pedir('DELETE', '/yo', { codigo });

@@ -197,3 +197,35 @@ Una entrada por decisión. Nunca se borran; si cambian, se añade una nueva que 
 - Decisión: la `dificultad` del registro sigue la forma de responder: **1** elegir, tocar o deslizar; **1,3** ordenar, corregir o escribir; **1,5** escribir lo que se oye, hablar o leer textos largos (tabla de la spec 027, §4). En Daily standup y Entrevista, responder hablando vale 1,5 aunque el minijuego sea 1: `alResponder(item, acierto, { hablado: true })`.
 - Alternativas descartadas: puntos distintos para la app y para el ranking (dos marcadores confunden); medir el tiempo de respuesta (premia ir rápido, no el esfuerzo).
 - Consecuencias: un acierto vale como mucho `10 × 2 × 1,5 = 30` puntos, cifra que usan los topes del servidor. Los puntos ya ganados no cambian.
+
+## D-024 — Servidor v2 que se actualiza solo
+- Fecha: 2026-11-02
+- Estado: Aceptada
+- Contexto: las specs 028-033 necesitan columnas y tablas nuevas en D1 (nivel, racha, reto, recordatorios), y el usuario solo usa el panel web de Cloudflare.
+- Decisión: `servidor/worker.js` comprueba en la primera petición (o en el cron) qué columnas y tablas faltan (`PRAGMA table_info`) y las crea. Basta con volver a pegar el Worker; no hay que tocar la consola de D1. `esquema.sql` trae el esquema completo para instalaciones nuevas. La app manda también el nivel (liga) y la racha con cada envío de puntos.
+- Alternativas descartadas: pedir al usuario que pegue un SQL de migración (un paso más que se puede olvidar o hacer mal).
+- Consecuencias: entre publicar la app y actualizar el Worker, las funciones nuevas dicen «hay que actualizar el servidor» (`sin-version`); el ranking de siempre sigue funcionando.
+
+## D-025 — Recordatorios con Web Push desde el Worker
+- Fecha: 2026-11-02
+- Estado: Aceptada
+- Contexto: la spec 032 pide un aviso diario con la app cerrada. Los navegadores no tienen notificaciones programadas fiables; hace falta un servidor que mande un push. Toca la regla PR1.
+- Decisión: excepción a PR1 **solo para quien active el recordatorio**. El Worker guarda la dirección de avisos del navegador (endpoint), la hora, la zona horaria y el idioma, y un cron cada 15 minutos manda un **push vacío** firmado con VAPID (claves que el Worker crea y guarda en D1). El texto lo pone `sw.js` en el idioma de la app. Solo se aceptan endpoints de los servicios push de los navegadores. Si ese día se cumple el objetivo, la app lo dice (`/recordatorio/hecho`) y no se avisa.
+- Alternativas descartadas: Periodic Background Sync (solo Chrome con la app instalada y sin hora fija); cifrar el contenido del push (más código sin ganar nada: el texto es siempre el mismo); claves VAPID como secreto en Cloudflare (más pasos en el panel).
+- Consecuencias: en iPhone/iPad solo funciona con la app instalada. El plan gratis deja hasta 40 avisos por ronda de 15 minutos.
+
+## D-026 — Reto del día con semilla de la fecha
+- Fecha: 2026-11-02
+- Estado: Aceptada
+- Contexto: la spec 033 pide la misma ronda para todos.
+- Decisión: el minijuego y los 10 ejercicios salen de una semilla con la fecha de Madrid (`src/reto/logica.js`), así cada dispositivo elige lo mismo sin preguntar al servidor y funciona sin red. Se ordena el banco por id antes de barajar para no depender del orden del archivo. El servidor guarda solo el primer resultado de cada jugador y día.
+- Alternativas descartadas: que el servidor elija el reto (necesita red para jugar y una ruta más).
+- Consecuencias: añadir ejercicios a un banco cambia los retos que salgan desde ese día (no los pasados).
+
+## D-027 — Progreso v3
+- Fecha: 2026-11-02
+- Estado: Aceptada
+- Contexto: medallas (029), reto (033) y aciertos por minijuego y tema (034) se guardan en el progreso.
+- Decisión: `he-progreso` pasa a v3 con `medallas`, `reto` y, en `stats`, `aciertos`, `temas`, `retos` y `retosPerfectos`. La migración 2 → 3 los añade vacíos. Las medallas van en el progreso y no en `he-ranking`: se quedan aunque se salga del ranking.
+- Alternativas descartadas: guardar las medallas en el servidor (se perderían al salir del ranking y harían falta más rutas).
+- Consecuencias: los aciertos por minijuego solo se cuentan desde la v1.2.0.

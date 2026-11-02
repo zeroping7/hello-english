@@ -6,17 +6,19 @@ import { iniciarRouter, repintar } from './router.js';
 import { t } from './i18n/textos.js';
 import { avisar } from './ui/aviso.js';
 import { efecto } from './sonido/sonido.js';
-import { iniciarRanking } from './ranking/ranking.js';
+import { iniciarRanking, alVerResultado } from './ranking/ranking.js';
+import { avisarObjetivoCumplido, actualizarIdioma } from './recordatorio/recordatorio.js';
 
 const RUTAS = [
   { patron: /^\/inicio$/, cargar: () => import('./pantallas/inicio.js') },
   { patron: /^\/bienvenida$/, cargar: () => import('./pantallas/bienvenida.js') },
   { patron: /^\/ajustes$/, cargar: () => import('./pantallas/ajustes.js') },
   { patron: /^\/prueba-nivel$/, cargar: () => import('./pantallas/prueba-nivel.js') },
-  { patron: /^\/juego\/([a-z0-9-]+)(?:\/(practica))?$/, cargar: () => import('./pantallas/juego.js') },
+  { patron: /^\/juego\/([a-z0-9-]+)(?:\/(practica|reto))?$/, cargar: () => import('./pantallas/juego.js') },
   { patron: /^\/practica$/, cargar: () => import('./pantallas/practica.js') },
   { patron: /^\/logros$/, cargar: () => import('./pantallas/logros.js') },
-  { patron: /^\/ranking$/, cargar: () => import('./pantallas/ranking.js') },
+  { patron: /^\/ranking(?:\/(dia|mes|rachas|reto))?$/, cargar: () => import('./pantallas/ranking.js') },
+  { patron: /^\/estadisticas$/, cargar: () => import('./pantallas/estadisticas.js') },
 ];
 
 /** Sin bienvenida hecha todo lleva a ella (salvo la prueba de nivel, que es su paso 3); hecha, ya no vuelve a salir. */
@@ -33,7 +35,10 @@ async function arrancar() {
 
   // Al cambiar de idioma la pantalla se vuelve a pintar sin recargar (HU-3)
   alCambiarAjuste(({ clave }) => {
-    if (clave === 'idioma' || clave === '*') repintar();
+    if (clave === 'idioma' || clave === '*') {
+      repintar();
+      actualizarIdioma(); // el texto del recordatorio va en el idioma de la app (spec 032)
+    }
   });
 
   // Objetivo del día cumplido (HU-4)
@@ -41,6 +46,14 @@ async function arrancar() {
     const textoRacha = racha === 1 ? t('inicio.racha.uno') : t('inicio.racha.varios', { n: racha });
     avisar(t('aviso.objetivo', { racha: textoRacha }), { tipo: 'exito', duracion: 6000 });
     efecto('meta');
+    avisarObjetivoCumplido(); // hoy ya no hace falta recordatorio (spec 032)
+  });
+
+  // Puesto final de ayer y del mes pasado, con su medalla si la hay (specs 028 y 029)
+  alVerResultado(({ tipo, pos, jugadores, medalla }) => {
+    const texto = t(`aviso.resultado.${tipo}`, { pos, n: jugadores });
+    avisar(medalla ? `${texto} ${t(`aviso.medalla.${medalla}`)}` : texto, { tipo: medalla ? 'exito' : 'info', duracion: 7000 });
+    if (medalla) efecto('meta');
   });
 
   // Logros nuevos (spec 023) y subida de nivel con el uso (spec 025)

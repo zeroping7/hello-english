@@ -15,6 +15,7 @@ import { exportarArchivo, leerArchivo, aplicarImportacion, borrarTodo } from '..
 import { leerProgreso } from '../progreso/progreso.js';
 import { disponible, yo, salir, alCambiarRanking } from '../ranking/ranking.js';
 import { bloqueCodigo, formularioRecuperar, textoError } from './ranking.js';
+import { soporte, activo, activar, desactivar } from '../recordatorio/recordatorio.js';
 
 function seccion(titulo, ...hijos) {
   return h('section', { class: 'seccion' },
@@ -146,6 +147,60 @@ function seccionRanking() {
   return { nodo: seccion(t('ranking.titulo'), zona), dejar: alCambiarRanking(pintar) };
 }
 
+/** Recordatorio diario (spec 032): activar, elegir la hora y desactivar. */
+function seccionRecordatorio() {
+  const estado = soporte();
+  if (estado === 'sin-servidor') return null;
+  if (estado !== 'si') {
+    return seccion(t('recordatorio.titulo'), h('p', { class: 'tenue' }, t(`recordatorio.${estado}`)));
+  }
+  const nota = h('p', { class: 'tenue nota', 'aria-live': 'polite' });
+  const interruptor = h('input', { type: 'checkbox', id: 'recordatorio-activo', class: 'interruptor' });
+  const hora = h('select', { id: 'recordatorio-hora', class: 'campo campo-hora' },
+    Array.from({ length: 24 }, (_, i) => h('option', { value: String(i) }, `${String(i).padStart(2, '0')}:00`)));
+  hora.value = String(leerAjustes().recordatorioHora);
+
+  function errorDe(motivo) {
+    if (motivo === 'permiso') return t('recordatorio.error.permiso');
+    if (motivo === 'no') return t('recordatorio.no');
+    return textoError(motivo);
+  }
+
+  async function aplicar() {
+    interruptor.disabled = true;
+    hora.disabled = true;
+    const quiere = interruptor.checked;
+    const r = quiere ? await activar(Number(hora.value)) : await desactivar();
+    interruptor.disabled = false;
+    hora.disabled = false;
+    if (!r.ok) {
+      interruptor.checked = !quiere;
+      nota.textContent = errorDe(r.motivo);
+      nota.classList.add('ranking-error');
+      return;
+    }
+    nota.classList.remove('ranking-error');
+    nota.textContent = quiere ? t('recordatorio.activado', { hora: hora.selectedOptions[0].textContent }) : t('recordatorio.desactivado');
+  }
+
+  interruptor.addEventListener('change', aplicar);
+  hora.addEventListener('change', () => {
+    if (interruptor.checked) aplicar();
+    else cambiarAjuste('recordatorioHora', Number(hora.value));
+  });
+  activo().then((si) => { interruptor.checked = si; }).catch(() => {});
+
+  return seccion(t('recordatorio.titulo'),
+    h('p', { class: 'tenue' }, t('recordatorio.texto')),
+    h('div', { class: 'recordatorio-fila' },
+      h('label', { class: 'interruptor-etiqueta', for: 'recordatorio-activo' }, interruptor, h('span', {}, t('recordatorio.activar')))),
+    h('div', { class: 'recordatorio-fila' },
+      h('label', { class: 'opciones-leyenda', for: 'recordatorio-hora' }, t('recordatorio.hora')),
+      hora),
+    nota,
+    h('p', { class: 'tenue nota' }, t('recordatorio.privacidad')));
+}
+
 /** Mis datos (HU-5): exportar, importar y borrar. */
 function seccionDatos() {
   const selector = h('input', { type: 'file', accept: '.json,application/json', hidden: true });
@@ -175,6 +230,7 @@ function seccionDatos() {
       palabra,
     });
     if (!si) return;
+    await desactivar().catch(() => {}); // tampoco quedan recordatorios en el servidor
     await borrarTodo();
     navegar('/bienvenida', { reemplazar: true });
   }
@@ -225,6 +281,7 @@ export function montar(raiz) {
       ),
       seccionVoz(ajustes),
       seccionSonido(ajustes),
+      seccionRecordatorio(),
       seccion(t('ajustes.aprendizaje'),
         grupoOpciones({
           nombre: 'objetivoMin',

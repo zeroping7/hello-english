@@ -16,6 +16,8 @@ export const OPCIONES = {
   vibracion: [true, false],
   objetivoMin: [10, 5, 20],
   bienvenidaHecha: [false, true],
+  // Hora del recordatorio diario (spec 032); si está activo lo dice la suscripción, no esto
+  recordatorioHora: [20, ...Array.from({ length: 24 }, (_, i) => i).filter((i) => i !== 20)],
 };
 
 const COLOR_BARRA = { claro: '#fafafa', oscuro: '#0f1117' };

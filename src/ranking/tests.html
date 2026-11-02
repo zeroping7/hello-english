@@ -16,6 +16,7 @@
     import * as R from './logica.js';
     import { crearExportacion, validarImportacion, progresoNuevo } from '../progreso/logica.js';
     import * as S from '../../servidor/worker.js';
+    import { RETO_N, JUEGOS_RETO, juegoDelReto, elegirReto } from '../reto/logica.js';
 
     prueba('Alias: longitud y caracteres', () => {
       igual(R.problemaAlias('ByteMaster'), null);
@@ -107,6 +108,57 @@
       igual(validarImportacion(sin).ranking, null);
       const roto = validarImportacion({ ...sin, ranking: { v: 1, alias: '??', codigo: 'x' } });
       igual([roto.ok, roto.ranking], [true, null]);
+    });
+
+    // --- v2: ayer, mes pasado y reto (specs 028 y 033) ---
+
+    prueba('Fechas: día anterior y mes anterior, igual que el servidor', () => {
+      igual(R.diaAnterior('2026-03-01'), '2026-02-28');
+      igual(R.diaAnterior('2027-01-01'), '2026-12-31');
+      igual(R.mesAnterior('2026-11-15'), '2026-10');
+      igual(R.mesAnterior('2027-01-03'), '2026-12');
+      for (const d of ['2026-03-01', '2026-11-02', '2028-03-01']) igual(R.diaAnterior(d), S.diaAnterior(d), d);
+    });
+
+    prueba('Reto pendiente: se guarda con la identidad y se descarta si no tiene la forma', () => {
+      const base = { ...R.rankingNuevo('Ana', 'HE-ABCD-EFGH-JKMN') };
+      const reto = { dia: '2026-11-02', juego: 'prompt', aciertos: 7, total: 10, segundos: 80 };
+      igual(R.limpiarRanking({ ...base, reto }).reto, reto);
+      igual(R.limpiarRanking({ ...base, reto: { ...reto, aciertos: 11 } }).reto, null);
+      igual(R.limpiarRanking({ ...base, reto: 'x' }).reto, null);
+      igual(R.limpiarRanking({ v: 1, alias: 'Ana', codigo: 'HE-ABCD-EFGH-JKMN', pendiente: null }).reto, null, 'datos de la v1.1');
+      verdadero(R.retoValido(reto, '2026-11-02'));
+      verdadero(!R.retoValido(reto, '2026-11-03'), 'el de ayer ya no se envía');
+    });
+
+    prueba('Reto: mismo minijuego y mismos ejercicios para todos ese día', () => {
+      const dias = ['2026-11-01', '2026-11-02', '2026-11-03', '2026-11-04', '2026-11-05', '2026-11-06', '2026-11-07'];
+      for (const d of dias) verdadero(JUEGOS_RETO.includes(juegoDelReto(d)), d);
+      igual(juegoDelReto('2026-11-02'), juegoDelReto('2026-11-02'));
+      verdadero(new Set(dias.map((d) => juegoDelReto(d))).size >= 3, 'cambia de un día a otro');
+      const banco = [];
+      for (const nivel of ['A1', 'A2', 'B1', 'B2', 'C1']) for (let i = 0; i < 6; i++) banco.push({ id: `x-${nivel}-${i}`, nivel });
+      const a = elegirReto(banco, '2026-11-02');
+      igual(a.map((i) => i.id), elegirReto([...banco].reverse(), '2026-11-02').map((i) => i.id), 'no depende del orden del banco');
+      igual(a.length, RETO_N);
+      igual(a.map((i) => i.nivel), ['A1', 'A1', 'A2', 'A2', 'B1', 'B1', 'B2', 'B2', 'C1', 'C1']);
+      verdadero(a.map((i) => i.id).join() !== elegirReto(banco, '2026-11-03').map((i) => i.id).join(), 'otro día, otros');
+    });
+
+    prueba('Reto: si a un nivel le faltan ejercicios se completa con otros', () => {
+      const banco = [{ id: 'a', nivel: 'A1' }, ...Array.from({ length: 12 }, (_, i) => ({ id: `b${i}`, nivel: 'B1' }))];
+      const r = elegirReto(banco, '2026-11-02');
+      igual(r.length, RETO_N);
+      igual(new Set(r.map((i) => i.id)).size, RETO_N, 'sin repetidos');
+    });
+
+    prueba('Reto: los bancos de los minijuegos del reto tienen 2 por nivel', async () => {
+      for (const id of JUEGOS_RETO) {
+        const datos = await (await fetch(`../../contenido/${id}.json`)).json();
+        const items = datos.items ?? datos;
+        for (const nivel of ['A1', 'A2', 'B1', 'B2', 'C1']) verdadero(items.filter((i) => i.nivel === nivel).length >= 2, `${id} ${nivel}`);
+        igual(elegirReto(items, '2026-11-02').length, RETO_N, id);
+      }
     });
 
     ejecutar(document.getElementById('app'));

@@ -1,7 +1,7 @@
 // Service worker (constitución P5, plan de 000 §8): primero red y, sin conexión, lo guardado.
 // Es un script que el navegador ejecuta aparte de la página y que intercepta sus peticiones.
 // Al cambiar FILES, sube CACHE para que se guarde la lista nueva.
-const CACHE = 'he-v1.1.1';
+const CACHE = 'he-v1.2.0';
 
 const FILES = [
   './',
@@ -73,6 +73,10 @@ const FILES = [
   './src/ranking/config.js',
   './src/ranking/logica.js',
   './src/ranking/ranking.js',
+  './src/reto/logica.js',
+  './src/recordatorio/recordatorio.js',
+  './src/progreso/estadisticas.js',
+  './src/pantallas/estadisticas.js',
   './juegos/caza-el-bug/juego.js',
   './juegos/caza-el-bug/logica.js',
   './juegos/caza-el-bug/juego.css',
@@ -157,6 +161,50 @@ self.addEventListener('fetch', (e) => {
   const peticion = e.request;
   if (peticion.method !== 'GET' || new URL(peticion.url).origin !== self.location.origin) return;
   e.respondWith(primeroRed(peticion));
+});
+
+// --- Recordatorio diario (spec 032): el servidor manda un aviso vacío y aquí se pone el texto ---
+
+self.addEventListener('push', (e) => {
+  e.waitUntil(mostrarRecordatorio());
+});
+
+async function mostrarRecordatorio() {
+  let idioma = 'es';
+  try {
+    const guardado = await (await caches.open('hello-config')).match('./__idioma');
+    if (guardado && (await guardado.text()) === 'en') idioma = 'en';
+  } catch {
+    // sin idioma guardado, en español
+  }
+  let textos = {};
+  try {
+    const archivo = (await caches.match(`./src/i18n/${idioma}.json`)) ?? (await fetch(`./src/i18n/${idioma}.json`));
+    textos = await archivo.json();
+  } catch {
+    // sin textos, los de abajo
+  }
+  return self.registration.showNotification(textos['recordatorio.notificacion.titulo'] ?? 'Hello English', {
+    body: textos['recordatorio.notificacion.texto'] ?? '',
+    icon: './iconos/icono-192.png',
+    badge: './iconos/icono-192.png',
+    tag: 'recordatorio',
+    data: { url: './#/practica' },
+  });
+}
+
+self.addEventListener('notificationclick', (e) => {
+  e.notification.close();
+  const url = new URL(e.notification.data?.url ?? './', self.location.href).href;
+  e.waitUntil((async () => {
+    const ventanas = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
+    const abierta = ventanas.find((v) => v.url.startsWith(self.registration.scope));
+    if (abierta) {
+      await abierta.focus();
+      return abierta.navigate?.(url);
+    }
+    return self.clients.openWindow(url);
+  })());
 });
 
 async function primeroRed(peticion) {

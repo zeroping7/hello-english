@@ -11,8 +11,11 @@ Aprende inglés de informática y programación con minijuegos, desde el navegad
 - Puntos, racha diaria, 18 logros, repaso espaciado de lo que fallas y un nivel que sube solo al acertar.
 - Más de 500 ejercicios de A1 a C1 sobre programación, web y trabajo en equipo.
 - Interfaz en español o en inglés, tema claro u oscuro y voz británica o americana.
-- **Ranking diario y mensual** opcional: te unes con un alias, sin cuenta ni email.
-- Sin cuentas, sin cookies y sin estadísticas: el progreso se queda en tu dispositivo. Si te unes al ranking, solo se envían tu alias y tus puntos.
+- **Ranking diario y mensual** opcional: te unes con un alias, sin cuenta ni email. Con resultados de ayer y del mes pasado, medallas, ligas por nivel y ranking de rachas.
+- **Reto del día**: el mismo minijuego y los mismos 10 ejercicios para todos, con su clasificación.
+- **Estadísticas**: tus puntos flojos, que también orientan la Práctica de hoy.
+- **Recordatorio diario** opcional: una notificación si aún no has cumplido el objetivo.
+- Sin cuentas, sin cookies y sin estadísticas: el progreso se queda en tu dispositivo. Si te unes al ranking, solo se envían tu alias, tus puntos, tu nivel, tu racha y tu reto del día; si activas el recordatorio, la dirección de avisos del navegador, la hora y la zona horaria.
 
 ## Cómo se desarrolla
 Con Spec Driven Development y Claude, desde el móvil o el PC:
@@ -38,6 +41,14 @@ Reglas en [`docs/constitucion.md`](docs/constitucion.md), estructura en [`docs/a
 | 025 | Subida de nivel con el uso | Implementada (v1.0.0) |
 | 026 | Contenido de los 17 minijuegos | Implementada (v1.0.0) |
 | 027 | Ranking diario y mensual (servidor en Cloudflare, ver [`servidor/LEEME.md`](servidor/LEEME.md)) | Implementada (v1.1.0) |
+| 028 | Resultados de ayer y del mes pasado | Implementada (v1.2.0) |
+| 029 | Medallas del ranking | Implementada (v1.2.0) |
+| 030 | Ligas por nivel | Implementada (v1.2.0) |
+| 031 | Ranking de rachas | Implementada (v1.2.0) |
+| 032 | Recordatorio diario (Web Push) | Implementada (v1.2.0) |
+| 033 | Reto del día | Implementada (v1.2.0) |
+| 034 | Estadísticas y Práctica orientada | Implementada (v1.2.0) |
+| 035 | Contenido: más ejercicios B2 y C1 | Implementada (v1.2.0), pendiente de revisar |
 | — | Más temas: hardware, redes, cloud, seguridad, IA… («contenido de <tema> <nivel>») | Pendiente |
 
 **Pruebas:** abre en el navegador `contenido/tests.html`, `juegos/tests.html`, `src/progreso/tests.html`, `src/i18n/tests.html`, `src/prueba/tests.html`, `src/ranking/tests.html`, `servidor/tests.html` y los `tests.html` de Falsos amigos y Merge Conflict.
