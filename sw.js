@@ -1,7 +1,7 @@
 // Service worker (constitución P5, plan de 000 §8): primero red y, sin conexión, lo guardado.
 // Es un script que el navegador ejecuta aparte de la página y que intercepta sus peticiones.
 // Al cambiar FILES, sube CACHE para que se guarde la lista nueva.
-const CACHE = 'he-v1.1.0';
+const CACHE = 'he-v1.1.1';
 
 const FILES = [
   './',

@@ -23,12 +23,12 @@ Crea una cuenta gratis en <https://dash.cloudflare.com/sign-up>. No pide tarjeta
 5. En la pestaña **Tables** deben aparecer `jugadores`, `puntos` y `altas`.
 
 ### 3. Worker
-1. En el panel: **Compute (Workers) → Workers & Pages → Create → Create Worker** (plantilla "Hello World").
-2. Nombre: `hello-english-ranking` → **Deploy**.
+1. En el panel: **Compute → Workers & Pages → Create application → Start with Hello World!**.
+2. Nombre: el que proponga Cloudflare vale (se puede cambiar luego en **Settings**). Deja **Protect with Cloudflare Access** desactivado → **Deploy**.
 3. Pulsa **Edit code**, borra todo lo que hay y pega el contenido de [`worker.js`](worker.js) → **Deploy**.
 
 ### 4. Enlazar la base de datos al Worker
-1. En el Worker: **Settings → Bindings → Add → D1 database**.
+1. Entra en el Worker (pulsa su nombre) → pestaña **Bindings** (o **Settings → Bindings**) → **Add binding → D1 database**.
 2. Variable name: `DB` (en mayúsculas, exactamente así). Database: `hello-english` → **Save** / **Deploy**.
 
 ### 5. Comprobar
@@ -39,6 +39,8 @@ https://hello-english-ranking.<tu-usuario>.workers.dev/ranking?periodo=dia
 ```
 
 Debe responder `{"periodo":"dia", ... "top":[], ... "jugadores":0}`. Si dice `sin-base-de-datos`, revisa el paso 4.
+
+> El subdominio (`<tu-usuario>.workers.dev`) es de la cuenta y puede llevar datos personales. Se cambia en **Workers & Pages → Account details → Subdomain** (lápiz). La URL vieja deja de funcionar al momento y la nueva tarda unos minutos.
 
 ### 6. Conectar la app
 Pon esa URL (sin `/ranking...`) en `src/ranking/config.js` y sube la versión, o pásasela a Claude. Hasta entonces, el ranking no aparece en la app.

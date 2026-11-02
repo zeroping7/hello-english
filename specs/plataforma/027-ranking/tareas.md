@@ -1,6 +1,6 @@
 # Tareas: Ranking diario y mensual
 
-> **Plan:** `specs/plataforma/027-ranking/plan.md` · **Estado:** Hechas (v1.1.0); falta publicar el servidor en Cloudflare
+> **Plan:** `specs/plataforma/027-ranking/plan.md` · **Estado:** Hechas (v1.1.0); servidor publicado en Cloudflare (v1.1.1)
 > Reglas: cada tarea cabe en una sesión con Claude, deja todo funcionando en `main` y se prueba abriendo la web en el móvil o en el PC.
 > El ranking solo aparece cuando `src/ranking/config.js` tiene la URL del servidor (o con `?debug=1&api=<URL>` para probar).
 
@@ -19,7 +19,7 @@
   - Archivos: `servidor/worker.js` (solo las funciones puras y las palabras vetadas), `servidor/tests.html`
   - Hecho cuando: `servidor/tests.html` sale en verde (día de Madrid, alias, envíos imposibles, topes)
   - Probar: abrir `servidor/tests.html` en el navegador
-- [x] T2704 — API completa y base de datos (probada en local; falta publicarla en Cloudflare)
+- [x] T2704 — API completa y base de datos (publicada en Cloudflare en v1.1.1)
   - Archivos: `servidor/worker.js`, `servidor/esquema.sql`, `servidor/LEEME.md`
   - Hecho cuando: las 5 rutas funcionan con D1 y CORS solo deja entrar a la web publicada
   - Probar: **tú** creas la cuenta de Cloudflare, la base de datos y el Worker siguiendo `LEEME.md` (desde el panel web, también en el móvil) y me pasas la URL del Worker; abrir `<URL>/ranking?periodo=dia` debe devolver una lista vacía
